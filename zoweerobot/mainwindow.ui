@@ -6,18 +6,33 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>640</height>
+    <width>960</width>
+    <height>760</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Panel</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="10,1">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
      <widget class="QWidget" name="widget_2" native="true">
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,30,1">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,30,1">
+       <property name="topMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QWidget" name="horizontalWidget" native="true">
          <property name="sizePolicy">
@@ -26,33 +41,123 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>71</height>
+          </size>
+         </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
-           <widget class="QPushButton" name="program">
-            <property name="text">
-             <string>程序</string>
+           <widget class="QGroupBox" name="groupBox">
+            <property name="minimumSize">
+             <size>
+              <width>745</width>
+              <height>55</height>
+             </size>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="state">
-            <property name="text">
-             <string>状态</string>
+            <property name="font">
+             <font>
+              <pointsize>15</pointsize>
+             </font>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="setting">
-            <property name="text">
-             <string>设置</string>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="warning">
-            <property name="text">
-             <string>警告</string>
+            <property name="title">
+             <string/>
             </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="program">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>程序</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="state">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>状态</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="setting">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>设置</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="warning">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>警告</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
@@ -65,6 +170,12 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
          </property>
         </widget>
        </item>
@@ -88,29 +199,23 @@
      </widget>
     </item>
     <item>
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QWidget" name="widget" native="true">
-      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,3">
+      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,3">
        <item>
         <widget class="QWidget" name="widget_3" native="true">
-         <widget class="QCheckBox" name="movpos">
-          <property name="geometry">
-           <rect>
-            <x>3</x>
-            <y>69</y>
-            <width>71</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>定长移动</string>
-          </property>
-         </widget>
          <widget class="QDoubleSpinBox" name="moveLength">
           <property name="geometry">
            <rect>
-            <x>67</x>
-            <y>96</y>
-            <width>91</width>
+            <x>9</x>
+            <y>9</y>
+            <width>106</width>
             <height>20</height>
            </rect>
           </property>
@@ -127,9 +232,9 @@
          <widget class="QSlider" name="horizontalSlider">
           <property name="geometry">
            <rect>
-            <x>0</x>
-            <y>15</y>
-            <width>164</width>
+            <x>9</x>
+            <y>35</y>
+            <width>84</width>
             <height>19</height>
            </rect>
           </property>
@@ -152,60 +257,35 @@
          <widget class="QCheckBox" name="carcoor">
           <property name="geometry">
            <rect>
-            <x>80</x>
-            <y>70</y>
-            <width>71</width>
-            <height>20</height>
+            <x>9</x>
+            <y>60</y>
+            <width>59</width>
+            <height>16</height>
            </rect>
           </property>
           <property name="text">
            <string>笛卡尔</string>
           </property>
          </widget>
-         <widget class="QLabel" name="label">
+         <widget class="QCheckBox" name="movpos">
           <property name="geometry">
            <rect>
-            <x>4</x>
-            <y>96</y>
-            <width>61</width>
+            <x>9</x>
+            <y>82</y>
+            <width>71</width>
             <height>16</height>
            </rect>
           </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
           <property name="text">
-           <string>移动距离</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_2">
-          <property name="geometry">
-           <rect>
-            <x>4</x>
-            <y>40</y>
-            <width>24</width>
-            <height>12</height>
-           </rect>
-          </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>速度</string>
+           <string>定长移动</string>
           </property>
          </widget>
          <widget class="QLabel" name="vel">
           <property name="geometry">
            <rect>
-            <x>59</x>
-            <y>38</y>
-            <width>51</width>
+            <x>9</x>
+            <y>104</y>
+            <width>16</width>
             <height>16</height>
            </rect>
           </property>
@@ -222,6 +302,44 @@
            <set>Qt::AlignCenter</set>
           </property>
          </widget>
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>9</x>
+            <y>122</y>
+            <width>48</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>移动距离</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_2">
+          <property name="geometry">
+           <rect>
+            <x>9</x>
+            <y>140</y>
+            <width>24</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>速度</string>
+          </property>
+         </widget>
         </widget>
        </item>
        <item>
@@ -236,31 +354,10 @@
           <property name="spacing">
            <number>4</number>
           </property>
-          <item row="2" column="0">
-           <widget class="QPushButton" name="axis3neg">
-            <property name="text">
-             <string>Axis3-</string>
-            </property>
-           </widget>
-          </item>
           <item row="7" column="0">
            <widget class="QPushButton" name="start">
             <property name="text">
              <string>开始</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="1">
-           <widget class="QPushButton" name="stop">
-            <property name="text">
-             <string>停止</string>
-            </property>
-           </widget>
-          </item>
-          <item row="8" column="0">
-           <widget class="QPushButton" name="reset">
-            <property name="text">
-             <string>复位</string>
             </property>
            </widget>
           </item>
@@ -275,39 +372,6 @@
            <widget class="QPushButton" name="hold">
             <property name="text">
              <string>暂停</string>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QPushButton" name="axis4neg">
-            <property name="text">
-             <string>Axis4-</string>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="0">
-           <widget class="QPushButton" name="cyclerun">
-            <property name="text">
-             <string>循环加工</string>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0">
-           <widget class="QPushButton" name="enable">
-            <property name="styleSheet">
-             <string notr="true">QAbstractButton:checked
-{
-background-color: rgb(255, 0, 0);
-}</string>
-            </property>
-            <property name="text">
-             <string>使能</string>
             </property>
             <property name="checkable">
              <bool>true</bool>
@@ -335,17 +399,10 @@ background-color: rgb(255, 0, 0);
             </property>
            </widget>
           </item>
-          <item row="10" column="1">
-           <widget class="QPushButton" name="backzero">
+          <item row="7" column="1">
+           <widget class="QPushButton" name="stop">
             <property name="text">
-             <string>回零</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QPushButton" name="axis1neg">
-            <property name="text">
-             <string>Axis1-</string>
+             <string>停止</string>
             </property>
            </widget>
           </item>
@@ -373,10 +430,10 @@ background-color: rgb(0, 170, 255);
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QPushButton" name="axis2neg">
+          <item row="5" column="0">
+           <widget class="QPushButton" name="axis6neg">
             <property name="text">
-             <string>Axis2-</string>
+             <string>Axis6-</string>
             </property>
            </widget>
           </item>
@@ -387,10 +444,38 @@ background-color: rgb(0, 170, 255);
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
-           <widget class="QPushButton" name="axis5neg">
+          <item row="0" column="0">
+           <widget class="QPushButton" name="axis1neg">
             <property name="text">
-             <string>Axis5-</string>
+             <string>Axis1-</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QPushButton" name="reset">
+            <property name="text">
+             <string>复位</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QPushButton" name="axis4neg">
+            <property name="text">
+             <string>Axis4-</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QPushButton" name="axis6pos">
+            <property name="text">
+             <string>Axis6+</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QPushButton" name="axis3neg">
+            <property name="text">
+             <string>Axis3-</string>
             </property>
            </widget>
           </item>
@@ -401,17 +486,50 @@ background-color: rgb(0, 170, 255);
             </property>
            </widget>
           </item>
-          <item row="5" column="0">
-           <widget class="QPushButton" name="axis6neg">
+          <item row="10" column="1">
+           <widget class="QPushButton" name="backzero">
             <property name="text">
-             <string>Axis6-</string>
+             <string>回零</string>
             </property>
            </widget>
           </item>
-          <item row="5" column="1">
-           <widget class="QPushButton" name="axis6pos">
+          <item row="6" column="0">
+           <widget class="QPushButton" name="enable">
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton:checked
+{
+background-color: rgb(255, 0, 0);
+}</string>
+            </property>
             <property name="text">
-             <string>Axis6+</string>
+             <string>使能</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="axis2neg">
+            <property name="text">
+             <string>Axis2-</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <widget class="QPushButton" name="cyclerun">
+            <property name="text">
+             <string>循环加工</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QPushButton" name="axis5neg">
+            <property name="text">
+             <string>Axis5-</string>
             </property>
            </widget>
           </item>
@@ -428,7 +546,7 @@ background-color: rgb(0, 170, 255);
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>960</width>
      <height>23</height>
     </rect>
    </property>

@@ -1,10 +1,10 @@
-/************************************************************
+ï»¿/************************************************************
   Copyright (C),
-  ÎÄ¼şÃû£ºParseGCode.cpp
-  ×÷Õß£ºzhou    °æ±¾£ºV1.0    ´´½¨ÈÕÆÚ£º2018/07/10
-  Ä£¿éÃèÊö£ºParseGCodeÀàµÄÊµÏÖ
-  ÀúÊ·ĞŞ¸Ä¼ÇÂ¼£º<author>    <time>    <version >    <desc>
-                  zhou    2018/07/10     V1.0      Ìí¼Ó×¢ÊÍ
+  æ–‡ä»¶åï¼šParseGCode.cpp
+  ä½œè€…ï¼šzhou    ç‰ˆæœ¬ï¼šV1.0    åˆ›å»ºæ—¥æœŸï¼š2018/07/10
+  æ¨¡å—æè¿°ï¼šParseGCodeç±»çš„å®ç°
+  å†å²ä¿®æ”¹è®°å½•ï¼š<author>    <time>    <version >    <desc>
+                  zhou    2018/07/10     V1.0      æ·»åŠ æ³¨é‡Š
 *************************************************************/
 
 #include "MotionControllerModule.h"
@@ -30,12 +30,12 @@
 #include <QList>
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºMotionControllerModule()
-  º¯Êı¹¦ÄÜ£ºMotionControllerModule¹¹Ôìº¯Êı
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šMotionControllerModule()
+  å‡½æ•°åŠŸèƒ½ï¼šMotionControllerModuleæ„é€ å‡½æ•°
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 MotionControllerModule::MotionControllerModule()
 {
@@ -43,13 +43,13 @@ MotionControllerModule::MotionControllerModule()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºMotionControllerModule(QList<InfoUI *>& u, SystemSchedule* ss)
-  º¯Êı¹¦ÄÜ£ºMotionControllerModule¹¹Ôìº¯Êı
-  ÊäÈë²ÎÊı£ºu UIÁ´±í
-           ss  SystemSchedulerÖ¸Õë
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šMotionControllerModule(QList<InfoUI *>& u, SystemSchedule* ss)
+  å‡½æ•°åŠŸèƒ½ï¼šMotionControllerModuleæ„é€ å‡½æ•°
+  è¾“å…¥å‚æ•°ï¼šu UIé“¾è¡¨
+           ss  SystemScheduleræŒ‡é’ˆ
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 MotionControllerModule::MotionControllerModule(QList<InfoUI *>& u, SystemSchedule* ss)
 {
@@ -75,12 +75,12 @@ MotionControllerModule::MotionControllerModule(QList<InfoUI *>& u, SystemSchedul
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£º~MotionControllerModule()
-  º¯Êı¹¦ÄÜ£ºMotionControllerModuleÎö¹¹º¯Êı
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼š~MotionControllerModule()
+  å‡½æ•°åŠŸèƒ½ï¼šMotionControllerModuleææ„å‡½æ•°
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 MotionControllerModule::~MotionControllerModule()
 {
@@ -89,12 +89,12 @@ MotionControllerModule::~MotionControllerModule()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºinitMotionControllerModule()
-  º¯Êı¹¦ÄÜ£ºMotionControllerModule³ÉÔ±±äÁ¿³õÊ¼»¯
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£ºÔÚÖ´ĞĞÏµÍ³¸´Î»Ê±ĞèÒªµ÷ÓÃ
+  å‡½æ•°åç§°ï¼šinitMotionControllerModule()
+  å‡½æ•°åŠŸèƒ½ï¼šMotionControllerModuleæˆå‘˜å˜é‡åˆå§‹åŒ–
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼šåœ¨æ‰§è¡Œç³»ç»Ÿå¤ä½æ—¶éœ€è¦è°ƒç”¨
 **************************************************/
 void MotionControllerModule::initMotionControllerModule()
 {
@@ -125,7 +125,7 @@ void MotionControllerModule::initMotionControllerModule()
     m_bIsServoEnable = false;
 
     //m_SetParmStatus = ALL_CARFT_PARM;
-    m_SetParmStatus = 127;//0111 1111B  ËùÓĞ²ÎÊıÉèÖÃ
+    m_SetParmStatus = 127;//0111 1111B  æ‰€æœ‰å‚æ•°è®¾ç½®
 
     m_nClampAutoSearchStep = CAS_PRE_WORK;
     m_bIsprevInClampSignalArea = false;
@@ -135,12 +135,12 @@ void MotionControllerModule::initMotionControllerModule()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºinitModule(QList<InfoUI *>& u)
-  º¯Êı¹¦ÄÜ£ºModule³õÊ¼»¯ ¼ÓÔØUI ¼ÓÔØÉè±¸
-  ÊäÈë²ÎÊı£ºu UIÁ´±í
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šinitModule(QList<InfoUI *>& u)
+  å‡½æ•°åŠŸèƒ½ï¼šModuleåˆå§‹åŒ– åŠ è½½UI åŠ è½½è®¾å¤‡
+  è¾“å…¥å‚æ•°ï¼šu UIé“¾è¡¨
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerModule::initModule(QList<InfoUI *>& u)
 {
@@ -159,12 +159,12 @@ int MotionControllerModule::initModule(QList<InfoUI *>& u)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºconnectUIResource()
-  º¯Êı¹¦ÄÜ£ºÁ¬½ÓUI
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šconnectUIResource()
+  å‡½æ•°åŠŸèƒ½ï¼šè¿æ¥UI
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 bool MotionControllerModule::connectUIResource()
 {
@@ -179,13 +179,13 @@ bool MotionControllerModule::connectUIResource()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºfindUIResource(QList<InfoUI *>& u, ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£ºÔÚÏµÍ³µÄËùÓĞ×¢²áµÄUIÏÂ£¬Ñ°ÕÒMotionControllerModuleÊ¹ÓÃµÄUI
-  ÊäÈë²ÎÊı£ºu UIÁ´±í
-           e  ´íÎóĞÅÏ¢
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šfindUIResource(QList<InfoUI *>& u, ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šåœ¨ç³»ç»Ÿçš„æ‰€æœ‰æ³¨å†Œçš„UIä¸‹ï¼Œå¯»æ‰¾MotionControllerModuleä½¿ç”¨çš„UI
+  è¾“å…¥å‚æ•°ï¼šu UIé“¾è¡¨
+           e  é”™è¯¯ä¿¡æ¯
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerModule::findUIResource(QList<InfoUI *>& u, ErrorInfo& e)
 {
@@ -193,7 +193,7 @@ int MotionControllerModule::findUIResource(QList<InfoUI *>& u, ErrorInfo& e)
     {
         for(int j = 0; j < u.at(i)->nModulesUser.size(); j++)
         {
-            if(u.at(i)->nModulesUser[j] == MOTION_CONTROLLER_ID)   /* Æ¥Åä¸ÃModule */
+            if(u.at(i)->nModulesUser[j] == MOTION_CONTROLLER_ID)   /* åŒ¹é…è¯¥Module */
                m_UIs.append(u.at(i));
         }
     }
@@ -233,12 +233,12 @@ bool MotionControllerModule::ReadErrorInformation()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºgetEmulationCanvs()
-  º¯Êı¹¦ÄÜ£º»ñÈ¡×Ô¶¯¼Ó¹¤½çÃæ·ÂÕæ»­²¼Ö¸Õë
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šgetEmulationCanvs()
+  å‡½æ•°åŠŸèƒ½ï¼šè·å–è‡ªåŠ¨åŠ å·¥ç•Œé¢ä»¿çœŸç”»å¸ƒæŒ‡é’ˆ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 CEmulationCanvs*  MotionControllerModule::getEmulationCanvs()
 {
@@ -254,12 +254,12 @@ CEmulationCanvs*  MotionControllerModule::getEmulationCanvs()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºgetMachiningStateUI()
-  º¯Êı¹¦ÄÜ£º»ñÈ¡×Ô¶¯¼Ó¹¤½çÃæÖ¸Õë
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šgetMachiningStateUI()
+  å‡½æ•°åŠŸèƒ½ï¼šè·å–è‡ªåŠ¨åŠ å·¥ç•Œé¢æŒ‡é’ˆ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 CAutoMachiningStateUi*  MotionControllerModule::getMachiningStateUI()
 {
@@ -275,12 +275,12 @@ CAutoMachiningStateUi*  MotionControllerModule::getMachiningStateUI()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºgetSimulationStateUI()
-  º¯Êı¹¦ÄÜ£º»ñÈ¡·ÂÕæ½çÃæÖ¸Õë
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šgetSimulationStateUI()
+  å‡½æ•°åŠŸèƒ½ï¼šè·å–ä»¿çœŸç•Œé¢æŒ‡é’ˆ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 /*CMachiningSimulationUi*  MotionControllerModule::getSimulationStateUI()
 {
@@ -296,12 +296,12 @@ CAutoMachiningStateUi*  MotionControllerModule::getMachiningStateUI()
 }*/
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºgetManualMachiningStateUI()
-  º¯Êı¹¦ÄÜ£º»ñÈ¡ÊÖ¶¯¼Ó¹¤½çÃæÖ¸Õë
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šgetManualMachiningStateUI()
+  å‡½æ•°åŠŸèƒ½ï¼šè·å–æ‰‹åŠ¨åŠ å·¥ç•Œé¢æŒ‡é’ˆ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 /*CManualMachiningStateUi*  MotionControllerModule::getManualMachiningStateUI()
 {
@@ -317,12 +317,12 @@ CAutoMachiningStateUi*  MotionControllerModule::getMachiningStateUI()
 }*/
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºgetManualMachiningStateUI()
-  º¯Êı¹¦ÄÜ£º»ñÈ¡Íâ²¿Éè±¸Í¨Ñ¶½çÃæÖ¸Õë
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šgetManualMachiningStateUI()
+  å‡½æ•°åŠŸèƒ½ï¼šè·å–å¤–éƒ¨è®¾å¤‡é€šè®¯ç•Œé¢æŒ‡é’ˆ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 /*CCommunicationSettingUi*  MotionControllerModule::getCommunicationSettingUi()
 {
@@ -338,12 +338,12 @@ CAutoMachiningStateUi*  MotionControllerModule::getMachiningStateUI()
 }*/
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºaddDevice(ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£º¼ÓÔØÉè±¸
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£ºe  ´íÎóĞÅÏ¢
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šaddDevice(ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šåŠ è½½è®¾å¤‡
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼še  é”™è¯¯ä¿¡æ¯
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerModule::addDevice(ErrorInfo& e)
 {
@@ -370,12 +370,12 @@ int MotionControllerModule::addDevice(ErrorInfo& e)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºclearGCodeDataList()
-  º¯Êı¹¦ÄÜ£ºÇå³ım_GCodeDataListÁ´±í
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šclearGCodeDataList()
+  å‡½æ•°åŠŸèƒ½ï¼šæ¸…é™¤m_GCodeDataListé“¾è¡¨
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::clearGCodeDataList()
 {
@@ -388,12 +388,12 @@ void MotionControllerModule::clearGCodeDataList()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºparseNGFileModel()
-  º¯Êı¹¦ÄÜ£º²Ûº¯Êı   ÏàÓ¦¡±½âÎöG´úÂë°´Å¥¡°
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šparseNGFileModel()
+  å‡½æ•°åŠŸèƒ½ï¼šæ§½å‡½æ•°   ç›¸åº”â€è§£æGä»£ç æŒ‰é’®â€œ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::parseNGFileModel()
 {
@@ -405,11 +405,11 @@ void MotionControllerModule::parseNGFileModel()
 
         m_errInfo.e_type = DEBUG_NO_ERROR;
 
-        /* ·½Ê½1£ºÔÚ²Ûº¯ÊıÖĞÖ´ĞĞÈ«²¿½âÎöG´úÂë */
+        /* æ–¹å¼1ï¼šåœ¨æ§½å‡½æ•°ä¸­æ‰§è¡Œå…¨éƒ¨è§£æGä»£ç  */
         if(!pp->startupParseController(this, &m_GCodeDataList, m_errInfo))
         {
             clearGCodeDataList();
-            /* emit´íÎóĞÅºÅ¸øsystem£¬systemÏàÓ¦µÄ²Û½ÓÊÜ£¬ËùÓĞµÄĞÅÏ¢ÔÚm_errInfo*/
+            /* emité”™è¯¯ä¿¡å·ç»™systemï¼Œsystemç›¸åº”çš„æ§½æ¥å—ï¼Œæ‰€æœ‰çš„ä¿¡æ¯åœ¨m_errInfo*/
             m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
             m_pScheduler->writeMsgToStatusBar(m_errInfo.toString(), STATUSBAR_ERROR_INFO);
         }
@@ -423,19 +423,19 @@ void MotionControllerModule::parseNGFileModel()
     }
 
 
-    /* ·½Ê½2£ºÔÚÏß³Ì£¨MotionControllerModule::run()£©ÖĞÖ´ĞĞÈ«²¿½âÎöG´úÂë */
+    /* æ–¹å¼2ï¼šåœ¨çº¿ç¨‹ï¼ˆMotionControllerModule::run()ï¼‰ä¸­æ‰§è¡Œå…¨éƒ¨è§£æGä»£ç  */
 //    pp->moveToThread(this);
 //    start();
 
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºprocEmulationModel()
-  º¯Êı¹¦ÄÜ£ºÆô¶¯·ÂÕæ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šprocEmulationModel()
+  å‡½æ•°åŠŸèƒ½ï¼šå¯åŠ¨ä»¿çœŸ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::procEmulationModel()
 {
@@ -443,12 +443,12 @@ void MotionControllerModule::procEmulationModel()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºsetEmulationStatus(CAutoMachiningStateUi::MotionRunStatue s)
-  º¯Êı¹¦ÄÜ£ºÉèÖÃ×Ô¶¯¼Ó¹¤½çÃæµÄÔËĞĞ×´Ì¬
-  ÊäÈë²ÎÊı£ºs£º×Ô¶¯¼Ó¹¤½çÃæµÄÔËĞĞ×´Ì¬
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šsetEmulationStatus(CAutoMachiningStateUi::MotionRunStatue s)
+  å‡½æ•°åŠŸèƒ½ï¼šè®¾ç½®è‡ªåŠ¨åŠ å·¥ç•Œé¢çš„è¿è¡ŒçŠ¶æ€
+  è¾“å…¥å‚æ•°ï¼šsï¼šè‡ªåŠ¨åŠ å·¥ç•Œé¢çš„è¿è¡ŒçŠ¶æ€
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::setEmulationStatus(CAutoMachiningStateUi::MotionRunStatue s)
 {
@@ -462,12 +462,12 @@ void MotionControllerModule::setEmulationStatus(CAutoMachiningStateUi::MotionRun
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºsetProcessBarValue(int s)
-  º¯Êı¹¦ÄÜ£ºÉèÖÃ×Ô¶¯¼Ó¹¤½çÃæµÄ¼Ó¹¤½ø¶È
-  ÊäÈë²ÎÊı£ºs£º×Ô¶¯¼Ó¹¤½çÃæµÄ¼Ó¹¤½ø¶È
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šsetProcessBarValue(int s)
+  å‡½æ•°åŠŸèƒ½ï¼šè®¾ç½®è‡ªåŠ¨åŠ å·¥ç•Œé¢çš„åŠ å·¥è¿›åº¦
+  è¾“å…¥å‚æ•°ï¼šsï¼šè‡ªåŠ¨åŠ å·¥ç•Œé¢çš„åŠ å·¥è¿›åº¦
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::setProcessBarValue(int s)
 {
@@ -481,12 +481,12 @@ void MotionControllerModule::setProcessBarValue(int s)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºpauseEmulation()
-  º¯Êı¹¦ÄÜ£ºÔİÍ£·ÂÕæ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼špauseEmulation()
+  å‡½æ•°åŠŸèƒ½ï¼šæš‚åœä»¿çœŸ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::pauseEmulation()
 {
@@ -501,12 +501,12 @@ void MotionControllerModule::pauseEmulation()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºpauseBreakPointEmulation()
-  º¯Êı¹¦ÄÜ£ºÔİÍ£·ÂÕæ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼špauseBreakPointEmulation()
+  å‡½æ•°åŠŸèƒ½ï¼šæš‚åœä»¿çœŸ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::pauseBreakPointEmulation()
 {
@@ -521,12 +521,12 @@ void MotionControllerModule::pauseBreakPointEmulation()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºcontinueEmulation()
-  º¯Êı¹¦ÄÜ£º·ÂÕæ¼ÌĞø
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šcontinueEmulation()
+  å‡½æ•°åŠŸèƒ½ï¼šä»¿çœŸç»§ç»­
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::continueEmulation()
 {
@@ -541,12 +541,12 @@ void MotionControllerModule::continueEmulation()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºchangeEmulationSpeed(int v)
-  º¯Êı¹¦ÄÜ£ºÉèÖÃ·ÂÕæËÙ¶È
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šchangeEmulationSpeed(int v)
+  å‡½æ•°åŠŸèƒ½ï¼šè®¾ç½®ä»¿çœŸé€Ÿåº¦
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::changeEmulationSpeed(int v)
 {
@@ -563,12 +563,12 @@ void MotionControllerModule::changeEmulationSpeed(int v)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºrestartEmulation()
-  º¯Êı¹¦ÄÜ£º·ÂÕæÖØÆô
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šrestartEmulation()
+  å‡½æ•°åŠŸèƒ½ï¼šä»¿çœŸé‡å¯
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::restartEmulation()
 {
@@ -583,12 +583,12 @@ void MotionControllerModule::restartEmulation()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºrunToBreakpointEmulation()
-  º¯Êı¹¦ÄÜ£º·ÂÕæ¶ÏµãÔËĞĞ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šrunToBreakpointEmulation()
+  å‡½æ•°åŠŸèƒ½ï¼šä»¿çœŸæ–­ç‚¹è¿è¡Œ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::runToBreakpointEmulation()
 {
@@ -600,26 +600,26 @@ void MotionControllerModule::runToBreakpointEmulation()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºabsorbMotionModule(QString msg, QString arg)
-  º¯Êı¹¦ÄÜ£º²Ûº¯Êı  ´¦ÀíÀ´×ÔemitMotionModuleSignal(QString, QString)µÄĞÅºÅ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šabsorbMotionModule(QString msg, QString arg)
+  å‡½æ•°åŠŸèƒ½ï¼šæ§½å‡½æ•°  å¤„ç†æ¥è‡ªemitMotionModuleSignal(QString, QString)çš„ä¿¡å·
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
 {
     qDebug()<<"absorbMotionModule start";
 
     {
-        //ÏµÍ³³ı¼±Í£×´Ì¬Ö®ÍâÄÜÖ´ĞĞµÄÏûÏ¢//
+        //ç³»ç»Ÿé™¤æ€¥åœçŠ¶æ€ä¹‹å¤–èƒ½æ‰§è¡Œçš„æ¶ˆæ¯//
         if (m_WorkStatus != MOTION_EMERGENCY_STOP_WAITTING)
         {
            /* if (msg == "system reset")
             {
-                //¸÷ÖÖÇåÀí¹¤×÷
+                //å„ç§æ¸…ç†å·¥ä½œ
                 systemReset();
-                m_pScheduler->recvRunInfoFromAllModules("ÏµÍ³¸´Î»");
+                m_pScheduler->recvRunInfoFromAllModules("ç³»ç»Ÿå¤ä½");
             }
             else if (msg == "clear error")
             {
@@ -642,7 +642,7 @@ void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
                 restartEmulation();
 
                 setProcessBarValue(0);
-                m_pScheduler->recvRunInfoFromAllModules("Çå³ı´íÎó");
+                m_pScheduler->recvRunInfoFromAllModules("æ¸…é™¤é”™è¯¯");
                 m_pScheduler->writeMsgToStatusBar("");
             }
             else*/
@@ -661,24 +661,24 @@ void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
 		                	  qDebug()<<"procMotionModel start";
 		                    procMotionModel();
 			  		qDebug()<<"procMotionModel end";
-		                    //m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("¼Ó¹¤Æô¶¯"));
+		                    //m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("åŠ å·¥å¯åŠ¨"));
 		                    setProcessBarValue(0);
-		                    //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("¼Ó¹¤Æô¶¯"));
+		                    //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("åŠ å·¥å¯åŠ¨"));
 		                    m_bisInPauseWaittingStatus = false;
-				     m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("Ñ­»·¼Ó¹¤Æô¶¯"));
+				     m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("å¾ªç¯åŠ å·¥å¯åŠ¨"));
 		                }
                     		
 				 else
 				{
-				        QMessageBox::information(NULL, QString::fromLocal8Bit("¾¯¸æ"), QString::fromLocal8Bit("Î´Ê¹ÄÜ»òÎ´´¦ÓÚ×Ô¶¯Ä£Ê½"));
+				        QMessageBox::information(NULL, QString::fromLocal8Bit("è­¦å‘Š"), QString::fromLocal8Bit("æœªä½¿èƒ½æˆ–æœªå¤„äºè‡ªåŠ¨æ¨¡å¼"));
 				        
 				}
-                    		//m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("Ñ­»·¼Ó¹¤Æô¶¯"), STATUSBAR_STATUS_ON_INFO);
+                    		//m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("å¾ªç¯åŠ å·¥å¯åŠ¨"), STATUSBAR_STATUS_ON_INFO);
                      }
 			else
 			{
-			        QMessageBox::information(NULL, QString::fromLocal8Bit("¾¯¸æ"), QString::fromLocal8Bit("³ÌĞòÔËĞĞÖĞ£¬ÇëÏÈÍ£Ö¹£¡"));
-			        qDebug()<<"ÏµÍ³×´Ì¬"<<m_WorkStatus;
+			        QMessageBox::information(NULL, QString::fromLocal8Bit("è­¦å‘Š"), QString::fromLocal8Bit("ç¨‹åºè¿è¡Œä¸­ï¼Œè¯·å…ˆåœæ­¢ï¼"));
+			        qDebug()<<"ç³»ç»ŸçŠ¶æ€"<<m_WorkStatus;
 			}
 					 
                 }
@@ -687,8 +687,8 @@ void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
                   
                     m_bisCycleRun = false;
                     	   		     	
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("Ñ­»·¼Ó¹¤È¡Ïû"));
-                    //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("Ñ­»·¼Ó¹¤È¡Ïû"), STATUSBAR_STATUS_OFF_INFO);
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("å¾ªç¯åŠ å·¥å–æ¶ˆ"));
+                    //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("å¾ªç¯åŠ å·¥å–æ¶ˆ"), STATUSBAR_STATUS_OFF_INFO);
                 }
             }
             
@@ -696,7 +696,7 @@ void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
             else
             {
             		qDebug()<<"m_WorkStatus"<<m_WorkStatus;
-                //ÏµÍ³Õı³£×´Ì¬ÏÂÄÜÖ´ĞĞµÄÏûÏ¢//
+                //ç³»ç»Ÿæ­£å¸¸çŠ¶æ€ä¸‹èƒ½æ‰§è¡Œçš„æ¶ˆæ¯//
                 //if (m_WorkStatus != MOTION_WORK_ERROR_WAITTING)
 		 if ((m_WorkStatus != MOTION_WORK_NORMAL_START)
 			&&(m_WorkStatus != MOTION_WORK_NORMAL_PROCESS)
@@ -706,22 +706,22 @@ void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
                 {
                     if (msg == "start motion")
                     {                                          
-                            if (isReadyToStartMotion())//°²È«¼à²â
+                            if (isReadyToStartMotion())//å®‰å…¨ç›‘æµ‹
                             {
                                 if (isServoEnable()&&(2==isServoMode()))
                                 {
                                 	  qDebug()<<"procMotionModel start";
                                     procMotionModel();
 					  qDebug()<<"procMotionModel end";
-                                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("¼Ó¹¤Æô¶¯"));
+                                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("åŠ å·¥å¯åŠ¨"));
                                     setProcessBarValue(0);
-                                    //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("¼Ó¹¤Æô¶¯"));
+                                    //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("åŠ å·¥å¯åŠ¨"));
 				      //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit(""));
                                     m_bisInPauseWaittingStatus = false;
                                 }
 				   else
 					{
-					        QMessageBox::information(NULL, QString::fromLocal8Bit("¾¯¸æ"), QString::fromLocal8Bit("Î´Ê¹ÄÜ»òÎ´´¦ÓÚ×Ô¶¯Ä£Ê½"));
+					        QMessageBox::information(NULL, QString::fromLocal8Bit("è­¦å‘Š"), QString::fromLocal8Bit("æœªä½¿èƒ½æˆ–æœªå¤„äºè‡ªåŠ¨æ¨¡å¼"));
 					
 					}
                             }
@@ -747,24 +747,24 @@ void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
                 }
                 else
                 {
-                    QMessageBox::information(NULL, QString::fromLocal8Bit("¾¯¸æ"), QString::fromLocal8Bit("³ÌĞòÔËĞĞÖĞ£¬ÇëÏÈÍ£Ö¹£¡"));
+                    QMessageBox::information(NULL, QString::fromLocal8Bit("è­¦å‘Š"), QString::fromLocal8Bit("ç¨‹åºè¿è¡Œä¸­ï¼Œè¯·å…ˆåœæ­¢ï¼"));
                 }
             }
         }
         else
         {
-            QMessageBox::information(NULL, QString::fromLocal8Bit("¾¯¸æ"), QString::fromLocal8Bit("ÏµÍ³´¦ÓÚ¼±Í£×´Ì¬ÖĞ£¬ÇëÏÈÏû³ı¼±Í££¡"));
+            QMessageBox::information(NULL, QString::fromLocal8Bit("è­¦å‘Š"), QString::fromLocal8Bit("ç³»ç»Ÿå¤„äºæ€¥åœçŠ¶æ€ä¸­ï¼Œè¯·å…ˆæ¶ˆé™¤æ€¥åœï¼"));
         }
     }
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºstepEmulation()
-  º¯Êı¹¦ÄÜ£ºµ¥²½·ÂÕæ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šstepEmulation()
+  å‡½æ•°åŠŸèƒ½ï¼šå•æ­¥ä»¿çœŸ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::stepEmulation()
 {
@@ -782,12 +782,12 @@ void MotionControllerModule::stepEmulation()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºabsorbManualMotionModule(QString msg, QString arg)
-  º¯Êı¹¦ÄÜ£º²Ûº¯Êı  ´¦ÀíÀ´×ÔemitMotionModuleSignal(QString, QString)µÄĞÅºÅ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£ºÏìÓ¦ÊÖ¶¯¹¦ÄÜ
+  å‡½æ•°åç§°ï¼šabsorbManualMotionModule(QString msg, QString arg)
+  å‡½æ•°åŠŸèƒ½ï¼šæ§½å‡½æ•°  å¤„ç†æ¥è‡ªemitMotionModuleSignal(QString, QString)çš„ä¿¡å·
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼šå“åº”æ‰‹åŠ¨åŠŸèƒ½
 **************************************************/
 void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
 {
@@ -804,12 +804,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = arg.toDouble();
                     m_ManualStatus = MANUAL_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -824,12 +824,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = arg.toDouble();
                     m_ManualStatus = MANUAL_WORLD_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -844,12 +844,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = arg.toDouble();
                     m_ManualStatus = MANUAL_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Yè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Yæå¯¸Ğ©é” + arg + "mm");
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -864,12 +864,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = arg.toDouble();
                     m_ManualStatus = MANUAL_WORLD_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -884,12 +884,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = arg.toDouble();
                     m_ManualStatus = MANUAL_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Zè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Zæå¯¸Ğ©é” + arg + "mm");
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -904,12 +904,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = arg.toDouble();
                     m_ManualStatus = MANUAL_WORLD_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -924,12 +924,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = arg.toDouble();
                     m_ManualStatus = MANUAL_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Rè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Ræå¯¸Ğ©é” + arg + "mm");
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -944,12 +944,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = arg.toDouble();
                     m_ManualStatus = MANUAL_WORLD_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -965,12 +965,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = arg.toDouble();
                     m_ManualStatus = MANUAL_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Rè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Ræå¯¸Ğ©é” + arg + "mm");
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -985,12 +985,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = arg.toDouble();
                     m_ManualStatus = MANUAL_WORLD_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1006,12 +1006,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = arg.toDouble();
                     m_ManualStatus = MANUAL_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Rè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Ræå¯¸Ğ©é” + arg + "mm");
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1026,12 +1026,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = arg.toDouble();
                     m_ManualStatus = MANUAL_WORLD_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1046,12 +1046,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = -arg.toDouble();
                     m_ManualStatus = MANUAL_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1066,12 +1066,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = -arg.toDouble();
                     m_ManualStatus = MANUAL_WORLD_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1086,12 +1086,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = -arg.toDouble();
                     m_ManualStatus = MANUAL_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Yè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Yæå¯¸Ğ©é” + arg + "mm");
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1106,12 +1106,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = -arg.toDouble();
                     m_ManualStatus = MANUAL_WORLD_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1126,12 +1126,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = -arg.toDouble();
                     m_ManualStatus = MANUAL_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Zè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Zæå¯¸Ğ©é” + arg + "mm");
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1146,12 +1146,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = -arg.toDouble();
                     m_ManualStatus = MANUAL_WORLD_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1166,12 +1166,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = -arg.toDouble();
                     m_ManualStatus = MANUAL_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Rè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Ræå¯¸Ğ©é” + arg + "mm");
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1186,12 +1186,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = -arg.toDouble();
                     m_ManualStatus = MANUAL_WORLD_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1206,12 +1206,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = -arg.toDouble();
                     m_ManualStatus = MANUAL_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Rè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Ræå¯¸Ğ©é” + arg + "mm");
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1226,12 +1226,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = -arg.toDouble();
                     m_ManualStatus = MANUAL_WORLD_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1246,12 +1246,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = -arg.toDouble();
                     m_ManualStatus = MANUAL_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Rè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Ræå¯¸Ğ©é” + arg + "mm");
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1266,12 +1266,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_dMoveDis = -arg.toDouble();
                     m_ManualStatus = MANUAL_WORLD_START;
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1308,12 +1308,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
 				m_ManualStatus = MANUAL_WORLDMOVE_START;
 			}
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1350,12 +1350,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
 				m_ManualStatus = MANUAL_WORLDMOVE_START;
 			}
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1392,12 +1392,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
 				m_ManualStatus = MANUAL_WORLDMOVE_START;
 			}
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1434,12 +1434,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
 				m_ManualStatus = MANUAL_WORLDMOVE_START;
 			}
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1477,12 +1477,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
 				m_ManualStatus = MANUAL_WORLDMOVE_START;
 			}
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1519,12 +1519,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
 				m_ManualStatus = MANUAL_WORLDMOVE_START;
 			}
                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
-                    //m_pScheduler->recvRunInfoFromAllModules("Xè½´ç§»åŠ + arg + "mm");
+                    //m_pScheduler->recvRunInfoFromAllModules("Xæå¯¸Ğ©é” + arg + "mm");
 			return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è¯·ç­‰å¾…ç§»åŠ¨æŒ‡ä»¤å®Œæˆ[ è¿è¡ŒçŠ¶æ€ï¼š%1ï¼ŒæŒ‡ä»¤ï¼š%2ï¼Œå†…å®¹ï¼š%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç’‡é£ç“‘å¯°å‘¯Ğ©é”ã„¦å¯šæµ ã‚…ç•¬é´æ€º æ©æ„¯î”‘é˜èˆµâ‚¬ä¾Šç´°%1é”›å±¾å¯šæµ ã‚ç´°%2é”›å±½å”´ç€¹ç™¸ç´°%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
                     return;
                 }
             }
@@ -1538,12 +1538,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                    
                     m_CtrlStatus = SETTING_PARAMER;
                     m_WorkStatus = MOTION_WORK_MANUAL_SET;
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ÉèÖÃ²ÎÊı"));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è®¾ç½®å‚æ•°"));
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("Ìõ¼ş²»Âú×ã£¬ÉèÖÃÊ§°Ü"));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("æ¡ä»¶ä¸æ»¡è¶³ï¼Œè®¾ç½®å¤±è´¥"));
                     return;
                 }
             }
@@ -1554,12 +1554,12 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                    
                     m_CtrlStatus = SETTING_LINKPARAMER;
                     m_WorkStatus = MOTION_WORK_MANUAL_SET;
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ÉèÖÃÁ¬¸Ë²ÎÊı"));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("è®¾ç½®è¿æ†å‚æ•°"));
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("Ìõ¼ş²»Âú×ã£¬ÉèÖÃÁ¬¸ËÊ§°Ü"));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("æ¡ä»¶ä¸æ»¡è¶³ï¼Œè®¾ç½®è¿æ†å¤±è´¥"));
                     return;
                 }
             }
@@ -1575,13 +1575,13 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                     m_CtrlStatus = SETTING_CLEAR;
                     m_WorkStatus = MOTION_WORK_MANUAL_SET;
                    
-		     m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("Çå³ı´íÎó"));
+		     m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("æ¸…é™¤é”™è¯¯"));
                     m_pScheduler->writeMsgToStatusBar("");	
                     return;
                 }
                 else
                 {
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("Ìõ¼ş²»Âú×ã£¬Çå³ıÊ§°Ü"));
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("æ¡ä»¶ä¸æ»¡è¶³ï¼Œæ¸…é™¤å¤±è´¥"));
                     return;
                 }
             }
@@ -1743,8 +1743,8 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
             	}
 		 else
 		{
-		        QMessageBox::information(NULL, QString::fromLocal8Bit("¾¯¸æ"), QString::fromLocal8Bit("³ÌĞòÔËĞĞÖĞ£¬ÇëÏÈÍ£Ö¹£¡"));
-		        qDebug()<<"ÏµÍ³×´Ì¬"<<m_WorkStatus;
+		        QMessageBox::information(NULL, QString::fromLocal8Bit("è­¦å‘Š"), QString::fromLocal8Bit("ç¨‹åºè¿è¡Œä¸­ï¼Œè¯·å…ˆåœæ­¢ï¼"));
+		        qDebug()<<"ç³»ç»ŸçŠ¶æ€"<<m_WorkStatus;
 		}
             }
         }
@@ -1773,14 +1773,14 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
             if (arg == "yes")
             {
                 m_bIsServoEnable = true;
-                m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ËÅ·şÆô¶¯"));
-                //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("ËÅ·şÆô¶¯"));
+                m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ä¼ºæœå¯åŠ¨"));
+                //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("ä¼ºæœå¯åŠ¨"));
             }
             else
             {
                 m_bIsServoEnable = false;
-                m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ËÅ·ş¹Ø±Õ"));
-                //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("ËÅ·ş¹Ø±Õ"));
+                m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ä¼ºæœå…³é—­"));
+                //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("ä¼ºæœå…³é—­"));
             }
         }
 	else if(msg == "GetBattery")
@@ -1846,8 +1846,8 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
 		    }
 		    else
 			{
-			        QMessageBox::information(NULL, QString::fromLocal8Bit("¾¯¸æ"), QString::fromLocal8Bit("³ÌĞòÔËĞĞÖĞ£¬ÇëÏÈÍ£Ö¹£¡"));
-			        qDebug()<<"ÏµÍ³×´Ì¬"<<m_WorkStatus;
+			        QMessageBox::information(NULL, QString::fromLocal8Bit("è­¦å‘Š"), QString::fromLocal8Bit("ç¨‹åºè¿è¡Œä¸­ï¼Œè¯·å…ˆåœæ­¢ï¼"));
+			        qDebug()<<"ç³»ç»ŸçŠ¶æ€"<<m_WorkStatus;
 			}
 	        }
 	    }
@@ -1905,8 +1905,8 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
 				      if((m_pScheduler->m_pSystemParameter->teachpoint[m_movepointnum].index<1)
 					  ||(m_pScheduler->m_pSystemParameter->teachpoint[m_movepointnum].index>1024))	  
 					{
-					        QMessageBox::information(NULL, QString::fromLocal8Bit("¾¯¸æ"), QString::fromLocal8Bit("ÇëÏÈÌí¼ÓÊ¾½Ìµã£¡"));
-					        qDebug()<<"Ê¾½ÌµãĞòºÅ"<<m_pScheduler->m_pSystemParameter->teachpoint[m_movepointnum].index;
+					        QMessageBox::information(NULL, QString::fromLocal8Bit("è­¦å‘Š"), QString::fromLocal8Bit("è¯·å…ˆæ·»åŠ ç¤ºæ•™ç‚¹ï¼"));
+					        qDebug()<<"ç¤ºæ•™ç‚¹åºå·"<<m_pScheduler->m_pSystemParameter->teachpoint[m_movepointnum].index;
 						return ;
 					}
 				     (m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;
@@ -1917,14 +1917,14 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
 		                }
 		                else
 		              {
-				        QMessageBox::information(NULL, QString::fromLocal8Bit("¾¯¸æ"), QString::fromLocal8Bit("³ÌĞòÔËĞĞÖĞ£¬ÇëÏÈÍ£Ö¹£¡"));
-				        qDebug()<<"ÊÖ¶¯×´Ì¬"<<m_ManualStatus;
+				        QMessageBox::information(NULL, QString::fromLocal8Bit("è­¦å‘Š"), QString::fromLocal8Bit("ç¨‹åºè¿è¡Œä¸­ï¼Œè¯·å…ˆåœæ­¢ï¼"));
+				        qDebug()<<"æ‰‹åŠ¨çŠ¶æ€"<<m_ManualStatus;
 				}
 	            	}
 			 else
 			{
-			        QMessageBox::information(NULL, QString::fromLocal8Bit("¾¯¸æ"), QString::fromLocal8Bit("³ÌĞòÔËĞĞÖĞ£¬ÇëÏÈÍ£Ö¹£¡"));
-			        qDebug()<<"ÏµÍ³×´Ì¬"<<m_WorkStatus;
+			        QMessageBox::information(NULL, QString::fromLocal8Bit("è­¦å‘Š"), QString::fromLocal8Bit("ç¨‹åºè¿è¡Œä¸­ï¼Œè¯·å…ˆåœæ­¢ï¼"));
+			        qDebug()<<"ç³»ç»ŸçŠ¶æ€"<<m_WorkStatus;
 			}
 	            }
 	        }
@@ -1999,19 +1999,19 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
     }
    else
     {
-        QMessageBox::information(NULL, QString::fromLocal8Bit("¾¯¸æ"), QString::fromLocal8Bit("ÏµÍ³×´Ì¬²»Âú×ãÖ´ĞĞ¸ÃÖ¸Áî£¡"));
-        qDebug()<<"ÏµÍ³×´Ì¬"<<m_WorkStatus;
+        QMessageBox::information(NULL, QString::fromLocal8Bit("è­¦å‘Š"), QString::fromLocal8Bit("ç³»ç»ŸçŠ¶æ€ä¸æ»¡è¶³æ‰§è¡Œè¯¥æŒ‡ä»¤ï¼"));
+        qDebug()<<"ç³»ç»ŸçŠ¶æ€"<<m_WorkStatus;
     }
 
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºrunTimer()
-  º¯Êı¹¦ÄÜ£ºÔËĞĞ·ÂÕæ ¶¨Ê±Æ÷
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šrunTimer()
+  å‡½æ•°åŠŸèƒ½ï¼šè¿è¡Œä»¿çœŸ å®šæ—¶å™¨
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::runTimer()
 {
@@ -2019,12 +2019,12 @@ void MotionControllerModule::runTimer()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºprocMotionModel()
-  º¯Êı¹¦ÄÜ£ºÕı³£¼Ó¹¤Ç°µÄ×¼±¸¹¤×÷
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šprocMotionModel()
+  å‡½æ•°åŠŸèƒ½ï¼šæ­£å¸¸åŠ å·¥å‰çš„å‡†å¤‡å·¥ä½œ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::procMotionModel()
 {
@@ -2049,7 +2049,7 @@ void MotionControllerModule::procMotionModel()
         {
             m_GCodeActions = m_pEmulationModelHandler->getBaseActionHandle();
             m_WorkStatus = MOTION_WORK_NORMAL_START;//MOTION_WORK_NORMAL_PROCESS;
-            //m_GCodeRunSerialNum = 0;//¸Õ¿ªÊ¼¼Ó¹¤ÎÄ¼şÊ±³õÊ¼»¯¸ÃÖµ,ÓÉÓÚMOTION_WORK_NORMAL_START×´Ì¬Í¬Ê±ÓÃÓÚÔİÍ£ºÍÔİÍ£»Ö¸´£¬¹Ê½«³õÊ¼»¯·ÅÔÚ´Ë´¦
+            //m_GCodeRunSerialNum = 0;//åˆšå¼€å§‹åŠ å·¥æ–‡ä»¶æ—¶åˆå§‹åŒ–è¯¥å€¼,ç”±äºMOTION_WORK_NORMAL_STARTçŠ¶æ€åŒæ—¶ç”¨äºæš‚åœå’Œæš‚åœæ¢å¤ï¼Œæ•…å°†åˆå§‹åŒ–æ”¾åœ¨æ­¤å¤„
             setEmulationStatus(CAutoMachiningStateUi::MOTION_EMULATION_RUN);
         }
         else
@@ -2068,12 +2068,12 @@ void MotionControllerModule::procMotionModel()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºrun()
-  º¯Êı¹¦ÄÜ£ºÕı³£¼Ó¹¤Ïß³ÌÔËĞĞ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šrun()
+  å‡½æ•°åŠŸèƒ½ï¼šæ­£å¸¸åŠ å·¥çº¿ç¨‹è¿è¡Œ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::run()
 {
@@ -2082,7 +2082,7 @@ void MotionControllerModule::run()
 
     if(((MotionControllerDevice *)m_pDevice)->creatTCPSocket() != 0)
     {
-        m_errInfo.insertDebug(DEBUG_SERIOUS_ERROR, "TCP Socket ´´½¨²»³É¹¦£¬Çë¼ì²éÍøÂçÁ¬½Ó²¢ÖØĞÂÆô¶¯£¡");
+        m_errInfo.insertDebug(DEBUG_SERIOUS_ERROR, "TCP Socket åˆ›å»ºä¸æˆåŠŸï¼Œè¯·æ£€æŸ¥ç½‘ç»œè¿æ¥å¹¶é‡æ–°å¯åŠ¨ï¼");
         m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
 
         //m_WorkStatus = MOTION_NO_CONNECT_NET;
@@ -2090,7 +2090,7 @@ void MotionControllerModule::run()
     }
 	if(((MotionControllerDevice *)m_pDevice)->creatUdPSocket() != 0)
     {
-        m_errInfo.insertDebug(DEBUG_SERIOUS_ERROR, "Socket ´´½¨²»³É¹¦£¬Çë¼ì²éÍøÂçÁ¬½Ó²¢ÖØĞÂÆô¶¯£¡");
+        m_errInfo.insertDebug(DEBUG_SERIOUS_ERROR, "Socket åˆ›å»ºä¸æˆåŠŸï¼Œè¯·æ£€æŸ¥ç½‘ç»œè¿æ¥å¹¶é‡æ–°å¯åŠ¨ï¼");
         m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
 
         m_WorkStatus = MOTION_NO_CONNECT_NET;
@@ -2112,12 +2112,12 @@ void MotionControllerModule::run()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºdoMotion()
-  º¯Êı¹¦ÄÜ£ºÖ÷¹¤ÒÕÁ÷³ÌÔËĞĞ£¨Õı³£¼Ó¹¤Ïß³Ì£©
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šdoMotion()
+  å‡½æ•°åŠŸèƒ½ï¼šä¸»å·¥è‰ºæµç¨‹è¿è¡Œï¼ˆæ­£å¸¸åŠ å·¥çº¿ç¨‹ï¼‰
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::doMotion()
 {
@@ -2130,7 +2130,7 @@ void MotionControllerModule::doMotion()
         //if(((MotionControllerDevice *)m_pDevice)->sendMsg(MSG_NORMAL_BOOT, m_errInfo))
         /*if(((MotionControllerDevice *)m_pDevice)->normalTurnOn(m_errInfo))
         {
-            m_pScheduler->recvRunInfoFromAllModules("·¢ËÍÕı³£¿ª»úÍ¨Öª");
+            m_pScheduler->recvRunInfoFromAllModules("å‘é€æ­£å¸¸å¼€æœºé€šçŸ¥");
             m_WorkStatus = MOTION_WORK_SETTING_CRAFTPARM;//MOTION_WORK_IDLE;
         }
         else
@@ -2278,7 +2278,7 @@ void MotionControllerModule::doMotion()
 	break;
 
    case MOTION_WORK_NORMAL_START:
-        if (((MotionControllerDevice *)m_pDevice)->setMotionMode(2))//æ”¹å˜è¿åŠ¨çŠ¶æ€
+        if (((MotionControllerDevice *)m_pDevice)->setMotionMode(2))//é€ç‘°å½‰æ©æ„¬å§©é˜èˆµâ‚¬?
         {
             //m_MotionMode = Mode_Auto;
             m_WorkStatus = MOTION_WORK_NORMAL_PROCESS;
@@ -2290,7 +2290,7 @@ void MotionControllerModule::doMotion()
             qDebug()<<"control="<<m_nMotionControllerRunNum<<" last="<<m_nLastPartGCodeNum;
 
             m_pProcessCacheHandler->m_bIsManualMotion = false;
-            m_pScheduler->recvRunInfoFromAllModules("Æô¶¯FIFOÔË¶¯³É¹¦");
+            m_pScheduler->recvRunInfoFromAllModules("å¯åŠ¨FIFOè¿åŠ¨æˆåŠŸ");
         }
 	
         break;
@@ -2301,7 +2301,7 @@ void MotionControllerModule::doMotion()
 
 	    if (m_GCodeRunSerialNum < 0)
             {
-                m_errInfo.insertDebug(DEBUG_SERIOUS_ERROR, "action ÔËĞĞ¼ÆÊı´íÎó£¡");
+                m_errInfo.insertDebug(DEBUG_SERIOUS_ERROR, "action è¿è¡Œè®¡æ•°é”™è¯¯ï¼");
                 m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
                 m_pScheduler->writeMsgToStatusBar(m_errInfo.toString());
                 m_WorkStatus = MOTION_WORK_ERROR_WAITTING;
@@ -2342,12 +2342,12 @@ void MotionControllerModule::doMotion()
                 //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
                 //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
-                m_pScheduler->recvRunInfoFromAllModules("åŠ å·¥å®Œæˆ");
+                m_pScheduler->recvRunInfoFromAllModules("é”çŠ²ä¼ç€¹å±¾åš");
             }
             else 
             {
             	    
-		    if (m_pScheduler->m_pSystemParameter->sys_ctrl.decode_id>= nCurrentLineSerialNum)//(m_nCurCtlRunId >= m_MotionCodeList.last()->m_nCodeId)//æ§åˆ¶å™¨åé¦ˆå®Œæˆ
+		    if (m_pScheduler->m_pSystemParameter->sys_ctrl.decode_id>= nCurrentLineSerialNum)//(m_nCurCtlRunId >= m_MotionCodeList.last()->m_nCodeId)//éºÑƒåŸ—é£ã„¥å¼½æ££å ç•¬é´?
 	            {
 	            	 qDebug()<<"decode id"<<m_pScheduler->m_pSystemParameter->sys_ctrl.decode_id<<"cur"<<nCurrentLineSerialNum;
 	                if((m_pScheduler->m_pSystemParameter->sys_ctrl.statebit& (1 << CTL_STS_IN_MOTION)) == 0)
@@ -2374,7 +2374,7 @@ void MotionControllerModule::doMotion()
 					}
 	                    //m_nMotionCodeRunId = 0;
 	                    //motionDone();
-	                    //m_pScheduler->recvRunInfoFromAllModules("åŠ å·¥å®Œæˆ");
+	                    //m_pScheduler->recvRunInfoFromAllModules("é”çŠ²ä¼ç€¹å±¾åš");
 	                    }
 			     
 	            }
@@ -2400,12 +2400,12 @@ void MotionControllerModule::doMotion()
     	{
 	 //int nLastLineSerialNum = m_GCodeActions->at(m_GCodeActions->size()-1)->m_nLineSerialNum;
 	 m_nDelayTime=0;
-        if (m_bisCycleRun)//å¾ªç¯åŠ å·¥
+        if (m_bisCycleRun)//å¯°î†å¹†é”çŠ²ä¼
         {
                     m_GCodeRunSerialNum=0;
 			nCurrentLineSerialNum=0;
                     m_WorkStatus = MOTION_WORK_NORMAL_PROCESS;
-                    //m_pScheduler->recvRunInfoFromAllModules(tr("å¾ªç¯åŠ å·¥ç¬¬%1æ¬¡å®Œæˆï¼Œå…±%2æ¬¡").arg(m_nCurCircleRunNum).arg(m_nCricleRunCnt));
+                    //m_pScheduler->recvRunInfoFromAllModules(tr("å¯°î†å¹†é”çŠ²ä¼ç»—?1å¨†â€³ç•¬é´æ„¶ç´é?2å¨†?).arg(m_nCurCircleRunNum).arg(m_nCricleRunCnt));
                     //if((((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.sendinput[0])&0x2)
 		     if(m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0]&0x2)
 		     {
@@ -2801,12 +2801,12 @@ void MotionControllerModule::doMotion()
     case MOTION_WORK_EMERGENCY_STOP:
         if(((MotionControllerDevice *)m_pDevice)->emergencyStop(m_errInfo))
         {
-            m_pScheduler->recvRunInfoFromAllModules("½ô¼±Í£Ö¹Ö¸Áî·¢ËÍ³É¹¦");
+            m_pScheduler->recvRunInfoFromAllModules("ç´§æ€¥åœæ­¢æŒ‡ä»¤å‘é€æˆåŠŸ");
             m_WorkStatus = MOTION_EMERGENCY_STOP_WAITTING;//MOTION_WORK_IDLE;
         }
         else
         {
-            m_pScheduler->recvRunInfoFromAllModules("½ô¼±Í£Ö¹Ö¸Áî·¢ËÍÊ§°Ü");
+            m_pScheduler->recvRunInfoFromAllModules("ç´§æ€¥åœæ­¢æŒ‡ä»¤å‘é€å¤±è´¥");
             if(m_errInfo.e_type != DEBUG_NO_ERROR)
             {
                 m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
@@ -2823,22 +2823,22 @@ void MotionControllerModule::doMotion()
             }
             else
             {
-                m_pScheduler->recvRunInfoFromAllModules("ÍøÂçÖØÁ¬²»³É¹¦");
-                //m_pScheduler->writeMsgToStatusBar("ÍøÂçÖØÁ¬²»³É¹¦");//domotion()ĞèÒªÔÚÖ÷Ïß³Ì²ÅÄÜ²»»á±¨´í£¡£¨ÕâÀïÔİÊ±½«run()´´½¨µÄÏß³ÌÒÆ¶¯µ½Ö÷Ïß³Ì£©
+                m_pScheduler->recvRunInfoFromAllModules("ç½‘ç»œé‡è¿ä¸æˆåŠŸ");
+                //m_pScheduler->writeMsgToStatusBar("ç½‘ç»œé‡è¿ä¸æˆåŠŸ");//domotion()éœ€è¦åœ¨ä¸»çº¿ç¨‹æ‰èƒ½ä¸ä¼šæŠ¥é”™ï¼ï¼ˆè¿™é‡Œæš‚æ—¶å°†run()åˆ›å»ºçš„çº¿ç¨‹ç§»åŠ¨åˆ°ä¸»çº¿ç¨‹ï¼‰
                 m_WorkStatus = MOTION_NO_CONNECT_NET;
             }
         }break;
     case MOTION_CLOSE_CONNECT_NET:
         if (((MotionControllerDevice *)m_pDevice)->closeNet())
         {
-            //m_pScheduler->recvRunInfoFromAllModules("¶Ï¿ªÍøÂçÁ¬½Ó³É¹¦");
-            //m_pScheduler->writeMsgToStatusBar("¶Ï¿ªÍøÂçÁ¬½Ó³É¹¦");
+            //m_pScheduler->recvRunInfoFromAllModules("æ–­å¼€ç½‘ç»œè¿æ¥æˆåŠŸ");
+            //m_pScheduler->writeMsgToStatusBar("æ–­å¼€ç½‘ç»œè¿æ¥æˆåŠŸ");
             m_WorkStatus = MOTION_NO_CONNECT_NET;
         }
         else
         {
-            m_pScheduler->recvRunInfoFromAllModules("¶Ï¿ªÍøÂçÁ¬½ÓÊ§°Ü");
-            //m_pScheduler->writeMsgToStatusBar("¶Ï¿ªÍøÂçÁ¬½ÓÊ§°Ü");
+            m_pScheduler->recvRunInfoFromAllModules("æ–­å¼€ç½‘ç»œè¿æ¥å¤±è´¥");
+            //m_pScheduler->writeMsgToStatusBar("æ–­å¼€ç½‘ç»œè¿æ¥å¤±è´¥");
             m_WorkStatus = MOTION_WORK_IDLE;
         }
         break;
@@ -2850,19 +2850,19 @@ void MotionControllerModule::doMotion()
         {
             m_WorkStatus = MOTION_WORK_IDLE;
 			qDebug()<<"enable"<<m_bIsServoEnable;
-            //m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ä¼ºæœå¯åŠ¨/å…³é—­æŒ‡ä»¤å‘é€æˆåŠ));
+            //m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("æµ¼çƒ˜æ¹‡éšîˆšå§©/éæŠ½æ£´é¸å›¦æŠ¤é™æˆ¦â‚¬ä½¹åšé”));
         }
         break;
     
     case MOTION_CLEAR_ERROR:
         if(((MotionControllerDevice *)m_pDevice)->clearSts(m_errInfo))
         {
-            m_pScheduler->recvRunInfoFromAllModules("Çå³ı¿ØÖÆÆ÷×´Ì¬³É¹¦");
+            m_pScheduler->recvRunInfoFromAllModules("æ¸…é™¤æ§åˆ¶å™¨çŠ¶æ€æˆåŠŸ");
             m_WorkStatus = MOTION_WORK_IDLE;
         }
         else
         {
-            m_pScheduler->recvRunInfoFromAllModules("Çå³ı¿ØÖÆÆ÷×´Ì¬Ê§°Ü");
+            m_pScheduler->recvRunInfoFromAllModules("æ¸…é™¤æ§åˆ¶å™¨çŠ¶æ€å¤±è´¥");
             if(m_errInfo.e_type != DEBUG_NO_ERROR)
             {
                 m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
@@ -2874,12 +2874,12 @@ void MotionControllerModule::doMotion()
     case MOTION_EMERGENCY_STOP_CLEAR:
         if(((MotionControllerDevice *)m_pDevice)->clearEmergencyStop(m_errInfo))
         {
-            m_pScheduler->recvRunInfoFromAllModules("Çå³ı¿ØÖÆÆ÷¼±Í£×´Ì¬³É¹¦");
+            m_pScheduler->recvRunInfoFromAllModules("æ¸…é™¤æ§åˆ¶å™¨æ€¥åœçŠ¶æ€æˆåŠŸ");
             m_WorkStatus = MOTION_WORK_NORMAL_BOOT;
         }
         else
         {
-            m_pScheduler->recvRunInfoFromAllModules("Çå³ı¿ØÖÆÆ÷¼±Í£×´Ì¬Ê§°Ü");
+            m_pScheduler->recvRunInfoFromAllModules("æ¸…é™¤æ§åˆ¶å™¨æ€¥åœçŠ¶æ€å¤±è´¥");
             if(m_errInfo.e_type != DEBUG_NO_ERROR)
             {
                 m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
@@ -2902,12 +2902,12 @@ void MotionControllerModule::onnetctrltimeout()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºsystemReset()
-  º¯Êı¹¦ÄÜ£ºÏµÍ³¸´Î»
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šsystemReset()
+  å‡½æ•°åŠŸèƒ½ï¼šç³»ç»Ÿå¤ä½
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerModule::systemReset()
 {
@@ -3052,12 +3052,12 @@ int MotionControllerModule::downUserFile()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºrunOneActions()
-  º¯Êı¹¦ÄÜ£ºÖ´ĞĞÒ»¸öaction
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šrunOneActions()
+  å‡½æ•°åŠŸèƒ½ï¼šæ‰§è¡Œä¸€ä¸ªaction
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 bool MotionControllerModule::runOneActions()
 {
@@ -3066,33 +3066,33 @@ bool MotionControllerModule::runOneActions()
     {
     case ACTION_MG_TYPE:
         qDebug()<<"mRun"<<m_nMotionControllerRunNum<<"M"<<m_pProcessCacheHandler->m_nMCodeCnt<<"cur"<<m_GCodeRunSerialNum<<"last"<<m_nLastPartGCodeNum;
-        if (m_nMotionControllerRunNum + m_pProcessCacheHandler->m_nMCodeCnt - m_nLastPartGCodeNum == m_GCodeRunSerialNum)//µÈ´ıÔËĞĞµ½µ±Ç°Î»ÖÃ
+        if (m_nMotionControllerRunNum + m_pProcessCacheHandler->m_nMCodeCnt - m_nLastPartGCodeNum == m_GCodeRunSerialNum)//ç­‰å¾…è¿è¡Œåˆ°å½“å‰ä½ç½®
         {
             int nM = ((MGAction *)m_GCodeActions->at(m_GCodeRunSerialNum))->m_nMGCode;
             m_GCodeRunSerialNum++;
             m_pProcessCacheHandler->m_nMCodeCnt++;
             switch (nM)
             {
-            case 0://³ÌĞòÍ£Ö¹
+            case 0://ç¨‹åºåœæ­¢
                 m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "pause emulation");
-                m_pScheduler->recvRunInfoFromAllModules("M00 ³ÌĞòÍ£Ö¹");
-                //m_pScheduler->writeMsgToStatusBar("M00 ³ÌĞòÍ£Ö¹");
+                m_pScheduler->recvRunInfoFromAllModules("M00 ç¨‹åºåœæ­¢");
+                //m_pScheduler->writeMsgToStatusBar("M00 ç¨‹åºåœæ­¢");
                 break;
-            case 1://Ñ¡ÔñÍ£Ö¹
+            case 1://é€‰æ‹©åœæ­¢
                 if (m_bIsM01Effect)
                 {
                     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "pause emulation");
-                    m_pScheduler->recvRunInfoFromAllModules("M01 Ñ¡ÔñÍ£Ö¹");
-                    //m_pScheduler->writeMsgToStatusBar("M01 Ñ¡ÔñÍ£Ö¹");
+                    m_pScheduler->recvRunInfoFromAllModules("M01 é€‰æ‹©åœæ­¢");
+                    //m_pScheduler->writeMsgToStatusBar("M01 é€‰æ‹©åœæ­¢");
                 }
                 break;
-            case 2://³ÌĞò½áÊø
-            case 30://³ÌĞò½áÊø
+            case 2://ç¨‹åºç»“æŸ
+            case 30://ç¨‹åºç»“æŸ
                 m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "stop emulation");
-                m_pScheduler->recvRunInfoFromAllModules("M02/M30 ³ÌĞò½áÊø");
-                //m_pScheduler->writeMsgToStatusBar("M02/M30 ³ÌĞò½áÊø");
+                m_pScheduler->recvRunInfoFromAllModules("M02/M30 ç¨‹åºç»“æŸ");
+                //m_pScheduler->writeMsgToStatusBar("M02/M30 ç¨‹åºç»“æŸ");
                 break;
-            case 13://³åÑ¹Ä£Ê½¸´Î»
+            case 13://å†²å‹æ¨¡å¼å¤ä½
                 break;
             default:
                 break;
@@ -3102,7 +3102,7 @@ bool MotionControllerModule::runOneActions()
         break;
    /* case ACTION_IO_TYPE:
         qDebug()<<"IO re"<<m_nMotionControllerRunNum<<" m"<<m_pProcessCacheHandler->m_nMCodeCnt<<" L"<<m_nLastPartGCodeNum<<" w"<<m_GCodeRunSerialNum;
-        if (m_nMotionControllerRunNum + m_pProcessCacheHandler->m_nMCodeCnt - m_nLastPartGCodeNum == m_GCodeRunSerialNum)//µÈ´ıÔËĞĞµ½µ±Ç°Î»ÖÃ
+        if (m_nMotionControllerRunNum + m_pProcessCacheHandler->m_nMCodeCnt - m_nLastPartGCodeNum == m_GCodeRunSerialNum)//ç­‰å¾…è¿è¡Œåˆ°å½“å‰ä½ç½®
         {
             if (runIOWait)
             {
@@ -3110,7 +3110,7 @@ bool MotionControllerModule::runOneActions()
                 //m_pPlcControllerModuleHandle->setPlcIOStatus(((IOAction *)m_GCodeActions->at(m_GCodeRunSerialNum))->m_nIONum, ((IOAction *)m_GCodeActions->at(m_GCodeRunSerialNum))->m_bIoSts);
                 runIOWait = false;
             }
-            //ÅĞ¶ÏIOÊÇ·ñÖ´ĞĞµ½Î»£¨ÕâÀïĞèÒªÌÖÂÛÊÇ·ñĞèÒªÑÓÊ±µÈ´ı£©
+            //åˆ¤æ–­IOæ˜¯å¦æ‰§è¡Œåˆ°ä½ï¼ˆè¿™é‡Œéœ€è¦è®¨è®ºæ˜¯å¦éœ€è¦å»¶æ—¶ç­‰å¾…ï¼‰
             //if (m_pPlcControllerModuleHandle->getInputIOStatus(((IOAction *)m_GCodeActions->at(m_GCodeRunSerialNum))->m_nCheckIONum) == ((IOAction *)m_GCodeActions->at(m_GCodeRunSerialNum))->m_bCheckIoSts)
             if (1)
             {
@@ -3124,15 +3124,15 @@ bool MotionControllerModule::runOneActions()
     case ACTION_DELAY_TYPE:
         qDebug()<<"delay"<<m_nDelayTimeSurplus;
         qDebug()<<"De re"<<m_nMotionControllerRunNum<<" m"<<m_pProcessCacheHandler->m_nMCodeCnt<<" L"<<m_nLastPartGCodeNum<<" w"<<m_GCodeRunSerialNum;
-        if (m_nDelayTimeSurplus <= 0)//³õÊ¼»¯¸³Öµ
+        if (m_nDelayTimeSurplus <= 0)//åˆå§‹åŒ–èµ‹å€¼
         {
             m_nDelayTimeSurplus = (((DelayAction *)m_GCodeActions->at(m_GCodeRunSerialNum))->m_nDelayTime);
         }
 
-        if (m_nMotionControllerRunNum + m_pProcessCacheHandler->m_nMCodeCnt - m_nLastPartGCodeNum == m_GCodeRunSerialNum)//µÈ´ıÔËĞĞµ½µ±Ç°Î»ÖÃ
+        if (m_nMotionControllerRunNum + m_pProcessCacheHandler->m_nMCodeCnt - m_nLastPartGCodeNum == m_GCodeRunSerialNum)//ç­‰å¾…è¿è¡Œåˆ°å½“å‰ä½ç½®
         {
             m_nDelayTimeSurplus -= 100;
-            if (m_nDelayTimeSurplus <= 0)//ÑÓÊ±Ê±¼äµ½£¬ÖØ»Ø¼Ó¹¤
+            if (m_nDelayTimeSurplus <= 0)//å»¶æ—¶æ—¶é—´åˆ°ï¼Œé‡å›åŠ å·¥
             {
                 m_GCodeRunSerialNum++;
                 m_pProcessCacheHandler->m_nMCodeCnt++;
@@ -3141,7 +3141,7 @@ bool MotionControllerModule::runOneActions()
         break;
     case ACTION_TOOL_CHANGE_TYPE:
         qDebug()<<"TC re"<<m_nMotionControllerRunNum<<" m"<<m_pProcessCacheHandler->m_nMCodeCnt<<" L"<<m_nLastPartGCodeNum<<" w"<<m_GCodeRunSerialNum;
-        if (m_nMotionControllerRunNum + m_pProcessCacheHandler->m_nMCodeCnt - m_nLastPartGCodeNum == m_GCodeRunSerialNum)//µÈ´ıÔËĞĞµ½µ±Ç°Î»ÖÃ
+        if (m_nMotionControllerRunNum + m_pProcessCacheHandler->m_nMCodeCnt - m_nLastPartGCodeNum == m_GCodeRunSerialNum)//ç­‰å¾…è¿è¡Œåˆ°å½“å‰ä½ç½®
         {
            // if (m_pPlcControllerModuleHandle->getInputIOStatus(IO_CANTOOLCHANGE_SIGNAL_PLC_M))
             {
@@ -3150,7 +3150,7 @@ bool MotionControllerModule::runOneActions()
                 {
                     m_GCodeRunSerialNum++;
                 }
-                else if (temp == 0)//»º³åÇøÂú£¬ÖØĞÂ·¢ËÍ£¬»¹Ô­ÀÛ¼Æ×ø±êÊı¾İ
+                else if (temp == 0)//ç¼“å†²åŒºæ»¡ï¼Œé‡æ–°å‘é€ï¼Œè¿˜åŸç´¯è®¡åæ ‡æ•°æ®
                 {
                     //m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
                     if (m_GCodeActions->at(m_GCodeRunSerialNum)->m_type == ACTION_MOVE_TYPE || m_GCodeActions->at(m_GCodeRunSerialNum)->m_type == ACTION_PUNCH_TYPE)
@@ -3174,16 +3174,16 @@ bool MotionControllerModule::runOneActions()
         break;
     case ACTION_TOOL_ROTATE_TYPE:
         qDebug()<<"TR re"<<m_nMotionControllerRunNum<<" m"<<m_pProcessCacheHandler->m_nMCodeCnt<<" L"<<m_nLastPartGCodeNum<<" w"<<m_GCodeRunSerialNum;
-        if (m_nMotionControllerRunNum + m_pProcessCacheHandler->m_nMCodeCnt - m_nLastPartGCodeNum == m_GCodeRunSerialNum)//µÈ´ıÔËĞĞµ½µ±Ç°Î»ÖÃ
+        if (m_nMotionControllerRunNum + m_pProcessCacheHandler->m_nMCodeCnt - m_nLastPartGCodeNum == m_GCodeRunSerialNum)//ç­‰å¾…è¿è¡Œåˆ°å½“å‰ä½ç½®
         {
-           // if (m_pPlcControllerModuleHandle->getInputIOStatus(IO_ISROTATETOOL_SIGNAL_PLC_M))//ÅĞ¶ÏÊÇ·ñÊÇ×ªÄ£
+           // if (m_pPlcControllerModuleHandle->getInputIOStatus(IO_ISROTATETOOL_SIGNAL_PLC_M))//åˆ¤æ–­æ˜¯å¦æ˜¯è½¬æ¨¡
             {
                 int temp = ((MotionControllerDevice *)m_pDevice)->runOneActions(m_GCodeActions->at(m_GCodeRunSerialNum), m_pProcessCacheHandler, m_pScheduler->getSystemParameterHandler(), m_errInfo);
                 if (temp > 0)
                 {
                     m_GCodeRunSerialNum++;
                 }
-                else if (temp == 0)//»º³åÇøÂú£¬ÖØĞÂ·¢ËÍ£¬»¹Ô­ÀÛ¼Æ×ø±êÊı¾İ
+                else if (temp == 0)//ç¼“å†²åŒºæ»¡ï¼Œé‡æ–°å‘é€ï¼Œè¿˜åŸç´¯è®¡åæ ‡æ•°æ®
                 {
                     //m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
                     if (m_GCodeActions->at(m_GCodeRunSerialNum)->m_type == ACTION_MOVE_TYPE || m_GCodeActions->at(m_GCodeRunSerialNum)->m_type == ACTION_PUNCH_TYPE)
@@ -3214,7 +3214,7 @@ bool MotionControllerModule::runOneActions()
 	{
 	      // if(1)
 	       	{
-	       	       //·¢ËÍÊı¾İÇëÇó
+	       	       //å‘é€æ•°æ®è¯·æ±‚
 	       	       
 		((MotionControllerDevice *)m_pDevice)->SendNetReqByTCP(m_GCodeRunSerialNum);
 	       	m_GCodeRunSerialNum++;		  
@@ -3232,7 +3232,7 @@ bool MotionControllerModule::runOneActions()
             m_GCodeRunSerialNum++;
 	     qDebug()<<"m_GCodeRunSerialNum"<<m_GCodeRunSerialNum;
         }
-        else if (temp == 0)//»º³åÇøÂú£¬ÖØĞÂ·¢ËÍ£¬»¹Ô­ÀÛ¼Æ×ø±êÊı¾İ
+        else if (temp == 0)//ç¼“å†²åŒºæ»¡ï¼Œé‡æ–°å‘é€ï¼Œè¿˜åŸç´¯è®¡åæ ‡æ•°æ®
         {
             //m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
            // if ((IOAction *)m_GCodeActions->at(m_GCodeRunSerialNum)->m_type == ACTION_MOVE_TYPE || m_GCodeActions->at(m_GCodeRunSerialNum)->m_type == ACTION_PUNCH_TYPE)
@@ -3264,7 +3264,7 @@ bool MotionControllerModule::runOneActions()
             m_GCodeRunSerialNum++;
 	     qDebug()<<"m_GCodeRunSerialNum"<<m_GCodeRunSerialNum;
         }
-        else if (temp == 0)//»º³åÇøÂú£¬ÖØĞÂ·¢ËÍ£¬»¹Ô­ÀÛ¼Æ×ø±êÊı¾İ
+        else if (temp == 0)//ç¼“å†²åŒºæ»¡ï¼Œé‡æ–°å‘é€ï¼Œè¿˜åŸç´¯è®¡åæ ‡æ•°æ®
         {
             //m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
             //if ((DelayAction *)m_GCodeActions->at(m_GCodeRunSerialNum)->m_type == ACTION_DELAY_TYPE || m_GCodeActions->at(m_GCodeRunSerialNum)->m_type == ACTION_PUNCH_TYPE)
@@ -3295,7 +3295,7 @@ bool MotionControllerModule::runOneActions()
 	{
 	       if(((MotionControllerDevice *)m_pDevice)->RecvNetDataByTCP(&scarapos[0]))
 	       	{
-	       	       //µÈ´ıÊı¾İ
+	       	       //ç­‰å¾…æ•°æ®
 	       	      	
 			//((MoveAction *)m_GCodeActions->at(m_GCodeRunSerialNum))->m_endPoint=Point(scarapos[0],scarapos[1],scarapos[2],scarapos[3]);
 		
@@ -3314,7 +3314,7 @@ bool MotionControllerModule::runOneActions()
             m_GCodeRunSerialNum++;
 	     qDebug()<<"m_GCodeRunSerialNum"<<m_GCodeRunSerialNum;
         }
-        else if (temp == 0)//»º³åÇøÂú£¬ÖØĞÂ·¢ËÍ£¬»¹Ô­ÀÛ¼Æ×ø±êÊı¾İ
+        else if (temp == 0)//ç¼“å†²åŒºæ»¡ï¼Œé‡æ–°å‘é€ï¼Œè¿˜åŸç´¯è®¡åæ ‡æ•°æ®
         {
             //m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
             if (m_GCodeActions->at(m_GCodeRunSerialNum)->m_type == ACTION_MOVE_TYPE || m_GCodeActions->at(m_GCodeRunSerialNum)->m_type == ACTION_PUNCH_TYPE)
@@ -3354,26 +3354,26 @@ void MotionControllerModule::feedbackSystemState()
 
     if (timeCnt > 0)
     {
-        if (timeCnt%4 == 0 && m_nClampAutoSearchStep == CAS_PRE_WORK)//¼ĞÇ¯ËÑË÷ÆÚ¼ä²»»ñÈ¡×´Ì¬
+        if (timeCnt%4 == 0 && m_nClampAutoSearchStep == CAS_PRE_WORK)//å¤¹é’³æœç´¢æœŸé—´ä¸è·å–çŠ¶æ€
         {
             if(((MotionControllerDevice *)m_pDevice)->getSts(&(m_pProcessCacheHandler->m_nMotionControllerSts), m_errInfo))
             {
                 qDebug()<<"@@@@@@@@sts="<<m_pProcessCacheHandler->m_nMotionControllerSts<<"#########";
-                if ((m_pProcessCacheHandler->m_nMotionControllerSts & 0xffc00000) != 0)//´¥·¢ÏŞÎ»
+                if ((m_pProcessCacheHandler->m_nMotionControllerSts & 0xffc00000) != 0)//è§¦å‘é™ä½
                 {
-                    //qDebug()<<"Çå³ıÏŞÎ»";
+                    //qDebug()<<"æ¸…é™¤é™ä½";
                     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "limit trigger");
-                    ((MotionControllerDevice *)m_pDevice)->clearSts(m_errInfo);//Çå³ı×´Ì¬
+                    ((MotionControllerDevice *)m_pDevice)->clearSts(m_errInfo);//æ¸…é™¤çŠ¶æ€
                 }
             }
         }
         timeCnt--;
     }
-    else //1s·´À¡Ò»´Î
+    else //1såé¦ˆä¸€æ¬¡
     {
-        qDebug()<<"feedback"<<((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.decode_id;//m_nMotionControllerRunNum;
+//        qDebug()<<"feedback"<<((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.decode_id;//m_nMotionControllerRunNum;
         timeCnt = 10;
-        //×Ô¶¯ÔËĞĞ    
+        //è‡ªåŠ¨è¿è¡Œ    
     }
       if(((MotionControllerDevice *)m_pDevice)->m_netctrl->m_bIsCtlAlarm)
     {
@@ -3390,7 +3390,7 @@ bool MotionControllerModule::isAxisVInRightPosition(double angle)
 {
     for (int i = 0; i < m_pScheduler->getSystemParameterHandler()->m_mouldsParm.size(); i++)
     {
-        if (fabs(angle - m_pScheduler->getSystemParameterHandler()->m_mouldsParm.at(i).m_dPosAngle) < 0.1)//ÔÊĞíÎó²î0.1¶È
+        if (fabs(angle - m_pScheduler->getSystemParameterHandler()->m_mouldsParm.at(i).m_dPosAngle) < 0.1)//å…è®¸è¯¯å·®0.1åº¦
         {
             return true;
         }
@@ -3409,7 +3409,7 @@ bool MotionControllerModule::isServoEnable()
 
      if((m_pScheduler->m_pSystemParameter->sys_ctrl.statebit & (1 << CTL_STS_ENABLE)) == 1 )
      {
-	   if (!m_bIsServoEnable)//if ((m_pProcessCacheHandler->m_nMotionControllerSts & checkflag) != 0)//ä¼ºæœå¯åŠ¨
+	   if (!m_bIsServoEnable)//if ((m_pProcessCacheHandler->m_nMotionControllerSts & checkflag) != 0)//æµ¼çƒ˜æ¹‡éšîˆšå§©
 	    {
 	    	m_bIsServoEnable=1;
 	        
@@ -3422,10 +3422,10 @@ bool MotionControllerModule::isServoEnable()
         /* if (isShowMessageBox)
          {
              m_pScheduler->closeCtlMonitor();
-             QMessageBox::warning(NULL, "è­¦å‘Š", "ç”µæœºæœªä½¿èƒ, QMessageBox::Yes, QMessageBox::Yes);
+             QMessageBox::warning(NULL, "ç’€ï¹€æ†¡", "é¢å«æº€éˆîƒå¨‡é‘³, QMessageBox::Yes, QMessageBox::Yes);
          }*/
-         m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("µç»úÎ´Ê¹ÄÜ£¬ÇëÏÈÉÏÊ¹ÄÜ£¡"));
-	 QMessageBox::warning(NULL, QString::fromLocal8Bit("¾¯¸æ"), QString::fromLocal8Bit("µç»úÎ´Ê¹ÄÜ£¬ÇëÏÈÉÏÊ¹ÄÜ£¡"));
+         m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("ç”µæœºæœªä½¿èƒ½ï¼Œè¯·å…ˆä¸Šä½¿èƒ½ï¼"));
+	 QMessageBox::warning(NULL, QString::fromLocal8Bit("è­¦å‘Š"), QString::fromLocal8Bit("ç”µæœºæœªä½¿èƒ½ï¼Œè¯·å…ˆä¸Šä½¿èƒ½ï¼"));
          return false;
      }
 }
@@ -3434,7 +3434,7 @@ bool MotionControllerModule::isServoEnable()
 {
 
      
-	   if (m_bIsServoEnable)//if ((m_pProcessCacheHandler->m_nMotionControllerSts & checkflag) != 0)//ä¼ºæœå¯åŠ¨
+	   if (m_bIsServoEnable)//if ((m_pProcessCacheHandler->m_nMotionControllerSts & checkflag) != 0)//æµ¼çƒ˜æ¹‡éšîˆšå§©
 	    {
 	    	
 	        return true;
@@ -3442,7 +3442,7 @@ bool MotionControllerModule::isServoEnable()
 	    else
 	    {
 	       
-	        m_pScheduler->recvRunInfoFromAllModules("ç”µæœºæœªä½¿èƒ½ï¼Œä¸èƒ½æ‰§è¡Œ");
+	        m_pScheduler->recvRunInfoFromAllModules("é¢å«æº€éˆîƒå¨‡é‘³æ–¤ç´æ¶“å¶ˆå…˜éµÑ†î”‘");
 	        return false;
 	    }
       	
@@ -3463,7 +3463,7 @@ bool MotionControllerModule::isDingWeiXiaoEnable()
     /*
     if (!m_pPlcControllerModuleHandle->getInputIOStatus(IO_DINGWEIXIAO_SIGNAL_PLC_M))
     {
-        QMessageBox::information(NULL, tr("¾¯¸æ"), tr("¶¨Î»ÏúÎ´µ½Î»£¡"));
+        QMessageBox::information(NULL, tr("è­¦å‘Š"), tr("å®šä½é”€æœªåˆ°ä½ï¼"));
         return false;
     }*/
     return true;
@@ -3472,7 +3472,7 @@ bool MotionControllerModule::isDingWeiXiaoEnable()
 bool MotionControllerModule::isAxisTEnableMove()
 {
      return true;
-    /*if (m_pPlcControllerModuleHandle->getInputIOStatus(IO_CANTOOLCHANGE_SIGNAL_PLC_M))//TÖá°²È«¼à²â
+    /*if (m_pPlcControllerModuleHandle->getInputIOStatus(IO_CANTOOLCHANGE_SIGNAL_PLC_M))//Tè½´å®‰å…¨ç›‘æµ‹
     {
         if (m_pProcessCacheHandler->m_curPoint.v < 1)
         {
@@ -3482,19 +3482,19 @@ bool MotionControllerModule::isAxisTEnableMove()
             }
             else
             {
-                QMessageBox::information(NULL, tr("¾¯¸æ"), tr("°²È«ÃÅÃ»ÓĞ¹Ø±Õ"));
+                QMessageBox::information(NULL, tr("è­¦å‘Š"), tr("å®‰å…¨é—¨æ²¡æœ‰å…³é—­"));
                 return false;
             }
         }
         else
         {
-            QMessageBox::information(NULL, tr("¾¯¸æ"), tr("VÖáÃ»ÓĞÔÚÉÏËÀµã£¡"));
+            QMessageBox::information(NULL, tr("è­¦å‘Š"), tr("Vè½´æ²¡æœ‰åœ¨ä¸Šæ­»ç‚¹ï¼"));
             return false;
         }
     }
     else
     {
-        QMessageBox::information(NULL, tr("¾¯¸æ"), tr("¶¨Î»ÏúÎ´µ½Î»£¡"));
+        QMessageBox::information(NULL, tr("è­¦å‘Š"), tr("å®šä½é”€æœªåˆ°ä½ï¼"));
         return false;
     }*/
 }

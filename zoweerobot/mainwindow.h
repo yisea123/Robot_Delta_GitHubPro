@@ -11,6 +11,8 @@
 
 #include "ComonTypes.h"
 
+using std::vector;
+
 namespace Ui {
 class MainWindow;
 }
@@ -140,6 +142,8 @@ private:
     QButtonGroup *pMainMenuGroup;
     QList<QListWidget *> listWidgets;
     QVector< QVector<int>* > menus;
+    vector<QButtonGroup *>sonMenuGrp; // 页面按键 组(每个界面下对应一个)
+    vector<int> sonMenuLastID;  // 最后按下的 页面ID
 
     int nCurrentPage;
     int movemode;

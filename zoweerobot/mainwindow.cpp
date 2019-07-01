@@ -43,7 +43,7 @@ MainWindow::MainWindow(UserParameter  parm, QWidget *parent) :
             this, SLOT(updataData()));
     timer->start(100);
 	
-    setWindowState(Qt::WindowMaximized);
+//    setWindowState(Qt::WindowMaximized);
     
 }
 
@@ -135,16 +135,28 @@ void MainWindow::setupMainMenuGroup()
 
 void MainWindow::createMenuList()
 {
+//    for(int i = 0; i < UI_PAGE_NUMBER; i++)
+//    {
+//        QWidget *widget = new QWidget(ui->menuList);
+//        widget->setGeometry(0,0,623,35);
+//        QButtonGroup *pButtonGroup = new QButtonGroup(widget);
+//        ui->menuList->addWidget(widget);
+//        sonMenuGrp.push_back(pButtonGroup);
+//        sonMenuLastID.push_back(0);
+
+//        connect(pButtonGroup, SIGNAL(buttonClicked(int)),this, SLOT(setCurrentUiPage(int)));
+//        //menus.push_back(new QVector<int>);
+//    }
     for(int i = 0; i < UI_PAGE_NUMBER; i++)
     {
         QListWidget *pListWidget = new QListWidget(ui->menuList);
-        pListWidget->setFrameShape(QFrame::NoFrame);
+        pListWidget->setFrameShape(QFrame::Box);
         pListWidget->setStyleSheet("QListWidget{"
                                    "background-color:rgb(240, 240, 240);}"
-                                   "QListWidget::item:unselected{"
-                                   "border-image: url(:/images/itemunselected.png);}"
-                                   "QListWidget::item:selected{"
-                                   "border-image: url(:/images/itemselected.png);}"
+//                                   "QListWidget::item:unselected{"
+//                                   "border-image: url(:/images/itemunselected.png);}"
+//                                   "QListWidget::item:selected{"
+//                                   "border-image: url(:/images/itemselected.png);}"
                                    );
 
         //pListWidget->setFont(QFont("����", 22, QFont::Normal));//Courier
@@ -154,8 +166,8 @@ void MainWindow::createMenuList()
         pListWidget->setMovement(QListView::Static);
         pListWidget->setWrapping(false);
         pListWidget->setFlow(QListView::LeftToRight);*/
-        pListWidget->setViewMode(QListView::IconMode);
-        pListWidget->setFlow(QListView::TopToBottom);
+        pListWidget->setViewMode(QListView::ListMode);
+        pListWidget->setFlow(QListView::LeftToRight);
         ui->menuList->addWidget(pListWidget);
         listWidgets.push_back(pListWidget);
 

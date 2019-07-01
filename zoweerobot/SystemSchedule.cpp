@@ -274,7 +274,7 @@ void SystemSchedule::registerManualMachiningStateUI()
     nModulesUser.push_back(MOTION_CONTROLLER_ID);
     nModulesUser.push_back(PLC_CONTROLLER_ID);
     nModulesUser.push_back(XML_CONTROLLER_ID);//用于设置原点
-    registerUI(new CManualMachiningStateUi(m_MainWidget, this),  QString::fromLocal8Bit("I   O"),
+    registerUI(new CManualMachiningStateUi(m_MainWidget, this),  QString::fromLocal8Bit("I/O"),
                UI_PROGRAM_ID, UI_IO_STATE, nModulesUser);
 }
 
