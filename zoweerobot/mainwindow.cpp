@@ -21,6 +21,11 @@
 #include "GlobalVariableType.h"
 #include "ccommmomuiwidget.h"
 
+#include "MotionControllerDevice.h"
+#include "MotionControllerModule.h"
+#include "NetSocket.h"
+#include "qtoolbutton.h"
+
 
 MainWindow::MainWindow(UserParameter  parm, QWidget *parent) :
     QMainWindow(parent),
@@ -50,9 +55,9 @@ MainWindow::MainWindow(UserParameter  parm, QWidget *parent) :
 MainWindow::~MainWindow()
 {
     // ɾ���˵�����
-    foreach (QVector<int>* menu, menus) {
-        delete menu;
-    }
+//    foreach (QVector<int>* menu, menus) {
+//        delete menu;
+//    }
 
     delete ui;
 }
@@ -68,7 +73,7 @@ void MainWindow::createDisplayUIs(QList<InfoUI *> &widgets)
 //        // �����Ӳ˵���ui
 //        connectMenuWithUi(widgets);
 
-    setDefaultMenuSelection();
+//    setDefaultMenuSelection();
 
     //createHomeMenu();
     createStatusBar();
@@ -77,41 +82,85 @@ void MainWindow::createDisplayUIs(QList<InfoUI *> &widgets)
 
 void MainWindow::goToUiPage(int page)
 {
+    int id;
+
     Q_ASSERT(UI_PAGE_NUMBER > page);
 
+    if(nCurrentPage != page){
+        pMainMenuGroup->buttons().at(nCurrentPage)->setDown(false);
+    }
+    pMainMenuGroup->buttons().at(page)->setDown(true);
     nCurrentPage = page;
 
-    setCurrentUiPage();
+    ui->menuList->setCurrentIndex(nCurrentPage); // ��ʾ��ǰ������Ӳ˵�(ҳ�水ť)
+
+    id = sonMenuLastID[page];
+    setCurrentUiPage(id);
 }
 
-
-
-void MainWindow::setCurrentUiPage()
+void MainWindow::setCurrentUiPage(int id)
 {
+    QAbstractButton * btn;
+    int i;
+
     if(-1 == nCurrentPage)
         return;
 
-    int rowId = listWidgets.at(nCurrentPage)->currentRow();
-    if(-1 == rowId)
-    {
-        if(listWidgets.at(nCurrentPage)->count() > 0)
-        {
-            listWidgets.at(nCurrentPage)->setCurrentRow(0);
-            rowId = 0;
-        } else {
-            return;
-        }
-    }
-    int id = menus.at(nCurrentPage)->at(rowId);
     ui->uis->setCurrentIndex(id);
+    sonMenuLastID[nCurrentPage] = id;
+//    ((CCommmomUIWidget *)(ui->uis->currentWidget()))->UpdateViewData(); //
 
-    ui->menuList->setCurrentIndex(nCurrentPage);
+    /*
+    for(i=0;i<sonMenuGrp.at(nCurrentPage)->buttons().count();i++){
+        sonMenuGrp.at(nCurrentPage)->buttons().at(i)->setDown(false);
+    }
+    btn = sonMenuGrp.at(nCurrentPage)->button(id);*/
+    for(i=0;i<sonMenuGrp[nCurrentPage]->buttons().count();i++){
+        sonMenuGrp[nCurrentPage]->buttons().at(i)->setDown(false);
+    }
+    btn = sonMenuGrp[nCurrentPage]->button(id);
+    if(btn != NULL){
+        btn->setDown(true);
+    }
 }
 
-void MainWindow::currentMenuChanged(int row)
-{
-    setCurrentUiPage();
-}
+//void MainWindow::goToUiPage(int page)
+//{
+//    Q_ASSERT(UI_PAGE_NUMBER > page);
+
+//    nCurrentPage = page;
+
+//    setCurrentUiPage();
+//}
+
+
+
+//void MainWindow::setCurrentUiPage()
+//{
+//    if(-1 == nCurrentPage)
+//        return;
+
+//    int rowId = listWidgets.at(nCurrentPage)->currentRow();
+//    if(-1 == rowId)
+//    {
+//        if(listWidgets.at(nCurrentPage)->count() > 0)
+//        {
+//            listWidgets.at(nCurrentPage)->setCurrentRow(0);
+//            rowId = 0;
+//        } else {
+//            return;
+//        }
+//    }
+//    int id = menus.at(nCurrentPage)->at(rowId);
+//    ui->uis->setCurrentIndex(id);
+
+//    ui->menuList->setCurrentIndex(nCurrentPage);
+//}
+
+//void MainWindow::currentMenuChanged(int row)
+//{
+//    setCurrentUiPage();
+//}
 
 void MainWindow::setupMainMenuGroup()
 {
@@ -135,64 +184,64 @@ void MainWindow::setupMainMenuGroup()
 
 void MainWindow::createMenuList()
 {
-//    for(int i = 0; i < UI_PAGE_NUMBER; i++)
-//    {
-//        QWidget *widget = new QWidget(ui->menuList);
-//        widget->setGeometry(0,0,623,35);
-//        QButtonGroup *pButtonGroup = new QButtonGroup(widget);
-//        ui->menuList->addWidget(widget);
-//        sonMenuGrp.push_back(pButtonGroup);
-//        sonMenuLastID.push_back(0);
-
-//        connect(pButtonGroup, SIGNAL(buttonClicked(int)),this, SLOT(setCurrentUiPage(int)));
-//        //menus.push_back(new QVector<int>);
-//    }
     for(int i = 0; i < UI_PAGE_NUMBER; i++)
     {
-        QListWidget *pListWidget = new QListWidget(ui->menuList);
-        pListWidget->setFrameShape(QFrame::Box);
-        pListWidget->setStyleSheet("QListWidget{"
-                                   "background-color:rgb(240, 240, 240);}"
-//                                   "QListWidget::item:unselected{"
-//                                   "border-image: url(:/images/itemunselected.png);}"
-//                                   "QListWidget::item:selected{"
-//                                   "border-image: url(:/images/itemselected.png);}"
-                                   );
+        QWidget *widget = new QWidget(ui->menuList);
+        widget->setGeometry(0,0,623,35);
+        QButtonGroup *pButtonGroup = new QButtonGroup(widget);
+        ui->menuList->addWidget(widget);
+        sonMenuGrp.push_back(pButtonGroup);
+        sonMenuLastID.push_back(0);
 
-        //pListWidget->setFont(QFont("����", 22, QFont::Normal));//Courier
-        pListWidget->setFont(QFont("Microsoft YaHei", 12, QFont::Normal));
-
-        /*pListWidget->setViewMode(QListView::IconMode);
-        pListWidget->setMovement(QListView::Static);
-        pListWidget->setWrapping(false);
-        pListWidget->setFlow(QListView::LeftToRight);*/
-        pListWidget->setViewMode(QListView::ListMode);
-        pListWidget->setFlow(QListView::LeftToRight);
-        ui->menuList->addWidget(pListWidget);
-        listWidgets.push_back(pListWidget);
-
-        connect(pListWidget, SIGNAL(currentRowChanged(int)),
-                this, SLOT(currentMenuChanged(int)));
-
-        menus.push_back(new QVector<int>);
+        connect(pButtonGroup, SIGNAL(buttonClicked(int)),this, SLOT(setCurrentUiPage(int)));
+        //menus.push_back(new QVector<int>);
     }
+//    for(int i = 0; i < UI_PAGE_NUMBER; i++)
+//    {
+//        QListWidget *pListWidget = new QListWidget(ui->menuList);
+//        pListWidget->setFrameShape(QFrame::Box);
+//        pListWidget->setStyleSheet("QListWidget{"
+//                                   "background-color:rgb(240, 240, 240);}"
+////                                   "QListWidget::item:unselected{"
+////                                   "border-image: url(:/images/itemunselected.png);}"
+////                                   "QListWidget::item:selected{"
+////                                   "border-image: url(:/images/itemselected.png);}"
+//                                   );
+
+//        //pListWidget->setFont(QFont("����", 22, QFont::Normal));//Courier
+//        pListWidget->setFont(QFont("Microsoft YaHei", 12, QFont::Normal));
+
+//        /*pListWidget->setViewMode(QListView::IconMode);
+//        pListWidget->setMovement(QListView::Static);
+//        pListWidget->setWrapping(false);
+//        pListWidget->setFlow(QListView::LeftToRight);*/
+//        pListWidget->setViewMode(QListView::ListMode);
+//        pListWidget->setFlow(QListView::LeftToRight);
+//        ui->menuList->addWidget(pListWidget);
+//        listWidgets.push_back(pListWidget);
+
+//        connect(pListWidget, SIGNAL(currentRowChanged(int)),
+//                this, SLOT(currentMenuChanged(int)));
+
+//        menus.push_back(new QVector<int>);
+//    }
 }
 
 void MainWindow::connectMenuWithUi(QList<InfoUI *> &widgets)
 {
+    int id;
+
     for(int i = 0; i < ui->uis->count(); i++)
     {
         ui->uis->removeWidget(ui->uis->widget(i));
     }
 
-    for(int i = 0; i < menus.count(); i++)
-    {
-        menus.at(i)->clear();
-    }
-    for(int i = 0; i < listWidgets.count(); i++)
-    {
-        listWidgets.at(i)->clear();
-    }
+    //for(int i = 0; i < menus.count(); i++){
+    //    menus.at(i)->clear();
+    //}
+    //for(int i = 0; i < sonMenuGrp.count(); i++){
+    //    sonMenuGrp.at(i)->clear();
+   // }
 
 
     for(int i = 0; i < widgets.count(); i++)
@@ -200,64 +249,126 @@ void MainWindow::connectMenuWithUi(QList<InfoUI *> &widgets)
         if(widgets.at(i)->bShow)
         {
             widgets.at(i)->pUi->setHidden(false);
-            ui->uis->addWidget(widgets.at(i)->pUi); // ��ui�ŵ������ں��ʵ�λ��
-            widgets.at(i)->pParentUi = ui->uis; // ��������ui��parent
+            ui->uis->addWidget(widgets.at(i)->pUi); //
+            widgets.at(i)->pParentUi = ui->uis; //
 
-            // ������Ӧ�Ĳ˵���
-            addMenuText(widgets.at(i)->nType, widgets.at(i)->sName);
-
-            // �󶨲˵�id��ui��id
-            menus.at(widgets.at(i)->nType)->push_back(ui->uis->count()-1);
-        } 
-	 else 
-	 {
+            id = ui->uis->count()-1;
+            //menus.at(widgets.at(i)->nType)->push_back(id);
+            //
+            addMenuButton(widgets.at(i)->nType, widgets.at(i)->sName,id);
+        }
+     else
+     {
             widgets.at(i)->pUi->setHidden(true);
         }
     }
 
-    for(int i = 0; i < listWidgets.count();i++)
-    {
-        int count = listWidgets.at(i)->count();
-        for(int j = 0; j < count; j++)
-        {
-         QListWidgetItem *item = listWidgets.at(i)->item(j);
-         //item->setSizeHint(QSize(item->sizeHint().width(), 50));
-         item->setSizeHint(QSize(80, 30));
-        }
-    }
-
-    for(int i = 0; i < listWidgets.count(); i++)
-    {
-        if(listWidgets.at(i)->count() < 1)
-        {
-            pMainMenuGroup->button(i)->setDisabled(true);
-        }
-    }
 }
 
-void MainWindow::addMenuText(int nType, QString name)
+void MainWindow::addMenuButton(int nType, QString name,int id)
 {
-    QListWidgetItem *item = new QListWidgetItem();
-    listWidgets.at(nType)->addItem(item);
+    int x;
+    static int preType =-1;
+    static int cnt=0;
 
-    QLabel *text = new QLabel("    " + name, listWidgets.at(nType));
-    text->setFont(QFont("����", 12, QFont::Bold));
-    //text->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
-    text->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
-    text->setFocusPolicy(Qt::NoFocus);
-
-    listWidgets.at(nType)->setItemWidget(item, text);
-}
-
-void MainWindow::setDefaultMenuSelection()
-{
-    foreach (QListWidget *w, listWidgets) {
-        if(w->count() > 0)
-        {
-            w->setItemSelected(w->item(0), true);
-        }
+    QWidget *curMenuFrm = ui->menuList->widget(nType);
+    QToolButton *btn = new QToolButton(curMenuFrm);
+    QFont fnt = btn->font();
+    fnt.setPixelSize(20);
+    btn->setFont(fnt);
+    btn->setText(name);
+    if(preType != nType){
+        cnt = 0 ;
+        sonMenuLastID[nType] = id;
+        preType = nType;
+    }else{
+        cnt++;
     }
+    x = 10+cnt*80;
+    btn->setGeometry(x,2,65,30);
+    sonMenuGrp[nType]->addButton(btn, id);
 }
+
+//void MainWindow::connectMenuWithUi(QList<InfoUI *> &widgets)
+//{
+//    for(int i = 0; i < ui->uis->count(); i++)
+//    {
+//        ui->uis->removeWidget(ui->uis->widget(i));
+//    }
+
+//    for(int i = 0; i < menus.count(); i++)
+//    {
+//        menus.at(i)->clear();
+//    }
+//    for(int i = 0; i < listWidgets.count(); i++)
+//    {
+//        listWidgets.at(i)->clear();
+//    }
+
+
+//    for(int i = 0; i < widgets.count(); i++)
+//    {
+//        if(widgets.at(i)->bShow)
+//        {
+//            widgets.at(i)->pUi->setHidden(false);
+//            ui->uis->addWidget(widgets.at(i)->pUi); // ��ui�ŵ������ں��ʵ�λ��
+//            widgets.at(i)->pParentUi = ui->uis; // ��������ui��parent
+
+//            // ������Ӧ�Ĳ˵���
+//            addMenuText(widgets.at(i)->nType, widgets.at(i)->sName);
+
+//            // �󶨲˵�id��ui��id
+//            menus.at(widgets.at(i)->nType)->push_back(ui->uis->count()-1);
+//        }
+//	 else
+//	 {
+//            widgets.at(i)->pUi->setHidden(true);
+//        }
+//    }
+
+//    for(int i = 0; i < listWidgets.count();i++)
+//    {
+//        int count = listWidgets.at(i)->count();
+//        for(int j = 0; j < count; j++)
+//        {
+//         QListWidgetItem *item = listWidgets.at(i)->item(j);
+//         //item->setSizeHint(QSize(item->sizeHint().width(), 50));
+//         item->setSizeHint(QSize(80, 30));
+//        }
+//    }
+
+//    for(int i = 0; i < listWidgets.count(); i++)
+//    {
+//        if(listWidgets.at(i)->count() < 1)
+//        {
+//            pMainMenuGroup->button(i)->setDisabled(true);
+//        }
+//    }
+//}
+
+//void MainWindow::addMenuText(int nType, QString name)
+//{
+//    QListWidgetItem *item = new QListWidgetItem();
+//    listWidgets.at(nType)->addItem(item);
+
+//    QLabel *text = new QLabel("    " + name, listWidgets.at(nType));
+//    text->setFont(QFont("����", 12, QFont::Bold));
+//    //text->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
+//    text->setAlignment(Qt::AlignHCenter | Qt::AlignCenter);
+//    text->setFocusPolicy(Qt::NoFocus);
+
+//    listWidgets.at(nType)->setItemWidget(item, text);
+//}
+
+//void MainWindow::setDefaultMenuSelection()
+//{
+//    foreach (QListWidget *w, listWidgets) {
+//        if(w->count() > 0)
+//        {
+//            w->setItemSelected(w->item(0), true);
+//        }
+//    }
+//}
 
 
 

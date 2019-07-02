@@ -45,8 +45,8 @@ signals:
 
 private slots:
     void goToUiPage(int page);
-    void setCurrentUiPage();
-    void currentMenuChanged(int row);
+    void setCurrentUiPage(int id);
+//    void currentMenuChanged(int row);
     void stop_clicked();
 
 
@@ -120,9 +120,10 @@ private:
     void setupMainMenuGroup();
     void createMenuList();
     void connectMenuWithUi(QList<InfoUI *> &widgets);
-    void addMenuText(int nType, QString name);
+    void addMenuButton(int nType, QString name,int id);
+//    void addMenuText(int nType, QString name);
 
-    void setDefaultMenuSelection();
+//    void setDefaultMenuSelection();
 
     void createHelpText();
 
@@ -140,8 +141,8 @@ private:
     SystemSchedule   *SystemScheduler;      /**< 系统指锟斤拷 */
 
     QButtonGroup *pMainMenuGroup;
-    QList<QListWidget *> listWidgets;
-    QVector< QVector<int>* > menus;
+//    QList<QListWidget *> listWidgets;
+//    QVector< QVector<int>* > menus;
     vector<QButtonGroup *>sonMenuGrp; // 页面按键 组(每个界面下对应一个)
     vector<int> sonMenuLastID;  // 最后按下的 页面ID
 
