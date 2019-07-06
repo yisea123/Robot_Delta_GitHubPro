@@ -34,7 +34,11 @@
 #include "csystempreferencesui.h"
 #include "ctoolcoorsetui.h"
 #include "cjointparamsetui.h"
+#include "cstructparam.h"
 #include "cusercoorsetui.h"
+#include "cpidparamui.h"
+#include "CFrmSetZero.h"
+#include "CFrmUserLevel.h"
 #include "MotionControllerDevice.h"
 #include "NetCtrl.h"
 /*#include "caxespreferencesui.h"
@@ -93,6 +97,8 @@ void SystemSchedule::initEnvironment(UserParameter parm)
     m_pSystemParameter->sysvel=2;
     ReadUserInformation();
     ReadSystemParamInformation();
+    ReadAxisParamInformation();
+    ReadPidParaGrp("PidParaGrp.dat");
 }
 
 bool SystemSchedule::ReadUserInformation()
@@ -134,23 +140,25 @@ bool SystemSchedule::WriteUserInformation()
     return true;
 }
 
+bool SystemSchedule::ReadSystemParamInformation(const QString &filename)
+{
+    int  i = 0;
+    
+    QFile file(filename);
+    
+    if (!file.open(QIODevice::ReadOnly))
+        return false;    
+    
+    file.read((char *)m_pSystemParameter->SystemParam,256*sizeof(float));
+        
+    file.close();
+    
+    return true;
+}
+
 bool SystemSchedule::ReadSystemParamInformation()
 {
-	 int  i = 0;
-
-	QFile file("SystemParam.dat");
-
-    if (!file.open(QIODevice::ReadOnly))
-        return 0;
-
-   
-    //for(i=0;i<21;i++)
-    {
-        file.read((char *)&m_pSystemParameter->SystemParam[0],256*sizeof(float));
-     
-    }
-	file.close();
-    return true;
+    return ReadSystemParamInformation("SystemParam.dat");
 }
 
 bool SystemSchedule::WriteSystemParamInformation()
@@ -170,8 +178,94 @@ bool SystemSchedule::WriteSystemParamInformation()
       
     }
 	file.close();
+
+
     return true;
 }
+
+bool SystemSchedule::ReadAxisParamInformation(const QString &filename)
+{
+	 int  i = 0;
+
+	QFile file(filename);
+
+    if (!file.open(QIODevice::ReadOnly))
+        return false;
+
+   
+    //for(i=0;i<21;i++)
+    {
+        file.read((char *)&m_pSystemParameter->axisno[0],16*sizeof(int));
+     
+    }
+	file.close();
+    return true;
+}
+
+bool SystemSchedule::ReadAxisParamInformation()
+{
+	return ReadAxisParamInformation("AxisParam.dat");
+}
+
+bool SystemSchedule::WriteAxisParamInformation()
+{
+	int  i = 0;
+	
+
+	QFile file("AxisParam.dat");
+
+    if (!file.open(QIODevice::WriteOnly))
+        return 0;
+
+    
+
+
+    //for(i=0;i<21;i++)
+    {
+        file.write((char *)&m_pSystemParameter->axisno[0],16*sizeof(int));
+    }
+	file.close();
+    return true;
+}
+
+bool SystemSchedule::ReadPidParaGrp(const QString &filename)
+{
+    int  i = 0;
+    
+    QFile file(filename);
+
+    memset(m_pSystemParameter->PidParaGrpName,0,sizeof(m_pSystemParameter->PidParaGrpName));
+    for(i=0;i<5;i++){
+        memcpy(&m_pSystemParameter->PidParaGrp[i],&m_pSystemParameter->SystemParam[pAIXS1PID],sizeof(m_pSystemParameter->PidParaGrp[0]));
+    }
+    
+    if (!file.open(QIODevice::ReadOnly)){        
+        return false;    
+    }
+
+    file.read((char *)m_pSystemParameter->PidParaGrpName,sizeof(m_pSystemParameter->PidParaGrpName));
+    file.read((char *)m_pSystemParameter->PidParaGrp,sizeof(m_pSystemParameter->PidParaGrp));
+    
+    file.close();
+    
+    return true;
+}
+
+bool SystemSchedule::SavePidParaGrp(const QString &filename)
+{
+    int  i = 0;
+    QFile file(filename);
+    
+    if (!file.open(QIODevice::WriteOnly))
+        return 0;
+    
+    file.write((char *)&m_pSystemParameter->PidParaGrpName,sizeof(m_pSystemParameter->PidParaGrpName));
+    file.write((char *)&m_pSystemParameter->PidParaGrp,sizeof(m_pSystemParameter->PidParaGrp));
+    file.close();
+    
+    return true;
+}
+
 
 /*************************************************
   函数名称：registerAllUI()
@@ -190,8 +284,14 @@ void SystemSchedule::registerAllUI(UserParameter user)
     //registerIOStateUI();
     //registerMachiningSimulationUI();
     registerSystemPreferencesUI();
+    
     registerJointParamSetUI();
+    registerStructParamSetUI();
+    registerPIDParamSetUI();
+    registerZeroParamSetUI();
     registerToolCoorSetUI();
+    registerUserCoorSetUI();
+    registerUserLevelSetUI();
     
     //registerUserCoorSetUI();
     /*registerAxesPreferencesUI();
@@ -208,7 +308,7 @@ void SystemSchedule::registerAllUI(UserParameter user)
 
     m_MainWidget->showDisplayUIs(m_Widgets, user);
 
-
+    m_MainWidget->goToUiPage(UI_PROGRAM_ID);
 #ifdef _CNC_SYSTEM_PROCESS_DEBUG      /* 在QT的控制台显示系统加载的所有UI的信息 */
     m_systemInfo.printfMesssage("UI imformation");
 
@@ -308,21 +408,41 @@ void SystemSchedule::registerSystemPreferencesUI()
     registerUI(new CSystemPreferencesUi(m_MainWidget, this),  QString::fromLocal8Bit("系统"),
                UI_STATE_ID, UI_SYSTEM_PREFERENCES, nModulesUser);
 }
-
-void SystemSchedule::registerToolCoorSetUI()
-{
-    QVector<int> nModulesUser;
-    nModulesUser.push_back(MOTION_CONTROLLER_ID);
-    registerUI(new CToolCoorSetUi(m_MainWidget, this),  QString::fromLocal8Bit("零点"),
-               UI_SETTING_ID, UI_WARNING_RECORD,nModulesUser);
-}
-
 void SystemSchedule::registerJointParamSetUI()
 {
     QVector<int> nModulesUser;
     nModulesUser.push_back(MOTION_CONTROLLER_ID);
     registerUI(new cjointparamsetui(m_MainWidget, this),  QString::fromLocal8Bit("运动"),
+               UI_SETTING_ID, UI_TOOL_PREFERENCES, nModulesUser);
+}
+void SystemSchedule::registerStructParamSetUI()
+{
+    QVector<int> nModulesUser;
+    nModulesUser.push_back(MOTION_CONTROLLER_ID);
+    registerUI(new cstructparam(m_MainWidget, this),  QString::fromLocal8Bit("结构"),
+               UI_SETTING_ID, UI_TOOL_STRUCT_SETTINGS, nModulesUser);
+}
+void SystemSchedule::registerPIDParamSetUI()
+{
+    QVector<int> nModulesUser;
+    nModulesUser.push_back(MOTION_CONTROLLER_ID);
+    registerUI(new cpidparamui(m_MainWidget, this),  QString::fromLocal8Bit("PID "),
                UI_SETTING_ID, UI_WARNING_MSG_DIAGNOSIS, nModulesUser);
+}
+void SystemSchedule::registerZeroParamSetUI()
+{
+    QVector<int> nModulesUser;
+    nModulesUser.push_back(MOTION_CONTROLLER_ID);
+    registerUI(new CFrmSetZero(m_MainWidget, this),  QString::fromLocal8Bit("零点"),
+               UI_SETTING_ID, UI_ZERO_SETTINGS, nModulesUser);
+}
+
+void SystemSchedule::registerToolCoorSetUI()
+{
+    QVector<int> nModulesUser;
+    nModulesUser.push_back(MOTION_CONTROLLER_ID);
+    registerUI(new CToolCoorSetUi(m_MainWidget, this),  QString::fromLocal8Bit("工具"),
+               UI_SETTING_ID, UI_WARNING_RECORD, nModulesUser);
 }
 void SystemSchedule::registerUserCoorSetUI()
 {
@@ -331,6 +451,15 @@ void SystemSchedule::registerUserCoorSetUI()
     registerUI(new cusercoorsetui(m_MainWidget, this),  QString::fromLocal8Bit("用户"),
                UI_SETTING_ID, UI_SYSTEM_INFORMATION, nModulesUser);
 }
+
+void SystemSchedule::registerUserLevelSetUI()
+{
+    QVector<int> nModulesUser;
+    nModulesUser.push_back(MOTION_CONTROLLER_ID);
+    registerUI(new CFrmUserLevel(m_MainWidget, this),  QString::fromLocal8Bit("权限"),
+               UI_SETTING_ID, UI_USERRIGHT_SETTINGS, nModulesUser);
+}
+
 /*
 void SystemSchedule::registerAxesPreferencesUI()
 {
@@ -709,7 +838,39 @@ bool SystemSchedule::NetIsConnect(void)
     }
     return true;
 }
+ // 获取当前操作模式(0:无 1:手动 2:自动)
+int  SystemSchedule::GetCurOptMode(void)
+{
+    if(0x80000==(m_pSystemParameter->sys_ctrl.statebit&0xc0000)){  // 当前模式
+        return 2;  // 自动
+    }else if(0x40000==(m_pSystemParameter->sys_ctrl.statebit&0xc0000)){
+        return 1;  // 手动
+    }
+    return 0; // 无
+}
 
+
+//获取使能状态(0:关 1:开)
+bool SystemSchedule::GetServoState(void)
+{
+    if((m_pSystemParameter->sys_ctrl.statebit&0x1)==1){
+        return true;
+    }
+    return false;
+}
+
+// 设置使能开关(false:关 true:开)
+void SystemSchedule::SetServoState(bool bIsOn)
+{
+    bool bState;
+    
+    bState = GetServoState();
+    if(!bState && bIsOn){
+        recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/servoEnable", "yes");
+    }else if(bState && !bIsOn){
+        recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/servoEnable", "no");
+    }
+}
 void SetServoEnabel(bool enable)
 {
 

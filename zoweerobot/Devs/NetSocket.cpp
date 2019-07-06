@@ -10,7 +10,8 @@
 
 CNetSocket::CNetSocket(MotionControllerDevice * pDlg, QString serverIP,quint16 netPort1,quint16 netPort2)
 {
-
+    bool b=false;
+    
     m_serverip.setAddress(serverIP);
 	m_serverport=netPort1;
       cDlg=pDlg;
@@ -21,9 +22,29 @@ CNetSocket::CNetSocket(MotionControllerDevice * pDlg, QString serverIP,quint16 n
 	pUart0_read=&Uart0_Buffer[0];	
 	nRev_Uart0=1;
 	ReadCount0=0;
-	bind(netPort2);
+	b = bind(netPort2); // QHostAddress::LocalHost
     connect(this, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));   //接收准备
 
+}
+
+CNetSocket::CNetSocket(MotionControllerDevice * pDlg, QHostAddress serverIP,quint16 netPort1,quint16 netPort2)
+{
+    bool b=false;
+    
+    m_serverip = serverIP;
+    m_serverport=netPort1;
+    cDlg=pDlg;
+    m_nLength=0;
+    memset(m_szBuffer,0,sizeof(m_szBuffer));
+    
+    pUart0_rev=&Uart0_Buffer[0],	//Uart0 ?óê??o3???????
+    pUart0_read=&Uart0_Buffer[0];	
+    nRev_Uart0=1;
+    ReadCount0=0;
+
+    b = bind(netPort2); // 
+    
+    connect(this, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));   //接收准备
 }
 
 CNetSocket::~CNetSocket()

@@ -10,6 +10,7 @@ class  CAxesPreferencesUi;
 class  CToolPreferencesUi;
 class  CCraftPreferencesUi;
 class  CCommunicationSettingUi;
+class  CStructSettingsUi;
 
 class XmlControllerModule : public BaseModule
 {
@@ -23,6 +24,7 @@ public:
     CSystemPreferencesUi*  getSysPreferencesUIHandler();
     CAxesPreferencesUi*  getAxisPreferencesUIHandler();
     CToolPreferencesUi*  getToolPreferencesUIHandler();
+    CStructSettingsUi*  getStructsSettingsUIHandler();
     CCraftPreferencesUi*  getCraftPreferencesUIHandler();
     CCommunicationSettingUi* getCommunicationSettingUIHandler();
 private:

@@ -47,6 +47,7 @@ MotionControllerDevice::MotionControllerDevice(QString s, BaseModule* m, SystemP
 {
     m_sDeviceName = s;
     m_pModuleHandle = m;
+    m_netctrl =NULL;
 
     initMotionControllerDevice();
 
@@ -57,6 +58,8 @@ MotionControllerDevice::MotionControllerDevice(QString s, BaseModule* m, SystemP
 
     m_bisNetConnect = false;
     m_userfile=nullptr;
+
+    m_socket2=NULL;
 }
 
 MotionControllerDevice::~MotionControllerDevice()
@@ -299,6 +302,7 @@ int MotionControllerDevice::creatTCPSocket()
 **************************************************/
 int MotionControllerDevice::creatUdPSocket()
 {
+    QHostAddress addr;
     /*SystemParameter* parmtemp = ((MotionControllerModule* )m_pModuleHandle)->getSystemParameterHandle();
     QString serverIP = parmtemp->m_netConnectionParm.m_netIP;
     quint16 netPort1 = parmtemp->m_netConnectionParm.m_netPort1;
@@ -314,7 +318,16 @@ int MotionControllerDevice::creatUdPSocket()
 	
     m_socket = new CNetSocket(this,serverIP,netPort1,netPort2);
     m_netctrl= new CNetCtrl(this);
+
+    //serverIP = "192.168.3.10";//m_pSystemParm->m_netConnectionParm.m_netIP;
+    addr = QHostAddress::Broadcast; // QHostAddress("192.168.3.10"); // //; // QHostAddress::LocalHost;
+    netPort1 = 65001;//m_pSystemParm->m_netConnectionParm.m_netPort1;
+    netPort2 = 65000;//m_pSystemParm->m_netConnectionParm.m_netPort2;
 	
+    m_socket2 = new CNetSocket(this,addr,netPort1,netPort2);
+    m_socket2->setSocketOption(QAbstractSocket::MulticastLoopbackOption,1);
+    m_socket2->joinMulticastGroup(addr);    
+    
     m_NetCtrlTimer = new QTimer(this);
     connect(m_NetCtrlTimer, SIGNAL(timeout()), this, SLOT(onNetCtrlTimeout()), Qt::DirectConnection);
     m_NetCtrlTimer->start(5);//20
@@ -590,6 +603,8 @@ int MotionControllerDevice::fillOneFIFO(int movetype,double* axisData, ErrorInfo
     autodata.Joint_VelPct = (int)m_pSystemParm->sysvel;//100;
     autodata.Car_PVel =  (double)m_pSystemParm->sysvel;
     autodata.Car_GVel =  (double)m_pSystemParm->sysvel;
+    autodata.Zone=(double)m_pSystemParm->SystemParam[pZoneLevel];
+	
     if(movetype==0)
     {
     	autodata.JPos_End[0] = (float)axisData[0];
@@ -641,7 +656,8 @@ int MotionControllerDevice::fillOneFIFO(MoveAction * action,double* axisData, Er
     autodata.Joint_VelPct = 100;//(int)m_pSystemParm->sysvel;//100;
     autodata.Car_PVel =(double)action->m_dAngle;//  (double)m_pSystemParm->sysvel;//m_dF
     autodata.Car_GVel =(double)m_pSystemParm->SystemParam[pCarMaxGVel];
-   
+    autodata.Zone=(double)m_pSystemParm->SystemParam[pZoneLevel];
+	
     if(action->m_moveType==0)
     {
     	autodata.JPos_End[0] = (float)axisData[0];
@@ -749,9 +765,49 @@ int MotionControllerDevice::fillOneFIFO(DelayAction * action,ErrorInfo& e)
         return false;
 }
 
-int MotionControllerDevice::backHome()
+// 初始化 回零数据
+void MotionControllerDevice::InitGoHome()
 {
+    GoHomeStep = 0;
+}
+
+// step: 回零的步数(最多4步).
+int MotionControllerDevice::backHome(int &step)
+{
+    int i, len, axisNO;    
+    int orderVal, res;
+    QString str;
     InputAutoData autodata;
+    float curPos[4]={0};
+    static float pos[4]={0};
+
+    if(GoHomeStep == 0){ // 第一步时, 初始化
+        memcpy(pos,m_pSystemParm->coor_joint_pos,sizeof(pos));
+    }else if(GoHomeStep>=4){ // 4 表示完成,
+        step = GoHomeStep;
+        return 1;
+    }
+    memcpy(curPos,pos,sizeof(curPos));
+    orderVal = m_pSystemParm->SystemParam[GoHomeOrder1+GoHomeStep];
+    while(orderVal==0){ // 0 表示没设置
+        GoHomeStep++;
+        if(GoHomeStep>=4){ // 4 表示完成,
+            step = GoHomeStep;
+            return 1;
+        }
+        orderVal = m_pSystemParm->SystemParam[GoHomeOrder1+GoHomeStep];
+    }
+
+    str = QString::asprintf("%d",orderVal); // 如 1234, 所有轴同时回零
+    len = str.length();
+    for(i=0;i<len;i++){
+        axisNO = str.at(i).toLatin1()-'1';
+        if(axisNO>=0 && axisNO<4){
+            curPos[axisNO] = 0;
+        }
+    }
+       
+    //========================================
     memset(&autodata, 0, sizeof(autodata));
     autodata.decode_id =0;//0;// data->m_nCodeId;
     //autodata.Prog_SequNum = 0;
@@ -774,13 +830,20 @@ int MotionControllerDevice::backHome()
     	autodata.JPos_End[5] = 0;
  
 
-    if (PutAutoDataFrame(&autodata) == 1)
-    {
+    res =  PutAutoDataFrame(&autodata);
+    if (res == 1){
+        memcpy(pos,curPos,sizeof(pos));
+        if(fabs(pos[0])>=0.00001 || fabs(pos[1])>=0.00001 || fabs(pos[2])>=0.00001 || fabs(pos[3])>=0.00001){
+            GoHomeStep++; // 
+        }else {
+            GoHomeStep = 4; // 表示完成
+        }
+        
         printFifoData(&autodata);
-        return true;
     }
-    else
-        return false;
+    step = GoHomeStep;
+
+    return res;
 }
 
 int MotionControllerDevice::movetoteachpoint(int num)
@@ -1010,7 +1073,7 @@ bool MotionControllerDevice::getMsg(ErrorInfo& e)//端口2
             case 2:
                 m_sysState = SYS_STATE_AXISALARM;
                 break;
-           /* case 3:
+            case 3:
                 m_sysState = SYS_STATE_LIMIT;
 
                 if ((m_dataResponse_monitor[FUNCTION_PARM_2] & 0x01) == 1)
@@ -1031,7 +1094,7 @@ bool MotionControllerDevice::getMsg(ErrorInfo& e)//端口2
                 }
                 if ((m_dataResponse_monitor[FUNCTION_PARM_2] & 0x10) == 1)
                 {
-                    m_axisLimit.v = 1;
+                    //m_axisLimit.v = 1;
                 }
 
                 if ((m_dataResponse_monitor[FUNCTION_PARM_3] & 0x01) == 1)
@@ -1052,9 +1115,9 @@ bool MotionControllerDevice::getMsg(ErrorInfo& e)//端口2
                 }
                 if ((m_dataResponse_monitor[FUNCTION_PARM_3] & 0x10) == 1)
                 {
-                    m_axisLimit.v = -1;
+                   // m_axisLimit.v = -1;
                 }
-                break;*/
+                break;
             case 4:
                 m_sysState = SYS_STATE_IDENTIFY_DONE;
                 break;
@@ -1127,14 +1190,14 @@ bool MotionControllerDevice::getMotionState(ErrorInfo& e)//端口2
     }
 
     /* 记录当前坐标 */
-    /*NAxis curPos;
+    NAxis curPos;
     //int j = 1;
     //curPos.x = charToInt(m_dataResponse[FUNCTION_PARM_4 + j++], m_dataResponse[FUNCTION_PARM_4 + j++], m_dataResponse[FUNCTION_PARM_4 + j++], m_dataResponse[FUNCTION_PARM_4 + j++]);//堆栈出错
     curPos.x = charToInt(m_dataResponse_monitor[7], m_dataResponse_monitor[8], m_dataResponse_monitor[9], m_dataResponse_monitor[10]);
     curPos.y = charToInt(m_dataResponse_monitor[11], m_dataResponse_monitor[12], m_dataResponse_monitor[13], m_dataResponse_monitor[14]);
     curPos.z = charToInt(m_dataResponse_monitor[15], m_dataResponse_monitor[16], m_dataResponse_monitor[17], m_dataResponse_monitor[18]);
     curPos.r = charToInt(m_dataResponse_monitor[19], m_dataResponse_monitor[20], m_dataResponse_monitor[21], m_dataResponse_monitor[22]);
-    curPos.v = charToInt(m_dataResponse_monitor[23], m_dataResponse_monitor[24], m_dataResponse_monitor[25], m_dataResponse_monitor[26]);
+    //curPos.v = charToInt(m_dataResponse_monitor[23], m_dataResponse_monitor[24], m_dataResponse_monitor[25], m_dataResponse_monitor[26]);
 
     curPos.z = curPos.z >= 0 ? curPos.z % (360 * m_pSystemParm->m_axisParm[AXIS_T].m_nPulseEquivalent) : -((-curPos.z) % (360 * m_pSystemParm->m_axisParm[AXIS_T].m_nPulseEquivalent));
     curPos.r = curPos.r % (360 * m_pSystemParm->m_axisParm[AXIS_C].m_nPulseEquivalent);
@@ -1143,8 +1206,8 @@ bool MotionControllerDevice::getMotionState(ErrorInfo& e)//端口2
     m_currentPos.y = (double)curPos.y / m_pSystemParm->m_axisParm[AXIS_Y].m_nPulseEquivalent * m_pSystemParm->m_axisParm[AXIS_Y].m_nRatioDenominator / m_pSystemParm->m_axisParm[AXIS_Y].m_nRatioNumerator;//m_pulseEquivalent.y;
     m_currentPos.z = (double)curPos.z / m_pSystemParm->m_axisParm[AXIS_T].m_nPulseEquivalent * m_pSystemParm->m_axisParm[AXIS_T].m_nRatioDenominator / m_pSystemParm->m_axisParm[AXIS_T].m_nRatioNumerator;//m_pulseEquivalent.t;
     m_currentPos.r = (double)curPos.r / m_pSystemParm->m_axisParm[AXIS_C].m_nPulseEquivalent * m_pSystemParm->m_axisParm[AXIS_C].m_nRatioDenominator / m_pSystemParm->m_axisParm[AXIS_C].m_nRatioNumerator;//m_pulseEquivalent.c;
-    m_currentPos.v = (double)curPos.v / m_pSystemParm->m_axisParm[AXIS_V].m_nPulseEquivalent;//m_pulseEquivalent.v;
-     */
+    //m_currentPos.v = (double)curPos.v / m_pSystemParm->m_axisParm[AXIS_V].m_nPulseEquivalent;//m_pulseEquivalent.v;
+
     //qDebug("a=%d, b=%d, c=%d, d=%d 当前位置  a=%d, b=%d, c=%d, d=%d", m_dataResponse[3], m_dataResponse[4], m_dataResponse[5],m_dataResponse[6], m_dataResponse[7], m_dataResponse[8], m_dataResponse[9], m_dataResponse[10]);
     //qDebug("n=%d, 当前位置 x=%d, y=%d, t=%d, c=%d, v=%d\n", m_nMotionCount, curPos.x, curPos.y, curPos.t, curPos.c, curPos.v);
     //qDebug("n=%d, 当前位置 x=%g, y=%g, t=%g, c=%g, v=%g", m_currentRunActionIndex, m_currentPos.x, m_currentPos.y, m_currentPos.t, m_currentPos.c, m_currentPos.v);
@@ -1734,14 +1797,13 @@ bool MotionControllerDevice::manualMove(int axis, double dis, ErrorInfo& e)
 bool MotionControllerDevice::manualMove(ErrorInfo& e, double x, double y, double z, double w, double p,double r)
 {
     int axisData[5];
-    /*axisData[0] = x * m_pSystemParm->m_axisParm[AXIS_X].m_nPulseEquivalent * m_pSystemParm->m_axisParm[AXIS_X].m_nRatioNumerator / m_pSystemParm->m_axisParm[AXIS_X].m_nRatioDenominator;
+    axisData[0] = x * m_pSystemParm->m_axisParm[AXIS_X].m_nPulseEquivalent * m_pSystemParm->m_axisParm[AXIS_X].m_nRatioNumerator / m_pSystemParm->m_axisParm[AXIS_X].m_nRatioDenominator;
     axisData[1] = y * m_pSystemParm->m_axisParm[AXIS_Y].m_nPulseEquivalent * m_pSystemParm->m_axisParm[AXIS_Y].m_nRatioNumerator / m_pSystemParm->m_axisParm[AXIS_Y].m_nRatioDenominator;
-    axisData[2] = t * m_pSystemParm->m_axisParm[AXIS_T].m_nPulseEquivalent * m_pSystemParm->m_axisParm[AXIS_T].m_nRatioNumerator / m_pSystemParm->m_axisParm[AXIS_T].m_nRatioDenominator;
-    axisData[3] = c * m_pSystemParm->m_axisParm[AXIS_C].m_nPulseEquivalent * m_pSystemParm->m_axisParm[AXIS_C].m_nRatioNumerator / m_pSystemParm->m_axisParm[AXIS_C].m_nRatioDenominator;
-    axisData[4] = (int)(v + 0.01);//abs(v) > 3 ? 1 : abs(v);//v > 0.1 ? 1 : 0;
+    //axisData[2] = t * m_pSystemParm->m_axisParm[AXIS_T].m_nPulseEquivalent * m_pSystemParm->m_axisParm[AXIS_T].m_nRatioNumerator / m_pSystemParm->m_axisParm[AXIS_T].m_nRatioDenominator;
+    //axisData[3] = c * m_pSystemParm->m_axisParm[AXIS_C].m_nPulseEquivalent * m_pSystemParm->m_axisParm[AXIS_C].m_nRatioNumerator / m_pSystemParm->m_axisParm[AXIS_C].m_nRatioDenominator;
+   // axisData[4] = (int)(v + 0.01);//abs(v) > 3 ? 1 : abs(v);//v > 0.1 ? 1 : 0;
 
-    return fillOneFIFO(axisData, e);*/
-    return 0;
+    return fillOneFIFO(axisData, e);
 }
 
 /*************************************************
@@ -2725,9 +2787,9 @@ bool MotionControllerDevice::clearAlarm()
 }
 
 
-bool MotionControllerDevice::setOrian(int zeroaxis)
+bool MotionControllerDevice::setOrian()
 {
-    if (PutControlFrame(10, zeroaxis) == 1)
+    if (PutControlFrame(10, 1) == 1)
     {     
         return true;
     }
@@ -2759,6 +2821,11 @@ bool MotionControllerDevice::setParamer()
         return false;
     }
     if (!PutSetParamFrame(0, pAccTime, pArcError,(unsigned char*)&m_pSystemParm->SystemParam[pAccTime]) )
+    {
+        return false;
+    }
+
+    if (!PutSetParamFrame(0, GoHomeOrder1, GoHomeOrder4,(unsigned char*)&m_pSystemParm->SystemParam[GoHomeOrder1]) )
     {
         return false;
     }
@@ -2818,6 +2885,51 @@ bool MotionControllerDevice::setZeroCalibration(int step)
         return false;
 }
 
+bool MotionControllerDevice::PIDParam(int cmd,int axis,int len)
+{
+    FrameBody elem;
+
+    elem.framehead = FrameHeadWord;
+    elem.funcode = 5;
+    if(cmd==1)
+        elem.length = 8+4+len*4;
+    else if(cmd==2)
+	elem.length = 8+4;
+    else
+	return 0;
+    elem.frameno = 0;
+    elem.trafficctrl = 0;
+
+    elem.databuf[0] = 22;//Cmd_PID
+    elem.databuf[1] = cmd;  // 1:保存 2:获取
+    elem.databuf[2] = axis;//Cmd_PID
+    elem.databuf[3] = 0;//offset from poskp
+    if(cmd==1)
+    {
+    		memcpy(&elem.databuf[4],(unsigned char*)&m_pSystemParm->SystemParam[pAIXS1PID+axis*6],len*4);
+    }
+	return m_netctrl->EnFrameQueue(&m_netctrl->gb_framequeue, elem);
+ 
+}
+
+bool MotionControllerDevice::setCanDebug(int level)
+{
+    FrameBody elem;
+
+    elem.framehead = FrameHeadWord;
+    elem.funcode = 5;
+
+     elem.length = 8+2;
+ 
+    elem.frameno = 0;
+    elem.trafficctrl = 0;
+
+    elem.databuf[0] = 23;//Cmd_PID
+    elem.databuf[1] = level;
+ 
+     return m_netctrl->EnFrameQueue(&m_netctrl->gb_framequeue, elem);
+ 
+}
 bool MotionControllerDevice::axisEnable(bool isEnable)
 {
     int enable = isEnable ? 1 : 0;
@@ -3248,7 +3360,7 @@ bool MotionControllerDevice::setOutputIo(int io, bool value)
     return true;
 }
 
-
+// 返回 0:缓冲区已满  1:成功
 int MotionControllerDevice::PutAutoDataFrame(InputAutoData *autodata)
 {
     FrameBody elem;

@@ -21,6 +21,8 @@ public:
     cusercoorsetui(QWidget *parent, SystemSchedule* schedule);
     ~cusercoorsetui();
 
+    virtual void TimerUpdateViewData(void);
+
 private:
     Ui::cusercoorsetui *ui;
     SystemSchedule*       m_pScheduler;

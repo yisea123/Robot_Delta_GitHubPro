@@ -46,8 +46,18 @@ void CAutoMachiningStateUi::init()
     m_bIsNetConnect = true;
 }
 
+// 定时更新的数据
+void CAutoMachiningStateUi::TimerUpdateViewData(void)
+{
+    CCommmomUIWidget::TimerUpdateViewData();
+    updataData();
+}
+
 void CAutoMachiningStateUi::updataData()
 {
+    QString str[4];
+    float crd[4]={0};
+    int i,line,cnt;
 	/*if((m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&0x2)//stopbit set
 	{
 		if((m_pScheduler->m_pSystemParameter->sys_ctrl.statebit&0x400)
@@ -56,13 +66,19 @@ void CAutoMachiningStateUi::updataData()
 			(m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;//clear stopbit
 		}
 
-	}*/
+    }*/
+//    ui->widget_2->setStyleSheet("QWidget{"
+//                                "border: 1px solid #FF00FF;"
+//                                "border-radius: 5px;"
+//                                "}");
+
         ui->x->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[0]);
 	 ui->y->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[1]);
 	 ui->z->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[2]);
 	 ui->w->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[3]);
 	 ui->p->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[4]);
 	 ui->r->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[5]);
+     ui->m->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[6]);
 
 	 ui->A->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[0]);
 	 ui->B->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[1]);
@@ -70,6 +86,7 @@ void CAutoMachiningStateUi::updataData()
 	 ui->D->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[3]);
 	 ui->E->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[4]);
 	 ui->F->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[5]);
+     ui->G->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[6]);
 #ifdef PROGRAM_USELVDS
      ui->comand_multi->setText(QString::fromLocal8Bit("指令多圈"));
      ui->comand_single->setText(QString::fromLocal8Bit("指令单圈"));
@@ -87,6 +104,7 @@ void CAutoMachiningStateUi::updataData()
      ui->axis5_pulse_single->setNum((int)m_pScheduler->m_pSystemParameter->plusepos[9]);
      ui->axis6_pulse_multi->setNum((int)m_pScheduler->m_pSystemParameter->plusepos[10]);
      ui->axis6_pulse_single->setNum((int)m_pScheduler->m_pSystemParameter->plusepos[11]);
+     ui->axis7_pulse_single->setNum((int)m_pScheduler->m_pSystemParameter->plusepos[12]);
 
      ui->axis1_multi->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[0]);
      ui->axis1_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[1]);
@@ -100,6 +118,7 @@ void CAutoMachiningStateUi::updataData()
      ui->axis5_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[9]);
      ui->axis6_multi->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[10]);
      ui->axis6_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[11]);
+     ui->axis7_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[12]);
 #else
       ui->comand_multi->setText(QString::fromLocal8Bit("                        "));
      ui->comand_single->setText(QString::fromLocal8Bit("指令位置"));
@@ -117,6 +136,8 @@ void CAutoMachiningStateUi::updataData()
      ui->axis5_pulse_single->setNum((int)m_pScheduler->m_pSystemParameter->plusepos[9]);
      ui->axis6_pulse_multi->setNum(0);
      ui->axis6_pulse_single->setNum((int)m_pScheduler->m_pSystemParameter->plusepos[11]);
+     ui->axis7_pulse_multi->setNum(0);
+     ui->axis7_pulse_single->setNum((int)m_pScheduler->m_pSystemParameter->plusepos[13]);
 	 
      ui->axis1_multi->setNum(0);
      ui->axis1_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[1]);
@@ -130,12 +151,16 @@ void CAutoMachiningStateUi::updataData()
      ui->axis5_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[9]);
      ui->axis6_multi->setNum(0);
      ui->axis6_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[11]);
+     ui->axis7_multi->setNum(0);
+     ui->axis7_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[13]);
 #endif
-     if((0x40==(m_pScheduler->m_pSystemParameter->sys_ctrl.statebit&0x60))
-	 &&(m_pScheduler->m_pSystemParameter->sys_ctrl.decode_id<m_pScheduler->getNGFileContexts()->size())
-	 && (!(m_pScheduler->m_pSystemParameter->sys_ctrl.statebit&0x400)))
+     cnt = m_pScheduler->getNGFileContexts()->size();
+     if((0x40==(m_pScheduler->m_pSystemParameter->sys_ctrl.statebit&0x60)) // 模式指令 为自动方式
+     &&(m_pScheduler->m_pSystemParameter->sys_ctrl.decode_id<=cnt)
+     && (!(m_pScheduler->m_pSystemParameter->sys_ctrl.statebit&0x400)))  // 是否停止状态
      {
-	ui->NGCodeText->highlightSpecifiedLine((int)m_pScheduler->m_pSystemParameter->sys_ctrl.decode_id);
+         line = (int)m_pScheduler->m_pSystemParameter->sys_ctrl.decode_id;
+         ui->NGCodeText->highlightSpecifiedLine(line);
      }
 }
 
@@ -386,6 +411,24 @@ void CAutoMachiningStateUi::on_editfile_clicked(bool checked)
 
 void CAutoMachiningStateUi::on_addtechpoint_clicked()
 {
-    QString text= QString("G01x%1y%2z%3w%4p%5r%6").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[0]).arg(m_pScheduler->m_pSystemParameter->coor_car_pos[1]).arg(m_pScheduler->m_pSystemParameter->coor_car_pos[2]).arg(m_pScheduler->m_pSystemParameter->coor_car_pos[3]).arg(m_pScheduler->m_pSystemParameter->coor_car_pos[4]).arg(m_pScheduler->m_pSystemParameter->coor_car_pos[5]);
-    ui->NGCodeText->textCursor().insertText(text);
+    int i;
+    float crd[4]={0};
+    QString text;
+    int tool,hand;
+
+    for(i=0;i<4;i++){
+        crd[i] = m_pScheduler->m_pSystemParameter->coor_car_pos[i];
+    }
+
+    if(m_pScheduler->m_pSystemParameter->coor_joint_pos[1]>0.000001){  // 手系
+        hand = 1;
+    }else if(m_pScheduler->m_pSystemParameter->coor_joint_pos[1]<-0.000001){
+        hand = 2;
+    }else{
+        hand = 0;
+    }
+    tool = m_pScheduler->m_pSystemParameter->m_currentTool;
+
+    text = QString::asprintf("G00 X%0.3f Y%0.3f Z%0.3f R%0.3f T%d H%d;",crd[0],crd[1],crd[2],crd[3],tool,hand);
+    ui->NGCodeText->textCursor().insertText(text);    
 }

@@ -10,6 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = zoweerobot
 TEMPLATE = app
+DESTDIR = ../bin
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
@@ -87,7 +88,12 @@ SOURCES += \
     UI/cjointparamsetui.cpp \
     UI/cusercoorsetui.cpp \
     UI/cteachpointui.cpp \
-    TDialog.cpp
+    UI/cpidparamui.cpp \
+    TDialog.cpp \
+    UI/CFrmSetZero.cpp \
+    UI/CFrmUserLevel.cpp \
+    CUserLevelManage.cpp\
+    UI/cstructparam.cpp
 
 
 
@@ -152,7 +158,12 @@ HEADERS += \
     UI/cjointparamsetui.h \
     UI/cusercoorsetui.h \
     UI/cteachpointui.h \
-    TDialog.h
+    UI/cpidparamui.h \
+    TDialog.h \
+    UI/CFrmSetZero.h \
+    UI/CFrmUserLevel.h \
+    CUserLevelManage.h\
+    UI/cstructparam.h
 
 
 
@@ -167,7 +178,11 @@ FORMS += \
     UI/cjointparamsetui.ui \
     UI/cusercoorsetui.ui \
     UI/cteachpointui.ui \
-    TDialog.ui
+    UI/cpidparamui.ui \
+    TDialog.ui \
+    UI/CFrmSetZero.ui \
+    UI/CFrmUserLevel.ui\
+    UI/cstructparam.ui
 
 RESOURCES += \
     UI/images.qrc

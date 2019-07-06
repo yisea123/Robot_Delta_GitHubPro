@@ -407,7 +407,15 @@ int CNetCtrl::DealPulseFrame(FrameBody frame,FrameTrafficCtrl* ctrl)
 
 
 int CNetCtrl::DealPeriodFrame(FrameBody frame,FrameTrafficCtrl* ctrl)
-{
+{   
+     if(cDlg->m_pSystemParm->m_bIsCollectMotionData){
+	     if(cDlg->m_socket2!=NULL){
+	         //cDlg->m_socket2->m_serverip.setAddress("192.168.3.10");
+	         //cDlg->m_socket2->m_serverport = 53001;
+	         cDlg->m_socket2->Uart_Send(0, (char *)&frame, frame.length);	
+	     }
+     }
+         
     if(((ctrl->sendframeno)!=(ctrl->succedrecvno))&&((frame.frameno)==(ctrl->succedrecvno)))
 	{
 		ctrl->periodovertime++;
@@ -744,6 +752,10 @@ int CNetCtrl::DealStateFrame(FrameBody frame,FrameTrafficCtrl* ctrl)
 	    if((start<0)||(start>=256)||(end<0)||(end>=256)||(end<start)) break;
 	     memcpy(&cDlg->m_pSystemParm->SystemParam[start],&frame.databuf[6],(end-start+1)*4);
 	       if(end>=(pAccTime))  cDlg->m_pSystemParm->getsysparamfinished=1;
+		if((start<=(pAIXS1PID+4))&&(end>=pAIXS1PID))  cDlg->m_pSystemParm->getpidparamfinished[0]=1;
+		if((start<=(pAIXS2PID+4))&&(end>=pAIXS2PID))   cDlg->m_pSystemParm->getpidparamfinished[1]=1;
+		if((start<=(pAIXS3PID+4))&&(end>=pAIXS3PID))   cDlg->m_pSystemParm->getpidparamfinished[2]=1;
+		if((start<=(pAIXS4PID+4))&&(end>=pAIXS4PID))   cDlg->m_pSystemParm->getpidparamfinished[3]=1;
 	}
 	break;
     default:

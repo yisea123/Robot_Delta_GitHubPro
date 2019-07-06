@@ -53,20 +53,22 @@ const QString ModulesName[] = { "Motion Controller",    \
                                 "PLC Controller"
                                 };
 
-#define UI_AUTO_MACHINING_STATE              0
-#define UI_MANUAL_MACHINING_STATE            1
-#define UI_IO_STATE                          2
-#define UI_MACHINING_SIMULATION              3
-#define UI_SYSTEM_PREFERENCES                4
-#define UI_AXES_PREFERENCES                  5
-#define UI_CRAFT_PREFERENCES                 6
-#define UI_TOOL_PREFERENCES                  7
-#define UI_WARNING_MSG_DIAGNOSIS             8
-#define UI_WARNING_RECORD                    9
-#define UI_SYSTEM_INFORMATION                10
-#define UI_COMMUNICATION_SETTINGS            11
-#define UI_ADVANCED_SYSTEM_SETTINGS          12
-
+#define UI_AUTO_MACHINING_STATE             0
+#define UI_MANUAL_MACHINING_STATE           1
+#define UI_IO_STATE                         2
+#define UI_MACHINING_SIMULATION             3
+#define UI_SYSTEM_PREFERENCES               4
+#define UI_AXES_PREFERENCES                 5
+#define UI_CRAFT_PREFERENCES                6
+#define UI_TOOL_PREFERENCES                 7
+#define UI_WARNING_MSG_DIAGNOSIS            8
+#define UI_WARNING_RECORD                   9
+#define UI_SYSTEM_INFORMATION               10
+#define UI_COMMUNICATION_SETTINGS           11
+#define UI_ADVANCED_SYSTEM_SETTINGS         12
+#define UI_ZERO_SETTINGS                    13
+#define UI_USERRIGHT_SETTINGS               14
+#define UI_TOOL_STRUCT_SETTINGS             15
 
 enum MainMenuId
 {

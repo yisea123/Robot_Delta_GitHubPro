@@ -71,7 +71,7 @@ protected:
     int                   m_dO;          /**< IO索引号*/
     int                   m_dB;          /**< IO值*/
     int                   m_dU;          /**< 用户坐标系号*/
-    //int                   m_dP;          /**< X方向列数*/
+//    int                   m_dP;          /**< X方向列数*/
     int                   m_dK;          /**< Y方向行数*/
     double                   m_dD;          /**< 延时超时时间s*/
     int                   m_dH;          /**scara手系0-all 1-left 2-right 3-change hand no warning*/
@@ -93,7 +93,7 @@ protected:
     bool  m_isMoveBAssign;      /**< B位置是否赋值 */
     bool  m_isMoveUAssign;      /**< U位置是否赋值 */
     bool  m_isMoveDAssign;      /**< D位置是否赋值 */
-    //bool  m_isMovePAssign;      /**< U位置是否赋值 */
+//    bool  m_isMovePAssign;      /**< U位置是否赋值 */
     bool  m_isMoveKAssign;      /**< K位置是否赋值 */
     bool  m_isMoveHAssign;      /**< H位置是否赋值 */
     ToolInfo* m_curToolInfo;

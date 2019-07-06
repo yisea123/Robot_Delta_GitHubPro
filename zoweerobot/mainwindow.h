@@ -8,8 +8,10 @@
 #include <QLabel>
 #include <QMenu>
 #include <QAction>
+#include <Vector>
 
 #include "ComonTypes.h"
+#include "TDialog.h"
 
 using std::vector;
 
@@ -40,16 +42,19 @@ signals:
 
 public slots:
     void updataData();
+    void goToUiPage(int page);
+    //void goToUiPage2(int page);
+    
 signals:
 //    void sendMsgToSchedule(QString msg);
 
-private slots:
-    void goToUiPage(int page);
+private slots:    
     void setCurrentUiPage(int id);
 //    void currentMenuChanged(int row);
     void stop_clicked();
 
-
+    void readPendingDatagrams();   // test
+    
     void on_enable_clicked(bool checked);
     void on_mode_clicked(bool checked);
     void on_axis1pos_pressed();
@@ -68,6 +73,18 @@ private slots:
 
     void on_axis4neg_pressed();
 
+    void on_axis5pos_pressed();
+
+    void on_axis5neg_pressed();
+
+    void on_axis6pos_pressed();
+
+    void on_axis6neg_pressed();
+
+    void on_axis7pos_pressed();
+
+    void on_axis7neg_pressed();
+
     void on_reset_clicked();
 
     void on_horizontalSlider_valueChanged(int value);
@@ -77,8 +94,6 @@ private slots:
     void on_setorian_clicked();
 
     void on_start_clicked();
-
-    void on_cyclerun_clicked(bool checked);
 
 	void on_movpos_clicked(bool checked);
 
@@ -90,6 +105,12 @@ private slots:
 	void on_axis3neg_released();
 	void on_axis4pos_released();
 	void on_axis4neg_released();
+    void on_axis5pos_released();
+    void on_axis5neg_released();
+    void on_axis6pos_released();
+    void on_axis6neg_released();
+    void on_axis7pos_released();
+    void on_axis7neg_released();
 	void on_carcoor_clicked(bool checked);
 	
 	
@@ -100,34 +121,28 @@ private slots:
 
     void on_backzero_clicked();
 
-    void on_axis5neg_pressed();
+    void on_servoOn_clicked();
 
-    void on_axis5pos_pressed();
+    void on_servoOff_clicked();
 
-    void on_axis6neg_pressed();
+//    void on_ckbCycleRun_clicked(bool checked);
 
-    void on_axis6pos_pressed();
-
-    void on_axis5neg_released();
-
-    void on_axis5pos_released();
-
-    void on_axis6neg_released();
-
-    void on_axis6pos_released();
-
+    void on_emgcStop_clicked();
+    
 private:
     void setupMainMenuGroup();
-    void createMenuList();
+    void createSubMenuList();
     void connectMenuWithUi(QList<InfoUI *> &widgets);
     void addMenuButton(int nType, QString name,int id);
 //    void addMenuText(int nType, QString name);
 
 //    void setDefaultMenuSelection();
 
-    void createHelpText();
+    //void createHelpText();
 
     void createStatusBar();
+
+    void GetAllSysPara(void);
 
 private:
     Ui::MainWindow   *ui;
@@ -152,6 +167,10 @@ private:
     int cyclerun;
     int enable;
     int mode;
+
+    QIcon m_IconOn;
+    QIcon m_IconOff;
+    TDialog * m_pDialog;
 };
 
 #endif // MAINWINDOW_H

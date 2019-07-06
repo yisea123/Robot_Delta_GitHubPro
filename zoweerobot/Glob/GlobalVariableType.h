@@ -1,4 +1,4 @@
-#ifndef GCODEEXECUTECOMONTYPE_H
+ï»¿#ifndef GCODEEXECUTECOMONTYPE_H
 #define GCODEEXECUTECOMONTYPE_H
 
 #include <QString>
@@ -14,6 +14,9 @@ class ToolInfo;
 #include  "GCodeComonType.h"
 #include  "ToolInfo.h"
 #include "GlobalDefine.h"
+
+#define CoordFormat "%9.3f"
+
 #define TRUE 1
 #define FALSE 0
 #define  PI    3.1415926535897932384626
@@ -26,6 +29,7 @@ class ToolInfo;
 #define  AXIS_W  3
 #define  AXIS_P  4
 #define  AXIS_R  5
+#define  AXIS_M  6
 
 #define  AXIS_T  2
 #define  AXIS_C  3
@@ -124,6 +128,8 @@ typedef  struct  _TeachPoint
     unsigned short  index;
     unsigned char    toolindex;//0~20
     unsigned char    hand;//0-All 1-left  2-hand
+    unsigned char    zone;
+    unsigned char    reserved1;
     unsigned char    reserved[4];
 }TeachPoint;
 
@@ -817,12 +823,30 @@ public:
 //        m_mouldsParm.push_back(p);
         m_MachineCoordinate = Point(0, 0,0,0,0,0);
         m_clampPosition.append(Point(0, 0,0,0,0,0));
-	 sys_ctrl.sendinput[1]=2;
+
+        memset(SystemParam,0,sizeof(SystemParam));
+        memset(axisno,0,sizeof(axisno));
+	 memset(&sys_ctrl,0,sizeof(sys_ctrl));        
+	 sys_ctrl.sendinput[1]=2;  // ËÙ¶È°Ù·Ö±È
+	 memset(m_current,0,sizeof(m_current));
 	 m_currentTool=0;
 	 teachreadfinished=0;
 	 TeachSaveCnt = 0;
 	 getaxinofinished=0;
 	 getsysparamfinished=0;
+	 memset(teachpoint,0,sizeof(teachpoint));
+	 memset(teachpointtext,0,sizeof(teachpointtext));
+	 memset(coor_car_pos,0,sizeof(coor_car_pos));
+	 memset(coor_joint_pos,0,sizeof(coor_joint_pos));
+
+	 memset(m_cVersion,0,sizeof(m_cVersion));
+	 memset(m_battery,0,sizeof(m_battery));
+
+	 memset(ToolCalResult,0,sizeof(ToolCalResult));
+	 memset(zeropos,0,sizeof(zeropos));
+	 memset(&Robot_Link,0,sizeof(Robot_Link));
+       memset(m_userParam,0,sizeof(m_userParam));
+       m_bIsCollectMotionData = false;
     }
 
     float SystemParam[256];
@@ -872,11 +896,15 @@ public:
      TeachPoint teachpoint[TEACHPIONTNUM];
 	char teachpointtext[TEACHPIONTNUM][128];
 	int teachreadfinished;
-	int TeachSaveCnt;
+	int TeachSaveCnt; // ±£´æ×´Ì¬ 0:²»ÔÚ±£´æÖÐ£¬ 1-100:±£´æ½ø¶È
 	int axisno[16];
+	char PidParaGrpName[5][100]; // Pid²ÎÊý×é ×¢ÊÍ
+	float PidParaGrp[5][6*MOF]; // 5×é Pid²ÎÊý.
 	int getaxinofinished;
 	int getsysparamfinished;
+	int getpidparamfinished[MOF];
 	QString               m_userfilePath;
+	bool m_bIsCollectMotionData; // ²É¼¯ÔË¶¯Êý¾Ý
     void setUserParm(UserParameter u)
     {
         m_User = u;

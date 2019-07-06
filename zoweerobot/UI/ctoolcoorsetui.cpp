@@ -35,79 +35,89 @@ void CToolCoorSetUi::init()
 {
      memset(stepnum,0,sizeof(stepnum));
     
-    QTimer* timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()),
-            this, SLOT(updataData()));
-    timer->start(100);
+   // QTimer* timer = new QTimer(this);
+   // connect(timer, SIGNAL(timeout()),this, SLOT(updataData()));
+    //timer->start(100);
 
 
+}
+// ¶¨Ê±¸üÐÂµÄÊý¾Ý
+void CToolCoorSetUi::TimerUpdateViewData(void)
+{
+    CCommmomUIWidget::TimerUpdateViewData(); //
+
+    updataData();
 }
 
 void CToolCoorSetUi::updataData()
 {
-     /*ui->x->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[0]);
-	 ui->y->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[1]);
-	 ui->z->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[2]);
-	 ui->r->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[3]);
+    /*ui->x->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[0]);
+     ui->y->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[1]);
+     ui->z->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[2]);
+     ui->r->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[3]);
 
-	 ui->A->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[0]);
-	 ui->B->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[1]);
-	 ui->C->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[2]);
-	 ui->D->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[3]);*/
+     ui->A->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[0]);
+     ui->B->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[1]);
+     ui->C->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[2]);
+     ui->D->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[3]);*/
 #ifdef PROGRAM_USELVDS
-        ui->zero_multi->setText(QString::fromLocal8Bit("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¦"));
-        ui->zero_single->setText(QString::fromLocal8Bit("ï¿½ï¿½ï¿½ãµ¥È¦"));
-	  ui->axis1_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[0]);
-	 ui->axis1_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[1]);
-	 ui->axis2_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[2]);
-	 ui->axis2_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[3]);
-	  ui->axis3_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[4]);
-	 ui->axis3_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[5]);
-	 ui->axis4_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[6]);
-	 ui->axis4_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[7]);
-	 ui->axis5_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[8]);
-	 ui->axis5_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[9]);
-	 ui->axis6_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[10]);
-	 ui->axis6_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[11]);
+    ui->zero_multi->setText(QString::fromLocal8Bit("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¦"));
+    ui->zero_single->setText(QString::fromLocal8Bit("ï¿½ï¿½ï¿½ãµ¥È¦"));
+    ui->axis1_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[0]);
+    ui->axis1_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[1]);
+    ui->axis2_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[2]);
+    ui->axis2_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[3]);
+    ui->axis3_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[4]);
+    ui->axis3_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[5]);
+    ui->axis4_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[6]);
+    ui->axis4_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[7]);
+    ui->axis5_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[8]);
+    ui->axis5_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[9]);
+    ui->axis6_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[10]);
+    ui->axis6_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[11]);
+    ui->axis7_zero_multi->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[12]);
+    ui->axis7_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[13]);
 #else
-	ui->real_multi->setText(QString::fromLocal8Bit("                         "));
-     ui->real_single->setText(QString::fromLocal8Bit("Êµ¼ÊÎ»ÖÃ"));
-       //ui->axis1_multi->setNum(0);
-     ui->axis1_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[1]);
-      //ui->axis2_multi->setNum(0);
-     ui->axis2_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[3]);
-       //ui->axis3_multi->setNum(0);
-     ui->axis3_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[5]);
-      //ui->axis4_multi->setNum(0);
-     ui->axis4_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[7]);
-      // ui->axis5_multi->setNum(0);
-     ui->axis5_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[9]);
-      //ui->axis6_multi->setNum(0);
-     ui->axis6_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[11]);
+    ui->real_multi->setText(QString::fromLocal8Bit("                         "));
+    ui->real_single->setText(QString::fromLocal8Bit("Êµ¼ÊÎ»ÖÃ"));
+    //ui->axis1_multi->setNum(0);
+    ui->axis1_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[1]);
+    //ui->axis2_multi->setNum(0);
+    ui->axis2_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[3]);
+    //ui->axis3_multi->setNum(0);
+    ui->axis3_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[5]);
+    //ui->axis4_multi->setNum(0);
+    ui->axis4_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[7]);
+    // ui->axis5_multi->setNum(0);
+    ui->axis5_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[9]);
+    //ui->axis6_multi->setNum(0);
+    ui->axis6_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[11]);
+    ui->axis7_single->setNum((int)m_pScheduler->m_pSystemParameter->realaxis[13]);
 
-	ui->zero_multi->setText(QString::fromLocal8Bit("                       "));
-        ui->zero_single->setText(QString::fromLocal8Bit("ÁãµãÎ»ÖÃ"));
-	 //ui->axis1_zero_multi->setNum(0);
-	 ui->axis1_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[1]);
-	  //ui->axis2_zero_multi->setNum(0);
-	 ui->axis2_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[3]);
-	  // ui->axis3_zero_multi->setNum(0);
-	 ui->axis3_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[5]);
-	  //ui->axis4_zero_multi->setNum(0);
-	 ui->axis4_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[7]);
-	  //ui->axis5_zero_multi->setNum(0);
-	 ui->axis5_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[9]);
-	  //ui->axis6_zero_multi->setNum(0);
-	 ui->axis6_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[11]);
+    ui->zero_multi->setText(QString::fromLocal8Bit("                       "));
+    ui->zero_single->setText(QString::fromLocal8Bit("ÁãµãÎ»ÖÃ"));
+    //ui->axis1_zero_multi->setNum(0);
+    ui->axis1_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[1]);
+    //ui->axis2_zero_multi->setNum(0);
+    ui->axis2_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[3]);
+    // ui->axis3_zero_multi->setNum(0);
+    ui->axis3_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[5]);
+    //ui->axis4_zero_multi->setNum(0);
+    ui->axis4_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[7]);
+    //ui->axis5_zero_multi->setNum(0);
+    ui->axis5_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[9]);
+    //ui->axis6_zero_multi->setNum(0);
+    ui->axis6_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[11]);
+    ui->axis7_zero_single->setNum((int)m_pScheduler->m_pSystemParameter->zeropos[13]);
 #endif
-	/* ui->A1->setNum(m_pScheduler->m_pSystemParameter->Robot_Link.A1);
-	 ui->A2->setNum(m_pScheduler->m_pSystemParameter->Robot_Link.A2);
-	 ui->A3->setNum(m_pScheduler->m_pSystemParameter->Robot_Link.A3);
-	 ui->D3->setNum(m_pScheduler->m_pSystemParameter->Robot_Link.D3);
-	 ui->D4->setNum(m_pScheduler->m_pSystemParameter->Robot_Link.D4);
-	 ui->Df->setNum(m_pScheduler->m_pSystemParameter->Robot_Link.Df);
+    /* ui->A1->setNum(m_pScheduler->m_pSystemParameter->Robot_Link.A1);
+     ui->A2->setNum(m_pScheduler->m_pSystemParameter->Robot_Link.A2);
+     ui->A3->setNum(m_pScheduler->m_pSystemParameter->Robot_Link.A3);
+     ui->D3->setNum(m_pScheduler->m_pSystemParameter->Robot_Link.D3);
+     ui->D4->setNum(m_pScheduler->m_pSystemParameter->Robot_Link.D4);
+     ui->Df->setNum(m_pScheduler->m_pSystemParameter->Robot_Link.Df);
 
-	  
+
 
         m_curtoolindex = ui->toolindex->value();
         ui->tool_x->setNum(m_pScheduler->m_pSystemParameter->ToolCalResult[m_curtoolindex].X);
@@ -125,7 +135,7 @@ void CToolCoorSetUi::updataData()
         }
     }*/
 
-	 
+
 }
 /*void CToolCoorSetUi::on_biaoding_clicked()
 {
@@ -199,4 +209,9 @@ void CToolCoorSetUi::on_setzeroaxis5_clicked()
 void CToolCoorSetUi::on_setzeroaxis6_clicked()
 {
 	m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/setorian", "7");
+}
+
+void CToolCoorSetUi::on_setzeroaxis7_clicked()
+{
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/setorian", "8");
 }

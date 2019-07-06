@@ -22,6 +22,7 @@ public:
 // Operations
 public:
     CNetSocket(MotionControllerDevice * pDlg, QString serverIP,quint16 netPort1,quint16 netPort2);
+    CNetSocket(MotionControllerDevice * pDlg, QHostAddress serverIP,quint16 netPort1,quint16 netPort2);
 	virtual ~CNetSocket();
 
 // Overrides

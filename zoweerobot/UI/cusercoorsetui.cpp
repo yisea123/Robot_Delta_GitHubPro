@@ -36,37 +36,47 @@ void cusercoorsetui::init()
 {
      memset(stepnum,0,sizeof(stepnum));
     
-    QTimer* timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()),
-            this, SLOT(updataData()));
-    timer->start(100);
-
-
+    //QTimer* timer = new QTimer(this);
+    //connect(timer, SIGNAL(timeout()),this, SLOT(updataData()));
+    //timer->start(100);
 }
 
+// 定时更新的数据
+void cusercoorsetui::TimerUpdateViewData(void)
+{
+    CCommmomUIWidget::TimerUpdateViewData(); //
+
+    updataData();
+}
 
 
 
 void cusercoorsetui::updataData()
 {
-     ui->x->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[0]);
-	 ui->y->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[1]);
-	 ui->z->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[2]);
-	 ui->r->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[3]);
+    ui->x->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[0]);
+    ui->y->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[1]);
+    ui->z->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[2]);
+    ui->r->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[3]);
+    ui->w->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[4]);
+    ui->p->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[5]);
+    ui->m->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[6]);
 
-	 ui->A->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[0]);
-	 ui->B->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[1]);
-	 ui->C->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[2]);
-	 ui->D->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[3]);
+    ui->A->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[0]);
+    ui->B->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[1]);
+    ui->C->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[2]);
+    ui->D->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[3]);
+    ui->E->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[4]);
+    ui->F->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[5]);
+    ui->G->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[6]);
 
-        m_userindex = ui->userindex->value();
-        ui->user_a->setNum(m_pScheduler->m_pSystemParameter->m_userParam[m_userindex].X);
-        ui->user_b->setNum(m_pScheduler->m_pSystemParameter->m_userParam[m_userindex].Y);
-	 ui->user_c->setNum(m_pScheduler->m_pSystemParameter->m_userParam[m_userindex].Z);
-        ui->user_d->setNum(m_pScheduler->m_pSystemParameter->m_userParam[m_userindex].W);
-   
-
-	 
+    m_userindex = ui->userindex->value();
+    ui->user_a->setNum(m_pScheduler->m_pSystemParameter->m_userParam[m_userindex].X);
+    ui->user_b->setNum(m_pScheduler->m_pSystemParameter->m_userParam[m_userindex].Y);
+    ui->user_c->setNum(m_pScheduler->m_pSystemParameter->m_userParam[m_userindex].Z);
+    ui->user_d->setNum(m_pScheduler->m_pSystemParameter->m_userParam[m_userindex].W);
+    ui->user_e->setNum(m_pScheduler->m_pSystemParameter->m_userParam[m_userindex].P);
+    ui->user_f->setNum(m_pScheduler->m_pSystemParameter->m_userParam[m_userindex].R);
+    ui->user_g->setNum(m_pScheduler->m_pSystemParameter->m_userParam[m_userindex].M);
 }
 
 int cusercoorsetui::GetUserTrans(IN  CartesianPose* i_user1,IN  CartesianPose*  i_user2,IN  CartesianPose* i_CPos_1, IN  CartesianPose* i_CPos_2, 

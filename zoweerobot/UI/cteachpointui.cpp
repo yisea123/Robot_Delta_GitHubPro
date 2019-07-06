@@ -8,6 +8,9 @@ cteachpointui::cteachpointui(QWidget *parent) :
     ui(new Ui::cteachpointui)
 {
     ui->setupUi(this);
+
+    m_pDialog = NULL;
+    m_Saving = false;
 }
 
 
@@ -25,19 +28,28 @@ cteachpointui::cteachpointui(QWidget *parent, SystemSchedule* schedule) :
     timer->start(100);
     model = new QStandardItemModel(this);
     init();
-
+    
+    ui->getteachpoint->setHidden(true);
 }
 cteachpointui::~cteachpointui()
 {
     delete ui;
 }
 
+// ¶¨Ê±¸üÐÂµÄÊý¾Ý
+void cteachpointui::TimerUpdateViewData(void)
+{
+    CCommmomUIWidget::TimerUpdateViewData();
+    updataData();
+}
+
+
 void cteachpointui::init()
 {
 	
 	m_idisplaycnt=0;
 	/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½*/
-	model->setColumnCount(8);
+	model->setColumnCount(9);
 	model->setHeaderData(0,Qt::Horizontal, QString::fromLocal8Bit("Ê¾½ÌµãÐòºÅ"));
 	model->setHeaderData(1,Qt::Horizontal, "X");
 	model->setHeaderData(2,Qt::Horizontal, "Y");
@@ -45,9 +57,11 @@ void cteachpointui::init()
 	model->setHeaderData(4,Qt::Horizontal, "W");
 	model->setHeaderData(5,Qt::Horizontal, "P");
 	model->setHeaderData(6,Qt::Horizontal, "R");
+    model->setHeaderData(7,Qt::Horizontal, "M");
 	//model->setHeaderData(7,Qt::Horizontal, QString::fromLocal8Bit("¹¤¾ßºÅ"));
 	//model->setHeaderData(8,Qt::Horizontal, QString::fromLocal8Bit("ÊÖÏµ"));
-	model->setHeaderData(7,Qt::Horizontal, QString::fromLocal8Bit("×¢ÊÍ"));
+	//model->setHeaderData(9,Qt::Horizontal, QString::fromLocal8Bit("¹ý¶ÉµÈ¼¶"));
+    model->setHeaderData(8,Qt::Horizontal, QString::fromLocal8Bit("×¢ÊÍ"));
 	/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½*/
 	/*model->setRowCount(3);
 	model->setHeaderData(0,Qt::Vertical, QString::fromLocal8Bit("ï¿½ï¿½Â¼Ò»"));
@@ -64,10 +78,12 @@ void cteachpointui::init()
 		model->setItem(i, 4, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].pos[3]))); 
 		model->setItem(i, 5, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].pos[4]))); 
 		model->setItem(i, 6, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].pos[5])));
+        model->setItem(i, 7, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].pos[6])));
 		//model->setItem(i, 7, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].toolindex)));
 		//model->setItem(i, 8, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].hand)));
+		//model->setItem(i, 9, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].zone)));
 		
-		model->setItem(i, 7, new QStandardItem(QString::fromLocal8Bit(m_pScheduler->m_pSystemParameter->teachpointtext[i])));
+        model->setItem(i, 8, new QStandardItem(QString::fromLocal8Bit(m_pScheduler->m_pSystemParameter->teachpointtext[i])));
 	}
 	ui->teachpointtable->setModel(model);
 
@@ -96,6 +112,7 @@ void cteachpointui::updataData()
 	 ui->w->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[3]);
 	 ui->p->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[4]);
 	 ui->r->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[5]);
+     ui->m->setNum(m_pScheduler->m_pSystemParameter->coor_car_pos[6]);
 
 	 ui->A->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[0]);
 	 ui->B->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[1]);
@@ -103,6 +120,7 @@ void cteachpointui::updataData()
 	 ui->D->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[3]);
 	 ui->E->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[4]);
 	 ui->F->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[5]);
+     ui->G->setNum(m_pScheduler->m_pSystemParameter->coor_joint_pos[6]);
 
 	 if(m_pScheduler->m_pSystemParameter->teachreadfinished)
 	 {
@@ -116,11 +134,12 @@ void cteachpointui::updataData()
 				model->setItem(i, 3, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].pos[2]))); 
 				model->setItem(i, 4, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].pos[3]))); 
 				model->setItem(i, 5, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].pos[4]))); 
-				model->setItem(i, 6, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].pos[5]))); 
+                model->setItem(i, 6, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].pos[5])));
+                model->setItem(i, 7, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].pos[6])));
 				//model->setItem(i, 7, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].toolindex)));
 				//model->setItem(i, 8, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->teachpoint[i].hand)));
 				//model->setItem(i, 7, new QStandardItem(m_pScheduler->m_pSystemParameter->teachpointtext[i].toString()));
-				model->setItem(i, 7, new QStandardItem(QString::fromLocal8Bit(m_pScheduler->m_pSystemParameter->teachpointtext[i])));
+                model->setItem(i, 8, new QStandardItem(QString::fromLocal8Bit(m_pScheduler->m_pSystemParameter->teachpointtext[i])));
 			}
 			ui->teachpointtable->setModel(model);
 			//m_idisplaycnt+=256;
@@ -155,6 +174,10 @@ void cteachpointui::updataData()
 
 void cteachpointui::on_openteachpoint_clicked()
 {
+    if(!m_pScheduler->NetIsConnect()){
+        QMessageBox::information(this,QString::fromLocal8Bit("ÍøÂçÎ´Á¬½Ó"),QString::fromLocal8Bit("Ã»·¨¶ÁÈ¡!"));
+        return;
+    }
       m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/getteachpoint", "all");
       /*for(int i=0;i<TEACHPIONTNUM;i++)
 	{
@@ -183,19 +206,21 @@ void cteachpointui::on_addteachpoint_clicked()
 		model->setItem(curRow, 3, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[2]))); 
 		model->setItem(curRow, 4, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[3]))); 
 		model->setItem(curRow, 5, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[4]))); 
-		model->setItem(curRow, 6, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[5]))); 
+        model->setItem(curRow, 6, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[5])));
+        model->setItem(curRow, 7, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[6])));
 		//model->setItem(curRow, 7, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->m_currentTool)));
                
                {
 		     //model->setItem(curRow,8, new QStandardItem(QString("%1").arg(0)));
                }
-	        model->setItem(curRow, 7, new QStandardItem(QString("")));
+            model->setItem(curRow, 8, new QStandardItem(QString("")));
 	}
 	ui->teachpointtable->setModel(model);
 }
 
 void cteachpointui::on_saveteachpoint_clicked()
 {
+    int cnt=0;
 	//int curRow=ui->teachpointtable->currentIndex().row();//Ñ¡ï¿½ï¿½ï¿½ï¿½
        QAbstractItemModel *modessl = ui->teachpointtable->model();
        QModelIndex indextemp;// = modessl->index(curRow,i);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½i ï¿½ï¿½ï¿½ï¿½ÒªÈ¡Öµï¿½ï¿½ï¿½Ðµï¿½ï¿½Â±ï¿½
@@ -225,11 +250,13 @@ void cteachpointui::on_saveteachpoint_clicked()
 		m_pScheduler->m_pSystemParameter->teachpoint[i].pos[4]=datatemp.toDouble();
 		datatemp = modessl->data(modessl->index(i,6));
 		m_pScheduler->m_pSystemParameter->teachpoint[i].pos[5]=datatemp.toDouble();
+        datatemp = modessl->data(modessl->index(i,7));
+        m_pScheduler->m_pSystemParameter->teachpoint[i].pos[6]=datatemp.toDouble();
 		//datatemp = modessl->data(modessl->index(i,7));
 		//m_pScheduler->m_pSystemParameter->teachpoint[i].toolindex=datatemp.toInt();
 		//datatemp = modessl->data(modessl->index(i,8));
 		//m_pScheduler->m_pSystemParameter->teachpoint[i].hand=datatemp.toInt();
-		datatemp = modessl->data(modessl->index(i,7));
+        datatemp = modessl->data(modessl->index(i,8));
 		//m_pScheduler->m_pSystemParameter->teachpointtext[i]=datatemp;
 		strcpy(m_pScheduler->m_pSystemParameter->teachpointtext[i],datatemp.toString().toLocal8Bit().data());
 	}
@@ -253,9 +280,10 @@ void cteachpointui::on_deleteteachpoint_clicked()
 		model->setItem(curRow, 4, new QStandardItem(QString("%1").arg(0))); 
 		model->setItem(curRow, 5, new QStandardItem(QString("%1").arg(0)));
 		model->setItem(curRow, 6, new QStandardItem(QString("%1").arg(0)));
+        model->setItem(curRow, 7, new QStandardItem(QString("%1").arg(0)));
 		//model->setItem(curRow, 7, new QStandardItem(QString("%1").arg(0)));
 		//model->setItem(curRow, 8, new QStandardItem(QString("%1").arg(0)));
-		model->setItem(curRow, 7, new QStandardItem(QString("")));
+        model->setItem(curRow, 8, new QStandardItem(QString("")));
 	}
 	ui->teachpointtable->setModel(model);
         //if((curRow>=0)&&(curRow<256))model->removeRow(curRow);//ï¿½Æ³ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
@@ -273,13 +301,14 @@ void cteachpointui::on_getteachpoint_clicked()
 		model->setItem(curRow, 3, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[2]))); 
 		model->setItem(curRow, 4, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[3]))); 
 		model->setItem(curRow, 5, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[4]))); 
-		model->setItem(curRow, 6, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[5]))); 
+        model->setItem(curRow, 6, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[5])));
+        model->setItem(curRow, 7, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[6])));
 		//model->setItem(curRow, 7, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->m_currentTool)));
                
                {
 		     //model->setItem(curRow,8, new QStandardItem(QString("%1").arg(0)));
                }
-	        model->setItem(curRow, 7, new QStandardItem(QString("")));
+            model->setItem(curRow, 8, new QStandardItem(QString("")));
 	}
 	ui->teachpointtable->setModel(model);
 }
@@ -325,11 +354,15 @@ void cteachpointui::on_movetopoint_pressed()
 		m_pScheduler->m_pSystemParameter->teachpoint[i].pos[4]=datatemp.toDouble();
 		datatemp = modessl->data(modessl->index(i,6));
 		m_pScheduler->m_pSystemParameter->teachpoint[i].pos[5]=datatemp.toDouble();
+        datatemp = modessl->data(modessl->index(i,7));
+        m_pScheduler->m_pSystemParameter->teachpoint[i].pos[6]=datatemp.toDouble();
 		//datatemp = modessl->data(modessl->index(i,7));
 		//m_pScheduler->m_pSystemParameter->teachpoint[i].toolindex=datatemp.toInt();
 		//datatemp = modessl->data(modessl->index(i,8));
 		//m_pScheduler->m_pSystemParameter->teachpoint[i].hand=datatemp.toInt();
-		datatemp = modessl->data(modessl->index(i,7));
+//		datatemp = modessl->data(modessl->index(i,8));
+//		m_pScheduler->m_pSystemParameter->teachpoint[i].zone=datatemp.toInt();
+        datatemp = modessl->data(modessl->index(i,8));
 		//m_pScheduler->m_pSystemParameter->teachpointtext[i]=datatemp;
 		strcpy(m_pScheduler->m_pSystemParameter->teachpointtext[i],datatemp.toString().toLocal8Bit().data());
 	}

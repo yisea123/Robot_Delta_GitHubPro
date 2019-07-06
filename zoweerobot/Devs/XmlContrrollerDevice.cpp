@@ -135,7 +135,7 @@ bool XmlContrrollerDevice::writeXmlMachineParm(QDomDocument& doc, QDomElement& r
     writeXmlParm(doc, machineParm, QString("机器回零坐标Y"), QString::number(para->m_machineOriginalPosition.y));
     writeXmlParm(doc, machineParm, QString("机器回零坐标T"), QString::number(para->m_machineOriginalPosition.z));
     writeXmlParm(doc, machineParm, QString("机器回零坐标C"), QString::number(para->m_machineOriginalPosition.r));
-    //writeXmlParm(doc, machineParm, QString("机器回零坐标V"), QString::number(para->m_machineOriginalPosition.v));
+//    writeXmlParm(doc, machineParm, QString("机器回零坐标V"), QString::number(para->m_machineOriginalPosition.v));
 
     /* 生产参数 */
     writeXmlParm(doc, machineParm, QString("丝杆润滑时间"), QString::number(para->m_dScrewleverOilTime));
@@ -469,7 +469,7 @@ bool XmlContrrollerDevice::readXmlMachineParm(QDomNode& node, MachineParemeter* 
         readXmlDParm(list, listNum++, QString("机器回零坐标Y"), para->m_machineOriginalPosition.y, e);
         readXmlDParm(list, listNum++, QString("机器回零坐标T"), para->m_machineOriginalPosition.z, e);
         readXmlDParm(list, listNum++, QString("机器回零坐标C"), para->m_machineOriginalPosition.r, e);
-        //readXmlDParm(list, listNum++, QString("机器回零坐标V"), para->m_machineOriginalPosition.v, e);
+//        readXmlDParm(list, listNum++, QString("机器回零坐标V"), para->m_machineOriginalPosition.v, e);
 
         readXmlDParm(list, listNum++, QString("丝杆润滑时间"), para->m_dScrewleverOilTime, e);
         readXmlDParm(list, listNum++, QString("丝杆润滑间隔"), para->m_dScrewleverOilInterval, e);

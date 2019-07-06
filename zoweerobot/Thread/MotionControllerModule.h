@@ -85,6 +85,9 @@ public:
     int  initModule(QList<InfoUI *>& u);
     void monitorControllerValue(unsigned char* recv, int size);
 
+    MotionControllerModule::_MotionWorkStatus GetCurWorkStatus(void);
+    bool IsManualIdleStatus(void);
+    //enum ManualStatus{MANUAL_START, MANUAL_RUN, MANUAL_WAIT, MANUAL_IDLE,MANUAL_MOVSTOP,MANUAL_WORLD_START,MANUAL_MOVE_START,MANUAL_MOVE_STOP,MANUAL_WORLDMOVE_START,MANUAL_WORLDMOVE_STOP,MANUAL_BACKZERO,MANUAL_GETVERSION,MANUAL_GETBATTERY,MANUAL_SETBATTERY,MANUAL_SAVETEACHPOINT,MANUAL_SAVETEACHPOINTTEXT,MANUAL_GETTEACHPOINT,MANUAL_MOVETOPOINT,MANUAL_DOWNUSERFILE,MANUAL_SETAXISNO,MANUAL_GETAXISNO,MANUAL_GETSYSPARAM} m_ManualStatus;
 
 private:
     void initMotionControllerModule();
@@ -146,6 +149,12 @@ private:
     int m_movepointnum;
 	int m_userfileblock;
 	QFile *m_userfile;
+
+	int m_nPidCmd;
+	int m_nPidAxis;
+	int m_nPidLen;
+	int m_nCanDebug;
+	int m_nCanDebuglevel;
     //QString m_argFromUI;
     bool m_bIsJogMotionStart;
     bool m_bIsJogMotionStop;

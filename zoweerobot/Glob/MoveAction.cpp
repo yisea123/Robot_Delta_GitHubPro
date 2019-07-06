@@ -31,7 +31,7 @@ NAxis MoveAction::pointToPoint(ProcessInterVariableCache* cache, SystemParameter
     m_newPoint.r = m_endPoint.r;
     //m_newPoint.c = m_dAngle;
     //m_newPoint.t = m_oldPoint.t;
-   // m_newPoint.v = m_oldPoint.v;
+//    m_newPoint.v = m_oldPoint.v;
 
     m_newPosition = dAxisToNAxis(m_newPoint, para);
 

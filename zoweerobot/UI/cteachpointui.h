@@ -21,6 +21,8 @@ public:
     explicit cteachpointui(QWidget *parent = 0);
     cteachpointui(QWidget *parent, SystemSchedule* schedule);
     ~cteachpointui();
+    virtual void TimerUpdateViewData(void);
+
     void init();
 private:
 	void stop_clicked();

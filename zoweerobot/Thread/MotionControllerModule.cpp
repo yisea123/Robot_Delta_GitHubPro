@@ -158,6 +158,21 @@ int MotionControllerModule::initModule(QList<InfoUI *>& u)
     return 0;
 }
 
+// »ñÈ¡µ±Ç°×´Ì¬
+MotionControllerModule::_MotionWorkStatus MotionControllerModule::GetCurWorkStatus(void)
+{
+    return m_WorkStatus;
+}
+
+// ÅÐ¶Ï ÊÖ¶¯ÊÇ·ñ´¦ÓÚ¿ÕÏÐ×´Ì¬
+bool MotionControllerModule::IsManualIdleStatus(void)
+{
+    if(m_ManualStatus == MANUAL_IDLE){
+        return true;
+    }
+    return false;
+}
+
 /*************************************************
   函数名称：connectUIResource()
   函数功能：连接UI
@@ -682,17 +697,58 @@ void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
 			}
 					 
                 }
-                else
-                {
-                  
-                    m_bisCycleRun = false;
-                    	   		     	
-                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("循环加工取消"));
-                    //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("循环加工取消"), STATUSBAR_STATUS_OFF_INFO);
+                else if(arg == "ok"){
+                    m_bisCycleRun = true;                    	   		     	
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("Ñ­»·¼Ó¹¤¿ªÆô"));
+                }
+                else  // cancel
+                {                  
+                    m_bisCycleRun = false;                    	   		     	
+                    m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("Ñ­»·¼Ó¹¤È¡Ïû"));
+                    //m_pScheduler->writeMsgToStatusBar(QString::fromLocal8Bit("Ñ­»·¼Ó¹¤È¡Ïû"), STATUSBAR_STATUS_OFF_INFO);
                 }
             }
-            
-           
+            else if (msg == "getPIDParamer")
+            {             
+
+                      	{
+                           // if (arg == "15")
+                            {
+                            	  
+                                m_nPidAxis=(arg.toInt()/10)-1;
+				  m_nPidCmd=((m_nPidAxis>=0)&&(m_nPidAxis<MOF))?2:0;
+				   m_nPidLen=3;//(arg.toInt()%10)
+                            }
+                      	}
+                        
+            }
+            else if (msg == "setPIDParamer")
+            {             
+
+                      	{
+                           // if (arg == "15")
+                            {
+                            	  
+                                m_nPidAxis=(arg.toInt()/10)-1;
+				  m_nPidCmd=((m_nPidAxis>=0)&&(m_nPidAxis<MOF))?1:0;
+				   m_nPidLen=3;//(arg.toInt()%10)
+                            }
+                      	}
+                        
+            }
+	     else if (msg == "setCanDebug")
+            {             
+
+                      	{
+                           // if (arg == "15")
+                            {
+                            	  
+                                m_nCanDebug=1;
+				   m_nCanDebuglevel=(arg.toInt()%10);
+                            }
+                      	}
+                        
+            }
             else
             {
             		qDebug()<<"m_WorkStatus"<<m_WorkStatus;
@@ -708,6 +764,11 @@ void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
                     {                                          
                             if (isReadyToStartMotion())//安全监测
                             {
+                                if (arg == "cycle"){  // Ñ­»·
+                                    m_bisCycleRun = true;
+                                }else{
+                                    m_bisCycleRun = false;
+                                }
                                 if (isServoEnable()&&(2==isServoMode()))
                                 {
                                 	  qDebug()<<"procMotionModel start";
@@ -1036,6 +1097,46 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                 }
             }
         }
+      else if (msg == "mPMotion")
+         {
+             if (isServoEnable())// && isAxisXYEnableMove(!m_bIsDebugMode)
+             {
+                 if (m_ManualStatus == MANUAL_IDLE)
+                 {
+                     m_nMoveAxis = AXIS_M;
+                     m_dMoveDis = arg.toDouble();
+                     m_ManualStatus = MANUAL_START;
+                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
+                     //m_pScheduler->recvRunInfoFromAllModules("R杞寸Щ鍔 + arg + "mm");
+                     return;
+                 }
+                 else
+                 {
+                     m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("璇风瓑寰呯Щ鍔ㄦ寚浠ゅ畬鎴怺 杩愯鐘舵€侊細%1锛屾寚浠わ細%2锛屽唴瀹癸細%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                     return;
+                 }
+             }
+         }
+      else if (msg == "mPMotion_world")
+         {
+             if (isServoEnable())// && isAxisXYEnableMove(!m_bIsDebugMode)
+             {
+                 if (m_ManualStatus == MANUAL_IDLE)
+                 {
+                     m_nMoveAxis = AXIS_M;
+                     m_dMoveDis = arg.toDouble();
+                     m_ManualStatus = MANUAL_WORLD_START;
+                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
+                     //m_pScheduler->recvRunInfoFromAllModules("X杞寸Щ鍔 + arg + "mm");
+             return;
+                 }
+                 else
+                 {
+                     m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("璇风瓑寰呯Щ鍔ㄦ寚浠ゅ畬鎴怺 杩愯鐘舵€侊細%1锛屾寚浠わ細%2锛屽唴瀹癸細%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                     return;
+                 }
+             }
+         }
 	  else if (msg == "xNMotion")
         {
             if (isServoEnable())// && isAxisXYEnableMove(!m_bIsDebugMode)
@@ -1276,6 +1377,46 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                 }
             }
         }
+      else if (msg == "mNMotion")
+         {
+             if (isServoEnable())// && isAxisXYEnableMove(!m_bIsDebugMode)
+             {
+                 if (m_ManualStatus == MANUAL_IDLE)
+                 {
+                     m_nMoveAxis = AXIS_M;
+                     m_dMoveDis = -arg.toDouble();
+                     m_ManualStatus = MANUAL_START;
+                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
+                     //m_pScheduler->recvRunInfoFromAllModules("R杞寸Щ鍔 + arg + "mm");
+                     return;
+                 }
+                 else
+                 {
+                     m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("璇风瓑寰呯Щ鍔ㄦ寚浠ゅ畬鎴怺 杩愯鐘舵€侊細%1锛屾寚浠わ細%2锛屽唴瀹癸細%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                     return;
+                 }
+             }
+         }
+      else if (msg == "mNMotion_world")
+         {
+             if (isServoEnable())// && isAxisXYEnableMove(!m_bIsDebugMode)
+             {
+                 if (m_ManualStatus == MANUAL_IDLE)
+                 {
+                     m_nMoveAxis = AXIS_M;
+                     m_dMoveDis = -arg.toDouble();
+                     m_ManualStatus = MANUAL_WORLD_START;
+                     m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
+                     //m_pScheduler->recvRunInfoFromAllModules("X杞寸Щ鍔 + arg + "mm");
+             return;
+                 }
+                 else
+                 {
+                     m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("璇风瓑寰呯Щ鍔ㄦ寚浠ゅ畬鎴怺 杩愯鐘舵€侊細%1锛屾寚浠わ細%2锛屽唴瀹癸細%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                     return;
+                 }
+             }
+         }
 	 else if ((msg == "xPMove")||(msg == "xPMove_world")||(msg == "xNMove")||(msg == "xNMove_world"))
         {
             if (isServoEnable())// && isAxisXYEnableMove(!m_bIsDebugMode)
@@ -1529,6 +1670,48 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
                 }
             }
         }
+      else if ((msg == "mPMove")||(msg == "mPMove_world")||(msg == "mNMove")||(msg == "mNMove_world"))
+      {
+          if (isServoEnable())// && isAxisXYEnableMove(!m_bIsDebugMode)
+          {
+              if (m_ManualStatus == MANUAL_IDLE)
+              {
+                  m_nMoveAxis = AXIS_M;
+          if((msg == "mPMove")||(msg == "mPMove_world"))
+          {
+              m_dMoveDis=1;
+          }
+          else if((msg == "mNMove")||(msg == "mNMove_world"))
+          {
+              m_dMoveDis=-1;
+          }
+          if(arg=="start")
+          {
+                      m_dMoverun = 1;
+          }
+          else
+          {
+              m_dMoverun = 0;
+          }
+          if((msg == "mPMove")||(msg == "mNMove"))
+          {
+                      m_ManualStatus = MANUAL_MOVE_START;
+          }
+          else if((msg == "mPMove_world")||(msg == "mNMove_world"))
+          {
+              m_ManualStatus = MANUAL_WORLDMOVE_START;
+          }
+                  m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
+                  //m_pScheduler->recvRunInfoFromAllModules("X杞寸Щ鍔 + arg + "mm");
+          return;
+              }
+              else
+              {
+                  m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("璇风瓑寰呯Щ鍔ㄦ寚浠ゅ畬鎴怺 杩愯鐘舵€侊細%1锛屾寚浠わ細%2锛屽唴瀹癸細%3 ]").arg(m_ManualStatus).arg(msg).arg(arg));
+                  return;
+              }
+          }
+      }
 	  else if(msg=="setParamer")
 	  {
 	        if(arg=="all")
@@ -1732,6 +1915,7 @@ void MotionControllerModule::absorbManualMotionModule(QString msg, QString arg)
 				//m_toolsetstep=2;
 	                    m_ManualStatus = MANUAL_BACKZERO;
 	                    m_WorkStatus = MOTION_WORK_MANUAL_MOTION;
+	                    ((MotionControllerDevice *)m_pDevice)->InitGoHome();
 	                    m_pScheduler->recvRunInfoFromAllModules("back to zero");
 	                    return;
 	                }
@@ -2124,6 +2308,7 @@ void MotionControllerModule::doMotion()
     //qDebug()<<"d st"<<m_WorkStatus;
     //qDebug()<<"m_WorkStatus = "<<m_WorkStatus;
     int sts = 1;
+    int i, homeStep=0;
     switch (m_WorkStatus)
     {
     case MOTION_WORK_NORMAL_BOOT:
@@ -2177,7 +2362,7 @@ void MotionControllerModule::doMotion()
 
 		case SETTING_ORIAN:
             qDebug()<<"set orian";
-	     if (((MotionControllerDevice *)m_pDevice)->setOrian(m_nZeroaxis))
+         if (((MotionControllerDevice *)m_pDevice)->setOrian())
             {
                 m_ManualStatus = MANUAL_IDLE;
 		   m_WorkStatus= MOTION_WORK_IDLE;
@@ -2560,17 +2745,17 @@ void MotionControllerModule::doMotion()
            {
            	    if (((MotionControllerDevice *)m_pDevice)->setMotionMode(2))
            	    {
-					
-			     if (((MotionControllerDevice *)m_pDevice)->backHome())
-		            {
-		                m_ManualStatus = MANUAL_IDLE;
-				   //m_WorkStatus = MOTION_WORK_IDLE;
-		                m_pProcessCacheHandler->m_bIsManualMotion = true;
-		            }
-		            else
-		            {
-		               
-		            }
+			     for(i=0;i<4;i++){
+			         if (((MotionControllerDevice *)m_pDevice)->backHome(homeStep) == 1){ // ³É¹¦
+			             if(homeStep>=4){  // Íê³É 
+			                 m_ManualStatus = MANUAL_IDLE;
+			                 m_pProcessCacheHandler->m_bIsManualMotion = true;
+			                 break;
+			             }
+			         }else{  // »º³åÇø ÒÑÂú
+			             break;
+			         }
+			     }			     
            	    }
            }
             break;
@@ -2628,7 +2813,12 @@ void MotionControllerModule::doMotion()
            }
             break;
 	case MANUAL_SAVETEACHPOINT:
-	    qDebug()<<"manual SAVETEACHPOINT";
+	    qDebug()<<"manual SAVETEACHPOINT";  // ±£´æÊ¾½Ìµã
+	    if(!getSystemScheduleHandle()->NetIsConnect()){ // ÍøÂç¶Ï¿ªÊ±
+	        m_ManualStatus = MANUAL_IDLE;
+	        m_pProcessCacheHandler->m_bIsManualMotion = true;
+	        break;
+	    }
            if (saveTeachPoint())
            {
            	   	    
@@ -2639,7 +2829,12 @@ void MotionControllerModule::doMotion()
            }
             break;
 	case MANUAL_SAVETEACHPOINTTEXT:
-	    qDebug()<<"manual SAVETEACHPOINTTEXT";
+	    qDebug()<<"manual SAVETEACHPOINTTEXT";  // ±£´æ×¢ÊÍ
+	    if(!getSystemScheduleHandle()->NetIsConnect()){ // ÍøÂç¶Ï¿ªÊ±
+	        m_ManualStatus = MANUAL_IDLE;
+	        m_pProcessCacheHandler->m_bIsManualMotion = true;
+	        break;
+	    }
 	       if (saveTeachPointText())
 	       {
 	       	   	    
@@ -2891,6 +3086,16 @@ void MotionControllerModule::doMotion()
     default:
         break;
     }
+    if(m_nPidCmd)
+    {       
+    	   ((MotionControllerDevice *)m_pDevice)->PIDParam(m_nPidCmd,m_nPidAxis,m_nPidLen);
+	   m_nPidCmd=0;  
+    }
+	if(m_nCanDebug)
+    {       
+    	   ((MotionControllerDevice *)m_pDevice)->setCanDebug(m_nCanDebuglevel);
+	   m_nCanDebug=0;  
+    }
     //qDebug()<<"d en"<<m_WorkStatus;
     feedbackSystemState();
     //((MotionControllerDevice *)m_pDevice)->m_netctrl->ontimeout();
@@ -2922,18 +3127,20 @@ void MotionControllerModule::systemReset()
     m_errInfo.e_type = DEBUG_NO_ERROR;
 }
 
+// ±£´æÊ¾½Ìµã µ½ÏÂÎ»»ú
 int MotionControllerModule::saveTeachPoint()
 {
     int cnt;
+    
      //static int overcnt=0;
-     if(m_startteachpoint<TEACHPIONTNUM)
+     if(m_startteachpoint<((TEACHPIONTNUM/6)*6))
      {
-           for(;m_startteachpoint<TEACHPIONTNUM;)
+           for(;m_startteachpoint<((TEACHPIONTNUM/6)*6);)
            {
-		    if (((MotionControllerDevice *)m_pDevice)->PutTeachPoint(m_startteachpoint, m_startteachpoint+3, (unsigned char*)&m_pScheduler->getSystemParameterHandler()->teachpoint[m_startteachpoint]))
+		    if (((MotionControllerDevice *)m_pDevice)->PutTeachPoint(m_startteachpoint, m_startteachpoint+5, (unsigned char*)&m_pScheduler->getSystemParameterHandler()->teachpoint[m_startteachpoint]))
 		    {
-		        m_startteachpoint+=4;
-			 cnt = (double)m_startteachpoint/TEACHPIONTNUM*10;
+		        m_startteachpoint+=6;
+		        cnt = (double)m_startteachpoint/TEACHPIONTNUM*10;
 		        getSystemParameterHandle()->TeachSaveCnt = cnt<1?1:cnt;
 			 /*if(overcnt++>20)
 			 {
@@ -2947,14 +3154,14 @@ int MotionControllerModule::saveTeachPoint()
 		    }
            }
      } 
-     /*else if(m_startteachpoint>=TEACHPIONTNUM)
+     else if((m_startteachpoint>=((TEACHPIONTNUM/6)*6))&&(m_startteachpoint<TEACHPIONTNUM))
      {
-            //if (((MotionControllerDevice *)m_pDevice)->PutTeachPoint(((TEACHPIONTNUM/6)*6), TEACHPIONTNUM-1, (unsigned char*)&m_pScheduler->getSystemParameterHandler()->teachpoint[((TEACHPIONTNUM/6)*6)]))
+            if (((MotionControllerDevice *)m_pDevice)->PutTeachPoint(((TEACHPIONTNUM/6)*6), TEACHPIONTNUM-1, (unsigned char*)&m_pScheduler->getSystemParameterHandler()->teachpoint[((TEACHPIONTNUM/6)*6)]))
 	    {
 	        m_startteachpoint=TEACHPIONTNUM;
 	    }		
-     }*/
-     else if(m_startteachpoint>=TEACHPIONTNUM)
+     }
+     else if(m_startteachpoint==TEACHPIONTNUM)
      {
             if (((MotionControllerDevice *)m_pDevice)->PutSaveTeachPoint())
 	    {
@@ -2970,10 +3177,11 @@ int MotionControllerModule::saveTeachPoint()
      return false;
 }
 
-
+// ±£´æÊ¾½Ìµã×¢ÊÍ µ½ÏÂÎ»»ú
 int MotionControllerModule::saveTeachPointText()
 {
-     int cnt;
+    int cnt;
+    
      //static int overcnt=0;
      if(m_startteachpoint<(TEACHPIONTNUM))
      {

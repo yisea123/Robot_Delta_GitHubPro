@@ -74,5 +74,6 @@
         <file>images/edit.png</file>
         <file>images/edit_off.png</file>
         <file>images/edit_on.png</file>
+        <file>images/setoff2.png</file>
     </qresource>
 </RCC>

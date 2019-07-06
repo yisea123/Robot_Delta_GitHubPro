@@ -26,6 +26,11 @@
 #include "NetSocket.h"
 #include "qtoolbutton.h"
 
+#define btnStyleSheet "QPushButton{border: 2px groove gray;border-style: outset;}QPushButton:hover{\
+                        background-color:white;color: black;}QPushButton:pressed{\
+                        background-color:rgb(85, 170, 255);border-style: inset; }"
+
+QUdpSocket *receiver=NULL;
 
 MainWindow::MainWindow(UserParameter  parm, QWidget *parent) :
     QMainWindow(parent),
@@ -41,15 +46,28 @@ MainWindow::MainWindow(UserParameter  parm, QWidget *parent) :
     enable=0;
     mode=0;
     ui->start->setEnabled(0);
-    ui->cyclerun->setEnabled(0);
+    //ui->cyclerun->setEnabled(0);
+
+    m_IconOff = QIcon(":/images/setoff.png");
+    m_IconOn = QIcon(":/images/seton.png");
 
     QTimer* timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()),
-            this, SLOT(updataData()));
+    connect(timer, SIGNAL(timeout()),this, SLOT(updataData()));
     timer->start(100);
-	
-//    setWindowState(Qt::WindowMaximized);
-    
+
+    //setWindowState(Qt::WindowMaximized);
+    //resize(800, 600);
+   // this->setWindowFlags(Qt::FramelessWindowHint); // 150527
+    ui->warning->hide();
+    ui->servoOn->setStyleSheet(btnStyleSheet);
+    ui->servoOff->setStyleSheet(btnStyleSheet);
+    ui->emgcStop->setStyleSheet("QPushButton{background-color:rgb(46, 170, 0);color: black;border-radius: 10px;border: 2px groove gray;border-style: outset;font: 20px;}\
+                                QPushButton:hover{color: white;font: 25px;}");
+    // test
+    //receiver = new QUdpSocket(this);
+    //receiver->bind(QHostAddress("192.168.3.10"), 65001);
+    //connect(receiver, SIGNAL(readyRead()),this, SLOT(readPendingDatagrams()));
+
 }
 
 MainWindow::~MainWindow()
@@ -68,7 +86,7 @@ void MainWindow::createDisplayUIs(QList<InfoUI *> &widgets)
     setupMainMenuGroup();
 
     // Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó²Ëµï¿½
-    createMenuList();
+    createSubMenuList();
 
 //        // ï¿½ï¿½ï¿½ï¿½ï¿½Ó²Ëµï¿½ï¿½ï¿½ui
 //        connectMenuWithUi(widgets);
@@ -108,7 +126,7 @@ void MainWindow::setCurrentUiPage(int id)
 
     ui->uis->setCurrentIndex(id);
     sonMenuLastID[nCurrentPage] = id;
-//    ((CCommmomUIWidget *)(ui->uis->currentWidget()))->UpdateViewData(); //
+    ((CCommmomUIWidget *)(ui->uis->currentWidget()))->UpdateViewData(); //
 
     /*
     for(i=0;i<sonMenuGrp.at(nCurrentPage)->buttons().count();i++){
@@ -182,7 +200,7 @@ void MainWindow::setupMainMenuGroup()
     ui->program->setChecked(true);
 }
 
-void MainWindow::createMenuList()
+void MainWindow::createSubMenuList()
 {
     for(int i = 0; i < UI_PAGE_NUMBER; i++)
     {
@@ -825,6 +843,204 @@ void MainWindow::on_axis4neg_pressed()
      }
 }
 
+void MainWindow::on_axis5pos_pressed()
+{
+     (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;
+    if(movemode)//ï¿½ï¿½ï¿½ï¿½
+     {
+             double moveLen = ui->moveLength->value();
+            if(!movecoor)
+            {
+
+             if (fabs(moveLen) > 0.0001)
+             {
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pPMotion", QString::number(moveLen));
+             }
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pPMotion_world", QString::number(moveLen));
+         }
+     }
+     else//ï¿½ï¿½ï¿½ï¿½
+     {
+             if(!movecoor)
+            {
+
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pPMove", "start");
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pPMove_world", "start");
+         }
+     }
+}
+
+void MainWindow::on_axis5neg_pressed()
+{
+     (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;
+    if(movemode)//ï¿½ï¿½ï¿½ï¿½
+     {
+             double moveLen = ui->moveLength->value();
+            if(!movecoor)
+            {
+
+             if (fabs(moveLen) > 0.0001)
+             {
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pNMotion", QString::number(moveLen));
+             }
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pNMotion_world", QString::number(moveLen));
+         }
+     }
+     else//ï¿½ï¿½ï¿½ï¿½
+     {
+             if(!movecoor)
+            {
+
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pNMove", "start");
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pNMove_world", "start");
+         }
+     }
+}
+
+void MainWindow::on_axis6pos_pressed()
+{
+     (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;
+    if(movemode)//ï¿½ï¿½ï¿½ï¿½
+     {
+             double moveLen = ui->moveLength->value();
+            if(!movecoor)
+            {
+
+             if (fabs(moveLen) > 0.0001)
+             {
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rPMotion", QString::number(moveLen));
+             }
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rPMotion_world", QString::number(moveLen));
+         }
+     }
+     else//ï¿½ï¿½ï¿½ï¿½
+     {
+             if(!movecoor)
+            {
+
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rPMove", "start");
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rPMove_world", "start");
+         }
+     }
+}
+
+void MainWindow::on_axis6neg_pressed()
+{
+     (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;
+    if(movemode)//ï¿½ï¿½ï¿½ï¿½
+     {
+             double moveLen = ui->moveLength->value();
+            if(!movecoor)
+            {
+
+             if (fabs(moveLen) > 0.0001)
+             {
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rNMotion", QString::number(moveLen));
+             }
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rNMotion_world", QString::number(moveLen));
+         }
+     }
+     else//ï¿½ï¿½ï¿½ï¿½
+     {
+             if(!movecoor)
+            {
+
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rNMove", "start");
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rNMove_world", "start");
+         }
+     }
+}
+
+void MainWindow::on_axis7pos_pressed()
+{
+     (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;
+    if(movemode)//ï¿½ï¿½ï¿½ï¿½
+     {
+             double moveLen = ui->moveLength->value();
+            if(!movecoor)
+            {
+
+             if (fabs(moveLen) > 0.0001)
+             {
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mPMotion", QString::number(moveLen));
+             }
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mPMotion_world", QString::number(moveLen));
+         }
+     }
+     else//ï¿½ï¿½ï¿½ï¿½
+     {
+             if(!movecoor)
+            {
+
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mPMove", "start");
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mPMove_world", "start");
+         }
+     }
+}
+
+void MainWindow::on_axis7neg_pressed()
+{
+     (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;
+    if(movemode)//ï¿½ï¿½ï¿½ï¿½
+     {
+             double moveLen = ui->moveLength->value();
+            if(!movecoor)
+            {
+
+             if (fabs(moveLen) > 0.0001)
+             {
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mNMotion", QString::number(moveLen));
+             }
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mNMotion_world", QString::number(moveLen));
+         }
+     }
+     else//ï¿½ï¿½ï¿½ï¿½
+     {
+             if(!movecoor)
+            {
+
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mNMove", "start");
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mNMove_world", "start");
+         }
+     }
+}
+
 void MainWindow::on_reset_clicked()
 {
     SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/reset", "yes");
@@ -834,10 +1050,8 @@ void MainWindow::on_horizontalSlider_valueChanged(int value)
 {
     //QString tempvel;
 
-	SystemScheduler->m_pSystemParameter->sysvel=value;
-     ui->vel->setNum(value);
-    //tempvel.number(value,10);
-    //ui->vel->setText(tempvel);
+    SystemScheduler->m_pSystemParameter->sysvel=value;
+    ui->vel->setText(QString::asprintf("%3d%%",value));
     (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[1])=value;
 
 }
@@ -855,33 +1069,15 @@ void MainWindow::on_setorian_clicked()
 
 void MainWindow::on_start_clicked()
 {
-	qDebug()<<"motion start";
-    (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;
-    SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "start motion");
-    //ui->cyclerun->setEnabled(0);
-}
+    qDebug()<<"motion start";
+    (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;  // È¡Ïû Í£Ö¹Ö¸Áî
 
-void MainWindow::on_cyclerun_clicked(bool checked)
-{
-     
-    //if (checked)
-    if(!cyclerun)
-   {
-   	
-   	(SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;
-	ui->cyclerun->setText(QString::fromLocal8Bit("Ñ­»·¼Ó¹¤"));
-       SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "cycle run", "cycle");
-	cyclerun=1;
-    //SystemScheduler->m_pSystemParameter->m_sysctrl.ctrlmode=1;
-   }
-   else
-   {
-       //(SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])|=0x2;
-       ui->cyclerun->setText(QString::fromLocal8Bit("Ñ­»·È¡Ïû"));
-       SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "cycle run", "single");
-       cyclerun=0;
-    //SystemScheduler->m_pSystemParameter->m_sysctrl.ctrlmode=2;
-   }
+    if(!ui->ckbCycleRun->isChecked()){ // µ¥¸ö
+        SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "start motion");
+    }else{ // Ñ­»·ÔËÐÐ
+        SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "start motion", "cycle");
+    }
+    //ui->cyclerun->setEnabled(0);
 }
 
 void MainWindow::on_movpos_clicked(bool checked)
@@ -1064,6 +1260,132 @@ void MainWindow::on_axis4neg_released()
      }
 }
 
+void MainWindow::on_axis5pos_released()
+{
+     if(movemode)//ï¿½ï¿½ï¿½ï¿½
+     {
+
+     }
+     else//ï¿½ï¿½ï¿½ï¿½
+     {
+             if(!movecoor)
+            {
+
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pPMove", "stop");
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pPMove_world", "stop");
+         }
+         stop_clicked();
+     }
+}
+
+void MainWindow::on_axis5neg_released()
+{
+      if(movemode)//ï¿½ï¿½ï¿½ï¿½
+     {
+
+     }
+     else//ï¿½ï¿½ï¿½ï¿½
+     {
+             if(!movecoor)
+            {
+
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pNMove", "stop");
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pNMove_world", "stop");
+         }
+         stop_clicked();
+     }
+}
+
+void MainWindow::on_axis6pos_released()
+{
+     if(movemode)//ï¿½ï¿½ï¿½ï¿½
+     {
+
+     }
+     else//ï¿½ï¿½ï¿½ï¿½
+     {
+             if(!movecoor)
+            {
+
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rPMove", "stop");
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rPMove_world", "stop");
+         }
+         stop_clicked();
+     }
+}
+
+void MainWindow::on_axis6neg_released()
+{
+      if(movemode)//ï¿½ï¿½ï¿½ï¿½
+     {
+
+     }
+     else//ï¿½ï¿½ï¿½ï¿½
+     {
+             if(!movecoor)
+            {
+
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rNMove", "stop");
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rNMove_world", "stop");
+         }
+         stop_clicked();
+     }
+}
+
+void MainWindow::on_axis7pos_released()
+{
+     if(movemode)//ï¿½ï¿½ï¿½ï¿½
+     {
+
+     }
+     else//ï¿½ï¿½ï¿½ï¿½
+     {
+             if(!movecoor)
+            {
+
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mPMove", "stop");
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mPMove_world", "stop");
+         }
+         stop_clicked();
+     }
+}
+
+void MainWindow::on_axis7neg_released()
+{
+      if(movemode)//ï¿½ï¿½ï¿½ï¿½
+     {
+
+     }
+     else//ï¿½ï¿½ï¿½ï¿½
+     {
+             if(!movecoor)
+            {
+
+                 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mNMove", "stop");
+            }
+         else
+         {
+                SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mNMove_world", "stop");
+         }
+         stop_clicked();
+     }
+}
+
 void MainWindow::on_carcoor_clicked(bool checked)
 {
       if (checked)
@@ -1082,7 +1404,7 @@ void MainWindow::on_stop_clicked()
 	(SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])|=0x2;
 	SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "cycle run", "single");
 	cyclerun=0;
-	ui->cyclerun->setEnabled(1);
+//	ui->cyclerun->setEnabled(1);
 }
 
 void MainWindow::on_hold_clicked(bool checked)
@@ -1103,285 +1425,283 @@ void MainWindow::on_backzero_clicked()
     SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/backzero", "yes");
 }
 
-void MainWindow::updataData()
+void MainWindow::readPendingDatagrams()
+ {
+    int size=0;
+    char buf[4096]={0};
+
+     while (receiver->hasPendingDatagrams()) {
+         QByteArray datagram;
+         datagram.resize(receiver->pendingDatagramSize());
+         size = datagram.size();
+         memcpy(buf,datagram.data(),size);
+         receiver->readDatagram(buf, size);
+         //Êý¾Ý½ÓÊÕÔÚdatagramÀï
+         /* readDatagram º¯ÊýÔ­ÐÍ
+          qint64 readDatagram(char *data,qint64 maxSize,QHostAddress *address=0,quint16 *port=0)
+         */
+     }
+ }
+
+// »ñÈ¡ ÔË¶¯²ÎÊý, °å¿¨±àºÅ,ËÅ·þPID²ÎÊý
+void MainWindow::GetAllSysPara(void)
 {
-    if((SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x1)==1)
-    {
-        //SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/servoEnable", "yes");
-	 ui->enable->setText(QString::fromLocal8Bit("Ê¹ÄÜ"));
-	 ui->enable->setChecked(1);
-	 ui->start->setEnabled(1);
-	 ui->cyclerun->setEnabled(1);
-    }
-    else
-    {
-        //SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/servoEnable", "no");
-	ui->enable->setText(QString::fromLocal8Bit("Ê§µç"));
-	ui->enable->setChecked(0);
-	ui->start->setEnabled(0);
-	 ui->cyclerun->setEnabled(0);
+    int i;
+    int cnt[2]={0,0};
+    int cnt2[7]={0,0,0,0,0,0,0};
+
+    SystemScheduler->m_pSystemParameter->getsysparamfinished = 0;
+    SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/getsysparam", "yes");
+    while(SystemScheduler->m_pSystemParameter->getsysparamfinished==0){
+        cnt[0]++;
+        if(cnt[0]>=10){
+            SystemScheduler->m_pSystemParameter->getsysparamfinished = 1; //
+            break;
+        }
+        QThread::msleep(50);
     }
 
-    /* if(0x40000==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0xc0000))
+    SystemScheduler->m_pSystemParameter->getaxinofinished=0;
+    SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/getaxisno", "yes");
+    while(SystemScheduler->m_pSystemParameter->getaxinofinished==0){
+        cnt[1]++;
+        if(cnt[1]>=10){
+            SystemScheduler->m_pSystemParameter->getaxinofinished = 1; //
+            break;
+        }
+        QThread::msleep(50);
+    }
+
+    //-----------------------------------------------------------------------------
+    for(i=0;i<2;i++){  // ÏÖÔÚÎÊÌâ:µÚÒ»´ÎÇý¶¯Æ÷·´À¡µÄÊý¾Ý¿ÉÄÜ»áÊÇÂÒµÄ. ¹Ê¶à¶ÁÒ»´Î. ÏÈ±ÜÃâÕâ¸öÎÊÌâ
+        SystemScheduler->m_pSystemParameter->getpidparamfinished[0] = 0;
+        SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "getPIDParamer", "15");
+        while(SystemScheduler->m_pSystemParameter->getpidparamfinished[0]==0){
+            cnt2[0]++;
+            if(cnt2[0]>=10){
+                SystemScheduler->m_pSystemParameter->getpidparamfinished[0] = 1; //
+                break;
+            }
+            QThread::msleep(50);
+        }
+    }
+
+    SystemScheduler->m_pSystemParameter->getpidparamfinished[1] = 0;
+    SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "getPIDParamer", "25");
+    while(SystemScheduler->m_pSystemParameter->getpidparamfinished[1]==0){
+        cnt2[1]++;
+        if(cnt2[1]>=10){
+            SystemScheduler->m_pSystemParameter->getpidparamfinished[1] = 1; //
+            break;
+        }
+        QThread::msleep(50);
+    }
+
+    SystemScheduler->m_pSystemParameter->getpidparamfinished[2] = 0;
+    SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "getPIDParamer", "35");
+    while(SystemScheduler->m_pSystemParameter->getpidparamfinished[2]==0){
+        cnt2[2]++;
+        if(cnt2[2]>=10){
+            SystemScheduler->m_pSystemParameter->getpidparamfinished[2] = 1; //
+            break;
+        }
+        QThread::msleep(50);
+    }
+
+    SystemScheduler->m_pSystemParameter->getpidparamfinished[3] = 0;
+    SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "getPIDParamer", "45");
+    while(SystemScheduler->m_pSystemParameter->getpidparamfinished[3]==0){
+        cnt2[3]++;
+        if(cnt2[3]>=10){
+            SystemScheduler->m_pSystemParameter->getpidparamfinished[3] = 1; //
+            break;
+        }
+        QThread::msleep(50);
+    }
+
+    SystemScheduler->m_pSystemParameter->getpidparamfinished[4] = 0;
+    SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "getPIDParamer", "55");
+    while(SystemScheduler->m_pSystemParameter->getpidparamfinished[4]==0){
+        cnt2[4]++;
+        if(cnt2[4]>=10){
+            SystemScheduler->m_pSystemParameter->getpidparamfinished[4] = 1; //
+            break;
+        }
+        QThread::msleep(50);
+    }
+
+    SystemScheduler->m_pSystemParameter->getpidparamfinished[5] = 0;
+    SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "getPIDParamer", "65");
+    while(SystemScheduler->m_pSystemParameter->getpidparamfinished[5]==0){
+        cnt2[5]++;
+        if(cnt2[5]>=10){
+            SystemScheduler->m_pSystemParameter->getpidparamfinished[5] = 1; //
+            break;
+        }
+        QThread::msleep(50);
+    }
+
+    SystemScheduler->m_pSystemParameter->getpidparamfinished[6] = 0;
+    SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "getPIDParamer", "75");
+    while(SystemScheduler->m_pSystemParameter->getpidparamfinished[6]==0){
+        cnt2[6]++;
+        if(cnt2[6]>=10){
+            SystemScheduler->m_pSystemParameter->getpidparamfinished[6] = 1; //
+            break;
+        }
+        QThread::msleep(50);
+    }
+
+}
+
+void MainWindow::updataData()
+{
+    static int preServoState=-1;
+    static int preNetState=-1;
+    static int cnt=0;
+    static int firstConn = 0; // 0:Î´Á¬½Ó¹ý 1:Ê×´ÎÁ¬½ÓÍøÂç 2:¶à´ÎÁ¬½Ó
+    CCommmomUIWidget *curWidget=NULL;
+    int bState=0;
+    /*
+    MotionControllerDevice *pDev=NULL;
+    FrameBody frame;
+    frame.length = 3;
+
+    pDev = (MotionControllerDevice *)(SystemScheduler->getModulesList()->at(1)->getDevice());
+    if(pDev->m_socket2!=NULL){
+        //pDev->m_socket2->m_serverip = QHostAddress::Broadcast; // QHostAddress("192.168.3.10"); // QHostAddress::LocalHost;
+        //pDev->m_socket2->m_serverport = 53001;
+        pDev->m_socket2->Uart_Send(0, (char *)&frame, frame.length);
+    }*/
+
+    // ÅÐ¶ÏÍøÂçÊÇ·ñÁ¬½Ó
+    if(SystemScheduler->NetIsConnect()){
+        bState = 1;
+    }else{
+        bState = 0;
+        cnt++;
+    }
+    if(preNetState != bState){
+        if(bState){
+            if(firstConn < 2){
+                firstConn++;
+            }
+            ui->btnNetState->setText(QString::fromLocal8Bit("Í¨"));
+            ui->btnNetState->setStyleSheet("QPushButton{"
+                                           "background-color: rgb(46, 170, 0);"
+                                           "color: white;"
+                                           "border-radius: 10px;"
+                                           "border: 2px groove gray;"
+                                           "border-style: outset;}");
+        }else{
+            ui->btnNetState->setText(QString::fromLocal8Bit("¶Ï"));
+            ui->btnNetState->setStyleSheet("QPushButton{"
+                                           "background-color: darkgray;"
+                                           "color: white;"
+                                           "border-radius: 10px;"
+                                           "border: 2px groove gray;"
+                                           "border-style: outset;}");
+        }
+        preNetState = bState;
+    }
+    if(firstConn == 1){
+        firstConn++;
+        GetAllSysPara();
+    }
+
+    if(SystemScheduler->GetServoState()){ // Ê¹ÄÜ
+        bState = 1;
+    }else{
+        bState = 0;
+    }
+    if(preServoState != bState){
+        ui->start->setEnabled(bState);
+//        QPalette pal = ui->btnServoState->palette();
+        if(bState){
+            ui->btnServoState->setText(QString::fromLocal8Bit("¿ª"));
+            ui->btnServoState->setStyleSheet("QPushButton{"
+                                             "background-color: rgb(46, 170, 0);"
+                                             "color: white;"
+                                             "border-radius: 10px;"
+                                             "border: 2px groove gray;"
+                                             "border-style: outset;}");
+        }else{
+            ui->btnServoState->setText(QString::fromLocal8Bit("¶Ï"));
+            ui->btnServoState->setStyleSheet("QPushButton{"
+                                             "background-color: darkgray;"
+                                             "color: white;"
+                                             "border-radius: 10px;"
+                                             "border: 2px groove gray;"
+                                             "border-style: outset;}");
+        }
+        preServoState = bState;
+    }
+
+
+     if(0x40000==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0xc0000))
     {
         //SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "1");
-	 ui->mode->setText(QString::fromLocal8Bit("ÊÖ¶¯"));
+     ui->mode->setText(QString::fromLocal8Bit("ÊÖ¶¯"));
     }
     else  if(0x80000==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0xc0000))
     {
         //SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "2");
-	 ui->mode->setText(QString::fromLocal8Bit("×Ô¶¯"));
+     ui->mode->setText(QString::fromLocal8Bit("×Ô¶¯"));
     }
     else
     {
-    	ui->mode->setText(QString::fromLocal8Bit("Ä£Ê½"));
-    }*/
-
-      if(0x20==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x60))
-	 {
-	 	  ui->mode->setText(QString::fromLocal8Bit("ÊÖ¶¯"));
-	 }
-	 else if(0x40==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x60))
-	  {
-        //SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "2");
-	 ui->mode->setText(QString::fromLocal8Bit("×Ô¶¯"));
-        }
-	else
-       {
-    	    ui->mode->setText(QString::fromLocal8Bit("Ä£Ê½"));
-       }
+        ui->mode->setText(QString::fromLocal8Bit("Ä£Ê½"));
+    }
 
     if((SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x200)==0x200)//hold
-    {        
-	 ui->hold->setChecked(1);
+    {
+     ui->hold->setChecked(1);
     }
     else
     {
-	ui->hold->setChecked(0);
+    ui->hold->setChecked(0);
     }
 
     /*if((SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x10000)==0x10000)//stop
-    {        
-	 ui->stop->setChecked(1);
+    {
+     ui->stop->setChecked(1);
     }
     else
     {
-	ui->stop->setChecked(0);
+    ui->stop->setChecked(0);
     }*/
-}
-void MainWindow::on_axis5neg_pressed()
-{
-	(SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;//clear stopbit
-      if(movemode)//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     double moveLen = ui->moveLength->value();
-            if(!movecoor)
-            {
-		     
-		     if (fabs(moveLen) > 0.0001)
-		     {
-		         SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pNMotion", QString::number(moveLen));
-		     }
-            }
-	     else
-	     {
-	     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pNMotion_world", QString::number(moveLen));
-	     }
-     }	
-     else//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     if(!movecoor)
-            {
-		
-		         SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pNMove", "start");
-            }
-	     else
-	     {
-	     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pNMove_world", "start");
-	     }
-     }
-}
 
-void MainWindow::on_axis5pos_pressed()
-{
-     (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;//clear stopbit
-     if(movemode)//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     double moveLen = ui->moveLength->value();
-            if(!movecoor)
-            {
-		     
-		     if (fabs(moveLen) > 0.0001)
-		     {
-		         SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pPMotion", QString::number(moveLen));
-		     }
-            }
-	     else
-	     {
-	     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pPMotion_world", QString::number(moveLen));
-	     }
-     }	
-     else//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     if(!movecoor)
-            {
-		
-		         SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pPMove", "start");
-            }
-	     else
-	     {
-	     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pPMove_world", "start");
-	     }
-     }
-}
-
-void MainWindow::on_axis6neg_pressed()
-{
-	(SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;//clear stopbit
-      if(movemode)//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     double moveLen = ui->moveLength->value();
-            if(!movecoor)
-            {
-		     
-		     if (fabs(moveLen) > 0.0001)
-		     {
-		         SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rNMotion", QString::number(moveLen));
-		     }
-            }
-	     else
-	     {
-	     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rNMotion_world", QString::number(moveLen));
-	     }
-     }	
-     else//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     if(!movecoor)
-            {
-		
-		         SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rNMove", "start");
-            }
-	     else
-	     {
-	     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rNMove_world", "start");
-	     }
-     }
-}
-
-void MainWindow::on_axis6pos_pressed()
-{
-	 (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x2;//clear stopbit
-     if(movemode)//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     double moveLen = ui->moveLength->value();
-            if(!movecoor)
-            {
-		     
-		     if (fabs(moveLen) > 0.0001)
-		     {
-		         SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rPMotion", QString::number(moveLen));
-		     }
-            }
-	     else
-	     {
-	     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rPMotion_world", QString::number(moveLen));
-	     }
-     }	
-     else//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     if(!movecoor)
-            {
-		
-		         SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rPMove", "start");
-            }
-	     else
-	     {
-	     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rPMove_world", "start");
-	     }
-     }
-}
-
-void MainWindow::on_axis5neg_released()
-{
-	  if(movemode)//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     
-     }	
-     else//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     if(!movecoor)
-            {
-		
-		         SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pNMove", "stop");
-            }
-	     else
-	     {
-	     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pNMove_world", "stop");
-	     }
-	     stop_clicked();
-     }
-}
-
-void MainWindow::on_axis5pos_released()
-{
-	  if(movemode)//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     
-     }	
-     else//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     if(!movecoor)
-            {
-		
-		         SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pPMove", "stop");
-            }
-	     else
-	     {
-	     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/pPMove_world", "stop");
-	     }
-	     stop_clicked();
-     }
+    curWidget = dynamic_cast<CCommmomUIWidget *>(ui->uis->currentWidget());
+    if(curWidget != NULL){
+        curWidget->TimerUpdateViewData();
+    }
 
 }
 
-void MainWindow::on_axis6neg_released()
+void MainWindow::on_servoOn_clicked()
 {
-	  if(movemode)//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     
-     }	
-     else//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     if(!movecoor)
-            {
-		
-		         SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rNMove", "stop");
-            }
-	     else
-	     {
-	     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rNMove_world", "stop");
-	     }
-	     stop_clicked();
-     }
+    SystemScheduler->SetServoState(true);
 }
 
-void MainWindow::on_axis6pos_released()
+void MainWindow::on_servoOff_clicked()
 {
-	  if(movemode)//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     
-     }	
-     else//ï¿½ï¿½ï¿½ï¿½
-     {
-     	     if(!movecoor)
-            {
-		
-		         SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rPMove", "stop");
-            }
-	     else
-	     {
-	     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/rPMove_world", "stop");
-	     }
-	     stop_clicked();
-     }
+    SystemScheduler->SetServoState(false);
+}
+
+void MainWindow::on_emgcStop_clicked()
+{
+    QColor mGreen(46, 170, 0);
+    if(ui->emgcStop->palette().color(QPalette::Background) == mGreen){
+        (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])|=0x4;
+        ui->emgcStop->setStyleSheet("QPushButton{background-color:rgb(200, 0, 0);color: black;border-radius: 10px;border: 2px groove gray;border-style: outset;font: 20px;}\
+                                    QPushButton:hover{color: white;font: 25px;}");
+    }
+    else{
+        (SystemScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&=~0x4;
+        ui->emgcStop->setStyleSheet("QPushButton{background-color:rgb(46, 170, 0);color: black;border-radius: 10px;border: 2px groove gray;border-style: outset;font: 20px;}\
+                                    QPushButton:hover{color: white;font: 25px;}");
+    }
+    QString tmp;
+    tmp = ui->groupBox->styleSheet();
+    qDebug()<<tmp;
 }

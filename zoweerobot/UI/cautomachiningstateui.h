@@ -38,6 +38,7 @@ public:
     explicit CAutoMachiningStateUi(QWidget *parent = 0);
     CAutoMachiningStateUi(QWidget *parent, SystemSchedule* schedule);
     ~CAutoMachiningStateUi();
+    virtual void TimerUpdateViewData(void);  // 定时更新的数据
 
     CEmulationCanvs* getCanvsHandle();
 

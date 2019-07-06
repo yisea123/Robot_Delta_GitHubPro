@@ -18,22 +18,27 @@ public:
     explicit cjointparamsetui(QWidget *parent = 0);
     cjointparamsetui(QWidget *parent, SystemSchedule* schedule);
     ~cjointparamsetui();
+    virtual void UpdateViewData(void);
+    virtual void TimerUpdateViewData(void);
 
 private slots:
     void updataData();
-    void on_ok_clicked();
-
-    void on_cancle_clicked();
-    void on_setlinkparam_clicked();
-    void on_renewlinkparam_clicked();
+    void SetEditCtrlReadOnly();
+    void on_axisParamRDBtn_clicked();
+    void on_axisParamSVBtn_clicked();
      
-    void on_axisetbutton_clicked();
-    void on_axigetbutton_clicked();
+    void on_extDevRDBtn_clicked();
+    void on_extDevSVBtn_clicked();
+
+    void on_routeParamRDBtn_clicked();
+    void on_routeParamSVBtn_clicked();
+
 private:
     Ui::cjointparamsetui *ui;
     SystemSchedule*       m_pScheduler;
 
      void refresh_systemParam();
+     void refresh_extDevParam();
 };
 
 #endif // CJOINTPARAMSETUI_H

@@ -133,7 +133,9 @@ int saveUserFile(int openflag,unsigned short start,unsigned short end);
     int fillOneFIFO(MoveAction * action,double* axisData, ErrorInfo& e);
     int fillOneFIFO(IOAction * action,ErrorInfo& e);
     int fillOneFIFO(DelayAction * action,ErrorInfo& e);
-    int backHome();
+
+    void InitGoHome();
+    int backHome(int &step);
     int movetoteachpoint(int num);
     bool setParam(char* paramValue, int paramNum, ErrorInfo& e);    /**< �������� */
     //bool sendMsg(char param1, ErrorInfo& e);    /**< �´��¼�֪ͨ */
@@ -211,13 +213,15 @@ public slots:
     //控制帧--总操作
     bool setMotionMode(int mode);    /**< 设置运动模式，1--手动、2--程序运行（自动） */
     bool clearAlarm();    /**< 清除报警 */
-    bool setOrian(int zeroaxis);
+    bool setOrian();
     bool getParamer();
     bool setParamer();
     bool setLinkParamer();
     bool setTools(int toolindex,int toolsetstep);
     bool setcurTool(int toolindex);
     bool setZeroCalibration(int step);
+    bool PIDParam(int cmd,int axis,int len);
+    bool setCanDebug(int level);
     bool axisEnable(bool isEnable);    /**< 使能 */
     bool getVersion();
     bool controllerReset();    /**< 复位 */
@@ -266,6 +270,7 @@ private:
     
 public:
 	CNetSocket* m_socket;
+	CNetSocket* m_socket2;
 	CNetCtrl* m_netctrl;
 	SystemParameter* m_pSystemParm;
 	QFile *m_userfile;
@@ -373,6 +378,7 @@ private:
     int  ifgetnetvalue;
     double scarapos[4];
     QMutex  mutex;
+    int GoHomeStep; // ���㲽��
 };
 
 #endif // MOTIONCONTROLLERDEVICE_H

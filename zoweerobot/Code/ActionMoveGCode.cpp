@@ -122,7 +122,7 @@ bool ActionMoveGCode::fillGCodeVarient(ParseGCodeInterVariableCache*  Cache, GCo
     int dFlag = 0;
     int bFlag = 0;
     int uFlag = 0;
-  
+//    int pFlag = 0;
     int kFlag = 0;
     int hFlag = 0;
     for(int i = 0; i < inf.m_info.size(); i++)
@@ -182,7 +182,7 @@ bool ActionMoveGCode::fillGCodeVarient(ParseGCodeInterVariableCache*  Cache, GCo
 
                     gFlag++;
                 }break;
-                /*case 25:
+                case 25:
                 {
                     m_nMoveG = GCODE_G25;
                     inf.m_info.removeAt(i--);
@@ -195,7 +195,7 @@ bool ActionMoveGCode::fillGCodeVarient(ParseGCodeInterVariableCache*  Cache, GCo
                     inf.m_info.removeAt(i--);
 
                     gFlag++;
-                }break;*/
+                }break;
                 case 50:
                 {
                     m_nMoveG = GCODE_G50;
@@ -348,7 +348,14 @@ bool ActionMoveGCode::fillGCodeVarient(ParseGCodeInterVariableCache*  Cache, GCo
 
             uFlag++;
         }
-	
+	else if(s == "P" || s == "p")//G25 G27 colomn number
+        {
+            m_dP = inf.m_info.at(i).value.toInt();
+            m_isMovePAssign = TRUE;
+            inf.m_info.removeAt(i--);
+
+            pFlag++;
+        }
 	else if(s == "K" || s == "k")//G25 G27 row number
         {
             m_dK = inf.m_info.at(i).value.toInt();
@@ -410,7 +417,7 @@ bool ActionMoveGCode::fillGCodeVarient(ParseGCodeInterVariableCache*  Cache, GCo
         }
 	 if((m_dU)&&(m_nMoveG != GCODE_G25)&&(m_nMoveG != GCODE_G27))
 	 {
-	 	UserToRobot(m_dX,m_dY,m_dU,Cache);
+	 	UserToRobot(m_dX,m_dY,m_dU,Cache);
 		Cache->m_LastPosition.x = m_dX;
 		Cache->m_LastPosition.y = m_dY;
 	 }
@@ -548,7 +555,7 @@ bool ActionMoveGCode::genrateAction(EmulationInterVariableCache* Cache, QVector<
                 Cache->m_MoveType = GCODE_G06;
                 return ioAction(Cache, actions, e);
             }break;
-            /*case GCODE_G25:
+            case GCODE_G25:
             {
 		 if (m_dP<= 0 || m_dK<= 0)
                {
@@ -569,7 +576,7 @@ bool ActionMoveGCode::genrateAction(EmulationInterVariableCache* Cache, QVector<
                runG27(Cache, actions, m_dI, m_dP, m_dJ, m_dK,e);
                return true;
   
-            }break;*/
+            }break;
             case GCODE_G70:
             {
                 Cache->m_MoveType = GCODE_G70;

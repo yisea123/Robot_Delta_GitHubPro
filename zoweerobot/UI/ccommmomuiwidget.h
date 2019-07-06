@@ -10,6 +10,8 @@ public:
     explicit CCommmomUIWidget(QWidget *parent = 0);
 
     virtual void setDisableEdit(bool f);
+    virtual void UpdateViewData(void);  // 更新 全部数据
+    virtual void TimerUpdateViewData(void);  // 定时更新的数据
     
 signals:
     

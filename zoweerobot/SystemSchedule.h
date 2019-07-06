@@ -80,10 +80,21 @@ public:
     void reShowAllUIs(UserParameter user);
     bool ReadUserInformation();
     bool WriteUserInformation();
-    bool ReadSystemParamInformation();
+    bool ReadSystemParamInformation(const QString &filename);
+    bool ReadSystemParamInformation();    
     bool WriteSystemParamInformation();
 
+    bool ReadAxisParamInformation(const QString &filename);
+    bool ReadAxisParamInformation();
+    bool WriteAxisParamInformation();
+
+    bool ReadPidParaGrp(const QString &filename);
+    bool SavePidParaGrp(const QString &filename);
+
     bool NetIsConnect(void);
+    int  GetCurOptMode(void);  // 获取当前操作模式(0:无 1:手动 2:自动)
+    bool GetServoState(void); //获取使能状态(0:关 1:开)
+    void SetServoState(bool bIsOn); // 设置使能开关(false:关 true:开)
 
 private:
     void registerAllUI(UserParameter user);
@@ -97,7 +108,11 @@ private:
     void registerSystemPreferencesUI();
     void registerToolCoorSetUI();
     void registerJointParamSetUI();
+    void registerStructParamSetUI();
+    void registerPIDParamSetUI();
+    void registerZeroParamSetUI();
     void registerUserCoorSetUI();
+    void registerUserLevelSetUI();
     void registerAxesPreferencesUI();
     void registerCraftPreferencesUI();
     void registerToolPreferencesUI();
@@ -123,6 +138,7 @@ private:
     void writeErrInfoToFile(QString errInfo);
     void writeRunInfoToFile(QString runInfo);
     void initRunInfoFile();
+
 public:
 
 	

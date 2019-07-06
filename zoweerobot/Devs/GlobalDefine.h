@@ -90,7 +90,7 @@
 // ]] 
 
 // [[ 系统参数
-#define MOF           6          
+#define MOF           7
 
 
 #define INTERP_CNT_RATIO   2 //250us
@@ -318,7 +318,7 @@
 #define pMotorDir 48 
 // ]]
 
-
+#define pZoneLevel 50 
 
 // [[ 笛卡尔空间 param32-63
 //U8 m_pCarControl; // 笛卡尔参数控制位
@@ -352,6 +352,30 @@
 #define pArcError    89	//过渡圆弧最大误差
 
 #define pLinkDimension   90
+
+/*#define pPOSKP   96
+#define pVELKP   102
+#define pVELKI  108
+#define pCURKP   114
+#define pCURKI   120*/
+
+#define pAIXS1PID   96
+#define pAIXS2PID   102
+#define pAIXS3PID  108
+#define pAIXS4PID   114
+
+#define GoHomeOrder1   120   // 手动 回零顺序, 步骤1.  默认值 3. 先回Z轴
+#define GoHomeOrder2   121   // 手动 回零顺序, 步骤2.  默认值 1.
+#define GoHomeOrder3   122   // 手动 回零顺序, 步骤3.  默认值 2.
+#define GoHomeOrder4   123   // 手动 回零顺序, 步骤4.  默认值 4.
+
+#define pAIXS5PID   124
+#define pAIXS6PID  130
+#define pAIXS7PID   136
+
+#define ep_CoorID   142
+#define pJointMaxVel7   166
+//============================================================
 
 #define HOME_START     0
 #define HOME_POSTIVE_VEL   1
@@ -602,8 +626,9 @@ typedef struct _cartesianPose
     double Y;     // 位置Y,mm
     double Z;     // 位置Z,mm
     double W;     // 姿态W,deg
-    //double P;     // 姿态P,deg
-    //double R;     // 姿态R,deg
+    double P;     // 姿态P,deg
+    double R;     // 姿态R,deg
+    double M;     // 姿态M,deg
 }CartesianPose;
 #endif
 
@@ -709,7 +734,18 @@ typedef struct _jointIntPara
 }JointIntPara;
 #endif
 
-
+#ifndef ALARMINFORMSTRUCT
+#define ALARMINFORMSTRUCT
+typedef struct _alarmInformStruct
+{
+    int Err_Comm; // 通讯错误编号
+    int Err_Plan; // 规划错误
+    int Err_Run;  // 运行错误
+    int Err_Lim;  // 极限
+    int Alm_Ser;  // 伺服错误
+    int OTC_CIA;  // 干涉区
+}AlarmInformStruct;
+#endif
 
 typedef struct _alarmQueue
 {

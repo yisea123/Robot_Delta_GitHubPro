@@ -18,6 +18,8 @@ public:
     explicit CSystemPreferencesUi(QWidget *parent = 0);
     CSystemPreferencesUi(QWidget *parent, SystemSchedule* schedule);
     ~CSystemPreferencesUi();
+    virtual void TimerUpdateViewData(void);
+
     void init();
     
 private slots:

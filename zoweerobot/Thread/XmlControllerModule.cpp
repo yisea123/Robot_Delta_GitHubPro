@@ -73,6 +73,18 @@ CToolPreferencesUi*  XmlControllerModule::getToolPreferencesUIHandler()
     return  NULL;
 }
 
+CStructSettingsUi*  XmlControllerModule::getStructsSettingsUIHandler()
+{
+    for(int i = 0; i < m_UIs.size(); i++)
+    {
+        if(m_UIs.at(i)->nUISerial == UI_TOOL_STRUCT_SETTINGS)
+        {
+            return   (CStructSettingsUi *)m_UIs.at(i)->pUi;
+        }
+    }
+    return  NULL;
+}
+
 CCraftPreferencesUi*  XmlControllerModule::getCraftPreferencesUIHandler()
 {
     for(int i = 0; i < m_UIs.size(); i++)

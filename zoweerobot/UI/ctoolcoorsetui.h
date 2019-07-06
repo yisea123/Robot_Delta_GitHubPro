@@ -19,6 +19,8 @@ public:
     CToolCoorSetUi(QWidget *parent, SystemSchedule* schedule);
     ~CToolCoorSetUi();
 
+    virtual void TimerUpdateViewData(void);
+
 
 private:
     Ui::CToolCoorSetUi *ui;
@@ -50,6 +52,8 @@ private slots:
     void on_setzeroaxis5_clicked();
 
     void on_setzeroaxis6_clicked();
+
+    void on_setzeroaxis7_clicked();
 
 private:
     void  init();
