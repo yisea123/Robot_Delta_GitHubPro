@@ -526,54 +526,54 @@ void MainWindow::on_enable_clicked(bool checked)
 
 void MainWindow::on_mode_clicked(bool checked)
 {
-     if((SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x1)==1)
-     {
-	    // if (checked)
-	   if((0x40==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x60))||(0x0==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x60)))
-	 {
-	 	 SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "1");
-	 }
-	else
-	    {
-	        SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "2");
-		 //ui->mode->setText(QString::fromLocal8Bit("�Զ�"));
-	    }
-		
-	   /* if((0x80000==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0xc0000))||(0x0==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0xc0000)))
-	    {
-	        SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "1");
-		 //ui->mode->setText(QString::fromLocal8Bit("�ֶ�"));
-	    }
-	    else
-	    {
-	        SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "2");
-		 //ui->mode->setText(QString::fromLocal8Bit("�Զ�"));
-	    }*/
-     }
-     else
-     {
-     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "0");
-		//ui->mode->setText(QString::fromLocal8Bit("ģʽ"));
-     }
+    if((SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x1)==1)
+    {
+        // if (checked)
+        if((0x40==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x60))||(0x0==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x60)))
+        {
+            SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "1");
+        }
+        else
+        {
+            SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "2");
+            //ui->mode->setText(QString::fromLocal8Bit("�Զ�"));
+        }
 
-     /*if((SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x1)==1)
+        /* if((0x80000==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0xc0000))||(0x0==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0xc0000)))
+        {
+            SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "1");
+         //ui->mode->setText(QString::fromLocal8Bit("�ֶ�"));
+        }
+        else
+        {
+            SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "2");
+         //ui->mode->setText(QString::fromLocal8Bit("�Զ�"));
+        }*/
+    }
+    else
+    {
+        SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "0");
+        //ui->mode->setText(QString::fromLocal8Bit("ģʽ"));
+    }
+
+    /*if((SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x1)==1)
      {
-	    // if (checked)
-	    if((0x40==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x60))||(0x0==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x60)))
-	    {
-	        SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "1");
-		 //ui->mode->setText(QString::fromLocal8Bit("�ֶ�"));
-	    }
-	    else
-	    {
-	        SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "2");
-		 //ui->mode->setText(QString::fromLocal8Bit("�Զ�"));
-	    }
+        // if (checked)
+        if((0x40==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x60))||(0x0==(SystemScheduler->m_pSystemParameter->sys_ctrl.statebit&0x60)))
+        {
+            SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "1");
+         //ui->mode->setText(QString::fromLocal8Bit("�ֶ�"));
+        }
+        else
+        {
+            SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "2");
+         //ui->mode->setText(QString::fromLocal8Bit("�Զ�"));
+        }
      }
      else
      {
-     		SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "0");
-		//ui->mode->setText(QString::fromLocal8Bit("ģʽ"));
+            SystemScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/mode", "0");
+        //ui->mode->setText(QString::fromLocal8Bit("ģʽ"));
      }*/
     
 }

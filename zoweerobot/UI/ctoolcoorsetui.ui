@@ -333,7 +333,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>零点</string>
+     <string>零点位置</string>
     </property>
     <widget class="QWidget" name="gridLayoutWidget_2">
      <property name="geometry">
