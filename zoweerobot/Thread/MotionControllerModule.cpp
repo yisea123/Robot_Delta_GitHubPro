@@ -2332,159 +2332,159 @@ void MotionControllerModule::doMotion()
     case MOTION_WORK_MANUAL_SET:
         switch (m_CtrlStatus)
         {
-        	case SETTING_RESET:
+        case SETTING_RESET:
             qDebug()<<"reset start";
-	     if (((MotionControllerDevice *)m_pDevice)->controllerReset())
+            if (((MotionControllerDevice *)m_pDevice)->controllerReset())
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   m_WorkStatus= MOTION_WORK_IDLE;
+                m_WorkStatus= MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
+
             }
             break;
 
-	     case SETTING_CLEAR:
+        case SETTING_CLEAR:
             qDebug()<<"clear Alarm";
-	     if (((MotionControllerDevice *)m_pDevice)->clearAlarm())
+            if (((MotionControllerDevice *)m_pDevice)->clearAlarm())
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   m_WorkStatus= MOTION_WORK_IDLE;
+                m_WorkStatus= MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
+
             }
             break;
 
-		case SETTING_ORIAN:
+        case SETTING_ORIAN:
             qDebug()<<"set orian";
-         if (((MotionControllerDevice *)m_pDevice)->setOrian())
+            if (((MotionControllerDevice *)m_pDevice)->setOrian())
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   m_WorkStatus= MOTION_WORK_IDLE;
+                m_WorkStatus= MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
+
             }
             break;
 
-		case SETTING_MODE:
+        case SETTING_MODE:
             qDebug()<<"set mode";
-	     if (((MotionControllerDevice *)m_pDevice)->setMotionMode(m_mode))
+            if (((MotionControllerDevice *)m_pDevice)->setMotionMode(m_mode))
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   m_WorkStatus= MOTION_WORK_IDLE;
+                m_WorkStatus= MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
+
             }
             break;
 
-	     case SETTING_PARAMER:
+        case SETTING_PARAMER:
             qDebug()<<"SET PARAM";
-	     if (((MotionControllerDevice *)m_pDevice)->setParamer())
+            if (((MotionControllerDevice *)m_pDevice)->setParamer())
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   m_WorkStatus= MOTION_WORK_IDLE;
+                m_WorkStatus= MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
+
             }
             break;
 
-	     case SETTING_LINKPARAMER:
+        case SETTING_LINKPARAMER:
             qDebug()<<"SET LINKPARAM";
-	     if (((MotionControllerDevice *)m_pDevice)->setLinkParamer())
+            if (((MotionControllerDevice *)m_pDevice)->setLinkParamer())
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   m_WorkStatus= MOTION_WORK_IDLE;
+                m_WorkStatus= MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
-            }
-            break;
-		
-		case SETTING_TOOLS:
-            qDebug()<<"set tools";
-	     if (((MotionControllerDevice *)m_pDevice)->setTools(m_toolindex,m_toolsetstep))
-            {
-                m_ManualStatus = MANUAL_IDLE;
-		   m_WorkStatus= MOTION_WORK_IDLE;
-                m_pProcessCacheHandler->m_bIsManualMotion = true;
-            }
-            else
-            {
-               
+
             }
             break;
 
-	     case SETTING_CURTOOL:
+        case SETTING_TOOLS:
             qDebug()<<"set tools";
-	     if (((MotionControllerDevice *)m_pDevice)->setcurTool(m_toolindex))
+            if (((MotionControllerDevice *)m_pDevice)->setTools(m_toolindex,m_toolsetstep))
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   m_WorkStatus= MOTION_WORK_IDLE;
+                m_WorkStatus= MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
+
             }
             break;
 
-	     case SETTING_ZERO_CALIBRATION:
+        case SETTING_CURTOOL:
+            qDebug()<<"set tools";
+            if (((MotionControllerDevice *)m_pDevice)->setcurTool(m_toolindex))
+            {
+                m_ManualStatus = MANUAL_IDLE;
+                m_WorkStatus= MOTION_WORK_IDLE;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+            }
+            else
+            {
+
+            }
+            break;
+
+        case SETTING_ZERO_CALIBRATION:
             qDebug()<<"set zero calibration";
-	     if (((MotionControllerDevice *)m_pDevice)->setZeroCalibration(m_zerosetstep))
+            if (((MotionControllerDevice *)m_pDevice)->setZeroCalibration(m_zerosetstep))
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   m_WorkStatus= MOTION_WORK_IDLE;
+                m_WorkStatus= MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
+
             }
             break;
-			
-		default:break;
-        }
-	break;
 
-   case MOTION_WORK_NORMAL_START:
+        default:break;
+        }
+        break;
+
+    case MOTION_WORK_NORMAL_START:
         if (((MotionControllerDevice *)m_pDevice)->setMotionMode(2))//鏀瑰彉杩愬姩鐘舵€?
         {
             //m_MotionMode = Mode_Auto;
             m_WorkStatus = MOTION_WORK_NORMAL_PROCESS;
             
-                //m_StartStatus = SETTING_PARM;
+            //m_StartStatus = SETTING_PARM;
             m_GCodeRunSerialNum = 0;
-	    nCurrentLineSerialNum=0;
-		m_nDelayTime=0;
+            nCurrentLineSerialNum=0;
+            m_nDelayTime=0;
             qDebug()<<"control="<<m_nMotionControllerRunNum<<" last="<<m_nLastPartGCodeNum;
 
             m_pProcessCacheHandler->m_bIsManualMotion = false;
             m_pScheduler->recvRunInfoFromAllModules("启动FIFO运动成功");
         }
-	
+
         break;
     case MOTION_WORK_NORMAL_PROCESS:
     {
         if(m_GCodeRunSerialNum < m_GCodeActions->size())
         {
 
-	    if (m_GCodeRunSerialNum < 0)
+            if (m_GCodeRunSerialNum < 0)
             {
                 m_errInfo.insertDebug(DEBUG_SERIOUS_ERROR, "action 运行计数错误！");
                 m_pScheduler->recvErrMsgFromAllModules(m_errInfo);
@@ -2493,123 +2493,123 @@ void MotionControllerModule::doMotion()
                 break;
             }
             nCurrentLineSerialNum = m_GCodeActions->at(m_GCodeRunSerialNum)->m_nLineSerialNum;
-	     qDebug()<<"cur"<<nCurrentLineSerialNum<<"now"<<m_GCodeRunSerialNum;
+            qDebug()<<"cur"<<nCurrentLineSerialNum<<"now"<<m_GCodeRunSerialNum;
             runOneActions();
             
             
-	     //if((((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.sendinput[0])&0x2)
-	     if(m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0]&0x2)
-	     {
-	     	     m_GCodeRunSerialNum=0;
-		     nCurrentLineSerialNum=0;
-	     	     m_WorkStatus = MOTION_WORK_IDLE;
-                    m_bisStopMotion = true;
-		     m_bisCycleRun=0;
-		      qDebug()<<"stop the motion";
-                    
-                    //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
-                    //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
-                    m_pProcessCacheHandler->m_bIsManualMotion = true;
-	     }
+            //if((((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.sendinput[0])&0x2)
+            if(m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0]&0x2)
+            {
+                m_GCodeRunSerialNum=0;
+                nCurrentLineSerialNum=0;
+                m_WorkStatus = MOTION_WORK_IDLE;
+                m_bisStopMotion = true;
+                m_bisCycleRun=0;
+                qDebug()<<"stop the motion";
+
+                //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
+                //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+            }
         }
         else
         {
-           
+
             if (m_GCodeActions->isEmpty())
             {
-		 m_WorkStatus = MOTION_WORK_IDLE;
+                m_WorkStatus = MOTION_WORK_IDLE;
                 m_bisStopMotion = true;
-	        m_bisCycleRun=0;
-		 m_GCodeRunSerialNum=0;
-		 nCurrentLineSerialNum=0;
-	        qDebug()<<"stop the motion";
-               
+                m_bisCycleRun=0;
+                m_GCodeRunSerialNum=0;
+                nCurrentLineSerialNum=0;
+                qDebug()<<"stop the motion";
+
                 //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
                 //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
                 m_pScheduler->recvRunInfoFromAllModules("鍔犲伐瀹屾垚");
             }
-            else 
+            else
             {
-            	    
-		    if (m_pScheduler->m_pSystemParameter->sys_ctrl.decode_id>= nCurrentLineSerialNum)//(m_nCurCtlRunId >= m_MotionCodeList.last()->m_nCodeId)//鎺у埗鍣ㄥ弽棣堝畬鎴?
-	            {
-	            	 qDebug()<<"decode id"<<m_pScheduler->m_pSystemParameter->sys_ctrl.decode_id<<"cur"<<nCurrentLineSerialNum;
-	                if((m_pScheduler->m_pSystemParameter->sys_ctrl.statebit& (1 << CTL_STS_IN_MOTION)) == 0)
-	                    {
-		                   if(m_GCodeActions->at(m_GCodeActions->size()-1)->m_type==ACTION_DELAY_TYPE)
-				     	{
-				     	      if(((DelayAction *)m_GCodeActions->at(m_GCodeActions->size()-1))->m_nDelayTime)
-				     	      	{
-				     	      		m_nDelayTime+=100;
-							if(m_nDelayTime>((DelayAction *)m_GCodeActions->at(m_GCodeActions->size()-1))->m_nDelayTime)
-							{
-								m_WorkStatus = MOTION_WORK_NORMAL_END;
-								m_nDelayTime=0;
-							}
-				     	      	}
-						else
-						{
-		                     			m_WorkStatus = MOTION_WORK_NORMAL_END;
-						}
-				     	}
-					else
-					{
-	                     			m_WorkStatus = MOTION_WORK_NORMAL_END;
-					}
-	                    //m_nMotionCodeRunId = 0;
-	                    //motionDone();
-	                    //m_pScheduler->recvRunInfoFromAllModules("鍔犲伐瀹屾垚");
-	                    }
-			     
-	            }
-		   //if((((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.sendinput[0])&0x2)
-		     if(m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0]&0x2)
-		     {
-		     	     m_GCodeRunSerialNum=0;
-			     nCurrentLineSerialNum=0;
-		     	     m_WorkStatus = MOTION_WORK_IDLE;
-	                    m_bisStopMotion = true;
-			     m_bisCycleRun=0;
-			      qDebug()<<"stop the motion";
-	                    
-	                    //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
-	                    //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
-	                    m_pProcessCacheHandler->m_bIsManualMotion = true;
-		     }
+
+                if (m_pScheduler->m_pSystemParameter->sys_ctrl.decode_id>= nCurrentLineSerialNum)//(m_nCurCtlRunId >= m_MotionCodeList.last()->m_nCodeId)//鎺у埗鍣ㄥ弽棣堝畬鎴?
+                {
+                    qDebug()<<"decode id"<<m_pScheduler->m_pSystemParameter->sys_ctrl.decode_id<<"cur"<<nCurrentLineSerialNum;
+                    if((m_pScheduler->m_pSystemParameter->sys_ctrl.statebit& (1 << CTL_STS_IN_MOTION)) == 0)
+                    {
+                        if(m_GCodeActions->at(m_GCodeActions->size()-1)->m_type==ACTION_DELAY_TYPE)
+                        {
+                            if(((DelayAction *)m_GCodeActions->at(m_GCodeActions->size()-1))->m_nDelayTime)
+                            {
+                                m_nDelayTime+=100;
+                                if(m_nDelayTime>((DelayAction *)m_GCodeActions->at(m_GCodeActions->size()-1))->m_nDelayTime)
+                                {
+                                    m_WorkStatus = MOTION_WORK_NORMAL_END;
+                                    m_nDelayTime=0;
+                                }
+                            }
+                            else
+                            {
+                                m_WorkStatus = MOTION_WORK_NORMAL_END;
+                            }
+                        }
+                        else
+                        {
+                            m_WorkStatus = MOTION_WORK_NORMAL_END;
+                        }
+                        //m_nMotionCodeRunId = 0;
+                        //motionDone();
+                        //m_pScheduler->recvRunInfoFromAllModules("鍔犲伐瀹屾垚");
+                    }
+
+                }
+                //if((((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.sendinput[0])&0x2)
+                if(m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0]&0x2)
+                {
+                    m_GCodeRunSerialNum=0;
+                    nCurrentLineSerialNum=0;
+                    m_WorkStatus = MOTION_WORK_IDLE;
+                    m_bisStopMotion = true;
+                    m_bisCycleRun=0;
+                    qDebug()<<"stop the motion";
+
+                    //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
+                    //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
+                    m_pProcessCacheHandler->m_bIsManualMotion = true;
+                }
             }
         }
-    	}
+    }
         break;
     case MOTION_WORK_NORMAL_END:
-    	{
-	 //int nLastLineSerialNum = m_GCodeActions->at(m_GCodeActions->size()-1)->m_nLineSerialNum;
-	 m_nDelayTime=0;
+    {
+        //int nLastLineSerialNum = m_GCodeActions->at(m_GCodeActions->size()-1)->m_nLineSerialNum;
+        m_nDelayTime=0;
         if (m_bisCycleRun)//寰幆鍔犲伐
         {
-                    m_GCodeRunSerialNum=0;
-			nCurrentLineSerialNum=0;
-                    m_WorkStatus = MOTION_WORK_NORMAL_PROCESS;
-                    //m_pScheduler->recvRunInfoFromAllModules(tr("寰幆鍔犲伐绗?1娆″畬鎴愶紝鍏?2娆?).arg(m_nCurCircleRunNum).arg(m_nCricleRunCnt));
-                    //if((((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.sendinput[0])&0x2)
-		     if(m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0]&0x2)
-		     {
-		     	     m_WorkStatus = MOTION_WORK_IDLE;
-	                    m_bisStopMotion = true;
-			     m_bisCycleRun=0;
-			      qDebug()<<"stop the motion";
-	                   
-	                    //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
-	                    //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
-	                    m_pProcessCacheHandler->m_bIsManualMotion = true;
-		     }
+            m_GCodeRunSerialNum=0;
+            nCurrentLineSerialNum=0;
+            m_WorkStatus = MOTION_WORK_NORMAL_PROCESS;
+            //m_pScheduler->recvRunInfoFromAllModules(tr("寰幆鍔犲伐绗?1娆″畬鎴愶紝鍏?2娆?).arg(m_nCurCircleRunNum).arg(m_nCricleRunCnt));
+            //if((((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.sendinput[0])&0x2)
+            if(m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0]&0x2)
+            {
+                m_WorkStatus = MOTION_WORK_IDLE;
+                m_bisStopMotion = true;
+                m_bisCycleRun=0;
+                qDebug()<<"stop the motion";
+
+                //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
+                //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+            }
         }
         else
         {
             /*if(m_pScheduler->m_pSystemParameter->sys_ctrl.decode_id>= nLastLineSerialNum)// (m_nMotionCodeRunId == m_nMotionCodeLastId + 1)
-            { 
+            {
                 qDebug()<<"End Motion"<<endl;
-               
+
 
             }
             else*/
@@ -2617,294 +2617,294 @@ void MotionControllerModule::doMotion()
                 qDebug()<<"m_nMontionCtlState & (1 << CTL_STS_IN_MOTION)) == 0:"<<((m_pScheduler->m_pSystemParameter->sys_ctrl.statebit & (1 << CTL_STS_IN_MOTION)) == 0);
                 if((m_pScheduler->m_pSystemParameter->sys_ctrl.statebit & (1 << CTL_STS_IN_MOTION)) == 0 )
                 {
-                	    m_GCodeRunSerialNum=0;
-		 	    nCurrentLineSerialNum=0;
-                           m_WorkStatus = MOTION_WORK_IDLE;
-	                    m_bisStopMotion = true;
-			     m_bisCycleRun=0;
-			      qDebug()<<"stop the motion";
-	                   
-	                    //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
-	                    //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
-	                    m_pProcessCacheHandler->m_bIsManualMotion = true;
+                    m_GCodeRunSerialNum=0;
+                    nCurrentLineSerialNum=0;
+                    m_WorkStatus = MOTION_WORK_IDLE;
+                    m_bisStopMotion = true;
+                    m_bisCycleRun=0;
+                    qDebug()<<"stop the motion";
+
+                    //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
+                    //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
+                    m_pProcessCacheHandler->m_bIsManualMotion = true;
                 }
-		 else  if(m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0]&0x2)//if((((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.sendinput[0])&0x2)
-		     {
-		     	     m_GCodeRunSerialNum=0;
-		 	     nCurrentLineSerialNum=0;
-		     	     m_WorkStatus = MOTION_WORK_IDLE;
-	                    m_bisStopMotion = true;
-			     m_bisCycleRun=0;
-			      qDebug()<<"stop the motion";
-	                    
-	                    //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
-	                    //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
-	                    m_pProcessCacheHandler->m_bIsManualMotion = true;
-		     }
-               
+                else  if(m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0]&0x2)//if((((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.sendinput[0])&0x2)
+                {
+                    m_GCodeRunSerialNum=0;
+                    nCurrentLineSerialNum=0;
+                    m_WorkStatus = MOTION_WORK_IDLE;
+                    m_bisStopMotion = true;
+                    m_bisCycleRun=0;
+                    qDebug()<<"stop the motion";
+
+                    //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
+                    //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
+                    m_pProcessCacheHandler->m_bIsManualMotion = true;
+                }
+
             }
         }
-    	}
+    }
         break;
 
     case MOTION_WORK_ERROR_WAITTING	:
-	    if(m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0]&0x2)//if((((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.sendinput[0])&0x2)
- 	     {
- 	     	     m_GCodeRunSerialNum=0;
- 	 	     nCurrentLineSerialNum=0;
- 	     	     m_WorkStatus = MOTION_WORK_IDLE;
-                     m_bisStopMotion = true;
- 		     m_bisCycleRun=0;
- 		      qDebug()<<"stop the motion";
-                     
-                     //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
-                     //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
-                     m_pProcessCacheHandler->m_bIsManualMotion = true;
- 	     }
-	     break;
+        if(m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0]&0x2)//if((((MotionControllerDevice *)m_pDevice)->m_netctrl->gb_ctrl.sendinput[0])&0x2)
+        {
+            m_GCodeRunSerialNum=0;
+            nCurrentLineSerialNum=0;
+            m_WorkStatus = MOTION_WORK_IDLE;
+            m_bisStopMotion = true;
+            m_bisCycleRun=0;
+            qDebug()<<"stop the motion";
+
+            //m_nLastPartGCodeNum = m_nMotionControllerRunNum;
+            //m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
+            m_pProcessCacheHandler->m_bIsManualMotion = true;
+        }
+        break;
     case MOTION_WORK_STEPRUN_WAITTING:
         //qDebug()<<"step waitting";
         break;
-   
-    
+
+
     case MOTION_WORK_MANUAL_MOTION:
         switch (m_ManualStatus)
         {
         case MANUAL_START:
             qDebug()<<"manual start";
-	     if (((MotionControllerDevice *)m_pDevice)->startMotion(m_nMoveAxis, m_dMoveDis,m_pScheduler->m_pSystemParameter->sysvel))
+            if (((MotionControllerDevice *)m_pDevice)->startMotion(m_nMoveAxis, m_dMoveDis,m_pScheduler->m_pSystemParameter->sysvel))
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   //m_WorkStatus = MOTION_WORK_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
+
             }
             break;
-	 case MANUAL_WORLD_START:
+        case MANUAL_WORLD_START:
             qDebug()<<"manual start";
-	     if (((MotionControllerDevice *)m_pDevice)->startWorldMotion(m_nMoveAxis, m_dMoveDis,m_pScheduler->m_pSystemParameter->sysvel))
+            if (((MotionControllerDevice *)m_pDevice)->startWorldMotion(m_nMoveAxis, m_dMoveDis,m_pScheduler->m_pSystemParameter->sysvel))
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   //m_WorkStatus = MOTION_WORK_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
+
             }
             break;
 
-	 case MANUAL_MOVE_START:
+        case MANUAL_MOVE_START:
             qDebug()<<"manual start";
-	     if (((MotionControllerDevice *)m_pDevice)->startMove(m_nMoveAxis, m_dMoveDis,m_dMoverun,m_pScheduler->m_pSystemParameter->sysvel))
+            if (((MotionControllerDevice *)m_pDevice)->startMove(m_nMoveAxis, m_dMoveDis,m_dMoverun,m_pScheduler->m_pSystemParameter->sysvel))
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   //m_WorkStatus = MOTION_WORK_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
+
             }
             break;
 
-	 case MANUAL_WORLDMOVE_START:
+        case MANUAL_WORLDMOVE_START:
             qDebug()<<"manual start";
-	     if (((MotionControllerDevice *)m_pDevice)->startWorldMove(m_nMoveAxis, m_dMoveDis,m_dMoverun,m_pScheduler->m_pSystemParameter->sysvel))
+            if (((MotionControllerDevice *)m_pDevice)->startWorldMove(m_nMoveAxis, m_dMoveDis,m_dMoverun,m_pScheduler->m_pSystemParameter->sysvel))
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   //m_WorkStatus = MOTION_WORK_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
+
             }
             break;
-		
 
-	 case MANUAL_MOVSTOP:
+
+        case MANUAL_MOVSTOP:
             qDebug()<<"manual start";
-	     if (((MotionControllerDevice *)m_pDevice)->startMotion(m_nMoveAxis, m_dMoveDis,m_pScheduler->m_pSystemParameter->sysvel))
+            if (((MotionControllerDevice *)m_pDevice)->startMotion(m_nMoveAxis, m_dMoveDis,m_pScheduler->m_pSystemParameter->sysvel))
             {
                 m_ManualStatus = MANUAL_IDLE;
-		   //m_WorkStatus = MOTION_WORK_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
                 m_pProcessCacheHandler->m_bIsManualMotion = true;
             }
             else
             {
-               
+
             }
             break;
-	case MANUAL_BACKZERO:
-		 qDebug()<<"manual backzero";
-           if (((MotionControllerDevice *)m_pDevice)->axisEnable(1))
-           {
-           	    if (((MotionControllerDevice *)m_pDevice)->setMotionMode(2))
-           	    {
-			     for(i=0;i<4;i++){
-			         if (((MotionControllerDevice *)m_pDevice)->backHome(homeStep) == 1){ // ³É¹¦
-			             if(homeStep>=4){  // Íê³É 
-			                 m_ManualStatus = MANUAL_IDLE;
-			                 m_pProcessCacheHandler->m_bIsManualMotion = true;
-			                 break;
-			             }
-			         }else{  // »º³åÇø ÒÑÂú
-			             break;
-			         }
-			     }			     
-           	    }
-           }
+        case MANUAL_BACKZERO:
+            qDebug()<<"manual backzero";
+            if (((MotionControllerDevice *)m_pDevice)->axisEnable(1))
+            {
+                if (((MotionControllerDevice *)m_pDevice)->setMotionMode(2))
+                {
+                    for(i=0;i<4;i++){
+                        if (((MotionControllerDevice *)m_pDevice)->backHome(homeStep) == 1){ // ³É¹¦
+                            if(homeStep>=4){  // Íê³É
+                                m_ManualStatus = MANUAL_IDLE;
+                                m_pProcessCacheHandler->m_bIsManualMotion = true;
+                                break;
+                            }
+                        }else{  // »º³åÇø ÒÑÂú
+                            break;
+                        }
+                    }
+                }
+            }
             break;
-	case MANUAL_MOVETOPOINT:
-		 qDebug()<<"manual move to point"<<m_movepointnum;
-           if (((MotionControllerDevice *)m_pDevice)->axisEnable(1))
-           {
-           	    if (((MotionControllerDevice *)m_pDevice)->setMotionMode(2))
-           	    {
-					
-			     if (((MotionControllerDevice *)m_pDevice)->movetoteachpoint(m_movepointnum))
-		            {
-		                m_ManualStatus = MANUAL_IDLE;
-				   //m_WorkStatus = MOTION_WORK_IDLE;
-		                m_pProcessCacheHandler->m_bIsManualMotion = true;
-		            }
-		            else
-		            {
-		               
-		            }
-           	    }
-           }
-            break;
-	case MANUAL_GETVERSION:
-		 qDebug()<<"manual getversion";
-           if (((MotionControllerDevice *)m_pDevice)->getVersion())
-           {
-           	   
-		                m_ManualStatus = MANUAL_IDLE;
-				   //m_WorkStatus = MOTION_WORK_IDLE;
-		                m_pProcessCacheHandler->m_bIsManualMotion = true;
-		   
-           }
-            break;
-	case MANUAL_GETBATTERY:
-		 qDebug()<<"manual GETBATTERY";
-           if (((MotionControllerDevice *)m_pDevice)->getBattery())
-           {
-           	   
-		                m_ManualStatus = MANUAL_IDLE;
-				   //m_WorkStatus = MOTION_WORK_IDLE;
-		                m_pProcessCacheHandler->m_bIsManualMotion = true;
-		   
-           }
-            break;
-	case MANUAL_SETBATTERY:
-		 qDebug()<<"manual SETBATTERY";
-           if (((MotionControllerDevice *)m_pDevice)->setBattery())
-           {
-           	   
-		                m_ManualStatus = MANUAL_IDLE;
-				   //m_WorkStatus = MOTION_WORK_IDLE;
-		                m_pProcessCacheHandler->m_bIsManualMotion = true;
-		   
-           }
-            break;
-	case MANUAL_SAVETEACHPOINT:
-	    qDebug()<<"manual SAVETEACHPOINT";  // ±£´æÊ¾½Ìµã
-	    if(!getSystemScheduleHandle()->NetIsConnect()){ // ÍøÂç¶Ï¿ªÊ±
-	        m_ManualStatus = MANUAL_IDLE;
-	        m_pProcessCacheHandler->m_bIsManualMotion = true;
-	        break;
-	    }
-           if (saveTeachPoint())
-           {
-           	   	    
-		                m_ManualStatus = MANUAL_SAVETEACHPOINTTEXT;
-				  //m_ManualStatus = MANUAL_IDLE;
-		                //m_pProcessCacheHandler->m_bIsManualMotion = true;
-		   
-           }
-            break;
-	case MANUAL_SAVETEACHPOINTTEXT:
-	    qDebug()<<"manual SAVETEACHPOINTTEXT";  // ±£´æ×¢ÊÍ
-	    if(!getSystemScheduleHandle()->NetIsConnect()){ // ÍøÂç¶Ï¿ªÊ±
-	        m_ManualStatus = MANUAL_IDLE;
-	        m_pProcessCacheHandler->m_bIsManualMotion = true;
-	        break;
-	    }
-	       if (saveTeachPointText())
-	       {
-	       	   	    
-		                m_ManualStatus = MANUAL_IDLE;
-				  
-		                m_pProcessCacheHandler->m_bIsManualMotion = true;
-		   
-	       }
-	       break;
-	case MANUAL_GETTEACHPOINT:
-	    qDebug()<<"manual SAVETEACHPOINT";
-           if (((MotionControllerDevice *)m_pDevice)->getTeachPoint())
-           {
-           	   
-		                m_ManualStatus = MANUAL_IDLE;
-				   //m_WorkStatus = MOTION_WORK_IDLE;
-		                m_pProcessCacheHandler->m_bIsManualMotion = true;
-		   
-           }
-            break;
-	case MANUAL_DOWNUSERFILE:
-	    qDebug()<<"manual DOWNUSERFILE";
-           //if (((MotionControllerDevice *)m_pDevice)->saveUserFile())
-	   if (downUserFile())
-           {
-           	   
-		                m_ManualStatus = MANUAL_IDLE;
-				   //m_WorkStatus = MOTION_WORK_IDLE;
-		                m_pProcessCacheHandler->m_bIsManualMotion = true;
-		   
-           }
-	    break;
-		
-	case MANUAL_SETAXISNO:
-	    qDebug()<<"manual SETAXISNO";
-           if (((MotionControllerDevice *)m_pDevice)->setAxisNo())
-	   //if (downUserFile())
-           {
-           	   
-		                m_ManualStatus = MANUAL_IDLE;
-				   //m_WorkStatus = MOTION_WORK_IDLE;
-		                m_pProcessCacheHandler->m_bIsManualMotion = true;
-		   
-           }
-	    break;
-	case MANUAL_GETAXISNO:
-	    qDebug()<<"manual SETAXISNO";
-           if (((MotionControllerDevice *)m_pDevice)->getAxisNo())
-	   //if (downUserFile())
-           {
-           	   
-		                m_ManualStatus = MANUAL_IDLE;
-				   //m_WorkStatus = MOTION_WORK_IDLE;
-		                m_pProcessCacheHandler->m_bIsManualMotion = true;
-		   
-           }
-	    break;
+        case MANUAL_MOVETOPOINT:
+            qDebug()<<"manual move to point"<<m_movepointnum;
+            if (((MotionControllerDevice *)m_pDevice)->axisEnable(1))
+            {
+                if (((MotionControllerDevice *)m_pDevice)->setMotionMode(2))
+                {
 
-	   case MANUAL_GETSYSPARAM:
-	    qDebug()<<"manual GETSYSPARAM";
-           if (((MotionControllerDevice *)m_pDevice)->getParamer())
-	   //if (downUserFile())
-           {
-           	   
-		                m_ManualStatus = MANUAL_IDLE;
-				   //m_WorkStatus = MOTION_WORK_IDLE;
-		                m_pProcessCacheHandler->m_bIsManualMotion = true;
-		   
-           }
-	    break;
+                    if (((MotionControllerDevice *)m_pDevice)->movetoteachpoint(m_movepointnum))
+                    {
+                        m_ManualStatus = MANUAL_IDLE;
+                        //m_WorkStatus = MOTION_WORK_IDLE;
+                        m_pProcessCacheHandler->m_bIsManualMotion = true;
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            break;
+        case MANUAL_GETVERSION:
+            qDebug()<<"manual getversion";
+            if (((MotionControllerDevice *)m_pDevice)->getVersion())
+            {
+
+                m_ManualStatus = MANUAL_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+
+            }
+            break;
+        case MANUAL_GETBATTERY:
+            qDebug()<<"manual GETBATTERY";
+            if (((MotionControllerDevice *)m_pDevice)->getBattery())
+            {
+
+                m_ManualStatus = MANUAL_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+
+            }
+            break;
+        case MANUAL_SETBATTERY:
+            qDebug()<<"manual SETBATTERY";
+            if (((MotionControllerDevice *)m_pDevice)->setBattery())
+            {
+
+                m_ManualStatus = MANUAL_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+
+            }
+            break;
+        case MANUAL_SAVETEACHPOINT:
+            qDebug()<<"manual SAVETEACHPOINT";  // ±£´æÊ¾½Ìµã
+            if(!getSystemScheduleHandle()->NetIsConnect()){ // ÍøÂç¶Ï¿ªÊ±
+                m_ManualStatus = MANUAL_IDLE;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+                break;
+            }
+            if (saveTeachPoint())
+            {
+
+                m_ManualStatus = MANUAL_SAVETEACHPOINTTEXT;
+                //m_ManualStatus = MANUAL_IDLE;
+                //m_pProcessCacheHandler->m_bIsManualMotion = true;
+
+            }
+            break;
+        case MANUAL_SAVETEACHPOINTTEXT:
+            qDebug()<<"manual SAVETEACHPOINTTEXT";  // ±£´æ×¢ÊÍ
+            if(!getSystemScheduleHandle()->NetIsConnect()){ // ÍøÂç¶Ï¿ªÊ±
+                m_ManualStatus = MANUAL_IDLE;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+                break;
+            }
+            if (saveTeachPointText())
+            {
+
+                m_ManualStatus = MANUAL_IDLE;
+
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+
+            }
+            break;
+        case MANUAL_GETTEACHPOINT:
+            qDebug()<<"manual SAVETEACHPOINT";
+            if (((MotionControllerDevice *)m_pDevice)->getTeachPoint())
+            {
+
+                m_ManualStatus = MANUAL_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+
+            }
+            break;
+        case MANUAL_DOWNUSERFILE:
+            qDebug()<<"manual DOWNUSERFILE";
+            //if (((MotionControllerDevice *)m_pDevice)->saveUserFile())
+            if (downUserFile())
+            {
+
+                m_ManualStatus = MANUAL_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+
+            }
+            break;
+
+        case MANUAL_SETAXISNO:
+            qDebug()<<"manual SETAXISNO";
+            if (((MotionControllerDevice *)m_pDevice)->setAxisNo())
+                //if (downUserFile())
+            {
+
+                m_ManualStatus = MANUAL_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+
+            }
+            break;
+        case MANUAL_GETAXISNO:
+            qDebug()<<"manual SETAXISNO";
+            if (((MotionControllerDevice *)m_pDevice)->getAxisNo())
+                //if (downUserFile())
+            {
+
+                m_ManualStatus = MANUAL_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+
+            }
+            break;
+
+        case MANUAL_GETSYSPARAM:
+            qDebug()<<"manual GETSYSPARAM";
+            if (((MotionControllerDevice *)m_pDevice)->getParamer())
+                //if (downUserFile())
+            {
+
+                m_ManualStatus = MANUAL_IDLE;
+                //m_WorkStatus = MOTION_WORK_IDLE;
+                m_pProcessCacheHandler->m_bIsManualMotion = true;
+
+            }
+            break;
         case MANUAL_RUN:
             if (m_nMoveAxis != AXIS_ALL)
             {
@@ -2951,8 +2951,8 @@ void MotionControllerModule::doMotion()
                     //m_pProcessCacheHandler->m_nManualCodeRunNum++;
                     //m_pProcessCacheHandler->m_bIsManualMotion = false;
 
-//                    m_nLastPartGCodeNum = m_nMotionControllerRunNum;
-//                    m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
+                    //                    m_nLastPartGCodeNum = m_nMotionControllerRunNum;
+                    //                    m_pProcessCacheHandler->m_nLastPartGCodeNum = m_nLastPartGCodeNum;
                     m_nLastPartGCodeNum++;
                     m_pProcessCacheHandler->m_nLastPartGCodeNum++;
                     qDebug()<<"Done";
@@ -2974,9 +2974,9 @@ void MotionControllerModule::doMotion()
         break;
     case MOTION_WORK_SETTING_PARM:
         //if (settingParmToController())
-        {
-            m_WorkStatus = MOTION_WORK_IDLE;
-        }
+    {
+        m_WorkStatus = MOTION_WORK_IDLE;
+    }
         /*else
         {
             m_WorkStatus = MOTION_WORK_ERROR_WAITTING;
@@ -2984,9 +2984,9 @@ void MotionControllerModule::doMotion()
         break;
     case MOTION_WORK_SETTING_CRAFTPARM:
         //if (settingCraftParmToController())
-        {
-            m_WorkStatus = MOTION_WORK_IDLE;//MOTION_WORK_SETTING_PARM;
-        }
+    {
+        m_WorkStatus = MOTION_WORK_IDLE;//MOTION_WORK_SETTING_PARM;
+    }
         /*else
         {
             m_WorkStatus = MOTION_WORK_ERROR_WAITTING;
@@ -3011,18 +3011,18 @@ void MotionControllerModule::doMotion()
         }
         break;
     case MOTION_RE_CONNECT_NET:
+    {
+        if(((MotionControllerDevice *)m_pDevice)->reConnectNet())
         {
-            if(((MotionControllerDevice *)m_pDevice)->reConnectNet())
-            {
-                m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "reconnect success");
-            }
-            else
-            {
-                m_pScheduler->recvRunInfoFromAllModules("网络重连不成功");
-                //m_pScheduler->writeMsgToStatusBar("网络重连不成功");//domotion()需要在主线程才能不会报错！（这里暂时将run()创建的线程移动到主线程）
-                m_WorkStatus = MOTION_NO_CONNECT_NET;
-            }
-        }break;
+            m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "reconnect success");
+        }
+        else
+        {
+            m_pScheduler->recvRunInfoFromAllModules("网络重连不成功");
+            //m_pScheduler->writeMsgToStatusBar("网络重连不成功");//domotion()需要在主线程才能不会报错！（这里暂时将run()创建的线程移动到主线程）
+            m_WorkStatus = MOTION_NO_CONNECT_NET;
+        }
+    }break;
     case MOTION_CLOSE_CONNECT_NET:
         if (((MotionControllerDevice *)m_pDevice)->closeNet())
         {
@@ -3039,16 +3039,16 @@ void MotionControllerModule::doMotion()
         break;
     case MOTION_NO_CONNECT_NET:
         break;
-    
+
     case MOTION_WORK_SERVO_ENABLE:
         if (((MotionControllerDevice *)m_pDevice)->axisEnable(m_bIsServoEnable))
         {
             m_WorkStatus = MOTION_WORK_IDLE;
-			qDebug()<<"enable"<<m_bIsServoEnable;
+            qDebug()<<"enable"<<m_bIsServoEnable;
             //m_pScheduler->recvRunInfoFromAllModules(QString::fromLocal8Bit("浼烘湇鍚姩/鍏抽棴鎸囦护鍙戦€佹垚鍔));
         }
         break;
-    
+
     case MOTION_CLEAR_ERROR:
         if(((MotionControllerDevice *)m_pDevice)->clearSts(m_errInfo))
         {
@@ -3087,14 +3087,14 @@ void MotionControllerModule::doMotion()
         break;
     }
     if(m_nPidCmd)
-    {       
-    	   ((MotionControllerDevice *)m_pDevice)->PIDParam(m_nPidCmd,m_nPidAxis,m_nPidLen);
-	   m_nPidCmd=0;  
+    {
+        ((MotionControllerDevice *)m_pDevice)->PIDParam(m_nPidCmd,m_nPidAxis,m_nPidLen);
+        m_nPidCmd=0;
     }
-	if(m_nCanDebug)
-    {       
-    	   ((MotionControllerDevice *)m_pDevice)->setCanDebug(m_nCanDebuglevel);
-	   m_nCanDebug=0;  
+    if(m_nCanDebug)
+    {
+        ((MotionControllerDevice *)m_pDevice)->setCanDebug(m_nCanDebuglevel);
+        m_nCanDebug=0;
     }
     //qDebug()<<"d en"<<m_WorkStatus;
     feedbackSystemState();

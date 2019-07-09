@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Panel</string>
+   <string>Robot</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -453,7 +453,7 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_6">
           <property name="spacing">
-           <number>118</number>
+           <number>6</number>
           </property>
           <property name="bottomMargin">
            <number>1</number>
@@ -474,6 +474,11 @@
            <widget class="QPushButton" name="btnNetState">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
             </property>
             <property name="text">
              <string/>
@@ -523,7 +528,7 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <property name="spacing">
-           <number>16</number>
+           <number>6</number>
           </property>
           <property name="bottomMargin">
            <number>1</number>
@@ -565,6 +570,11 @@
            <widget class="QPushButton" name="btnServoState">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
             </property>
             <property name="text">
              <string/>

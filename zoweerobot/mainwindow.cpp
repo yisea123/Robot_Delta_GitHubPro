@@ -1602,6 +1602,7 @@ void MainWindow::updataData()
                                            "border: 2px groove gray;"
                                            "border-style: outset;}");
         }
+        ui->btnNetState->setFixedWidth(ui->btnServoState->width());
         preNetState = bState;
     }
     if(firstConn == 1){
