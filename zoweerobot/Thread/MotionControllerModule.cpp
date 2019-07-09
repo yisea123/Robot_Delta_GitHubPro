@@ -2472,6 +2472,7 @@ void MotionControllerModule::doMotion()
             m_GCodeRunSerialNum = 0;
             nCurrentLineSerialNum=0;
             m_nDelayTime=0;
+            m_nDelayTime=0;
             qDebug()<<"control="<<m_nMotionControllerRunNum<<" last="<<m_nLastPartGCodeNum;
 
             m_pProcessCacheHandler->m_bIsManualMotion = false;
