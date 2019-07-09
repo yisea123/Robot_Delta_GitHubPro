@@ -18,1245 +18,1755 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QFrame" name="frame">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>723</width>
-     <height>577</height>
-    </rect>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
    </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
+   <property name="topMargin">
+    <number>0</number>
    </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
+   <property name="rightMargin">
+    <number>0</number>
    </property>
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>723</width>
-      <height>577</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>输出</string>
-     </attribute>
-     <widget class="QGroupBox" name="groupBox_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>551</width>
-        <height>181</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QGroupBox {
-            border-color: rgb(170, 170, 170);
-            border-width: 1px;
-            border-style: solid;
-            margin-top: 1ex;
-			font: 16px
-        }
-        QGroupBox::title {
-            subcontrol-origin: margin;
-            subcontrol-position: top left;
-            left: 10px;
-            margin-left: 2px;
-            padding: 0  0px;
-        }</string>
-      </property>
-      <property name="title">
-       <string>输出板1</string>
-      </property>
-      <widget class="QWidget" name="gridLayoutWidget_2">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>534</width>
-         <height>151</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <item row="1" column="6">
-         <widget class="QCheckBox" name="ckbOut1_5">
-          <property name="text">
-           <string>OUT13</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="8">
-         <widget class="QCheckBox" name="ckbOut4_7">
-          <property name="text">
-           <string>OUT39</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="7">
-         <widget class="QCheckBox" name="ckbOut3_6">
-          <property name="text">
-           <string>OUT30</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="7">
-         <widget class="QCheckBox" name="ckbOut4_6">
-          <property name="text">
-           <string>OUT38</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="7">
-         <widget class="QCheckBox" name="ckbOut0_6">
-          <property name="text">
-           <string>OUT6</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="6">
-         <widget class="QCheckBox" name="ckbOut0_5">
-          <property name="text">
-           <string>OUT5</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="5">
-         <widget class="QCheckBox" name="ckbOut4_4">
-          <property name="text">
-           <string>OUT36</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="4">
-         <widget class="QCheckBox" name="ckbOut4_3">
-          <property name="text">
-           <string>OUT35</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="5">
-         <widget class="QCheckBox" name="ckbOut1_4">
-          <property name="text">
-           <string>OUT12</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="2">
-         <widget class="QCheckBox" name="ckbOut5_1">
-          <property name="text">
-           <string>OUT41</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <widget class="QCheckBox" name="ckbOut0_2">
-          <property name="text">
-           <string>OUT2</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="3">
-         <widget class="QCheckBox" name="ckbOut5_2">
-          <property name="text">
-           <string>OUT42</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="QCheckBox" name="ckbOut5_0">
-          <property name="text">
-           <string>OUT40</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QCheckBox" name="ckbOut4_0">
-          <property name="text">
-           <string>OUT32</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="5">
-         <widget class="QCheckBox" name="ckbOut0_4">
-          <property name="text">
-           <string>OUT4</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="6">
-         <widget class="QCheckBox" name="ckbOut5_5">
-          <property name="text">
-           <string>OUT45</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4">
-         <widget class="QCheckBox" name="ckbOut0_3">
-          <property name="text">
-           <string>OUT3</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QCheckBox" name="ckbOut2_0">
-          <property name="text">
-           <string>OUT16</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="2">
-         <widget class="QCheckBox" name="ckbOut3_1">
-          <property name="text">
-           <string>OUT25</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="5">
-         <widget class="QCheckBox" name="ckbOut3_4">
-          <property name="text">
-           <string>OUT28</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QCheckBox" name="ckbOut1_2">
-          <property name="text">
-           <string>OUT10</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="3">
-         <widget class="QCheckBox" name="ckbOut3_2">
-          <property name="text">
-           <string>OUT26</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="4">
-         <widget class="QCheckBox" name="ckbOut2_3">
-          <property name="text">
-           <string>OUT19</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="8">
-         <widget class="QCheckBox" name="ckbOut3_7">
-          <property name="text">
-           <string>OUT31</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QCheckBox" name="ckbOut0_1">
-          <property name="text">
-           <string>OUT1</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="4">
-         <widget class="QCheckBox" name="ckbOut3_3">
-          <property name="text">
-           <string>OUT27</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="6">
-         <widget class="QCheckBox" name="ckbOut2_5">
-          <property name="text">
-           <string>OUT21</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="5">
-         <widget class="QCheckBox" name="ckbOut5_4">
-          <property name="text">
-           <string>OUT44</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="4">
-         <widget class="QCheckBox" name="ckbOut5_3">
-          <property name="text">
-           <string>OUT43</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="6">
-         <widget class="QCheckBox" name="ckbOut3_5">
-          <property name="text">
-           <string>OUT29</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QCheckBox" name="ckbOut3_0">
-          <property name="text">
-           <string>OUT24</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QCheckBox" name="ckbOut1_0">
-          <property name="text">
-           <string>OUT8</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="7">
-         <widget class="QCheckBox" name="ckbOut1_6">
-          <property name="text">
-           <string>OUT14</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="7">
-         <widget class="QCheckBox" name="ckbOut5_6">
-          <property name="text">
-           <string>OUT46</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3">
-         <widget class="QCheckBox" name="ckbOut2_2">
-          <property name="text">
-           <string>OUT18</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="5">
-         <widget class="QCheckBox" name="ckbOut2_4">
-          <property name="text">
-           <string>OUT20</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="8">
-         <widget class="QCheckBox" name="ckbOut2_7">
-          <property name="text">
-           <string>OUT23</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="3">
-         <widget class="QCheckBox" name="ckbOut4_2">
-          <property name="text">
-           <string>OUT34</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="8">
-         <widget class="QCheckBox" name="ckbOut5_7">
-          <property name="text">
-           <string>OUT47</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="8">
-         <widget class="QCheckBox" name="ckbOut0_7">
-          <property name="text">
-           <string>OUT7</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="7">
-         <widget class="QCheckBox" name="ckbOut2_6">
-          <property name="text">
-           <string>OUT22</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QCheckBox" name="ckbOut0_0">
-          <property name="enabled">
-           <bool>true</bool>
-          </property>
-          <property name="text">
-           <string>OUT0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="2">
-         <widget class="QCheckBox" name="ckbOut4_1">
-          <property name="text">
-           <string>OUT33</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="4">
-         <widget class="QCheckBox" name="ckbOut1_3">
-          <property name="text">
-           <string>OUT11</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QCheckBox" name="ckbOut1_1">
-          <property name="text">
-           <string>OUT9</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="6">
-         <widget class="QCheckBox" name="ckbOut4_5">
-          <property name="text">
-           <string>OUT37</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="QCheckBox" name="ckbOut2_1">
-          <property name="text">
-           <string>OUT17</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="8">
-         <widget class="QCheckBox" name="ckbOut1_7">
-          <property name="text">
-           <string>OUT15</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>输入</string>
-     </attribute>
-     <widget class="QGroupBox" name="grbIN">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>551</width>
-        <height>185</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QGroupBox {
-            border-color: rgb(170, 170, 170);
-            border-width: 1px;
-            border-style: solid;
-            margin-top: 1ex;
-			font: 16px
-        }
-        QGroupBox::title {
-            subcontrol-origin: margin;
-            subcontrol-position: top left;
-            left: 10px;
-            margin-left: 2px;
-            padding: 0  0px;
-        }</string>
-      </property>
-      <property name="title">
-       <string>输入板1</string>
-      </property>
-      <widget class="QFrame" name="frame_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>16</y>
-         <width>545</width>
-         <height>161</height>
-        </rect>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout">
-        <property name="leftMargin">
-         <number>2</number>
-        </property>
-        <property name="topMargin">
-         <number>4</number>
-        </property>
-        <property name="rightMargin">
-         <number>2</number>
-        </property>
-        <property name="bottomMargin">
-         <number>4</number>
-        </property>
-        <item row="0" column="0">
-         <widget class="QPushButton" name="btnIn0_0">
-          <property name="text">
-           <string>IN0 </string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="btnIn0_1">
-          <property name="text">
-           <string>IN1 </string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QPushButton" name="btnIn0_2">
-          <property name="text">
-           <string>IN2 </string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <widget class="QPushButton" name="btnIn0_3">
-          <property name="text">
-           <string>IN3 </string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4">
-         <widget class="QPushButton" name="btnIn0_4">
-          <property name="text">
-           <string>IN4 </string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="5">
-         <widget class="QPushButton" name="btnIn0_5">
-          <property name="text">
-           <string>IN5 </string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="6">
-         <widget class="QPushButton" name="btnIn0_6">
-          <property name="text">
-           <string>IN6 </string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="7">
-         <widget class="QPushButton" name="btnIn0_7">
-          <property name="text">
-           <string>IN7 </string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="btnIn1_0">
-          <property name="text">
-           <string>IN8 </string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QPushButton" name="btnIn1_1">
-          <property name="text">
-           <string>IN9 </string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QPushButton" name="btnIn1_2">
-          <property name="text">
-           <string>IN10</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QPushButton" name="btnIn1_3">
-          <property name="text">
-           <string>IN11</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="4">
-         <widget class="QPushButton" name="btnIn1_4">
-          <property name="text">
-           <string>IN12</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="5">
-         <widget class="QPushButton" name="btnIn1_5">
-          <property name="text">
-           <string>IN13</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="6">
-         <widget class="QPushButton" name="btnIn1_6">
-          <property name="text">
-           <string>IN14</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="7">
-         <widget class="QPushButton" name="btnIn1_7">
-          <property name="text">
-           <string>IN15</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="btnIn2_0">
-          <property name="text">
-           <string>IN16</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QPushButton" name="btnIn2_1">
-          <property name="text">
-           <string>IN17</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="QPushButton" name="btnIn2_2">
-          <property name="text">
-           <string>IN18</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3">
-         <widget class="QPushButton" name="btnIn2_3">
-          <property name="text">
-           <string>IN19</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="4">
-         <widget class="QPushButton" name="btnIn2_4">
-          <property name="text">
-           <string>IN20</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="5">
-         <widget class="QPushButton" name="btnIn2_5">
-          <property name="text">
-           <string>IN21</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="6">
-         <widget class="QPushButton" name="btnIn2_6">
-          <property name="text">
-           <string>IN22</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="7">
-         <widget class="QPushButton" name="btnIn2_7">
-          <property name="text">
-           <string>IN23</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QPushButton" name="btnIn3_0">
-          <property name="text">
-           <string>IN24</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QPushButton" name="btnIn3_1">
-          <property name="text">
-           <string>IN25</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="2">
-         <widget class="QPushButton" name="btnIn3_2">
-          <property name="text">
-           <string>IN26</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="3">
-         <widget class="QPushButton" name="btnIn3_3">
-          <property name="text">
-           <string>IN27</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="4">
-         <widget class="QPushButton" name="btnIn3_4">
-          <property name="text">
-           <string>IN28</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="5">
-         <widget class="QPushButton" name="btnIn3_5">
-          <property name="text">
-           <string>IN29</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="6">
-         <widget class="QPushButton" name="btnIn3_6">
-          <property name="text">
-           <string>IN30</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="7">
-         <widget class="QPushButton" name="btnIn3_7">
-          <property name="text">
-           <string>IN31</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QPushButton" name="btnIn4_0">
-          <property name="text">
-           <string>IN32</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QPushButton" name="btnIn4_1">
-          <property name="text">
-           <string>IN33</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="2">
-         <widget class="QPushButton" name="btnIn4_2">
-          <property name="text">
-           <string>IN34</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="3">
-         <widget class="QPushButton" name="btnIn4_3">
-          <property name="text">
-           <string>IN35</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="4">
-         <widget class="QPushButton" name="btnIn4_4">
-          <property name="text">
-           <string>IN36</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="5">
-         <widget class="QPushButton" name="btnIn4_5">
-          <property name="text">
-           <string>IN37</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="6">
-         <widget class="QPushButton" name="btnIn4_6">
-          <property name="text">
-           <string>IN38</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="7">
-         <widget class="QPushButton" name="btnIn4_7">
-          <property name="text">
-           <string>IN39</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="QPushButton" name="btnIn5_0">
-          <property name="text">
-           <string>IN40</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="1">
-         <widget class="QPushButton" name="btnIn5_1">
-          <property name="text">
-           <string>IN41</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="2">
-         <widget class="QPushButton" name="btnIn5_2">
-          <property name="text">
-           <string>IN42</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="3">
-         <widget class="QPushButton" name="btnIn5_3">
-          <property name="text">
-           <string>IN43</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="4">
-         <widget class="QPushButton" name="btnIn5_4">
-          <property name="text">
-           <string>IN44</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="5">
-         <widget class="QPushButton" name="btnIn5_5">
-          <property name="text">
-           <string>IN45</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="6">
-         <widget class="QPushButton" name="btnIn5_6">
-          <property name="text">
-           <string>IN46</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="7">
-         <widget class="QPushButton" name="btnIn5_7">
-          <property name="text">
-           <string>IN47</string>
-          </property>
-          <property name="icon">
-           <iconset resource="images.qrc">
-            <normaloff>:/images/setoff2.png</normaloff>
-            <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-     <widget class="QComboBox" name="cmbInVol">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>350</y>
-        <width>69</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="currentIndex">
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="leftMargin">
        <number>0</number>
       </property>
-      <property name="duplicatesEnabled">
-       <bool>false</bool>
+      <property name="topMargin">
+       <number>0</number>
       </property>
-      <property name="frame">
-       <bool>true</bool>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
       </property>
       <item>
-       <property name="text">
-        <string>低</string>
-       </property>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
+          <string>输出</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="styleSheet">
+             <string notr="true">QGroupBox {
+            border-color: rgb(170, 170, 170);
+            border-width: 1px;
+            border-style: solid;
+            margin-top: 1ex;
+			font: 16px
+        }
+        QGroupBox::title {
+            subcontrol-origin: margin;
+            subcontrol-position: top left;
+            left: 10px;
+            margin-left: 2px;
+            padding: 0  0px;
+        }</string>
+            </property>
+            <property name="title">
+             <string>输出板1</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_3">
+             <item row="1" column="1">
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="0" column="1">
+              <layout class="QGridLayout" name="gridLayout_2">
+               <property name="leftMargin">
+                <number>2</number>
+               </property>
+               <property name="topMargin">
+                <number>4</number>
+               </property>
+               <property name="rightMargin">
+                <number>2</number>
+               </property>
+               <property name="bottomMargin">
+                <number>4</number>
+               </property>
+               <property name="spacing">
+                <number>6</number>
+               </property>
+               <item row="1" column="6">
+                <widget class="QCheckBox" name="ckbOut1_5">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT13</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="8">
+                <widget class="QCheckBox" name="ckbOut4_7">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT39</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="7">
+                <widget class="QCheckBox" name="ckbOut3_6">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT30</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="7">
+                <widget class="QCheckBox" name="ckbOut4_6">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT38</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="7">
+                <widget class="QCheckBox" name="ckbOut0_6">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT6</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="6">
+                <widget class="QCheckBox" name="ckbOut0_5">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT5</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="5">
+                <widget class="QCheckBox" name="ckbOut4_4">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT36</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="4">
+                <widget class="QCheckBox" name="ckbOut4_3">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT35</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="5">
+                <widget class="QCheckBox" name="ckbOut1_4">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT12</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="2">
+                <widget class="QCheckBox" name="ckbOut5_1">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT41</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QCheckBox" name="ckbOut0_2">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT2</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="3">
+                <widget class="QCheckBox" name="ckbOut5_2">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT42</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QCheckBox" name="ckbOut5_0">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT40</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QCheckBox" name="ckbOut4_0">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT32</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="5">
+                <widget class="QCheckBox" name="ckbOut0_4">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT4</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="6">
+                <widget class="QCheckBox" name="ckbOut5_5">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT45</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4">
+                <widget class="QCheckBox" name="ckbOut0_3">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT3</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QCheckBox" name="ckbOut2_0">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT16</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QCheckBox" name="ckbOut3_1">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT25</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="5">
+                <widget class="QCheckBox" name="ckbOut3_4">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT28</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QCheckBox" name="ckbOut1_2">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT10</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <widget class="QCheckBox" name="ckbOut3_2">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT26</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="4">
+                <widget class="QCheckBox" name="ckbOut2_3">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT19</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="8">
+                <widget class="QCheckBox" name="ckbOut3_7">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT31</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QCheckBox" name="ckbOut0_1">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT1</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="4">
+                <widget class="QCheckBox" name="ckbOut3_3">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT27</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="6">
+                <widget class="QCheckBox" name="ckbOut2_5">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT21</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="5">
+                <widget class="QCheckBox" name="ckbOut5_4">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT44</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="4">
+                <widget class="QCheckBox" name="ckbOut5_3">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT43</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="6">
+                <widget class="QCheckBox" name="ckbOut3_5">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT29</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QCheckBox" name="ckbOut3_0">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT24</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QCheckBox" name="ckbOut1_0">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT8</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="7">
+                <widget class="QCheckBox" name="ckbOut1_6">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT14</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="7">
+                <widget class="QCheckBox" name="ckbOut5_6">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT46</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QCheckBox" name="ckbOut2_2">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT18</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="5">
+                <widget class="QCheckBox" name="ckbOut2_4">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT20</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="8">
+                <widget class="QCheckBox" name="ckbOut2_7">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT23</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="3">
+                <widget class="QCheckBox" name="ckbOut4_2">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT34</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="8">
+                <widget class="QCheckBox" name="ckbOut5_7">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT47</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="8">
+                <widget class="QCheckBox" name="ckbOut0_7">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT7</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="7">
+                <widget class="QCheckBox" name="ckbOut2_6">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT22</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="ckbOut0_0">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT0</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="QCheckBox" name="ckbOut4_1">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT33</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="4">
+                <widget class="QCheckBox" name="ckbOut1_3">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT11</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QCheckBox" name="ckbOut1_1">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT9</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="6">
+                <widget class="QCheckBox" name="ckbOut4_5">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT37</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QCheckBox" name="ckbOut2_1">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT17</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="8">
+                <widget class="QCheckBox" name="ckbOut1_7">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>OUT15</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_2">
+         <attribute name="title">
+          <string>输入</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QGroupBox" name="grbIN">
+            <property name="styleSheet">
+             <string notr="true">QGroupBox {
+            border-color: rgb(170, 170, 170);
+            border-width: 1px;
+            border-style: solid;
+            margin-top: 1ex;
+			font: 16px
+        }
+        QGroupBox::title {
+            subcontrol-origin: margin;
+            subcontrol-position: top left;
+            left: 10px;
+            margin-left: 2px;
+            padding: 0  0px;
+        }</string>
+            </property>
+            <property name="title">
+             <string>输入板1</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_4">
+             <item row="1" column="0">
+              <spacer name="verticalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="0" column="0">
+              <widget class="QFrame" name="frame_2">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="gridLayout">
+                <property name="leftMargin">
+                 <number>2</number>
+                </property>
+                <property name="topMargin">
+                 <number>4</number>
+                </property>
+                <property name="rightMargin">
+                 <number>2</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>4</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QPushButton" name="btnIn0_0">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN0 </string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QPushButton" name="btnIn0_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN1 </string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QPushButton" name="btnIn0_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN2 </string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QPushButton" name="btnIn0_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN3 </string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="4">
+                 <widget class="QPushButton" name="btnIn0_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN4 </string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="5">
+                 <widget class="QPushButton" name="btnIn0_5">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN5 </string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="6">
+                 <widget class="QPushButton" name="btnIn0_6">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN6 </string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="7">
+                 <widget class="QPushButton" name="btnIn0_7">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN7 </string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="btnIn1_0">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN8 </string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QPushButton" name="btnIn1_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN9 </string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QPushButton" name="btnIn1_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN10</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QPushButton" name="btnIn1_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN11</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="4">
+                 <widget class="QPushButton" name="btnIn1_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN12</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="5">
+                 <widget class="QPushButton" name="btnIn1_5">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN13</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="6">
+                 <widget class="QPushButton" name="btnIn1_6">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN14</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="7">
+                 <widget class="QPushButton" name="btnIn1_7">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN15</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="btnIn2_0">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN16</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QPushButton" name="btnIn2_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN17</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QPushButton" name="btnIn2_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN18</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QPushButton" name="btnIn2_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN19</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="4">
+                 <widget class="QPushButton" name="btnIn2_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN20</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="5">
+                 <widget class="QPushButton" name="btnIn2_5">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN21</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="6">
+                 <widget class="QPushButton" name="btnIn2_6">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN22</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="7">
+                 <widget class="QPushButton" name="btnIn2_7">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN23</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QPushButton" name="btnIn3_0">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN24</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QPushButton" name="btnIn3_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN25</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="2">
+                 <widget class="QPushButton" name="btnIn3_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN26</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="3">
+                 <widget class="QPushButton" name="btnIn3_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN27</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="4">
+                 <widget class="QPushButton" name="btnIn3_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN28</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="5">
+                 <widget class="QPushButton" name="btnIn3_5">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN29</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="6">
+                 <widget class="QPushButton" name="btnIn3_6">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN30</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="7">
+                 <widget class="QPushButton" name="btnIn3_7">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN31</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QPushButton" name="btnIn4_0">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN32</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QPushButton" name="btnIn4_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN33</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="2">
+                 <widget class="QPushButton" name="btnIn4_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN34</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="3">
+                 <widget class="QPushButton" name="btnIn4_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN35</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="4">
+                 <widget class="QPushButton" name="btnIn4_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN36</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="5">
+                 <widget class="QPushButton" name="btnIn4_5">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN37</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="6">
+                 <widget class="QPushButton" name="btnIn4_6">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN38</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="7">
+                 <widget class="QPushButton" name="btnIn4_7">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN39</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QPushButton" name="btnIn5_0">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN40</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QPushButton" name="btnIn5_1">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN41</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="2">
+                 <widget class="QPushButton" name="btnIn5_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN42</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="3">
+                 <widget class="QPushButton" name="btnIn5_3">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN43</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="4">
+                 <widget class="QPushButton" name="btnIn5_4">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN44</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="5">
+                 <widget class="QPushButton" name="btnIn5_5">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN45</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="6">
+                 <widget class="QPushButton" name="btnIn5_6">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN46</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="7">
+                 <widget class="QPushButton" name="btnIn5_7">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>IN47</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="images.qrc">
+                    <normaloff>:/images/setoff2.png</normaloff>
+                    <normalon>:/images/seton.png</normalon>:/images/setoff2.png</iconset>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="cmbInVol">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <property name="duplicatesEnabled">
+             <bool>false</bool>
+            </property>
+            <property name="frame">
+             <bool>true</bool>
+            </property>
+            <item>
+             <property name="text">
+              <string>低</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>高</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
       </item>
-      <item>
-       <property name="text">
-        <string>高</string>
-       </property>
-      </item>
-     </widget>
+     </layout>
     </widget>
-   </widget>
-  </widget>
+   </item>
+  </layout>
  </widget>
  <resources>
   <include location="images.qrc"/>
