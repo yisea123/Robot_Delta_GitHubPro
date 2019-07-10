@@ -1702,7 +1702,4 @@ void MainWindow::on_emgcStop_clicked()
         ui->emgcStop->setStyleSheet("QPushButton{background-color:rgb(46, 170, 0);color: black;border-radius: 10px;border: 2px groove gray;border-style: outset;font: 20px;}\
                                     QPushButton:hover{color: white;font: 25px;}");
     }
-    QString tmp;
-    tmp = ui->groupBox->styleSheet();
-    qDebug()<<tmp;
 }
