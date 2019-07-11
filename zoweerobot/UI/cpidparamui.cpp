@@ -638,11 +638,8 @@ void cpidparamui::on_btnReadGrp_clicked(int grp)
 
     ui->edtGrpMemo->setText(m_pScheduler->m_pSystemParameter->PidParaGrpName[grp]);
 
-    for(i=0;i<24;i++){
+    for(i=0;i<42;i++){
         m_pScheduler->m_pSystemParameter->SystemParam[pAIXS1PID+i] = m_pScheduler->m_pSystemParameter->PidParaGrp[grp][i];
-    }
-    for(i=0;i<18;i++){
-        m_pScheduler->m_pSystemParameter->SystemParam[pAIXS5PID+i] = m_pScheduler->m_pSystemParameter->PidParaGrp[grp][i + 24];
     }
     for(i=0;i<MOF;i++){
         refresh_pidParam(i);

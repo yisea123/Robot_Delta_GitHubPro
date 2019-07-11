@@ -364,14 +364,23 @@
 #define pAIXS3PID  108
 #define pAIXS4PID   114
 
-#define GoHomeOrder1   120   // 手动 回零顺序, 步骤1.  默认值 3. 先回Z轴
-#define GoHomeOrder2   121   // 手动 回零顺序, 步骤2.  默认值 1.
-#define GoHomeOrder3   122   // 手动 回零顺序, 步骤3.  默认值 2.
-#define GoHomeOrder4   123   // 手动 回零顺序, 步骤4.  默认值 4.
+#define pAIXS5PID   120
+#define pAIXS6PID  126
+#define pAIXS7PID   132
 
-#define pAIXS5PID   124
-#define pAIXS6PID  130
-#define pAIXS7PID   136
+#define GoHomeOrder1   138   // 手动 回零顺序, 步骤1.  默认值 3. 先回Z轴
+#define GoHomeOrder2   139   // 手动 回零顺序, 步骤2.  默认值 1.
+#define GoHomeOrder3   140   // 手动 回零顺序, 步骤3.  默认值 2.
+#define GoHomeOrder4   141   // 手动 回零顺序, 步骤4.  默认值 4.
+
+//#define GoHomeOrder1   120   // 手动 回零顺序, 步骤1.  默认值 3. 先回Z轴
+//#define GoHomeOrder2   121   // 手动 回零顺序, 步骤2.  默认值 1.
+//#define GoHomeOrder3   122   // 手动 回零顺序, 步骤3.  默认值 2.
+//#define GoHomeOrder4   123   // 手动 回零顺序, 步骤4.  默认值 4.
+
+//#define pAIXS5PID   124
+//#define pAIXS6PID  130
+//#define pAIXS7PID   136
 
 #define ep_CoorID   142
 #define pJointMaxVel7   166

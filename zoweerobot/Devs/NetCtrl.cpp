@@ -756,6 +756,9 @@ int CNetCtrl::DealStateFrame(FrameBody frame,FrameTrafficCtrl* ctrl)
 		if((start<=(pAIXS2PID+4))&&(end>=pAIXS2PID))   cDlg->m_pSystemParm->getpidparamfinished[1]=1;
 		if((start<=(pAIXS3PID+4))&&(end>=pAIXS3PID))   cDlg->m_pSystemParm->getpidparamfinished[2]=1;
 		if((start<=(pAIXS4PID+4))&&(end>=pAIXS4PID))   cDlg->m_pSystemParm->getpidparamfinished[3]=1;
+		if((start<=(pAIXS5PID+4))&&(end>=pAIXS5PID))   cDlg->m_pSystemParm->getpidparamfinished[4]=1;
+		if((start<=(pAIXS6PID+4))&&(end>=pAIXS6PID))   cDlg->m_pSystemParm->getpidparamfinished[5]=1;
+		if((start<=(pAIXS7PID+4))&&(end>=pAIXS7PID))   cDlg->m_pSystemParm->getpidparamfinished[6]=1;
 	}
 	break;
     default:
