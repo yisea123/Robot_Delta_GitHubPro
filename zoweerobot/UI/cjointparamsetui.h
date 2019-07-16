@@ -30,8 +30,8 @@ private slots:
     void on_extDevRDBtn_clicked();
     void on_extDevSVBtn_clicked();
 
-    void on_routeParamRDBtn_clicked();
-    void on_routeParamSVBtn_clicked();
+//    void on_routeParamRDBtn_clicked();
+//    void on_routeParamSVBtn_clicked();
 
 private:
     Ui::cjointparamsetui *ui;

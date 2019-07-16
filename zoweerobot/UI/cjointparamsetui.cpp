@@ -27,6 +27,9 @@ cjointparamsetui::cjointparamsetui(QWidget *parent, SystemSchedule* schedule) :
     //on_cancle_clicked();
     m_pScheduler->m_pSystemParameter->getsysparamfinished=1;
     m_pScheduler->m_pSystemParameter->getaxinofinished=1;
+
+    connect(ui->routeParamRDBtn,SIGNAL(clicked()),this,SLOT(on_axisParamRDBtn_clicked()));
+    connect(ui->routeParamSVBtn,SIGNAL(clicked()),this,SLOT(on_axisParamSVBtn_clicked()));
 //    ui->grbAxisNO->setStyleSheet("#Qgroupbox{border:2px solid #014F84}#background-color:#00d8ff");
 //    ui->frame->setStyleSheet("#frame{border:2px solid #014F84}#background-color:#00d8ff");
     //QTimer* timer = new QTimer(this);
@@ -44,6 +47,8 @@ cjointparamsetui::cjointparamsetui(QWidget *parent, SystemSchedule* schedule) :
 
 cjointparamsetui::~cjointparamsetui()
 {
+    disconnect(ui->routeParamRDBtn,SIGNAL(clicked()),this,SLOT(on_axisParamRDBtn_clicked()));
+    disconnect(ui->routeParamSVBtn,SIGNAL(clicked()),this,SLOT(on_axisParamSVBtn_clicked()));
     delete ui;
 }
 
@@ -619,12 +624,12 @@ void cjointparamsetui::on_extDevRDBtn_clicked()
     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/getaxisno", "yes");
 }
 
-void cjointparamsetui::on_routeParamRDBtn_clicked()
-{
-    on_axisParamRDBtn_clicked();
-}
+//void cjointparamsetui::on_routeParamRDBtn_clicked()
+//{
+//    on_axisParamRDBtn_clicked();
+//}
 
-void cjointparamsetui::on_routeParamSVBtn_clicked()
-{
-    on_axisParamSVBtn_clicked();
-}
+//void cjointparamsetui::on_routeParamSVBtn_clicked()
+//{
+//    on_axisParamSVBtn_clicked();
+//}
