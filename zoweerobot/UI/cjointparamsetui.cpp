@@ -147,21 +147,21 @@ void cjointparamsetui::refresh_extDevParam()
     ui->axis2_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[1]) );
     ui->axis3_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[2]) );
     ui->axis4_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[3]) );
-//    ui->axis5_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[4]) );
-//    ui->axis6_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[5]) );
-//    ui->axis7_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[6]) );
+    ui->axis5_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[4]) );
+    ui->axis6_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[5]) );
+    ui->axis7_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[6]) );
 
-    ui->axis1_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[4]) );
-    ui->axis2_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[5]) );
-    ui->axis3_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[6]) );
-    ui->axis4_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[7]) );
-//    ui->axis5_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[11]) );
-//    ui->axis6_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[12]) );
-//    ui->axis7_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[13]) );
+    ui->axis1_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[7]) );
+    ui->axis2_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[8]) );
+    ui->axis3_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[9]) );
+    ui->axis4_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[10]) );
+    ui->axis5_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[11]) );
+    ui->axis6_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[12]) );
+    ui->axis7_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[13]) );
 
-    ui->battery_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[8]) );
-    ui->input_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[9]) );
-    ui->output_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[10]) );
+    ui->battery_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[14]) );
+    ui->input_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[15]) );
+    ui->output_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[16]) );
 }
 
 void cjointparamsetui::refresh_systemParam()
@@ -590,19 +590,18 @@ void cjointparamsetui::on_extDevSVBtn_clicked()
     m_pScheduler->m_pSystemParameter->axisno[3]=ui->axis4_slot->text().toInt();
     m_pScheduler->m_pSystemParameter->axisno[4]=ui->axis5_slot->text().toInt();
     m_pScheduler->m_pSystemParameter->axisno[5]=ui->axis6_slot->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[6]=ui->axis1_canid->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[7]=ui->axis2_canid->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[8]=ui->axis3_canid->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[9]=ui->axis4_canid->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[10]=ui->axis5_canid->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[11]=ui->axis6_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[6]=ui->axis7_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[7]=ui->axis1_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[8]=ui->axis2_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[9]=ui->axis3_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[10]=ui->axis4_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[11]=ui->axis5_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[12]=ui->axis6_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[13]=ui->axis7_canid->text().toInt();
 
-    //     m_pScheduler->m_pSystemParameter->axisno[12]=ui->axis7_slot->text().toInt();
-    //     m_pScheduler->m_pSystemParameter->axisno[13]=ui->axis7_canid->text().toInt();
-
-    m_pScheduler->m_pSystemParameter->axisno[12]=ui->battery_slot->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[13]=ui->input_slot->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[14]=ui->output_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[14]=ui->battery_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[15]=ui->input_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[16]=ui->output_slot->text().toInt();
 
     m_pScheduler->WriteAxisParamInformation();
 

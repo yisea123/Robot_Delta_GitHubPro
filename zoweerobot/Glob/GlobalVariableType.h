@@ -45,6 +45,7 @@ class ToolInfo;
 #define  AXIS_4  AXIS_R
 #define  AXIS_5  AXIS_W
 #define  AXIS_6  AXIS_P
+#define  AXIS_7  AXIS_M
 #define CTL_STS_ENABLE       0//(1<<0)
 #define CTL_STS_IDLE_LED     1//(1<<1)
 #define CTL_STS_MOTION_LED   2//(1<<2)
@@ -99,7 +100,7 @@ class ToolInfo;
 #define CTL_IO_IN_CUT_DONE_OFF true
 #define CTL_IO_IN_CUT_DONE_ON  false
 #define TEACHPIONTNUM 1024
-#define TEACHPIONTSIZE 56//(sizeof(TeachPoint))//40
+#define TEACHPIONTSIZE 64//56//(sizeof(TeachPoint))//40
 typedef  struct  _Material
 {
     QString  name;
@@ -144,7 +145,7 @@ class Point
 public:
     Point()
     {}
-    Point(double x,double y,double z,double w,double p,double r)
+    Point(double x,double y,double z,double w,double p,double r,double m = 0)
     {
         this->x = x;
         this->y = y;
@@ -152,21 +153,22 @@ public:
 	 this->w = w;
 	 this->p = p;
         this->r = r;
+	this->m = m;
     }
 
     Point operator + (const Point &point)
     {
-        return Point((this->x + point.x),(this->y + point.y),(this->z + point.z),(this->w + point.w),(this->p + point.p),(this->r + point.r));
+        return Point((this->x + point.x),(this->y + point.y),(this->z + point.z),(this->w + point.w),(this->p + point.p),(this->r + point.r),(this->m + point.m));
     }
 
     Point operator - (const Point &point)
     {
-        return Point((this->x - point.x),(this->y - point.y),(this->z - point.z),(this->w - point.w),(this->p - point.p),(this->r - point.r));
+        return Point((this->x - point.x),(this->y - point.y),(this->z - point.z),(this->w - point.w),(this->p - point.p),(this->r - point.r),(this->m - point.m));
     }
 
     Point operator * (double a)
     {
-        return Point((this->x * a),(this->y * a),(this->z * a),(this->w * a),(this->p * a),(this->r * a));
+        return Point((this->x * a),(this->y * a),(this->z * a),(this->w * a),(this->p * a),(this->r * a),(this->m * a));
     }
 
     double  x;
@@ -175,6 +177,7 @@ public:
     double  w;
     double  p;
     double  r;
+	double  m;
 };
 
 /** @brief 解析过程的临时参数存储类 */
@@ -192,6 +195,7 @@ public:
         m_LastPosition.w = 0.0;
 	 m_LastPosition.p= 0.0;
         m_LastPosition.r = 0.0;
+	m_LastPosition.m = 0.0;
         m_dLastToolAngle = 250;//0.0;
 	 m_hand=0;
         m_WorkCoordinate = Point(0, 0,0,0,0,0);
@@ -247,6 +251,7 @@ public:
         m_LastPosition.w = 0.0;
 	  m_LastPosition.p = 0.0;
         m_LastPosition.r = 0.0;
+		m_LastPosition.m = 0.0;
         m_ReferenceCoordinate = Point(0, 0,0,0,0,0);
         m_nWorkCoordinateP = -1;
         m_nWorkCoordinateK = -1;
@@ -356,7 +361,7 @@ class DAxis
 public:
     DAxis()
     {}
-    DAxis(double x,double y, double z, double w, double p, double r)
+    DAxis(double x,double y, double z, double w, double p, double r, double m = 0)
     {
         this->x = x;
         this->y = y;
@@ -364,21 +369,22 @@ public:
         this->w = w;
         this->p = p;
         this->r = r;
+	this->m = m;
     }
 
     DAxis operator + (const DAxis &point)
     {
-        return DAxis((this->x + point.x),(this->y + point.y),(this->z + point.z),(this->w + point.w),(this->p + point.p),(this->r + point.r));
+        return DAxis((this->x + point.x),(this->y + point.y),(this->z + point.z),(this->w + point.w),(this->p + point.p),(this->r + point.r),(this->m + point.m));
     }
 
     DAxis operator - (const DAxis &point)
     {
-        return DAxis((this->x - point.x),(this->y - point.y),(this->z - point.z),(this->w - point.w),(this->p - point.p),(this->r - point.r));
+        return DAxis((this->x - point.x),(this->y - point.y),(this->z - point.z),(this->w - point.w),(this->p - point.p),(this->r - point.r),(this->m - point.m));
     }
 
     DAxis operator * (double a)
     {
-        return DAxis((this->x * a),(this->y * a),(this->z * a),(this->w * a),(this->p * a),(this->r * a));
+        return DAxis((this->x * a),(this->y * a),(this->z * a),(this->w * a),(this->p * a),(this->r * a),(this->m * a));
     }
 
     double  x;
@@ -387,6 +393,7 @@ public:
     double  w;
     double  p;
     double  r;
+	double  m;
 };
 
 
@@ -395,7 +402,7 @@ class NAxis
 public:
     NAxis()
     {}
-    NAxis(int x,int y, int z, int w, int p, int r)
+    NAxis(int x,int y, int z, int w, int p, int r, int m = 0)
     {
         this->x = x;
         this->y = y;
@@ -403,21 +410,22 @@ public:
         this->w = w;
         this->p = p;
         this->r = r;
+		this->m = m;
     }
 
     NAxis operator + (const NAxis &point)
     {
-        return NAxis((this->x + point.x),(this->y + point.y),(this->z + point.z),(this->w + point.w),(this->p + point.p),(this->r + point.r));
+        return NAxis((this->x + point.x),(this->y + point.y),(this->z + point.z),(this->w + point.w),(this->p + point.p),(this->r + point.r),(this->m + point.m));
     }		
 
     NAxis operator - (const NAxis &point)
     {
-        return NAxis((this->x - point.x),(this->y - point.y),(this->z - point.z),(this->w - point.w),(this->p - point.p),(this->r - point.r));
+        return NAxis((this->x - point.x),(this->y - point.y),(this->z - point.z),(this->w - point.w),(this->p - point.p),(this->r - point.r),(this->m - point.m));
     }
 
     NAxis operator * (int a)
     {
-        return NAxis((this->x * a),(this->y * a),(this->z * a),(this->w * a),(this->p * a),(this->r * a));
+        return NAxis((this->x * a),(this->y * a),(this->z * a),(this->w * a),(this->p * a),(this->r * a),(this->m * a));
     }
 
     int  x;
@@ -426,6 +434,7 @@ public:
     int  w;
     int  p;
     int  r;
+	int m;
 };
 
 class  MachineParemeter
@@ -897,7 +906,7 @@ public:
 	char teachpointtext[TEACHPIONTNUM][128];
 	int teachreadfinished;
 	int TeachSaveCnt; // 保存状态 0:不在保存中， 1-100:保存进度
-	int axisno[16];
+	int axisno[17];
 	char PidParaGrpName[5][100]; // Pid参数组 注释
 	float PidParaGrp[5][6*MOF]; // 5组 Pid参数.
 	int getaxinofinished;

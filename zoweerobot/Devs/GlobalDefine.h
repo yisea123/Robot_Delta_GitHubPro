@@ -513,6 +513,7 @@ typedef struct _FrameTrafficCtrl
     float dpos;
 	float epos;
        float fpos;
+       float gpos;
 	float reserve;
 #ifdef  PROGRAM_USELVDS
 	uint64_t pulsepos[8];// 4

@@ -1,10 +1,11 @@
+#pragma execution_character_set("utf-8")
 /************************************************************
   Copyright (C),
-  ÎÄ¼şÃû£ºParseGCode.cpp
-  ×÷Õß£ºzhou    °æ±¾£ºV1.0    ´´½¨ÈÕÆÚ£º2018/07/10
-  Ä£¿éÃèÊö£ºParseGCodeÀàµÄÊµÏÖ
-  ÀúÊ·ĞŞ¸Ä¼ÇÂ¼£º<author>    <time>    <version >    <desc>
-                  zhou    2018/07/10     V1.0      Ìí¼Ó×¢ÊÍ
+  æ–‡ä»¶åï¼šParseGCode.cpp
+  ä½œè€…ï¼šzhou    ç‰ˆæœ¬ï¼šV1.0    åˆ›å»ºæ—¥æœŸï¼š2018/07/10
+  æ¨¡å—æè¿°ï¼šParseGCodeç±»çš„å®ç°
+  å†å²ä¿®æ”¹è®°å½•ï¼š<author>    <time>    <version >    <desc>
+                  zhou    2018/07/10     V1.0      æ·»åŠ æ³¨é‡Š
 *************************************************************/
 
 #include "MotionControllerDevice.h"
@@ -36,12 +37,12 @@ union FLOATCHAR
 };
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºMotionControllerDevice(QString s, BaseModule* m, SystemParameter* para)
-  º¯Êı¹¦ÄÜ£º¹¹Ôìº¯Êı
-  ÊäÈë²ÎÊı£º s£ºÉè±¸Ãû£»para£ºÏµÍ³²ÎÊı
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šMotionControllerDevice(QString s, BaseModule* m, SystemParameter* para)
+  å‡½æ•°åŠŸèƒ½ï¼šæ„é€ å‡½æ•°
+  è¾“å…¥å‚æ•°ï¼š sï¼šè®¾å¤‡åï¼›paraï¼šç³»ç»Ÿå‚æ•°
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 MotionControllerDevice::MotionControllerDevice(QString s, BaseModule* m, SystemParameter* para)
 {
@@ -68,12 +69,12 @@ MotionControllerDevice::~MotionControllerDevice()
 
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºinitMotionControllerDevice()
-  º¯Êı¹¦ÄÜ£º³õÊ¼»¯ÔË¶¯¿ØÖÆ¹Ø¼ü±äÁ¿
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£ºÏµÍ³¸´Î»Ê±ĞèÒªµ÷ÓÃ
+  å‡½æ•°åç§°ï¼šinitMotionControllerDevice()
+  å‡½æ•°åŠŸèƒ½ï¼šåˆå§‹åŒ–è¿åŠ¨æ§åˆ¶å…³é”®å˜é‡
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼šç³»ç»Ÿå¤ä½æ—¶éœ€è¦è°ƒç”¨
 **************************************************/
 void MotionControllerDevice::initMotionControllerDevice()
 {
@@ -95,12 +96,12 @@ void MotionControllerDevice::initMotionControllerDevice()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºopenDevice(ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£º´ò¿ªÉè±¸
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£ºe  ´íÎóĞÅÏ¢
-  ·µ »Ø Öµ£ºint Î´¶¨Òå
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šopenDevice(ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šæ‰“å¼€è®¾å¤‡
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼še  é”™è¯¯ä¿¡æ¯
+  è¿” å› å€¼ï¼šint æœªå®šä¹‰
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerDevice::openDevice(ErrorInfo& e)
 {
@@ -109,12 +110,12 @@ int MotionControllerDevice::openDevice(ErrorInfo& e)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºinitDevice(ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£º³õÊ¼»¯Éè±¸
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºint Î´¶¨Òå
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šinitDevice(ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šåˆå§‹åŒ–è®¾å¤‡
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼šint æœªå®šä¹‰
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerDevice::initDevice(ErrorInfo& e)
 {
@@ -122,12 +123,12 @@ int MotionControllerDevice::initDevice(ErrorInfo& e)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºstartDevice(ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£ºÆô¶¯Éè±¸
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºint Î´¶¨Òå
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šstartDevice(ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šå¯åŠ¨è®¾å¤‡
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼šint æœªå®šä¹‰
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerDevice::startDevice(ErrorInfo& e)
 {
@@ -136,12 +137,12 @@ int MotionControllerDevice::startDevice(ErrorInfo& e)
     
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºpauseDevice(ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£ºÔİÍ£Éè±¸
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºint Î´¶¨Òå
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼špauseDevice(ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šæš‚åœè®¾å¤‡
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼šint æœªå®šä¹‰
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerDevice::pauseDevice(ErrorInfo& e)
 {
@@ -149,12 +150,12 @@ int MotionControllerDevice::pauseDevice(ErrorInfo& e)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºstopDevice(ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£ºÍ£Ö¹Éè±¸
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºint Î´¶¨Òå
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šstopDevice(ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šåœæ­¢è®¾å¤‡
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼šint æœªå®šä¹‰
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerDevice::stopDevice(ErrorInfo& e)
 {
@@ -162,22 +163,22 @@ int MotionControllerDevice::stopDevice(ErrorInfo& e)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºreConnectNet()
-  º¯Êı¹¦ÄÜ£ºÖØĞÂÁ¬½ÓÍøÂç
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šreConnectNet()
+  å‡½æ•°åŠŸèƒ½ï¼šé‡æ–°è¿æ¥ç½‘ç»œ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 bool MotionControllerDevice::reConnectNet()
 {
     if(creatTCPSocket() == 0)
     {
-        //m_pModuleHandle->getSystemScheduleHandle()->recvRunInfoFromAllModules("ÖØÁ¬³É¹¦");
+        //m_pModuleHandle->getSystemScheduleHandle()->recvRunInfoFromAllModules("é‡è¿æˆåŠŸ");
         //m_pModuleHandle->getSystemScheduleHandle()->recvMsgFromWindows(MOTION_CONTROLLER_ID, "system reset");
         return true;
     }
-    //m_pModuleHandle->getSystemScheduleHandle()->recvRunInfoFromAllModules("ÖØÁ¬²»³É¹¦");
+    //m_pModuleHandle->getSystemScheduleHandle()->recvRunInfoFromAllModules("é‡è¿ä¸æˆåŠŸ");
     return false;
 }
 
@@ -191,12 +192,12 @@ bool MotionControllerDevice::closeNet()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºrestartDevice(ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£ºÖØÆôÉè±¸
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šrestartDevice(ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šé‡å¯è®¾å¤‡
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerDevice::restartDevice(ErrorInfo& e)
 {
@@ -204,12 +205,12 @@ int MotionControllerDevice::restartDevice(ErrorInfo& e)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºsetMachiningStateUi(CAutoMachiningStateUi* ui)
-  º¯Êı¹¦ÄÜ£º¹ØÁª½çÃæUI
-  ÊäÈë²ÎÊı£ºui£º×Ô¶¯¼Ó¹¤Ò³Ãæ¶ÔÓ¦µÄUI
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šsetMachiningStateUi(CAutoMachiningStateUi* ui)
+  å‡½æ•°åŠŸèƒ½ï¼šå…³è”ç•Œé¢UI
+  è¾“å…¥å‚æ•°ï¼šuiï¼šè‡ªåŠ¨åŠ å·¥é¡µé¢å¯¹åº”çš„UI
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerDevice::setMachiningStateUi(CAutoMachiningStateUi* ui)
 {
@@ -217,12 +218,12 @@ void MotionControllerDevice::setMachiningStateUi(CAutoMachiningStateUi* ui)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºsetMachiningStateUi(CAutoMachiningStateUi* ui)
-  º¯Êı¹¦ÄÜ£º¹ØÁª½çÃæUI
-  ÊäÈë²ÎÊı£ºui£ºÊÖ¶¯¼Ó¹¤Ò³Ãæ¶ÔÓ¦µÄUI
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šsetMachiningStateUi(CAutoMachiningStateUi* ui)
+  å‡½æ•°åŠŸèƒ½ï¼šå…³è”ç•Œé¢UI
+  è¾“å…¥å‚æ•°ï¼šuiï¼šæ‰‹åŠ¨åŠ å·¥é¡µé¢å¯¹åº”çš„UI
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerDevice::setManualMachiningStateUi(CManualMachiningStateUi* ui)
 {
@@ -230,12 +231,12 @@ void MotionControllerDevice::setManualMachiningStateUi(CManualMachiningStateUi* 
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºsetMachiningStateUi(CAutoMachiningStateUi* ui)
-  º¯Êı¹¦ÄÜ£º¹ØÁª½çÃæUI
-  ÊäÈë²ÎÊı£ºui£ºÍâ²¿Í¨Ñ¶ÉèÖÃÒ³Ãæ¶ÔÓ¦µÄUI
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šsetMachiningStateUi(CAutoMachiningStateUi* ui)
+  å‡½æ•°åŠŸèƒ½ï¼šå…³è”ç•Œé¢UI
+  è¾“å…¥å‚æ•°ï¼šuiï¼šå¤–éƒ¨é€šè®¯è®¾ç½®é¡µé¢å¯¹åº”çš„UI
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerDevice::setCommunicationSettingUI(CCommunicationSettingUi* ui)
 {
@@ -243,12 +244,12 @@ void MotionControllerDevice::setCommunicationSettingUI(CCommunicationSettingUi* 
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºcreatTCPSocket()
-  º¯Êı¹¦ÄÜ£º´´½¨ÓëÔË¶¯¿ØÖÆÆ÷µÄÍøÂçÁ¬½Ó
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º0£º³É¹¦£¬-1£ºÊ§°Ü
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šcreatTCPSocket()
+  å‡½æ•°åŠŸèƒ½ï¼šåˆ›å»ºä¸è¿åŠ¨æ§åˆ¶å™¨çš„ç½‘ç»œè¿æ¥
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š0ï¼šæˆåŠŸï¼Œ-1ï¼šå¤±è´¥
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerDevice::creatTCPSocket()
 {
@@ -293,12 +294,12 @@ int MotionControllerDevice::creatTCPSocket()
 
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºcreatUdPSocket()
-  º¯Êı¹¦ÄÜ£º´´½¨ÓëÔË¶¯¿ØÖÆÆ÷µÄÍøÂçÁ¬½Ó
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º0£º³É¹¦£¬-1£ºÊ§°Ü
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šcreatUdPSocket()
+  å‡½æ•°åŠŸèƒ½ï¼šåˆ›å»ºä¸è¿åŠ¨æ§åˆ¶å™¨çš„ç½‘ç»œè¿æ¥
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š0ï¼šæˆåŠŸï¼Œ-1ï¼šå¤±è´¥
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerDevice::creatUdPSocket()
 {
@@ -368,18 +369,18 @@ int MotionControllerDevice::SendPTPByUDP()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºinitRequestFrame()
-  º¯Êı¹¦ÄÜ£º³õÊ¼»¯ÇëÇóÖ¡
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú1
+  å‡½æ•°åç§°ï¼šinitRequestFrame()
+  å‡½æ•°åŠŸèƒ½ï¼šåˆå§‹åŒ–è¯·æ±‚å¸§
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£1
 **************************************************/
-void MotionControllerDevice::initRequestFrame()//¶Ë¿Ú1
+void MotionControllerDevice::initRequestFrame()//ç«¯å£1
 {
     m_dataRequest.clear();
 
-    /* ÇëÇóÖ¡Ö¡Í· 2×Ö½Ú */
+    /* è¯·æ±‚å¸§å¸§å¤´ 2å­—èŠ‚ */
     SHORTCHAR requestFrame;
     requestFrame.data = 0xA050;
     if (ENDIANNESS == BIG_ENDIAN)
@@ -393,10 +394,10 @@ void MotionControllerDevice::initRequestFrame()//¶Ë¿Ú1
         m_dataRequest.append(requestFrame.c[0]);
     }
 
-    /* ¹¦ÄÜÂë 1×Ö½Ú */
+    /* åŠŸèƒ½ç  1å­—èŠ‚ */
     m_dataRequest.append(0);
 
-    /* 4¸ö¹¦ÄÜ²ÎÊı ¹²4×Ö½Ú */
+    /* 4ä¸ªåŠŸèƒ½å‚æ•° å…±4å­—èŠ‚ */
     m_dataRequest.append(0);
     m_dataRequest.append(0);
     m_dataRequest.append(0);
@@ -404,18 +405,18 @@ void MotionControllerDevice::initRequestFrame()//¶Ë¿Ú1
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºinitRespondFrame_monitor()
-  º¯Êı¹¦ÄÜ£º³õÊ¼»¯ÏìÓ¦Ö¡
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú2
+  å‡½æ•°åç§°ï¼šinitRespondFrame_monitor()
+  å‡½æ•°åŠŸèƒ½ï¼šåˆå§‹åŒ–å“åº”å¸§
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£2
 **************************************************/
-void MotionControllerDevice::initRespondFrame_monitor()//¶Ë¿Ú2
+void MotionControllerDevice::initRespondFrame_monitor()//ç«¯å£2
 {
     m_dataRequest_monitor.clear();
 
-    /* ÏìÓ¦Ö¡Ö¡Í· 2×Ö½Ú */
+    /* å“åº”å¸§å¸§å¤´ 2å­—èŠ‚ */
     SHORTCHAR requestFrame;
     requestFrame.data = 0xA051;
     if (ENDIANNESS == BIG_ENDIAN)
@@ -429,10 +430,10 @@ void MotionControllerDevice::initRespondFrame_monitor()//¶Ë¿Ú2
         m_dataRequest_monitor.append(requestFrame.c[0]);
     }
 
-    /* ¹¦ÄÜÂë 1×Ö½Ú */
+    /* åŠŸèƒ½ç  1å­—èŠ‚ */
     m_dataRequest_monitor.append(0);
 
-    /* 4¸ö¹¦ÄÜ²ÎÊı ¹²4×Ö½Ú
+    /* 4ä¸ªåŠŸèƒ½å‚æ•° å…±4å­—èŠ‚
     m_dataRequest.append(0);
     m_dataRequest.append(0);
     m_dataRequest.append(0);
@@ -453,12 +454,12 @@ bool MotionControllerDevice::isPointInClampProtectArea(double x, double y, Proce
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºfillIntParmToRequestFrame(QVector<unsigned char> &dataRequest, int intParm)
-  º¯Êı¹¦ÄÜ£ºÌî³äintÊı¾İµ½ÏìÓ¦Ö¡
-  ÊäÈë²ÎÊı£ºdataRequest£ºÏìÓ¦Ö¡£¬ intParm£ºÌî³äµÄÊı¾İ
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šfillIntParmToRequestFrame(QVector<unsigned char> &dataRequest, int intParm)
+  å‡½æ•°åŠŸèƒ½ï¼šå¡«å……intæ•°æ®åˆ°å“åº”å¸§
+  è¾“å…¥å‚æ•°ï¼šdataRequestï¼šå“åº”å¸§ï¼Œ intParmï¼šå¡«å……çš„æ•°æ®
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerDevice::fillIntParmToRequestFrame(QVector<unsigned char> &dataRequest, int intParm)
 {
@@ -482,12 +483,12 @@ void MotionControllerDevice::fillIntParmToRequestFrame(QVector<unsigned char> &d
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºfillShortParmToRequestFrame(QVector<unsigned char> &dataRequest, short shortParm)
-  º¯Êı¹¦ÄÜ£ºÌî³äshortÊı¾İµ½ÏìÓ¦Ö¡
-  ÊäÈë²ÎÊı£ºdataRequest£ºÏìÓ¦Ö¡£¬ intParm£ºÌî³äµÄÊı¾İ
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šfillShortParmToRequestFrame(QVector<unsigned char> &dataRequest, short shortParm)
+  å‡½æ•°åŠŸèƒ½ï¼šå¡«å……shortæ•°æ®åˆ°å“åº”å¸§
+  è¾“å…¥å‚æ•°ï¼šdataRequestï¼šå“åº”å¸§ï¼Œ intParmï¼šå¡«å……çš„æ•°æ®
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerDevice::fillShortParmToRequestFrame(QVector<unsigned char> &dataRequest, short shortParm)
 {
@@ -507,12 +508,12 @@ void MotionControllerDevice::fillShortParmToRequestFrame(QVector<unsigned char> 
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºcharToInt(unsigned char c0, unsigned char c1, unsigned char c2, unsigned char c3)
-  º¯Êı¹¦ÄÜ£º½«4¸öchar×Ö·û×ª»¯ÎªÒ»¸öint±äÁ¿
-  ÊäÈë²ÎÊı£ºc0¡¢c1¡¢c2¡¢c3£º4¸öË³Ğò´æ·ÅµÄ×Ö·û
-  Êä³ö²ÎÊı£º×ª»¯ºóµÄ±äÁ¿
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šcharToInt(unsigned char c0, unsigned char c1, unsigned char c2, unsigned char c3)
+  å‡½æ•°åŠŸèƒ½ï¼šå°†4ä¸ªcharå­—ç¬¦è½¬åŒ–ä¸ºä¸€ä¸ªintå˜é‡
+  è¾“å…¥å‚æ•°ï¼šc0ã€c1ã€c2ã€c3ï¼š4ä¸ªé¡ºåºå­˜æ”¾çš„å­—ç¬¦
+  è¾“å‡ºå‚æ•°ï¼šè½¬åŒ–åçš„å˜é‡
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerDevice::charToInt(unsigned char c0, unsigned char c1, unsigned char c2, unsigned char c3)
 {
@@ -535,12 +536,12 @@ int MotionControllerDevice::charToInt(unsigned char c0, unsigned char c1, unsign
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºcharToShort(unsigned char c0, unsigned char c1)
-  º¯Êı¹¦ÄÜ£º½«2¸öchar×Ö·û×ª»¯ÎªÒ»¸öshort±äÁ¿
-  ÊäÈë²ÎÊı£ºc0¡¢c1£º2¸öË³Ğò´æ·ÅµÄ×Ö·û
-  Êä³ö²ÎÊı£º×ª»¯ºóµÄ±äÁ¿
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šcharToShort(unsigned char c0, unsigned char c1)
+  å‡½æ•°åŠŸèƒ½ï¼šå°†2ä¸ªcharå­—ç¬¦è½¬åŒ–ä¸ºä¸€ä¸ªshortå˜é‡
+  è¾“å…¥å‚æ•°ï¼šc0ã€c1ï¼š2ä¸ªé¡ºåºå­˜æ”¾çš„å­—ç¬¦
+  è¾“å‡ºå‚æ•°ï¼šè½¬åŒ–åçš„å˜é‡
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 short MotionControllerDevice::charToShort(unsigned char c0, unsigned char c1)
 {
@@ -559,14 +560,14 @@ short MotionControllerDevice::charToShort(unsigned char c0, unsigned char c1)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºfillOneFIFO(int* axisData, ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£ºÌî³ä1×éµãÎ»ÔË¶¯Êı¾İµ½FIFO
-  ÊäÈë²ÎÊı£ºaxisData£º5¸öÖáµÄÏà¶ÔÔË¶¯Á¿£¨ÆğÊ¼µØÖ·£©
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º-1£º´íÎó£» 0£ºÊ§°Ü£¬FIFOÒÑÂú£» 1£º³É¹¦Ìí¼Ó
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú1
+  å‡½æ•°åç§°ï¼šfillOneFIFO(int* axisData, ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šå¡«å……1ç»„ç‚¹ä½è¿åŠ¨æ•°æ®åˆ°FIFO
+  è¾“å…¥å‚æ•°ï¼šaxisDataï¼š5ä¸ªè½´çš„ç›¸å¯¹è¿åŠ¨é‡ï¼ˆèµ·å§‹åœ°å€ï¼‰
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š-1ï¼šé”™è¯¯ï¼› 0ï¼šå¤±è´¥ï¼ŒFIFOå·²æ»¡ï¼› 1ï¼šæˆåŠŸæ·»åŠ 
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£1
 **************************************************/
-int MotionControllerDevice::fillOneFIFO(int* axisData, ErrorInfo& e)//¶Ë¿Ú1
+int MotionControllerDevice::fillOneFIFO(int* axisData, ErrorInfo& e)//ç«¯å£1
 {
 InputAutoData autodata;
     memset(&autodata, 0, sizeof(autodata));
@@ -590,7 +591,7 @@ InputAutoData autodata;
         return false;
 }
 
-int MotionControllerDevice::fillOneFIFO(int movetype,double* axisData, ErrorInfo& e)//¶Ë¿Ú1
+int MotionControllerDevice::fillOneFIFO(int movetype,double* axisData, ErrorInfo& e)//ç«¯å£1
 {
     InputAutoData autodata;
     memset(&autodata, 0, sizeof(autodata));
@@ -648,7 +649,7 @@ int MotionControllerDevice::fillOneFIFO(MoveAction * action,double* axisData, Er
     memset(&autodata, 0, sizeof(autodata));
     autodata.decode_id =action->m_nLineSerialNum;//0;// data->m_nCodeId;
     //autodata.Prog_SequNum = 0;
-    autodata.Prog_SequNum=action->m_toolSerialNum;//¹¤¾ßºÅ//m_dT
+    autodata.Prog_SequNum=action->m_toolSerialNum;//å·¥å…·å·//m_dT
     autodata.Prog_LineNum = action->m_hand;//0;//scara hand
     autodata.Prog_Mark =0;// isEnd ? 1 : 0;
     autodata.Mode = 1;
@@ -702,7 +703,7 @@ int MotionControllerDevice::fillOneFIFO(IOAction * action,ErrorInfo& e)
     memset(&autodata, 0, sizeof(autodata));
     autodata.decode_id =action->m_nLineSerialNum;//0;// data->m_nCodeId;
     //autodata.Prog_SequNum = 0;
-    autodata.Prog_SequNum=0;//action->m_tool->m_toolSerialNum;//¹¤¾ßºÅ
+    autodata.Prog_SequNum=0;//action->m_tool->m_toolSerialNum;//å·¥å…·å·
     autodata.Prog_LineNum = 0;
     autodata.Prog_Mark =0;// isEnd ? 1 : 0;
     autodata.Mode = 2;
@@ -741,7 +742,7 @@ int MotionControllerDevice::fillOneFIFO(DelayAction * action,ErrorInfo& e)
     memset(&autodata, 0, sizeof(autodata));
     autodata.decode_id =action->m_nLineSerialNum;//0;// data->m_nCodeId;
     //autodata.Prog_SequNum = 0;
-    autodata.Prog_SequNum=0;//action->m_tool->m_toolSerialNum;//¹¤¾ßºÅ
+    autodata.Prog_SequNum=0;//action->m_tool->m_toolSerialNum;//å·¥å…·å·
     autodata.Prog_LineNum = 0;
     autodata.Prog_Mark =0;// isEnd ? 1 : 0;
     autodata.Mode = 3;
@@ -765,13 +766,13 @@ int MotionControllerDevice::fillOneFIFO(DelayAction * action,ErrorInfo& e)
         return false;
 }
 
-// ³õÊ¼»¯ »ØÁãÊı¾İ
+// åˆå§‹åŒ– å›é›¶æ•°æ®
 void MotionControllerDevice::InitGoHome()
 {
     GoHomeStep = 0;
 }
 
-// step: »ØÁãµÄ²½Êı(×î¶à4²½).
+// step: å›é›¶çš„æ­¥æ•°(æœ€å¤š4æ­¥).
 int MotionControllerDevice::backHome(int &step)
 {
     int i, len, axisNO;    
@@ -781,24 +782,24 @@ int MotionControllerDevice::backHome(int &step)
     float curPos[4]={0};
     static float pos[4]={0};
 
-    if(GoHomeStep == 0){ // µÚÒ»²½Ê±, ³õÊ¼»¯
+    if(GoHomeStep == 0){ // ç¬¬ä¸€æ­¥æ—¶, åˆå§‹åŒ–
         memcpy(pos,m_pSystemParm->coor_joint_pos,sizeof(pos));
-    }else if(GoHomeStep>=4){ // 4 ±íÊ¾Íê³É,
+    }else if(GoHomeStep>=4){ // 4 è¡¨ç¤ºå®Œæˆ,
         step = GoHomeStep;
         return 1;
     }
     memcpy(curPos,pos,sizeof(curPos));
     orderVal = m_pSystemParm->SystemParam[GoHomeOrder1+GoHomeStep];
-    while(orderVal==0){ // 0 ±íÊ¾Ã»ÉèÖÃ
+    while(orderVal==0){ // 0 è¡¨ç¤ºæ²¡è®¾ç½®
         GoHomeStep++;
-        if(GoHomeStep>=4){ // 4 ±íÊ¾Íê³É,
+        if(GoHomeStep>=4){ // 4 è¡¨ç¤ºå®Œæˆ,
             step = GoHomeStep;
             return 1;
         }
         orderVal = m_pSystemParm->SystemParam[GoHomeOrder1+GoHomeStep];
     }
 
-    str = QString::asprintf("%d",orderVal); // Èç 1234, ËùÓĞÖáÍ¬Ê±»ØÁã
+    str = QString::asprintf("%d",orderVal); // å¦‚ 1234, æ‰€æœ‰è½´åŒæ—¶å›é›¶
     len = str.length();
     for(i=0;i<len;i++){
         axisNO = str.at(i).toLatin1()-'1';
@@ -811,7 +812,7 @@ int MotionControllerDevice::backHome(int &step)
     memset(&autodata, 0, sizeof(autodata));
     autodata.decode_id =0;//0;// data->m_nCodeId;
     //autodata.Prog_SequNum = 0;
-    autodata.Prog_SequNum=0;//¹¤¾ßºÅ//m_dT
+    autodata.Prog_SequNum=0;//å·¥å…·å·//m_dT
     autodata.Prog_LineNum = 0;
     autodata.Prog_Mark =0;// isEnd ? 1 : 0;
     autodata.Mode = 1;//mov
@@ -836,7 +837,7 @@ int MotionControllerDevice::backHome(int &step)
         if(fabs(pos[0])>=0.00001 || fabs(pos[1])>=0.00001 || fabs(pos[2])>=0.00001 || fabs(pos[3])>=0.00001){
             GoHomeStep++; // 
         }else {
-            GoHomeStep = 4; // ±íÊ¾Íê³É
+            GoHomeStep = 4; // è¡¨ç¤ºå®Œæˆ
         }
         
         printFifoData(&autodata);
@@ -854,7 +855,7 @@ int MotionControllerDevice::movetoteachpoint(int num)
     
    autodata.decode_id =0;//0;// data->m_nCodeId;
     //autodata.Prog_SequNum = 0;
-    autodata.Prog_SequNum=0;//¹¤¾ßºÅ//m_dT
+    autodata.Prog_SequNum=0;//å·¥å…·å·//m_dT
     autodata.Prog_LineNum = 0;
     autodata.Prog_Mark =0;// isEnd ? 1 : 0;
     autodata.Mode = 1;//mov
@@ -871,6 +872,7 @@ int MotionControllerDevice::movetoteachpoint(int num)
     	autodata.JPos_End[3] = pointdata.pos[3];
        autodata.JPos_End[4] = pointdata.pos[4];
     	autodata.JPos_End[5] = pointdata.pos[5];
+        autodata.JPos_End[6] = pointdata.pos[6];
     
  
  
@@ -898,7 +900,7 @@ int MotionControllerDevice::movetoteachpoint(int num)
         fillIntParmToRequestFrame(m_dataRequest, axisData[i]);
     }
 
-    //·¢ËÍm_dataRequest; ½ÓÊÕm_dataResponse
+    //å‘é€m_dataRequest; æ¥æ”¶m_dataResponse
     if (tcpSentAndReceive(e))
     {
         if (m_nRecvMsgControllerDataNum == 7)
@@ -913,7 +915,7 @@ int MotionControllerDevice::movetoteachpoint(int num)
                 groupNum = charToShort(m_dataResponse[FUNCTION_PARM_3], m_dataResponse[FUNCTION_PARM_4]);
                 if (1 != groupNum)
                 {
-                    //e.insertDebug(DEBUG_NET_PARM_ERROR, QString("FIFOÒÑÂú!, fifo×éÊı=%1,Ê£Óà=%2").arg(groupNum).arg(m_nFIFOSpace));
+                    //e.insertDebug(DEBUG_NET_PARM_ERROR, QString("FIFOå·²æ»¡!, fifoç»„æ•°=%1,å‰©ä½™=%2").arg(groupNum).arg(m_nFIFOSpace));
                     return 0;
                 }
                 else
@@ -931,31 +933,31 @@ int MotionControllerDevice::movetoteachpoint(int num)
                 groupNum = charToShort(m_dataResponse[FUNCTION_PARM_3], m_dataResponse[FUNCTION_PARM_4]);
                 if (0 == groupNum || 0 == m_nFIFOSpace)
                 {
-                    //e.insertDebug(DEBUG_NET_PARM_ERROR, QString("FIFOÒÑÂú!, FIFO×éÊı=%1").arg(groupNum));
+                    //e.insertDebug(DEBUG_NET_PARM_ERROR, QString("FIFOå·²æ»¡!, FIFOç»„æ•°=%1").arg(groupNum));
                     return 0;
                 }
                 else
                 {
-                    e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("µãÎ»ÔË¶¯Êı¾İ·¢ËÍÊ§°Ü!"));
+                    e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("ç‚¹ä½è¿åŠ¨æ•°æ®å‘é€å¤±è´¥!"));
                     return -1;
                 }
             }
         }
     }
-    e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("µãÎ»ÔË¶¯Êı¾İ·¢ËÍÊ§°Ü£¨Êı¾İ½ÓÊÕÊ§°Ü£©!"));
+    e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("ç‚¹ä½è¿åŠ¨æ•°æ®å‘é€å¤±è´¥ï¼ˆæ•°æ®æ¥æ”¶å¤±è´¥ï¼‰!"));
     return  -1;
 }*/
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºsetParam(char* paramValue, int paramNum, ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£º²ÎÊıÉèÖÃ
-  ÊäÈë²ÎÊı£ºparamValue£º²ÎÊıµÄÖµ
-          paramNum£º²ÎÊıµÄÊıÁ¿£¬¹²44¸ö
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú1
+  å‡½æ•°åç§°ï¼šsetParam(char* paramValue, int paramNum, ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šå‚æ•°è®¾ç½®
+  è¾“å…¥å‚æ•°ï¼šparamValueï¼šå‚æ•°çš„å€¼
+          paramNumï¼šå‚æ•°çš„æ•°é‡ï¼Œå…±44ä¸ª
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£1
 **************************************************/
-bool MotionControllerDevice::setParam(char* paramValue, int paramNum, ErrorInfo& e)//¶Ë¿Ú1
+bool MotionControllerDevice::setParam(char* paramValue, int paramNum, ErrorInfo& e)//ç«¯å£1
 {
     initRequestFrame();
     m_dataRequest[FUNCTION_CODE] = 10;
@@ -965,37 +967,37 @@ bool MotionControllerDevice::setParam(char* paramValue, int paramNum, ErrorInfo&
         m_dataRequest.append(paramValue[i]);
     }
 
-    //·¢ËÍm_dataRequest; ½ÓÊÕm_dataResponse
+    //å‘é€m_dataRequest; æ¥æ”¶m_dataResponse
     if (tcpSentAndReceive(e))
     {
         if (1 != m_dataResponse[FUNCTION_CODE])
         {
-            e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("²ÎÊıÉèÖÃÊ§°Ü!"));
+            e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("å‚æ•°è®¾ç½®å¤±è´¥!"));
             return false;
         }
         return true;
     }
-    e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("²ÎÊıÉèÖÃÊ§°Ü£¨Êı¾İ½ÓÊÕÊ§°Ü£©!"));
+    e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("å‚æ•°è®¾ç½®å¤±è´¥ï¼ˆæ•°æ®æ¥æ”¶å¤±è´¥ï¼‰!"));
     return  false;
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºgetMontionCount(ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£ºÑ¯ÎÊÒÑÍê³ÉµãÎ»ÔË¶¯Êı
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£ºe£º´íÎóĞÅÏ¢
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú1
+  å‡½æ•°åç§°ï¼šgetMontionCount(ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šè¯¢é—®å·²å®Œæˆç‚¹ä½è¿åŠ¨æ•°
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼šeï¼šé”™è¯¯ä¿¡æ¯
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£1
 **************************************************/
-bool MotionControllerDevice::getMontionCount(ErrorInfo& e)//¶Ë¿Ú1
+bool MotionControllerDevice::getMontionCount(ErrorInfo& e)//ç«¯å£1
 {
     initRequestFrame();
     m_dataRequest[FUNCTION_CODE] = 22;
 
-    //·¢ËÍm_dataRequest; ½ÓÊÕm_dataResponse
+    //å‘é€m_dataRequest; æ¥æ”¶m_dataResponse
     if (tcpSentAndReceive(e))
     {
-        /* ¼ÇÂ¼µ±Ç°×ø±ê£¬ÈôĞ­ÒéÃ»ÓĞÖ§³Ö£¬ÔòÌø¹ı */
+        /* è®°å½•å½“å‰åæ ‡ï¼Œè‹¥åè®®æ²¡æœ‰æ”¯æŒï¼Œåˆ™è·³è¿‡ */
         /*if (m_nRecvMsgControllerDataNum == 27)
         {
             NAxis curPos;
@@ -1019,11 +1021,11 @@ bool MotionControllerDevice::getMontionCount(ErrorInfo& e)//¶Ë¿Ú1
         {
             if (1 != m_dataResponse[FUNCTION_CODE])
             {
-                e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("Ñ¯ÎÊÒÑÍê³ÉµãÎ»ÔË¶¯ÊıÊ§°Ü!"));
+                e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("è¯¢é—®å·²å®Œæˆç‚¹ä½è¿åŠ¨æ•°å¤±è´¥!"));
                 return false;
             }
 
-            /* ¼ÇÂ¼ÒÑÍê³ÉµãÎ»ÔË¶¯Êı */
+            /* è®°å½•å·²å®Œæˆç‚¹ä½è¿åŠ¨æ•° */
             m_nMotionCount = charToInt(m_dataResponse[FUNCTION_PARM_1], m_dataResponse[FUNCTION_PARM_2], m_dataResponse[FUNCTION_PARM_3], m_dataResponse[FUNCTION_PARM_4]);
             if (m_nMotionCount != m_currentRunActionIndex)
             {
@@ -1033,26 +1035,26 @@ bool MotionControllerDevice::getMontionCount(ErrorInfo& e)//¶Ë¿Ú1
 
             if (m_nRecvMsgControllerDataNum != 27)
             {
-                e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("Ñ¯ÎÊÒÑÍê³ÉµãÎ»ÔË¶¯ÊıÊ§°Ü£º¸ñÊ½´íÎó!"));
+                e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("è¯¢é—®å·²å®Œæˆç‚¹ä½è¿åŠ¨æ•°å¤±è´¥ï¼šæ ¼å¼é”™è¯¯!"));
                 return false;
             }
 
             return true;
         }
     }
-    e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("Ñ¯ÎÊÒÑÍê³ÉµãÎ»ÔË¶¯ÊıÊ§°Ü£¨Êı¾İ½ÓÊÕÊ§°Ü£©!"));
+    e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("è¯¢é—®å·²å®Œæˆç‚¹ä½è¿åŠ¨æ•°å¤±è´¥ï¼ˆæ•°æ®æ¥æ”¶å¤±è´¥ï¼‰!"));
     return false;
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºgetMsg()
-  º¯Êı¹¦ÄÜ£ºÉÏ´«ÊÂ¼şÍ¨Öª
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£ºe£º´íÎóĞÅÏ¢
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú2
+  å‡½æ•°åç§°ï¼šgetMsg()
+  å‡½æ•°åŠŸèƒ½ï¼šä¸Šä¼ äº‹ä»¶é€šçŸ¥
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼šeï¼šé”™è¯¯ä¿¡æ¯
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£2
 **************************************************/
-bool MotionControllerDevice::getMsg(ErrorInfo& e)//¶Ë¿Ú2
+bool MotionControllerDevice::getMsg(ErrorInfo& e)//ç«¯å£2
 {
     m_dataResponse_monitor.clear();
     for (int i = 0; i < m_nRecvControllerDataNum; i++)
@@ -1136,30 +1138,30 @@ bool MotionControllerDevice::getMsg(ErrorInfo& e)//¶Ë¿Ú2
                 break;
             }
 
-            /* ³É¹¦Ö´ĞĞ£¬Ó¦´ğ1 */
+            /* æˆåŠŸæ‰§è¡Œï¼Œåº”ç­”1 */
             initRespondFrame_monitor();
             m_dataRequest_monitor[FUNCTION_CODE] = 1;
             return tcpSent();
         }
     }
 
-    /* Î´ÄÜ³É¹¦¶ÁÈ¡ÉÏ´«ÊÂ¼ş£¬Ó¦´ğ2 */
+    /* æœªèƒ½æˆåŠŸè¯»å–ä¸Šä¼ äº‹ä»¶ï¼Œåº”ç­”2 */
     initRespondFrame_monitor();
     m_dataRequest_monitor[FUNCTION_CODE] = 2;
     tcpSent();
-    e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("ÉÏ´«ÊÂ¼şÍ¨ÖªÊ§°Ü£¨Êı¾İ½ÓÊÕÊ§°Ü£©!"));
+    e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("ä¸Šä¼ äº‹ä»¶é€šçŸ¥å¤±è´¥ï¼ˆæ•°æ®æ¥æ”¶å¤±è´¥ï¼‰!"));
     return false;
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºgetMotionState(ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£ºÉÏ´«µãÎ»ÔË¶¯×´Ì¬
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú2
+  å‡½æ•°åç§°ï¼šgetMotionState(ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šä¸Šä¼ ç‚¹ä½è¿åŠ¨çŠ¶æ€
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£2
 **************************************************/
-bool MotionControllerDevice::getMotionState(ErrorInfo& e)//¶Ë¿Ú2
+bool MotionControllerDevice::getMotionState(ErrorInfo& e)//ç«¯å£2
 {
     m_dataResponse_monitor.clear();
     //QString tempStr = "";
@@ -1177,11 +1179,11 @@ bool MotionControllerDevice::getMotionState(ErrorInfo& e)//¶Ë¿Ú2
         m_dataRequest_monitor[FUNCTION_CODE] = 2;
         tcpSent();
         //return false;
-        e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("alarm15 : ÉÏ´«µãÎ»Êı¾İ´íÎó: Êı¾İÖ¡³¤¶È´íÎó"));
+        e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("alarm15 : ä¸Šä¼ ç‚¹ä½æ•°æ®é”™è¯¯: æ•°æ®å¸§é•¿åº¦é”™è¯¯"));
         return false;
     }
 
-    /* ¼ÇÂ¼ÒÑÍê³ÉµãÎ»ÔË¶¯Êı */
+    /* è®°å½•å·²å®Œæˆç‚¹ä½è¿åŠ¨æ•° */
     m_nMotionCount = charToInt(m_dataResponse_monitor[FUNCTION_PARM_1], m_dataResponse_monitor[FUNCTION_PARM_2], m_dataResponse_monitor[FUNCTION_PARM_3], m_dataResponse_monitor[FUNCTION_PARM_4]);
     if (m_nMotionCount != m_currentRunActionIndex)
     {
@@ -1189,10 +1191,10 @@ bool MotionControllerDevice::getMotionState(ErrorInfo& e)//¶Ë¿Ú2
         m_bisFinshOneAction = true;
     }
 
-    /* ¼ÇÂ¼µ±Ç°×ø±ê */
+    /* è®°å½•å½“å‰åæ ‡ */
     NAxis curPos;
     //int j = 1;
-    //curPos.x = charToInt(m_dataResponse[FUNCTION_PARM_4 + j++], m_dataResponse[FUNCTION_PARM_4 + j++], m_dataResponse[FUNCTION_PARM_4 + j++], m_dataResponse[FUNCTION_PARM_4 + j++]);//¶ÑÕ»³ö´í
+    //curPos.x = charToInt(m_dataResponse[FUNCTION_PARM_4 + j++], m_dataResponse[FUNCTION_PARM_4 + j++], m_dataResponse[FUNCTION_PARM_4 + j++], m_dataResponse[FUNCTION_PARM_4 + j++]);//å †æ ˆå‡ºé”™
     curPos.x = charToInt(m_dataResponse_monitor[7], m_dataResponse_monitor[8], m_dataResponse_monitor[9], m_dataResponse_monitor[10]);
     curPos.y = charToInt(m_dataResponse_monitor[11], m_dataResponse_monitor[12], m_dataResponse_monitor[13], m_dataResponse_monitor[14]);
     curPos.z = charToInt(m_dataResponse_monitor[15], m_dataResponse_monitor[16], m_dataResponse_monitor[17], m_dataResponse_monitor[18]);
@@ -1208,13 +1210,13 @@ bool MotionControllerDevice::getMotionState(ErrorInfo& e)//¶Ë¿Ú2
     m_currentPos.r = (double)curPos.r / m_pSystemParm->m_axisParm[AXIS_C].m_nPulseEquivalent * m_pSystemParm->m_axisParm[AXIS_C].m_nRatioDenominator / m_pSystemParm->m_axisParm[AXIS_C].m_nRatioNumerator;//m_pulseEquivalent.c;
     //m_currentPos.v = (double)curPos.v / m_pSystemParm->m_axisParm[AXIS_V].m_nPulseEquivalent;//m_pulseEquivalent.v;
 
-    //qDebug("a=%d, b=%d, c=%d, d=%d µ±Ç°Î»ÖÃ  a=%d, b=%d, c=%d, d=%d", m_dataResponse[3], m_dataResponse[4], m_dataResponse[5],m_dataResponse[6], m_dataResponse[7], m_dataResponse[8], m_dataResponse[9], m_dataResponse[10]);
-    //qDebug("n=%d, µ±Ç°Î»ÖÃ x=%d, y=%d, t=%d, c=%d, v=%d\n", m_nMotionCount, curPos.x, curPos.y, curPos.t, curPos.c, curPos.v);
-    //qDebug("n=%d, µ±Ç°Î»ÖÃ x=%g, y=%g, t=%g, c=%g, v=%g", m_currentRunActionIndex, m_currentPos.x, m_currentPos.y, m_currentPos.t, m_currentPos.c, m_currentPos.v);
+    //qDebug("a=%d, b=%d, c=%d, d=%d å½“å‰ä½ç½®  a=%d, b=%d, c=%d, d=%d", m_dataResponse[3], m_dataResponse[4], m_dataResponse[5],m_dataResponse[6], m_dataResponse[7], m_dataResponse[8], m_dataResponse[9], m_dataResponse[10]);
+    //qDebug("n=%d, å½“å‰ä½ç½® x=%d, y=%d, t=%d, c=%d, v=%d\n", m_nMotionCount, curPos.x, curPos.y, curPos.t, curPos.c, curPos.v);
+    //qDebug("n=%d, å½“å‰ä½ç½® x=%g, y=%g, t=%g, c=%g, v=%g", m_currentRunActionIndex, m_currentPos.x, m_currentPos.y, m_currentPos.t, m_currentPos.c, m_currentPos.v);
 
     unsigned char send[TCP_BUFFER_SIZE];
 
-    /* ÏìÓ¦Ö¡Ö¡Í· 2×Ö½Ú */
+    /* å“åº”å¸§å¸§å¤´ 2å­—èŠ‚ */
     SHORTCHAR requestFrame;
     requestFrame.data = 0xA051;
     if (ENDIANNESS == BIG_ENDIAN)
@@ -1228,24 +1230,24 @@ bool MotionControllerDevice::getMotionState(ErrorInfo& e)//¶Ë¿Ú2
         send[1] = requestFrame.c[0];
     }
 
-    /* ÏìÓ¦Âë 1×Ö½Ú */
+    /* å“åº”ç  1å­—èŠ‚ */
     send[FUNCTION_CODE] = 1;
     return  m_PCRecvCommandSocket->TCPWriteData((char*)send, 3);
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºgetHeartBeat()
-  º¯Êı¹¦ÄÜ£ºÉÏ´«ĞÄÌø×´Ì¬
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú2
+  å‡½æ•°åç§°ï¼šgetHeartBeat()
+  å‡½æ•°åŠŸèƒ½ï¼šä¸Šä¼ å¿ƒè·³çŠ¶æ€
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£2
 **************************************************/
-bool MotionControllerDevice::getHeartBeat(ErrorInfo& e)//¶Ë¿Ú2
+bool MotionControllerDevice::getHeartBeat(ErrorInfo& e)//ç«¯å£2
 {           
     unsigned char send[TCP_BUFFER_SIZE];
 
-    /* ÏìÓ¦Ö¡Ö¡Í· 2×Ö½Ú */
+    /* å“åº”å¸§å¸§å¤´ 2å­—èŠ‚ */
     SHORTCHAR requestFrame;
     requestFrame.data = 0xA051;
     if (ENDIANNESS == BIG_ENDIAN)
@@ -1259,26 +1261,26 @@ bool MotionControllerDevice::getHeartBeat(ErrorInfo& e)//¶Ë¿Ú2
         send[1] = requestFrame.c[0];
     }
 
-    /* ÏìÓ¦Âë 1×Ö½Ú */
+    /* å“åº”ç  1å­—èŠ‚ */
     send[FUNCTION_CODE] = 1;
 
-    /* ÏìÓ¦²ÎÊı 1×Ö½Ú */
+    /* å“åº”å‚æ•° 1å­—èŠ‚ */
     send[FUNCTION_PARM_1] = m_recvControllerData[FUNCTION_PARM_1];
     return m_PCRecvCommandSocket->TCPWriteData((char*)send, 4);
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºrunOneActions(const BaseAction*  action, ProcessInterVariableCache* cache, SystemParameter* para, ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£ºÔËĞĞÒ»¶Îaction
-  ÊäÈë²ÎÊı£ºaction£ºG´úÂë²úÉúµÄÔË¶¯Ö¸Áî£¨FIFOÔË¶¯Ö¸Áî£©
-          cache£º¼Ó¹¤¹ı³ÌÖĞµÄÈ«¾Ö±äÁ¿
-  Êä³ö²ÎÊı£ºe£º´íÎóĞÅÏ¢
-  ·µ »Ø Öµ£º-1¡¢-2£º´íÎó£» 0£ºÊ§°Ü£¬FIFOÒÑÂú£» 1£º³É¹¦Ìí¼Ó
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šrunOneActions(const BaseAction*  action, ProcessInterVariableCache* cache, SystemParameter* para, ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šè¿è¡Œä¸€æ®µaction
+  è¾“å…¥å‚æ•°ï¼šactionï¼šGä»£ç äº§ç”Ÿçš„è¿åŠ¨æŒ‡ä»¤ï¼ˆFIFOè¿åŠ¨æŒ‡ä»¤ï¼‰
+          cacheï¼šåŠ å·¥è¿‡ç¨‹ä¸­çš„å…¨å±€å˜é‡
+  è¾“å‡ºå‚æ•°ï¼šeï¼šé”™è¯¯ä¿¡æ¯
+  è¿” å› å€¼ï¼š-1ã€-2ï¼šé”™è¯¯ï¼› 0ï¼šå¤±è´¥ï¼ŒFIFOå·²æ»¡ï¼› 1ï¼šæˆåŠŸæ·»åŠ 
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerDevice::runOneActions(const BaseAction*  action, ProcessInterVariableCache* cache, SystemParameter* para, ErrorInfo& e)
 {
-    /* Ò»ÌõACtionÖ´ĞĞÍê£¬»ò»º³åÇøÓĞ¿ÕÏĞ·µ»Øtrue£¬ ÆäËû·µ»Øfalse£¬ÓĞ´íÎó¼ÇÂ¼ÔÚErrorInfoÖĞ */
+    /* ä¸€æ¡ACtionæ‰§è¡Œå®Œï¼Œæˆ–ç¼“å†²åŒºæœ‰ç©ºé—²è¿”å›trueï¼Œ å…¶ä»–è¿”å›falseï¼Œæœ‰é”™è¯¯è®°å½•åœ¨ErrorInfoä¸­ */
     if(mutex.tryLock())
     {
         int bb;
@@ -1327,14 +1329,14 @@ int MotionControllerDevice::runOneActions(const BaseAction*  action, ProcessInte
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºtcpSent()
-  º¯Êı¹¦ÄÜ£º·¢ËÍÊı¾İµ½¿ØÖÆÆ÷
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú2
+  å‡½æ•°åç§°ï¼štcpSent()
+  å‡½æ•°åŠŸèƒ½ï¼šå‘é€æ•°æ®åˆ°æ§åˆ¶å™¨
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£2
 **************************************************/
-bool MotionControllerDevice::tcpSent()//¶Ë¿Ú2
+bool MotionControllerDevice::tcpSent()//ç«¯å£2
 {
     //if(m_PCSendCommandSocket->isConnect())
     if (m_bisNetConnect)
@@ -1354,14 +1356,14 @@ bool MotionControllerDevice::tcpSent()//¶Ë¿Ú2
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºtcpReceive(ErrorInfo &e)
-  º¯Êı¹¦ÄÜ£º½ÓÊÕ¿ØÖÆÆ÷·¢³öµÄÊı¾İ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú1
+  å‡½æ•°åç§°ï¼štcpReceive(ErrorInfo &e)
+  å‡½æ•°åŠŸèƒ½ï¼šæ¥æ”¶æ§åˆ¶å™¨å‘å‡ºçš„æ•°æ®
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£1
 **************************************************/
-bool MotionControllerDevice::tcpReceive(ErrorInfo &e)//¶Ë¿Ú1
+bool MotionControllerDevice::tcpReceive(ErrorInfo &e)//ç«¯å£1
 {
     //if(m_PCSendCommandSocket->isConnect())
     if (m_bisNetConnect)
@@ -1383,14 +1385,14 @@ bool MotionControllerDevice::tcpReceive(ErrorInfo &e)//¶Ë¿Ú1
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºtcpSentAndReceive(ErrorInfo &e)
-  º¯Êı¹¦ÄÜ£º·¢ËÍÊı¾İµ½¿ØÖÆÆ÷²¢½ÓÊÕ¿ØÖÆÆ÷·¢»ØÀ´µÄÊı¾İ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú1
+  å‡½æ•°åç§°ï¼štcpSentAndReceive(ErrorInfo &e)
+  å‡½æ•°åŠŸèƒ½ï¼šå‘é€æ•°æ®åˆ°æ§åˆ¶å™¨å¹¶æ¥æ”¶æ§åˆ¶å™¨å‘å›æ¥çš„æ•°æ®
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£1
 **************************************************/
-bool MotionControllerDevice::tcpSentAndReceive(ErrorInfo &e)//¶Ë¿Ú1
+bool MotionControllerDevice::tcpSentAndReceive(ErrorInfo &e)//ç«¯å£1
 {
     if(m_bisNetConnect/*m_PCSendCommandSocket->isConnect()*/)
     {
@@ -1426,14 +1428,14 @@ bool MotionControllerDevice::tcpSentAndReceive(ErrorInfo &e)//¶Ë¿Ú1
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºtcpMonitor(ErrorInfo &e)
-  º¯Êı¹¦ÄÜ£º½ÓÊÕ¿ØÖÆÆ÷·¢»ØÀ´µÄÊı¾İ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú2£¨Î´Ê¹ÓÃ£©
+  å‡½æ•°åç§°ï¼štcpMonitor(ErrorInfo &e)
+  å‡½æ•°åŠŸèƒ½ï¼šæ¥æ”¶æ§åˆ¶å™¨å‘å›æ¥çš„æ•°æ®
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£2ï¼ˆæœªä½¿ç”¨ï¼‰
 **************************************************/
-bool MotionControllerDevice::tcpMonitor(ErrorInfo &e)//¶Ë¿Ú2
+bool MotionControllerDevice::tcpMonitor(ErrorInfo &e)//ç«¯å£2
 {
     if(m_PCRecvCommandSocket->TCPReadData((char *)m_recvControllerData, m_nRecvControllerDataNum))
     {
@@ -1450,7 +1452,7 @@ bool MotionControllerDevice::tcpMonitor(ErrorInfo &e)//¶Ë¿Ú2
     }
     return false;
 }
-int MotionControllerDevice::SaveXYZRPos(char *data,int num)//¶Ë¿Ú2
+int MotionControllerDevice::SaveXYZRPos(char *data,int num)//ç«¯å£2
 {
      
       if((num>32)&&(data[0]==((char)0xaa))&&(data[1]==((char)0x55)))
@@ -1462,14 +1464,14 @@ int MotionControllerDevice::SaveXYZRPos(char *data,int num)//¶Ë¿Ú2
 	   
 }
 /*************************************************
-  º¯ÊıÃû³Æ£ºtcpMonitorData()
-  º¯Êı¹¦ÄÜ£º½ÓÊÕ¿ØÖÆÆ÷·¢»ØÀ´µÄÊı¾İ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú2£¬µ±½ÓÊÕÊı¾İ´íÎóÊ±£¬Ö±½Ó´ğ¸´¿ØÖÆÆ÷½ÓÊÕ´íÎó
+  å‡½æ•°åç§°ï¼štcpMonitorData()
+  å‡½æ•°åŠŸèƒ½ï¼šæ¥æ”¶æ§åˆ¶å™¨å‘å›æ¥çš„æ•°æ®
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£2ï¼Œå½“æ¥æ”¶æ•°æ®é”™è¯¯æ—¶ï¼Œç›´æ¥ç­”å¤æ§åˆ¶å™¨æ¥æ”¶é”™è¯¯
 **************************************************/
-void MotionControllerDevice::tcpMonitorData()//¶Ë¿Ú2
+void MotionControllerDevice::tcpMonitorData()//ç«¯å£2
 {
     mutex.lock();
     if(m_PCRecvCommandSocket->TCPReadData((char *)m_recvControllerData, m_nRecvControllerDataNum))
@@ -1480,7 +1482,7 @@ void MotionControllerDevice::tcpMonitorData()//¶Ë¿Ú2
         {
             ((MotionControllerModule *)m_pModuleHandle)->monitorControllerValue(m_recvControllerData, m_nRecvControllerDataNum);
         }
-        else//½ÓÊÕÊı¾İÎŞĞ§£¬·µ»Ø´íÎó
+        else//æ¥æ”¶æ•°æ®æ— æ•ˆï¼Œè¿”å›é”™è¯¯
         {
             initRespondFrame_monitor();
             m_dataRequest_monitor[FUNCTION_CODE] = 2;
@@ -1496,12 +1498,12 @@ void MotionControllerDevice::tcpMonitorData()//¶Ë¿Ú2
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºOnRecvSocketDisconnected()
-  º¯Êı¹¦ÄÜ£º¶Ë¿Ú2¶Ï¿ªÁ¬½Ó´¦Àí
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šOnRecvSocketDisconnected()
+  å‡½æ•°åŠŸèƒ½ï¼šç«¯å£2æ–­å¼€è¿æ¥å¤„ç†
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerDevice::OnRecvSocketDisconnected()
 {
@@ -1516,7 +1518,7 @@ void MotionControllerDevice::OnRecvSocketDisconnected()
 
 void MotionControllerDevice::OnRecvSocketError(QAbstractSocket::SocketError error)
 {
-    SystemProcessInfo::printfMesssage("¶Ï¿ªÁ¬½ÓRecv");
+    SystemProcessInfo::printfMesssage("æ–­å¼€è¿æ¥Recv");
 
     m_PCRecvCommandSocket->closeSocket();
     //((MotionControllerModule *)m_pModuleHandle)->m_WorkStatus = MotionControllerModule::MOTION_NO_CONNECT_NET;
@@ -1527,7 +1529,7 @@ void MotionControllerDevice::OnRecvSocketError(QAbstractSocket::SocketError erro
 
 void MotionControllerDevice::OnSentSocketError(QAbstractSocket::SocketError error)
 {
-    SystemProcessInfo::printfMesssage("¶Ï¿ªÁ¬½ÓSent");
+    SystemProcessInfo::printfMesssage("æ–­å¼€è¿æ¥Sent");
     m_PCRecvCommandSocket->closeSocket();
     ((MotionControllerModule *)m_pModuleHandle)->m_WorkStatus = MotionControllerModule::MOTION_NO_CONNECT_NET;
     ((MotionControllerModule *)m_pModuleHandle)->m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "not connect");
@@ -1535,12 +1537,12 @@ void MotionControllerDevice::OnSentSocketError(QAbstractSocket::SocketError erro
     emit NetLedCtrl(false);
 }
 /*************************************************
-  º¯ÊıÃû³Æ£ºOnRecvSocketDisconnected()
-  º¯Êı¹¦ÄÜ£º¶Ë¿Ú1¶Ï¿ªÁ¬½Ó´¦Àí
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šOnRecvSocketDisconnected()
+  å‡½æ•°åŠŸèƒ½ï¼šç«¯å£1æ–­å¼€è¿æ¥å¤„ç†
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerDevice::OnSentSocketDisconnected()
 {
@@ -1553,12 +1555,12 @@ void MotionControllerDevice::OnSentSocketDisconnected()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºpointToPoint(MoveAction * action, ProcessInterVariableCache* cache, SystemParameter* para, ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£ºÍùFIFOĞ´Ò»×éµãÎ»ÔË¶¯Êı¾İ£¨²»°üº¬³åÑ¹£©
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼špointToPoint(MoveAction * action, ProcessInterVariableCache* cache, SystemParameter* para, ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šå¾€FIFOå†™ä¸€ç»„ç‚¹ä½è¿åŠ¨æ•°æ®ï¼ˆä¸åŒ…å«å†²å‹ï¼‰
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerDevice::pointToPoint(MoveAction * action, ProcessInterVariableCache* cache, SystemParameter* para, ErrorInfo& e)
 {
@@ -1647,12 +1649,12 @@ int MotionControllerDevice::Delay(DelayAction * action, ProcessInterVariableCach
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºemulationMotion()
-  º¯Êı¹¦ÄÜ£º·ÂÕæ£¬ÔÚÍ¼ĞÎÇø»­³öµ±Ç°Î»ÖÃ
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šemulationMotion()
+  å‡½æ•°åŠŸèƒ½ï¼šä»¿çœŸï¼Œåœ¨å›¾å½¢åŒºç”»å‡ºå½“å‰ä½ç½®
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 bool MotionControllerDevice::emulationMotion()
 {
@@ -1662,12 +1664,12 @@ bool MotionControllerDevice::emulationMotion()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºemergencyStop(ErrorInfo &e)
-  º¯Êı¹¦ÄÜ£º¼±Í£
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£ºe£º´íÎóĞÅÏ¢
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£ºÏÈ·¢ËÍ¼±Í£Ö¸Áî£¬ºó·¢ËÍÇå³ıFIFOÖ¸Áî
+  å‡½æ•°åç§°ï¼šemergencyStop(ErrorInfo &e)
+  å‡½æ•°åŠŸèƒ½ï¼šæ€¥åœ
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼šeï¼šé”™è¯¯ä¿¡æ¯
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼šå…ˆå‘é€æ€¥åœæŒ‡ä»¤ï¼Œåå‘é€æ¸…é™¤FIFOæŒ‡ä»¤
 **************************************************/
 bool MotionControllerDevice::emergencyStop(ErrorInfo &e)
 {
@@ -1688,12 +1690,12 @@ bool MotionControllerDevice::clearEmergencyStop(ErrorInfo &e)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºnormalTurnOn(ErrorInfo &e)
-  º¯Êı¹¦ÄÜ£ºÕı³£¿ª»úÍ¨Öª
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£ºe£º´íÎóĞÅÏ¢
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šnormalTurnOn(ErrorInfo &e)
+  å‡½æ•°åŠŸèƒ½ï¼šæ­£å¸¸å¼€æœºé€šçŸ¥
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼šeï¼šé”™è¯¯ä¿¡æ¯
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 bool MotionControllerDevice::normalTurnOn(ErrorInfo &e)
 {
@@ -1701,12 +1703,12 @@ bool MotionControllerDevice::normalTurnOn(ErrorInfo &e)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºnormalTurnOff(ErrorInfo &e)
-  º¯Êı¹¦ÄÜ£ºÕı³£¹Ø»úÍ¨Öª
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£ºe£º´íÎóĞÅÏ¢
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šnormalTurnOff(ErrorInfo &e)
+  å‡½æ•°åŠŸèƒ½ï¼šæ­£å¸¸å…³æœºé€šçŸ¥
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼šeï¼šé”™è¯¯ä¿¡æ¯
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 bool MotionControllerDevice::normalTurnOff(ErrorInfo &e)
 {
@@ -1714,12 +1716,12 @@ bool MotionControllerDevice::normalTurnOff(ErrorInfo &e)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºgetCurrentRunActionIndex()
-  º¯Êı¹¦ÄÜ£º»ñÈ¡µ±Ç°Î»ÖÃ£¨¿ØÖÆÆ÷·´À¡»ØÀ´µÄµãÎ»Î»ÖÃ£©
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºµ±Ç°ÔË¶¯Î»ÖÃ
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šgetCurrentRunActionIndex()
+  å‡½æ•°åŠŸèƒ½ï¼šè·å–å½“å‰ä½ç½®ï¼ˆæ§åˆ¶å™¨åé¦ˆå›æ¥çš„ç‚¹ä½ä½ç½®ï¼‰
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼šå½“å‰è¿åŠ¨ä½ç½®
+  å¤‡    æ³¨ï¼š
 **************************************************/
 int MotionControllerDevice::getCurrentRunActionIndex()
 {
@@ -1727,13 +1729,13 @@ int MotionControllerDevice::getCurrentRunActionIndex()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºmanualMove(int axis, double dis, ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£ºÊÖ¶¯ÔË¶¯
-  ÊäÈë²ÎÊı£ºaxis£ºÔË¶¯Öá
-          dis£ºÔË¶¯¾àÀë
-  Êä³ö²ÎÊı£ºe£º´íÎóĞÅÏ¢
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šmanualMove(int axis, double dis, ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šæ‰‹åŠ¨è¿åŠ¨
+  è¾“å…¥å‚æ•°ï¼šaxisï¼šè¿åŠ¨è½´
+          disï¼šè¿åŠ¨è·ç¦»
+  è¾“å‡ºå‚æ•°ï¼šeï¼šé”™è¯¯ä¿¡æ¯
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼š
 **************************************************/
 bool MotionControllerDevice::manualMove(int axis, double dis, ErrorInfo& e)
 {
@@ -1787,12 +1789,12 @@ bool MotionControllerDevice::manualMove(int axis, double dis, ErrorInfo& e)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºmanualMove(ErrorInfo& e, double x, double y, double t, double c, double v)
-  º¯Êı¹¦ÄÜ£ºÊÖ¶¯ÔË¶¯
-  ÊäÈë²ÎÊı£ºx¡¢y¡¢t¡¢c¡¢v£ºÎå¸öÖáÒÆ¶¯µÄ¾àÀë
-  Êä³ö²ÎÊı£ºe£º´íÎóĞÅÏ¢
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šmanualMove(ErrorInfo& e, double x, double y, double t, double c, double v)
+  å‡½æ•°åŠŸèƒ½ï¼šæ‰‹åŠ¨è¿åŠ¨
+  è¾“å…¥å‚æ•°ï¼šxã€yã€tã€cã€vï¼šäº”ä¸ªè½´ç§»åŠ¨çš„è·ç¦»
+  è¾“å‡ºå‚æ•°ï¼šeï¼šé”™è¯¯ä¿¡æ¯
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼š
 **************************************************/
 bool MotionControllerDevice::manualMove(ErrorInfo& e, double x, double y, double z, double w, double p,double r)
 {
@@ -1807,37 +1809,37 @@ bool MotionControllerDevice::manualMove(ErrorInfo& e, double x, double y, double
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºgetSts(int *sts, ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£º»ñÈ¡¿ØÖÆÆ÷µÄÔË¶¯×´Ì¬
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£ºsts£ºµç»úÔË¶¯×´Ì¬£¬Îª0±íÊ¾ËùÓĞµç»ú¶¼Í£Ö¹
-          e£º´íÎóĞÅÏ¢
-  ·µ »Ø Öµ£ºtrue/false
-  ±¸    ×¢£º½öÓÃÓÚ¶Ë¿Ú1
+  å‡½æ•°åç§°ï¼šgetSts(int *sts, ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šè·å–æ§åˆ¶å™¨çš„è¿åŠ¨çŠ¶æ€
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼šstsï¼šç”µæœºè¿åŠ¨çŠ¶æ€ï¼Œä¸º0è¡¨ç¤ºæ‰€æœ‰ç”µæœºéƒ½åœæ­¢
+          eï¼šé”™è¯¯ä¿¡æ¯
+  è¿” å› å€¼ï¼štrue/false
+  å¤‡    æ³¨ï¼šä»…ç”¨äºç«¯å£1
 **************************************************/
-bool MotionControllerDevice::getSts(int *sts, ErrorInfo& e)//¶Ë¿Ú1
+bool MotionControllerDevice::getSts(int *sts, ErrorInfo& e)//ç«¯å£1
 {
     initRequestFrame();
     m_dataRequest[FUNCTION_CODE] = 23;
     m_dataRequest[FUNCTION_PARM_1] = 1;
 
-    //·¢ËÍm_dataRequest; ½ÓÊÕm_dataResponse
+    //å‘é€m_dataRequest; æ¥æ”¶m_dataResponse
     if (tcpSentAndReceive(e))
     {
         if (m_nRecvMsgControllerDataNum > 6)
         {
             if (1 != m_dataResponse[FUNCTION_CODE])
             {
-                //e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("»ñÈ¡ÔË¶¯×´Ì¬ĞÅÏ¢Ê§°Ü!"));
+                //e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("è·å–è¿åŠ¨çŠ¶æ€ä¿¡æ¯å¤±è´¥!"));
                 return false;
             }
             m_nSts = charToInt(m_dataResponse[FUNCTION_PARM_1],m_dataResponse[FUNCTION_PARM_2],m_dataResponse[FUNCTION_PARM_3],m_dataResponse[FUNCTION_PARM_4]);
-            *sts = m_nSts;// & 0x02;//µÚ1Î»£¬µç»úÔË¶¯±êÖ¾£¬ËùÓĞµç»ú¶¼Í£Ö¹ÔË¶¯Ê±ÖÃ0
+            *sts = m_nSts;// & 0x02;//ç¬¬1ä½ï¼Œç”µæœºè¿åŠ¨æ ‡å¿—ï¼Œæ‰€æœ‰ç”µæœºéƒ½åœæ­¢è¿åŠ¨æ—¶ç½®0
 
             return true;
         }
     }
-    //e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("»ñÈ¡ÔË¶¯×´Ì¬ĞÅÏ¢Ê§°Ü!£¨Êı¾İ½ÓÊÕ´íÎó£©"));
+    //e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("è·å–è¿åŠ¨çŠ¶æ€ä¿¡æ¯å¤±è´¥!ï¼ˆæ•°æ®æ¥æ”¶é”™è¯¯ï¼‰"));
     return  false;
 }
 
@@ -1847,30 +1849,30 @@ bool MotionControllerDevice::clearSts(ErrorInfo& e)
     m_dataRequest[FUNCTION_CODE] = 23;
     m_dataRequest[FUNCTION_PARM_1] = 2;
 
-    //·¢ËÍm_dataRequest; ½ÓÊÕm_dataResponse
+    //å‘é€m_dataRequest; æ¥æ”¶m_dataResponse
     if (tcpSentAndReceive(e))
     {
         if (m_nRecvMsgControllerDataNum > 6)
         {
             if (1 != m_dataResponse[FUNCTION_CODE])
             {
-                e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("Çå³ıÔË¶¯×´Ì¬ĞÅÏ¢Ê§°Ü!"));
+                e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("æ¸…é™¤è¿åŠ¨çŠ¶æ€ä¿¡æ¯å¤±è´¥!"));
                 return false;
             }
             return true;
         }
     }
-    e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("Çå³ıÔË¶¯×´Ì¬ĞÅÏ¢Ê§°Ü!£¨Êı¾İ½ÓÊÕ´íÎó£©"));
+    e.insertDebug(DEBUG_NET_PARM_ERROR, QString::fromLocal8Bit("æ¸…é™¤è¿åŠ¨çŠ¶æ€ä¿¡æ¯å¤±è´¥!ï¼ˆæ•°æ®æ¥æ”¶é”™è¯¯ï¼‰"));
     return  false;
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºsetPunchLockSts(bool bSts)
-  º¯Êı¹¦ÄÜ£ºÉèÖÃ³åÍ·Ëø¶¨
-  ÊäÈë²ÎÊı£ºbSts£º¿ªÆô/¹Ø±Õ³åÍ·Ëø¶¨
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šsetPunchLockSts(bool bSts)
+  å‡½æ•°åŠŸèƒ½ï¼šè®¾ç½®å†²å¤´é”å®š
+  è¾“å…¥å‚æ•°ï¼šbStsï¼šå¼€å¯/å…³é—­å†²å¤´é”å®š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 void MotionControllerDevice::setPunchLockSts(bool bSts)
 {
@@ -1878,12 +1880,12 @@ void MotionControllerDevice::setPunchLockSts(bool bSts)
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºisTcpSendComConnect()
-  º¯Êı¹¦ÄÜ£ºtcpÁ¬½Ó×´Ì¬ÅĞ¶Ï
-  ÊäÈë²ÎÊı£º
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£ºtcpÁ¬½Ó×´Ì¬
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šisTcpSendComConnect()
+  å‡½æ•°åŠŸèƒ½ï¼štcpè¿æ¥çŠ¶æ€åˆ¤æ–­
+  è¾“å…¥å‚æ•°ï¼š
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼štcpè¿æ¥çŠ¶æ€
+  å¤‡    æ³¨ï¼š
 **************************************************/
 bool MotionControllerDevice::isTcpSendComConnect()
 {
@@ -1891,12 +1893,12 @@ bool MotionControllerDevice::isTcpSendComConnect()
 }
 
 /*************************************************
-  º¯ÊıÃû³Æ£ºsetServoEnable(bool sts, ErrorInfo& e)
-  º¯Êı¹¦ÄÜ£º¿ªÆô/¹Ø±ÕËÅ·şÊ¹ÄÜ
-  ÊäÈë²ÎÊı£ºsts£º¿ªÆô/¹Ø±Õ
-  Êä³ö²ÎÊı£º
-  ·µ »Ø Öµ£º
-  ±¸    ×¢£º
+  å‡½æ•°åç§°ï¼šsetServoEnable(bool sts, ErrorInfo& e)
+  å‡½æ•°åŠŸèƒ½ï¼šå¼€å¯/å…³é—­ä¼ºæœä½¿èƒ½
+  è¾“å…¥å‚æ•°ï¼šstsï¼šå¼€å¯/å…³é—­
+  è¾“å‡ºå‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  å¤‡    æ³¨ï¼š
 **************************************************/
 bool MotionControllerDevice::setServoEnable(bool sts, ErrorInfo& e)
 {
@@ -1910,7 +1912,7 @@ bool MotionControllerDevice::setServoEnable(bool sts, ErrorInfo& e)
         //result = sendMotionCommand(10, e);
     }
 
-    //Ë¢ĞÂui°´Å¥×´Ì¬
+    //åˆ·æ–°uiæŒ‰é’®çŠ¶æ€
     //m_pMachiningUI->updateOutputBnt(IO_SERVOENABLE_BNT_ADD, (sts && result));
     //m_pManualMachiningUI->updateOutputBnt(IO_SERVOENABLE_BNT_ADD, (sts && result));
     return result;
@@ -1993,7 +1995,7 @@ bool MotionControllerDevice::fillOneFIFO(ArcMotionCode *data, bool isEnd, double
 
     double a1 = data->m_dStartAngle;
     double a2 = data->m_dEndAngle;
-    if (data->m_bIsReversed)//é¡ºæ—¶é’ˆ
+    if (data->m_bIsReversed)//æ¤¤çƒ˜æ¤‚é–½?
     {
         if (a2 > a1)
             a2 -= PI2;
@@ -2031,11 +2033,11 @@ bool MotionControllerDevice::fillOneFIFO(CircleMotionCode *data, bool isEnd, dou
     autodata.Interp_Mode = 4;
     //autodata.Joint_VelPct = 100;
     autodata.Zone = data->m_nCrossLevel;
-    if (data->m_bIsReversed)//é¡ºæ—¶é’ˆ
+    if (data->m_bIsReversed)//æ¤¤çƒ˜æ¤‚é–½?
     {
         if (data->m_dStartAngle > 0)
         {
-            if (data->m_dStartAngle < M_PI_2)//ç¬¬ä¸€è±¡é™
+            if (data->m_dStartAngle < M_PI_2)//ç»—îƒ¿ç«´ç’ï¿ æªº
             {
                 autodata.JPos_Start[0] = (float)data->m_StartPoint.x;
                 autodata.JPos_Start[1] = (float)data->m_StartPoint.y;
@@ -2046,7 +2048,7 @@ bool MotionControllerDevice::fillOneFIFO(CircleMotionCode *data, bool isEnd, dou
                 autodata.JPos_End[0] = (float)(data->m_CenterPoint.x - data->m_dRadius);
                 autodata.JPos_End[1] = (float)(data->m_CenterPoint.y);
             }
-            else//ç¬¬äºŒè±¡é™
+            else//ç»—îƒ¿ç°©ç’ï¿ æªº
             {
                 autodata.JPos_Start[0] = (float)data->m_StartPoint.x;
                 autodata.JPos_Start[1] = (float)data->m_StartPoint.y;
@@ -2060,7 +2062,7 @@ bool MotionControllerDevice::fillOneFIFO(CircleMotionCode *data, bool isEnd, dou
         }
         else
         {
-            if (data->m_dStartAngle > -M_PI_2)//ç¬¬ä¸‰è±¡é™
+            if (data->m_dStartAngle > -M_PI_2)//ç»—îƒ¿ç¬ç’ï¿ æªº
             {
                 autodata.JPos_Start[0] = (float)data->m_StartPoint.x;
                 autodata.JPos_Start[1] = (float)data->m_StartPoint.y;
@@ -2071,7 +2073,7 @@ bool MotionControllerDevice::fillOneFIFO(CircleMotionCode *data, bool isEnd, dou
                 autodata.JPos_End[0] = (float)(data->m_CenterPoint.x);
                 autodata.JPos_End[1] = (float)(data->m_CenterPoint.y + data->m_dRadius);
             }
-            else//ç¬¬å››è±¡é™
+            else//ç»—î„€æ´“ç’ï¿ æªº
             {
                 autodata.JPos_Start[0] = (float)data->m_StartPoint.x;
                 autodata.JPos_Start[1] = (float)data->m_StartPoint.y;
@@ -2088,7 +2090,7 @@ bool MotionControllerDevice::fillOneFIFO(CircleMotionCode *data, bool isEnd, dou
     {
         if (data->m_dStartAngle > 0)
         {
-            if (data->m_dStartAngle < M_PI_2)//ç¬¬ä¸€è±¡é™
+            if (data->m_dStartAngle < M_PI_2)//ç»—îƒ¿ç«´ç’ï¿ æªº
             {
                 autodata.JPos_Start[0] = (float)data->m_StartPoint.x;
                 autodata.JPos_Start[1] = (float)data->m_StartPoint.y;
@@ -2099,7 +2101,7 @@ bool MotionControllerDevice::fillOneFIFO(CircleMotionCode *data, bool isEnd, dou
                 autodata.JPos_End[0] = (float)(data->m_CenterPoint.x);
                 autodata.JPos_End[1] = (float)(data->m_CenterPoint.y - data->m_dRadius);
             }
-            else//ç¬¬äºŒè±¡é™
+            else//ç»—îƒ¿ç°©ç’ï¿ æªº
             {
                 autodata.JPos_Start[0] = (float)data->m_StartPoint.x;
                 autodata.JPos_Start[1] = (float)data->m_StartPoint.y;
@@ -2113,7 +2115,7 @@ bool MotionControllerDevice::fillOneFIFO(CircleMotionCode *data, bool isEnd, dou
         }
         else
         {
-            if (data->m_dStartAngle > -M_PI_2)//ç¬¬ä¸‰è±¡é™
+            if (data->m_dStartAngle > -M_PI_2)//ç»—îƒ¿ç¬ç’ï¿ æªº
             {
                 autodata.JPos_Start[0] = (float)data->m_StartPoint.x;
                 autodata.JPos_Start[1] = (float)data->m_StartPoint.y;
@@ -2124,7 +2126,7 @@ bool MotionControllerDevice::fillOneFIFO(CircleMotionCode *data, bool isEnd, dou
                 autodata.JPos_End[0] = (float)(data->m_CenterPoint.x);
                 autodata.JPos_End[1] = (float)(data->m_CenterPoint.y + data->m_dRadius);
             }
-            else//ç¬¬å››è±¡é™
+            else//ç»—î„€æ´“ç’ï¿ æªº
             {
                 autodata.JPos_Start[0] = (float)data->m_StartPoint.x;
                 autodata.JPos_Start[1] = (float)data->m_StartPoint.y;
@@ -2195,7 +2197,7 @@ bool MotionControllerDevice::fillOneFIFO(WaitIoMotionCode *data, bool isEnd)
 
 bool MotionControllerDevice::fillOneFIFO(DelayMotionCode *data, bool isEnd)
 {
-    if (data->m_nTime <= 0)//å»¶æ—¶æ—¶é—´ä¸èƒ½ä¸º0
+    if (data->m_nTime <= 0)//å¯¤èˆµæ¤‚éƒå •æ£¿æ¶“å¶ˆå…˜æ¶“?
         return true;
 
     InputAutoData autodata;
@@ -2425,7 +2427,7 @@ bool MotionControllerDevice::setMotionParam1(SystemParameter *para)
         parmdata[n++] = floatData.c[2];
         parmdata[n++] = floatData.c[3];
     }
-    return setParam(parmdata, 19);//å…±19ä¸ªå‚æ•°
+    return setParam(parmdata, 19);//é?9æ¶“î„å¼¬é?
 }
 
 bool MotionControllerDevice::setMotionParam2(SystemParameter *para)
@@ -2486,7 +2488,7 @@ bool MotionControllerDevice::setMotionParam2(SystemParameter *para)
     parmdata[n++] = floatData.c[2];
     parmdata[n++] = floatData.c[3];
 
-    return setParam(22, parmdata, 16);//ä»ç¬¬22ä¸ªå‚æ•°å¼€å§‹ï¼Œå…±16ä¸ªå‚æ•°
+    return setParam(22, parmdata, 16);//æµ åº£îƒ‡22æ¶“î„å¼¬éæ¿ç´‘æ¿®å¬¶ç´é?6æ¶“î„å¼¬é?
 }
 
 bool MotionControllerDevice::setMotionParamCtl(SystemParameter *para)
@@ -2588,7 +2590,7 @@ bool MotionControllerDevice::setMotionParamCtl(SystemParameter *para)
     parmdata[n++] = floatData.c[2];
     parmdata[n++] = floatData.c[3];
 
-    return setParam(40, parmdata, 20);//ä»ç¬¬40ä¸ªå‚æ•°å¼€å§‹ï¼Œå…±20ä¸ªå‚æ•°
+    return setParam(40, parmdata, 20);//æµ åº£îƒ‡40æ¶“î„å¼¬éæ¿ç´‘æ¿®å¬¶ç´é?0æ¶“î„å¼¬é?
 }
 
 bool MotionControllerDevice::sendMsg(char param1, ErrorInfo &e)
@@ -2747,7 +2749,7 @@ bool MotionControllerDevice::setMotionMode(int mode)
     static bool isClearQueue = false;
     if (!isClearQueue)
     {
-        m_netctrl->gb_ctrl.sendtrafficctrl |= 0x4;//æ¸…ç©ºé˜Ÿåˆ—
+        m_netctrl->gb_ctrl.sendtrafficctrl |= 0x4;//å¨“å‘¯â”–é—ƒç†·åª
         isClearQueue = true;
     }
     if ((m_netctrl->gb_ctrl.sendtrafficctrl & 0x4) == 0x4){
@@ -2755,10 +2757,10 @@ bool MotionControllerDevice::setMotionMode(int mode)
         return false;
     }
 
-    m_ContrlBit.bit[0] &= (~0x2);//å¤ä½æ—¶æ¸…ç©ºStopæ ‡å¿—
+    m_ContrlBit.bit[0] &= (~0x2);//æ¾¶å¶„ç¶…éƒèˆµç«»ç»Œç¯ topéå›§ç¹”
     m_netctrl->gb_ctrl.sendinput[0] &= (~0x2);
 
-    //memcpy(&m_OutPutIo.bit[0], &m_netctrl->gb_ctrl.recvoutput[0], 8);//åŒæ­¥è¾“å‡ºIO
+    //memcpy(&m_OutPutIo.bit[0], &m_netctrl->gb_ctrl.recvoutput[0], 8);//éšå±¾î„æˆæ’³åš­IO
     memcpy(&m_pSystemParm->sys_ctrl.sendoutput[0], &m_pSystemParm->sys_ctrl.recvoutput[0], 8);
     
     if (PutControlFrame(1, mode) == 1)
@@ -2901,7 +2903,7 @@ bool MotionControllerDevice::PIDParam(int cmd,int axis,int len)
     elem.trafficctrl = 0;
 
     elem.databuf[0] = 22;//Cmd_PID
-    elem.databuf[1] = cmd;  // 1:±£´æ 2:»ñÈ¡
+    elem.databuf[1] = cmd;  // 1:ä¿å­˜ 2:è·å–
     elem.databuf[2] = axis;//Cmd_PID
     elem.databuf[3] = 0;//offset from poskp
     if(cmd==1)
@@ -3000,13 +3002,13 @@ bool MotionControllerDevice::setAxisNo()
 
     elem.framehead = FrameHeadWord;
     elem.funcode = 5;
-    elem.length = 8+2+64;
+    elem.length = 8+2+68;
     elem.frameno = 0;
     elem.trafficctrl = 0;
 
     elem.databuf[0] = 20;
     elem.databuf[1] = 1;
-     memcpy(&elem.databuf[2],&m_pSystemParm->axisno[0],64);
+     memcpy(&elem.databuf[2],&m_pSystemParm->axisno[0],68);
 
   
 
@@ -3207,22 +3209,22 @@ bool MotionControllerDevice::controllerReset()
     static bool isClear = false;
     //if (!isClear)
     {
-        m_netctrl->gb_ctrl.sendtrafficctrl |= 0x4;//æ¸…ç©ºé˜Ÿåˆ—
+        m_netctrl->gb_ctrl.sendtrafficctrl |= 0x4;//å¨“å‘¯â”–é—ƒç†·åª
         //isClear = true;
     }
     return true;
     /*if ((m_netctrl->gb_ctrl.sendtrafficctrl & 0x4) == 0x4)
         return false;
 
-    if (m_netctrl->gb_ctrl.succedrecvno != 0)//ä¿è¯é˜Ÿåˆ—æ¸…ç©º
+    if (m_netctrl->gb_ctrl.succedrecvno != 0)//æ·‡æ¿Šç˜‰é—ƒç†·åªå¨“å‘¯â”–
         return false;
 
     if (PutControlFrame(5, 1) == 1)
     {
         isClear = false;
-        m_netctrl->gb_ctrl.sendinput[0] &= (~0x3);//æ¸…é™¤holdå’Œstopæ ‡å¿—ä½
+        m_netctrl->gb_ctrl.sendinput[0] &= (~0x3);//å¨“å‘´æ«holdéœå®»topéå›§ç¹”æµ£?
 
-        m_netctrl->gb_ctrl.alarmno = 0;//æ¸…é™¤æŠ¥è­¦å·
+        m_netctrl->gb_ctrl.alarmno = 0;//å¨“å‘´æ«é¶ãƒ¨î„Ÿé™?
         m_cCurAlarmNum = 0;
         m_netctrl->m_bIsCtlAlarm = false;
         //m_cOldAlarmNum = 0;
@@ -3313,7 +3315,7 @@ bool MotionControllerDevice::setOutputIo(int io, bool value)
         else
             m_OutPutIo.bit[0] &= (~(0x1 << io));
 
-        //è°ƒé«˜å™¨äº’æ–¥å¤„ç†
+        //ç’‹å†®ç®é£ã„¤ç°°é‚ãƒ¥î˜©é?
 //        if (io == CTL_IO_ZAXIS_FOLLOW && value)
 //        {
 //            m_OutPutIo.bit[0] &= (~(0x1 << CTL_IO_ZAXIS_UP));
@@ -3331,18 +3333,18 @@ bool MotionControllerDevice::setOutputIo(int io, bool value)
 //        }
 
         //qDebug()<<"OutPutIo = "<<m_OutPutIo.bit[0];
-        memcpy(&m_oldRecvOutputIo[0], &m_OutPutIo.bit[0], 8);//ç”¨äºç•Œé¢åŒæ­¥IO
+        memcpy(&m_oldRecvOutputIo[0], &m_OutPutIo.bit[0], 8);//é¢ã„¤ç°¬é£å²„æ½°éšå±¾î„IO
 
         PutPeriodFrame(m_ContrlBit.bit, m_OutPutIo.bit);
         return true;
     }
-//    else//æ¿€å…‰çš„æ§åˆ¶æ§åˆ¶å¸§è®¾ç½®ï¼ˆæ§åˆ¶å™¨ä¸²å£ï¼‰
+//    else//å©µâ‚¬éå¤Œæ®‘éºÑƒåŸ—éºÑƒåŸ—ç”¯Ñ†î†•ç¼ƒî‡†ç´™éºÑƒåŸ—é£ã„¤è¦†é™ï½ç´š
 //    {
 //        if (io == CTL_IO_SP_LASER)
 //        {
 //            if (PutControlFrame(13, (value ? 1 : 0)) == 1)
 //            {
-//                //åŒæ—¶æ§åˆ¶PWMå¼€å…³
+//                //éšå±¾æ¤‚éºÑƒåŸ—PWMå¯®â‚¬é?
 //                if (value)
 //                    m_OutPutIo.bit[0] |= (0x1 << CTL_IO_PWM);
 //                else
@@ -3360,7 +3362,7 @@ bool MotionControllerDevice::setOutputIo(int io, bool value)
     return true;
 }
 
-// ·µ»Ø 0:»º³åÇøÒÑÂú  1:³É¹¦
+// è¿”å› 0:ç¼“å†²åŒºå·²æ»¡  1:æˆåŠŸ
 int MotionControllerDevice::PutAutoDataFrame(InputAutoData *autodata)
 {
     FrameBody elem;
@@ -3376,7 +3378,7 @@ int MotionControllerDevice::PutAutoDataFrame(InputAutoData *autodata)
     return m_netctrl->EnFrameQueue(&m_netctrl->gb_framequeue, elem);
 }
 
-//è½´è¿åŠ¨æ•°æ®ä¸‹å‘
+//æç£‹ç¹é”ã„¦æšŸé¹î†»ç¬…é™?
 int MotionControllerDevice::PutTeachDataFrame(InputTeachData *teachdata)
 {
     FrameBody elem;
@@ -3391,7 +3393,7 @@ int MotionControllerDevice::PutTeachDataFrame(InputTeachData *teachdata)
     return m_netctrl->EnFrameQueue(&m_netctrl->gb_framequeue, elem);
 }
 
-//å‘¨æœŸæ€§æ•°æ®ï¼ˆä¸‹å‘ï¼‰
+//é›ã„¦æ¹¡é¬Ñ„æšŸé¹î‡†ç´™æ¶“å¬ªå½‚é”›?
 int MotionControllerDevice::PutPeriodFrame(unsigned char *control,unsigned char *outputio)
 {
     memcpy(&m_netctrl->gb_ctrl.sendinput[0],control,8);
@@ -3400,7 +3402,7 @@ int MotionControllerDevice::PutPeriodFrame(unsigned char *control,unsigned char 
     return 1;
 }
 
-//æ§åˆ¶å¸§
+//éºÑƒåŸ—ç”¯?
 int MotionControllerDevice::PutControlFrame(unsigned char control,unsigned char value)
 {
     FrameBody elem;
@@ -3435,7 +3437,7 @@ int MotionControllerDevice::PutControlFrame(unsigned char control,unsigned char 
     return m_netctrl->EnFrameQueue(&m_netctrl->gb_framequeue, elem);
 }
 
-//å‚æ•°è®¾ç½®
+//é™å‚›æšŸç’å‰§ç–†
 int MotionControllerDevice::PutSetParamFrame(unsigned char ifupdown,unsigned char start,unsigned char end,unsigned char *paramdata)
 {
     FrameBody elem;
@@ -3526,14 +3528,14 @@ void MotionControllerDevice::onNetCtrlTimeout()
         m_nOldMontionCtlSts = m_nMontionCtlState;
         ((MotionControllerModule *)m_pModuleHandle)->setMotionCtlSts(m_nMontionCtlState);
 
-//        if ((m_nMontionCtlState & CTL_STS_IN_MOTION) == 0)//æ¢å¤åœæ­¢æ ‡å¿—ä½
+//        if ((m_nMontionCtlState & CTL_STS_IN_MOTION) == 0)//é­ãˆ î˜²é‹æ»„î„›éå›§ç¹”æµ£?
 //        {
 //            m_ContrlBit.bit[0] &= (~0x2);
 //            m_netctrl->gb_ctrl.sendinput[0] &= (~0x2);
 //            qDebug()<<"stop done"<<m_ContrlBit.bit[0];
 //        }
     }
-    if ((m_nMontionCtlState & CTL_STS_IN_MOTION) == 0)//æ¢å¤åœæ­¢æ ‡å¿—ä½
+    if ((m_nMontionCtlState & CTL_STS_IN_MOTION) == 0)//é­ãˆ î˜²é‹æ»„î„›éå›§ç¹”æµ£?
     {
         m_ContrlBit.bit[0] &= (~0x2);
         m_netctrl->gb_ctrl.sendinput[0] &= (~0x2);
@@ -3546,7 +3548,7 @@ void MotionControllerDevice::onNetCtrlTimeout()
         ((MotionControllerModule *)m_pModuleHandle)->setCurCtlRunId(m_nCurCtlRunId);
     }
 
-    //æŠ¥è­¦å·
+    //é¶ãƒ¨î„Ÿé™?
 //    m_cCurAlarmNum = m_netctrl->gb_ctrl.alarmno;
 //    if (m_cCurAlarmNum != m_cOldAlarmNum)
     if (m_netctrl->m_bIsCtlAlarm)

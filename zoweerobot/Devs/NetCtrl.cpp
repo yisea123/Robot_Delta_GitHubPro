@@ -1,3 +1,4 @@
+﻿#pragma execution_character_set("utf-8")
 //#include "GlobalDefine.h"
 #include "NetCtrl.h"
 #include "NetSocket.h"
@@ -561,6 +562,18 @@ int CNetCtrl::DealPeriodFrame(FrameBody frame,FrameTrafficCtrl* ctrl)
 	{
 		memcpy(&cDlg->m_pSystemParm->m_current[0],&frame.databuf[96+48],4*MOF);
 	}
+	if(frame.length>172)
+	{
+		memcpy(&ctrl->realpos[6],&frame.databuf[172],4);// 16
+		memcpy(&ctrl->gpos,&frame.databuf[176],4);
+		memcpy(&ctrl->pulsepos[6],&frame.databuf[180],4);
+    		memcpy(&ctrl->realaxispos[6],&frame.databuf[184],4);
+		ctrl->plusepos[12]=0;
+		ctrl->plusepos[13]=ctrl->pulsepos[6];
+		ctrl->realaxis[12]=0;//ctrl->realaxispos[3]>>SINGLECIRCLE;
+	       ctrl->realaxis[13]=ctrl->realaxispos[6];//&SINGLECIRCLEMASK;
+	
+	}
 #endif
 
 #else
@@ -734,7 +747,7 @@ int CNetCtrl::DealStateFrame(FrameBody frame,FrameTrafficCtrl* ctrl)
 	//memcpy(&ToolCalResult[frame.databuf[1]],&frame.databuf[2],sizeof(CartesianPose));
 	{
 	  
-	     memcpy(&cDlg->m_pSystemParm->axisno[0],&frame.databuf[2],64);	
+	     memcpy(&cDlg->m_pSystemParm->axisno[0],&frame.databuf[2],68);	
 	      cDlg->m_pSystemParm->getaxinofinished=1;
 	}
 	break;

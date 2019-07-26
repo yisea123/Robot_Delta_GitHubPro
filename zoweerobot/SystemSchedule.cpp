@@ -195,7 +195,7 @@ bool SystemSchedule::ReadAxisParamInformation(const QString &filename)
    
     //for(i=0;i<21;i++)
     {
-        file.read((char *)&m_pSystemParameter->axisno[0],16*sizeof(int));
+        file.read((char *)&m_pSystemParameter->axisno[0],17*sizeof(int));
      
     }
 	file.close();
@@ -222,7 +222,7 @@ bool SystemSchedule::WriteAxisParamInformation()
 
     //for(i=0;i<21;i++)
     {
-        file.write((char *)&m_pSystemParameter->axisno[0],16*sizeof(int));
+        file.write((char *)&m_pSystemParameter->axisno[0],17*sizeof(int));
     }
 	file.close();
     return true;
