@@ -26,10 +26,7 @@ cjointparamsetui::cjointparamsetui(QWidget *parent, SystemSchedule* schedule) :
     ui->setupUi(this);
     //on_cancle_clicked();
     m_pScheduler->m_pSystemParameter->getsysparamfinished=1;
-    m_pScheduler->m_pSystemParameter->getaxinofinished=1;
 
-    connect(ui->routeParamRDBtn,SIGNAL(clicked()),this,SLOT(on_axisParamRDBtn_clicked()));
-    connect(ui->routeParamSVBtn,SIGNAL(clicked()),this,SLOT(on_axisParamSVBtn_clicked()));
 //    ui->grbAxisNO->setStyleSheet("#Qgroupbox{border:2px solid #014F84}#background-color:#00d8ff");
 //    ui->frame->setStyleSheet("#frame{border:2px solid #014F84}#background-color:#00d8ff");
     //QTimer* timer = new QTimer(this);
@@ -47,8 +44,6 @@ cjointparamsetui::cjointparamsetui(QWidget *parent, SystemSchedule* schedule) :
 
 cjointparamsetui::~cjointparamsetui()
 {
-    disconnect(ui->routeParamRDBtn,SIGNAL(clicked()),this,SLOT(on_axisParamRDBtn_clicked()));
-    disconnect(ui->routeParamSVBtn,SIGNAL(clicked()),this,SLOT(on_axisParamSVBtn_clicked()));
     delete ui;
 }
 
@@ -82,56 +77,35 @@ void cjointparamsetui::SetEditCtrlReadOnly()
 
     switch(level)
     {
-        case ORDINARY_USER:
-            listEdt = ui->grbCommon->findChildren<QLineEdit *>();
-            for(i=0;i<listEdt.size();i++){
-                if(listEdt.at(i)->objectName().indexOf("limit")>0){
-                    listEdt.at(i)->setEnabled(true);
-                }else{
-                    listEdt.at(i)->setEnabled(false);
-                }
-            }
-
-            listEdt = ui->grbAxisNO->findChildren<QLineEdit *>();
-            for(i=0;i<listEdt.size();i++){
+    case ORDINARY_USER:
+        listEdt = ui->grbCommon->findChildren<QLineEdit *>();
+        for(i=0;i<listEdt.size();i++){
+            if(listEdt.at(i)->objectName().indexOf("limit")>0){
+                listEdt.at(i)->setEnabled(true);
+            }else{
                 listEdt.at(i)->setEnabled(false);
             }
+        }
+        listEdt = ui->gridGroupBox_2->findChildren<QLineEdit *>();
+        for(i=0;i<listEdt.size();i++)
+            listEdt.at(i)->setEnabled(false);
         break;
-        case ADVANCED_USER:
-            listEdt = ui->grbCommon->findChildren<QLineEdit *>();
-            for(i=0;i<listEdt.size();i++){
-                listEdt.at(i)->setEnabled(true);
-            }
-
-            listEdt = ui->grbAxisNO->findChildren<QLineEdit *>();
-            for(i=0;i<listEdt.size();i++){
-                listEdt.at(i)->setEnabled(true);
-            }
+    case ADVANCED_USER:
+    case SUPER_USER:
+        listEdt = ui->grbCommon->findChildren<QLineEdit *>();
+        for(i=0;i<listEdt.size();i++){
+            listEdt.at(i)->setEnabled(true);
+        }
+        listEdt = ui->gridGroupBox_2->findChildren<QLineEdit *>();
+        for(i=0;i<listEdt.size();i++)
+            listEdt.at(i)->setEnabled(true);
         break;
-        case SUPER_USER:
-            listEdt = ui->grbCommon->findChildren<QLineEdit *>();
-            for(i=0;i<listEdt.size();i++){
-                listEdt.at(i)->setEnabled(true);
-            }
-
-            listEdt = ui->grbAxisNO->findChildren<QLineEdit *>();
-            for(i=0;i<listEdt.size();i++){
-                listEdt.at(i)->setEnabled(true);
-            }
-        break;
-        default: break;
+    default: break;
     }
 }
 
 void cjointparamsetui::updataData()
 {
-    if(m_pScheduler->m_pSystemParameter->getaxinofinished)
-    {
-        m_pScheduler->m_pSystemParameter->getaxinofinished=0;
-        refresh_extDevParam();
-
-
-    }
 #ifdef USE_ARMPARAM
     if(m_pScheduler->m_pSystemParameter->getsysparamfinished)
     {
@@ -139,29 +113,6 @@ void cjointparamsetui::updataData()
         m_pScheduler->m_pSystemParameter->getsysparamfinished=0;
     }
 #endif
-}
-
-void cjointparamsetui::refresh_extDevParam()
-{
-    ui->axis1_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[0]) );
-    ui->axis2_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[1]) );
-    ui->axis3_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[2]) );
-    ui->axis4_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[3]) );
-    ui->axis5_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[4]) );
-    ui->axis6_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[5]) );
-    ui->axis7_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[6]) );
-
-    ui->axis1_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[7]) );
-    ui->axis2_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[8]) );
-    ui->axis3_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[9]) );
-    ui->axis4_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[10]) );
-    ui->axis5_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[11]) );
-    ui->axis6_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[12]) );
-    ui->axis7_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[13]) );
-
-    ui->battery_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[14]) );
-    ui->input_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[15]) );
-    ui->output_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[16]) );
 }
 
 void cjointparamsetui::refresh_systemParam()
@@ -216,13 +167,13 @@ void cjointparamsetui::refresh_systemParam()
     ui->axis5precision->setText(QString("%1").arg((int)m_pScheduler->m_pSystemParameter->SystemParam[pMotorPrec+4]) );
     ui->axis6precision->setText(QString("%1").arg((int)m_pScheduler->m_pSystemParameter->SystemParam[pMotorPrec+5]) );
 
-    ui->axis7maxvel->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7]) );
-    ui->axis7maxacc->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7 + 1]) );
-    ui->axis7maxdec->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7 + 2]) );
-    ui->axis7poslimit->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7 + 3]) );
-    ui->axis7neglimit->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7 + 4]) );
-    ui->axis7ratio->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7 + 5]) );
-    ui->axis7precision->setText(QString("%1").arg((int)m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7 + 7]) );
+    ui->axis7maxvel->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7]) );
+    ui->axis7maxacc->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7 + 1]) );
+    ui->axis7maxdec->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7 + 2]) );
+    ui->axis7poslimit->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7 + 3]) );
+    ui->axis7neglimit->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7 + 4]) );
+    ui->axis7ratio->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7 + 5]) );
+    ui->axis7precision->setText(QString("%1").arg((int)m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7 + 7]) );
     if(*((int *)&m_pScheduler->m_pSystemParameter->SystemParam[pMotorDir])&0x40==0x40)
     {
         ui->axis7dir->setText(QString("1") );
@@ -296,6 +247,17 @@ void cjointparamsetui::refresh_systemParam()
     ui->carstoppdec->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pCarStopPDec]) );
     ui->carstopgdec->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pCarStopGDec]) );
     ui->zonelevel->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pZoneLevel]) );
+
+    ui->LineMaxLen->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pLineMaxLen]) );
+    ui->LineMaxVel->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pLineMaxVel]) );
+    ui->LineMinPer->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pLineMinPer]) );
+    ui->LineMaxPer->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pLineMaxPer]) );
+    ui->ArcRadMaxLen->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pArcRadMaxLen]) );
+    ui->ArcLenMaxLen->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pArcLenMaxLen]) );
+    ui->ArcMaxVel->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pArcMaxVel]) );
+    ui->ArcMaxPer->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pArcMaxPer]) );
+    ui->ArcMinPer->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pArcMinPer]) );
+    ui->ArcError->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pArcError]) );
 }
 
 void cjointparamsetui::on_axisParamSVBtn_clicked()
@@ -351,13 +313,13 @@ void cjointparamsetui::on_axisParamSVBtn_clicked()
     m_pScheduler->m_pSystemParameter->SystemParam[pMotorPrec+4]=ui->axis5precision->text().toFloat();
     m_pScheduler->m_pSystemParameter->SystemParam[pMotorPrec+5]=ui->axis6precision->text().toFloat();
 
-    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7]=ui->axis1maxvel->text().toFloat();
-    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7 + 1]=ui->axis1maxacc->text().toFloat();
-    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7 + 2]=ui->axis1maxdec->text().toFloat();
-    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7 + 3]=ui->axis1poslimit->text().toFloat();
-    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7 + 4]=ui->axis1neglimit->text().toFloat();
-    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7 + 5]=ui->axis1ratio->text().toFloat();
-    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxVel7 + 7]=ui->axis1precision->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7]=ui->axis1maxvel->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7 + 1]=ui->axis1maxacc->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7 + 2]=ui->axis1maxdec->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7 + 3]=ui->axis1poslimit->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7 + 4]=ui->axis1neglimit->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7 + 5]=ui->axis1ratio->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pJointMaxAcc7 + 7]=ui->axis1precision->text().toFloat();
     if(ui->axis7dir->text().toInt()>0)
     {
             *((int *)&m_pScheduler->m_pSystemParameter->SystemParam[pMotorDir])|=0x40;
@@ -433,6 +395,17 @@ void cjointparamsetui::on_axisParamSVBtn_clicked()
     m_pScheduler->m_pSystemParameter->SystemParam[pCarStopPDec]=ui->carstoppdec->text().toFloat();
     m_pScheduler->m_pSystemParameter->SystemParam[pCarStopGDec]=ui->carstopgdec->text().toFloat();
     m_pScheduler->m_pSystemParameter->SystemParam[pZoneLevel]=ui->zonelevel->text().toFloat();
+
+    m_pScheduler->m_pSystemParameter->SystemParam[pLineMaxLen]=ui->LineMaxLen->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pLineMaxVel]=ui->LineMaxVel->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pLineMinPer]=ui->LineMinPer->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pLineMaxPer]=ui->LineMaxPer->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pArcRadMaxLen]=ui->ArcRadMaxLen->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pArcLenMaxLen]=ui->ArcLenMaxLen->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pArcMaxVel]=ui->ArcMaxVel->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pArcMaxPer]=ui->ArcMaxPer->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pArcMinPer]=ui->ArcMinPer->text().toFloat();
+    m_pScheduler->m_pSystemParameter->SystemParam[pArcError]=ui->ArcError->text().toFloat();
 
     m_pScheduler->WriteSystemParamInformation();
 
@@ -581,54 +554,3 @@ void cjointparamsetui::on_axisParamRDBtn_clicked()
 #endif
 
 }
-
-void cjointparamsetui::on_extDevSVBtn_clicked()
-{
-    m_pScheduler->m_pSystemParameter->axisno[0]=ui->axis1_slot->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[1]=ui->axis2_slot->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[2]=ui->axis3_slot->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[3]=ui->axis4_slot->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[4]=ui->axis5_slot->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[5]=ui->axis6_slot->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[6]=ui->axis7_slot->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[7]=ui->axis1_canid->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[8]=ui->axis2_canid->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[9]=ui->axis3_canid->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[10]=ui->axis4_canid->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[11]=ui->axis5_canid->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[12]=ui->axis6_canid->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[13]=ui->axis7_canid->text().toInt();
-
-    m_pScheduler->m_pSystemParameter->axisno[14]=ui->battery_slot->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[15]=ui->input_slot->text().toInt();
-    m_pScheduler->m_pSystemParameter->axisno[16]=ui->output_slot->text().toInt();
-
-    m_pScheduler->WriteAxisParamInformation();
-
-    // 判断网络是否连接
-    if(!m_pScheduler->NetIsConnect()){
-        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("网络已断开连接!"));
-        return;
-    }
-    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/setaxisno", "yes");
-}
-
-void cjointparamsetui::on_extDevRDBtn_clicked()
-{
-    // 判断网络是否连接
-    if(!m_pScheduler->NetIsConnect()){
-        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("网络已断开连接!"));
-        return;
-    }
-    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/getaxisno", "yes");
-}
-
-//void cjointparamsetui::on_routeParamRDBtn_clicked()
-//{
-//    on_axisParamRDBtn_clicked();
-//}
-
-//void cjointparamsetui::on_routeParamSVBtn_clicked()
-//{
-//    on_axisParamSVBtn_clicked();
-//}

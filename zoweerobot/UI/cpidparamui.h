@@ -40,10 +40,6 @@ private slots:
 
     void on_axis7readpid_clicked();
 
-    void on_readlineparam_clicked();
-
-    void on_setlineparam_clicked();
-
     void on_axis1setpid_clicked();
 
     void on_axis2setpid_clicked();
@@ -64,6 +60,26 @@ private slots:
     void on_btnAsSave1_clicked();
     void on_cmbParaGrp_currentIndexChanged(int index);
 
+    void on_savePid_1_clicked();
+
+    void on_savePid_2_clicked();
+
+    void on_savePid_3_clicked();
+
+    void on_savePid_4_clicked();
+
+    void on_savePid_5_clicked();
+
+    void on_savePid_6_clicked();
+
+    void on_savePid_7_clicked();
+
+    void on_savePid_all_clicked();
+
+    void on_extDevSVBtn_clicked();
+
+    void on_extDevRDBtn_clicked();
+
 private:
     Ui::cpidparamui *ui;
     SystemSchedule*       m_pScheduler;
@@ -80,6 +96,8 @@ private:
      bool CheckAllEditParaVal(int val[]);
      void on_btnAsSaveGrp_clicked(int grp);
      void on_btnReadGrp_clicked(int grp);
+
+     void refresh_extDevParam();
 };
 
 #endif // CPIDPARAMUI_H

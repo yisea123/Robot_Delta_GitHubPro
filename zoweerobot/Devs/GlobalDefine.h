@@ -383,7 +383,14 @@
 //#define pAIXS7PID   136
 
 #define ep_CoorID   142
-#define pJointMaxVel7   166
+#define pJointMaxAcc7 166 // 关节最大允许加速度, deg/s*s param1-2
+#define pJointMaxVel7 167// 关节最大速度
+#define pJointStopDec7 168// 关节停止减速度, deg/s*s
+#define pJointPLim7    169// 关节正极限, deg
+#define pJointNLim7  170// 关节负极限, deg  param13-15
+#define pMotorRatio7 171    // 轴减速比
+#define pMotorAbsZero7 172   // 轴绝对零点, 电机转角
+#define pMotorPrec7 173                 // 轴精度, cts/round
 //============================================================
 
 #define HOME_START     0

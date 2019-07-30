@@ -21,7 +21,6 @@ cpidparamui::cpidparamui(QWidget *parent, SystemSchedule* schedule) :
 {
     ui->setupUi(this);
     //on_cancle_clicked();
-    m_pScheduler->m_pSystemParameter->getsysparamfinished=1;
     m_pScheduler->m_pSystemParameter->getpidparamfinished[0]=1;
     m_pScheduler->m_pSystemParameter->getpidparamfinished[1]=1;
     m_pScheduler->m_pSystemParameter->getpidparamfinished[2]=1;
@@ -29,6 +28,7 @@ cpidparamui::cpidparamui(QWidget *parent, SystemSchedule* schedule) :
     m_pScheduler->m_pSystemParameter->getpidparamfinished[4]=1;
     m_pScheduler->m_pSystemParameter->getpidparamfinished[5]=1;
     m_pScheduler->m_pSystemParameter->getpidparamfinished[6]=1;
+    m_pScheduler->m_pSystemParameter->getaxinofinished=1;
     //QTimer* timer = new QTimer(this);
     //connect(timer, SIGNAL(timeout()),this, SLOT(updataData()));
     //timer->start(100);
@@ -60,10 +60,11 @@ void cpidparamui::UpdateViewData(void)
 
     CCommmomUIWidget::UpdateViewData();
 
-    refresh_LineParam();
     for(i=0;i<MOF;i++){
         refresh_pidParam(i);
     }
+
+    refresh_extDevParam();
 
     SetCtrlEnabled();
 }
@@ -111,13 +112,20 @@ void cpidparamui::SetCtrlEnabled()
             }
             listBtn = ui->grbPidPara->findChildren<QPushButton *>();
             for(i=0;i<listBtn.size();i++){
-                if(listBtn.at(i)->objectName().indexOf("setpid")>0){
+                if(listBtn.at(i)->objectName().indexOf("setpid")>0 || listBtn.at(i)->objectName().indexOf("savePid")>=0){
                     listBtn.at(i)->setEnabled(false);
                 }
+            }
+            listEdt = ui->grbAxisNO->findChildren<QLineEdit *>();
+            for(i=0;i<listEdt.size();i++){
+                listEdt.at(i)->setEnabled(false);
             }
 
             ui->cmbParaGrp->setEnabled(false);
             ui->btnAsSave1->setEnabled(false);
+            ui->savePid_all->setEnabled(false);
+            ui->setcandebug->setEnabled(false);
+            ui->extDevSVBtn->setEnabled(false);
             break;
         case ADVANCED_USER:
             listEdt = ui->grbPidPara->findChildren<QLineEdit *>();
@@ -126,13 +134,20 @@ void cpidparamui::SetCtrlEnabled()
             }
             listBtn = ui->grbPidPara->findChildren<QPushButton *>();
             for(i=0;i<listBtn.size();i++){
-                if(listBtn.at(i)->objectName().indexOf("setpid")>0){
+                if(listBtn.at(i)->objectName().indexOf("setpid")>0 || listBtn.at(i)->objectName().indexOf("savePid")>0){
                     listBtn.at(i)->setEnabled(true);
                 }
+            }
+            listEdt = ui->grbAxisNO->findChildren<QLineEdit *>();
+            for(i=0;i<listEdt.size();i++){
+                listEdt.at(i)->setEnabled(true);
             }
 
             ui->cmbParaGrp->setEnabled(true);
             ui->btnAsSave1->setEnabled(true);
+            ui->savePid_all->setEnabled(true);
+            ui->setcandebug->setEnabled(true);
+            ui->extDevSVBtn->setEnabled(true);
             break;
         case SUPER_USER:
             listEdt = ui->grbPidPara->findChildren<QLineEdit *>();
@@ -141,13 +156,20 @@ void cpidparamui::SetCtrlEnabled()
             }
             listBtn = ui->grbPidPara->findChildren<QPushButton *>();
             for(i=0;i<listBtn.size();i++){
-                if(listBtn.at(i)->objectName().indexOf("setpid")>0){
+                if(listBtn.at(i)->objectName().indexOf("setpid")>0 || listBtn.at(i)->objectName().indexOf("savePid")>0){
                     listBtn.at(i)->setEnabled(true);
                 }
+            }
+            listEdt = ui->grbAxisNO->findChildren<QLineEdit *>();
+            for(i=0;i<listEdt.size();i++){
+                listEdt.at(i)->setEnabled(true);
             }
 
             ui->cmbParaGrp->setEnabled(true);
             ui->btnAsSave1->setEnabled(true);
+            ui->savePid_all->setEnabled(true);
+            ui->setcandebug->setEnabled(true);
+            ui->extDevSVBtn->setEnabled(true);
             break;
         default: break;
     }
@@ -157,12 +179,6 @@ void cpidparamui::updataData()
 {
        int i=0;
        //bool b=false;
-	
-       if(m_pScheduler->m_pSystemParameter->getsysparamfinished)
-       	{
-       		refresh_LineParam();
-			//m_pScheduler->m_pSystemParameter->getsysparamfinished=0;//cjointparamsetui::updataData()÷–÷√0
-       	}
 	for(i=0;i<MOF;i++)
 	{
 		if(m_pScheduler->m_pSystemParameter->getpidparamfinished[i])
@@ -171,19 +187,15 @@ void cpidparamui::updataData()
 			m_pScheduler->m_pSystemParameter->getpidparamfinished[i]=0;
 		}
 	}
+    if(m_pScheduler->m_pSystemParameter->getaxinofinished)
+    {
+        m_pScheduler->m_pSystemParameter->getaxinofinished=0;
+        refresh_extDevParam();
+
+
+    }
 }
 
-void cpidparamui::refresh_LineParam()
-{
-       
-       	{
-	ui->LineMaxLen->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pLineMaxLen]) );
-	ui->LineMaxVel->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pLineMaxVel]) );
-	ui->LineMinPer->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pLineMinPer]) );
-	ui->LineMaxPer->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pLineMaxPer]) );
-	
-       	}
-}	   
 void cpidparamui::refresh_pidParam(int axis)
 {
     if(axis==0)
@@ -305,32 +317,6 @@ void cpidparamui::on_axis7readpid_clicked()
         return;
     }
     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "getPIDParamer", "75");
-}
-
-void cpidparamui::on_readlineparam_clicked()
-{
-//#ifdef USE_ARMPARAM
-    if(!m_pScheduler->NetIsConnect()){ // ≈–∂œÕ¯¬Á «∑Ò¡¨Ω”
-        QMessageBox::information(this,QString::fromLocal8Bit("¥ÌŒÛ"),QString::fromLocal8Bit("Õ¯¬Á“—∂œø™!"));
-        return;
-    }
-	m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/getsysparam", "yes");
-//#endif
-}
-
-void cpidparamui::on_setlineparam_clicked()
-{
-    m_pScheduler->m_pSystemParameter->SystemParam[pLineMaxLen]=ui->LineMaxLen->text().toFloat();
-    m_pScheduler->m_pSystemParameter->SystemParam[pLineMaxVel]=ui->LineMaxVel->text().toFloat();
-    m_pScheduler->m_pSystemParameter->SystemParam[pLineMinPer]=ui->LineMinPer->text().toFloat();
-    m_pScheduler->m_pSystemParameter->SystemParam[pLineMaxPer]=ui->LineMaxPer->text().toFloat();
-
-    m_pScheduler->WriteSystemParamInformation();
-    if(!m_pScheduler->NetIsConnect()){ // ≈–∂œÕ¯¬Á «∑Ò¡¨Ω”
-        QMessageBox::information(this,QString::fromLocal8Bit("¥ÌŒÛ"),QString::fromLocal8Bit("Õ¯¬Á“—∂œø™!"));
-        return;
-    }
-    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/setParamer", "all");
 }
 
 void cpidparamui::on_axis1setpid_clicked()
@@ -690,3 +676,139 @@ void cpidparamui::on_cmbParaGrp_currentIndexChanged(int index)
     }
 }
 
+
+void cpidparamui::on_savePid_1_clicked()
+{
+    if(!m_pScheduler->NetIsConnect()){ // ≈–∂œÕ¯¬Á «∑Ò¡¨Ω”
+        QMessageBox::information(this,QString::fromLocal8Bit("¥ÌŒÛ"),QString::fromLocal8Bit("Õ¯¬Á“—∂œø™!"));
+        return;
+    }
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "15");
+}
+
+void cpidparamui::on_savePid_2_clicked()
+{
+    if(!m_pScheduler->NetIsConnect()){ // ≈–∂œÕ¯¬Á «∑Ò¡¨Ω”
+        QMessageBox::information(this,QString::fromLocal8Bit("¥ÌŒÛ"),QString::fromLocal8Bit("Õ¯¬Á“—∂œø™!"));
+        return;
+    }
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "25");
+}
+
+void cpidparamui::on_savePid_3_clicked()
+{
+    if(!m_pScheduler->NetIsConnect()){ // ≈–∂œÕ¯¬Á «∑Ò¡¨Ω”
+        QMessageBox::information(this,QString::fromLocal8Bit("¥ÌŒÛ"),QString::fromLocal8Bit("Õ¯¬Á“—∂œø™!"));
+        return;
+    }
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "35");
+}
+
+void cpidparamui::on_savePid_4_clicked()
+{
+    if(!m_pScheduler->NetIsConnect()){ // ≈–∂œÕ¯¬Á «∑Ò¡¨Ω”
+        QMessageBox::information(this,QString::fromLocal8Bit("¥ÌŒÛ"),QString::fromLocal8Bit("Õ¯¬Á“—∂œø™!"));
+        return;
+    }
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "45");
+}
+
+void cpidparamui::on_savePid_5_clicked()
+{
+    if(!m_pScheduler->NetIsConnect()){ // ≈–∂œÕ¯¬Á «∑Ò¡¨Ω”
+        QMessageBox::information(this,QString::fromLocal8Bit("¥ÌŒÛ"),QString::fromLocal8Bit("Õ¯¬Á“—∂œø™!"));
+        return;
+    }
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "55");
+}
+
+void cpidparamui::on_savePid_6_clicked()
+{
+    if(!m_pScheduler->NetIsConnect()){ // ≈–∂œÕ¯¬Á «∑Ò¡¨Ω”
+        QMessageBox::information(this,QString::fromLocal8Bit("¥ÌŒÛ"),QString::fromLocal8Bit("Õ¯¬Á“—∂œø™!"));
+        return;
+    }
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "65");
+}
+
+void cpidparamui::on_savePid_7_clicked()
+{
+    if(!m_pScheduler->NetIsConnect()){ // ≈–∂œÕ¯¬Á «∑Ò¡¨Ω”
+        QMessageBox::information(this,QString::fromLocal8Bit("¥ÌŒÛ"),QString::fromLocal8Bit("Õ¯¬Á“—∂œø™!"));
+        return;
+    }
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "75");
+}
+
+void cpidparamui::on_savePid_all_clicked()
+{
+    if(!m_pScheduler->NetIsConnect()){ // ≈–∂œÕ¯¬Á «∑Ò¡¨Ω”
+        QMessageBox::information(this,QString::fromLocal8Bit("¥ÌŒÛ"),QString::fromLocal8Bit("Õ¯¬Á“—∂œø™!"));
+        return;
+    }
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "85");
+}
+
+void cpidparamui::refresh_extDevParam()
+{
+    ui->axis1_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[0]) );
+    ui->axis2_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[1]) );
+    ui->axis3_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[2]) );
+    ui->axis4_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[3]) );
+    ui->axis5_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[4]) );
+    ui->axis6_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[5]) );
+    ui->axis7_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[6]) );
+
+    ui->axis1_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[7]) );
+    ui->axis2_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[8]) );
+    ui->axis3_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[9]) );
+    ui->axis4_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[10]) );
+    ui->axis5_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[11]) );
+    ui->axis6_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[12]) );
+    ui->axis7_canid->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[13]) );
+
+    ui->battery_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[14]) );
+    ui->input_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[15]) );
+    ui->output_slot->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->axisno[16]) );
+}
+
+void cpidparamui::on_extDevSVBtn_clicked()
+{
+    m_pScheduler->m_pSystemParameter->axisno[0]=ui->axis1_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[1]=ui->axis2_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[2]=ui->axis3_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[3]=ui->axis4_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[4]=ui->axis5_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[5]=ui->axis6_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[6]=ui->axis7_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[7]=ui->axis1_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[8]=ui->axis2_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[9]=ui->axis3_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[10]=ui->axis4_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[11]=ui->axis5_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[12]=ui->axis6_canid->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[13]=ui->axis7_canid->text().toInt();
+
+    m_pScheduler->m_pSystemParameter->axisno[14]=ui->battery_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[15]=ui->input_slot->text().toInt();
+    m_pScheduler->m_pSystemParameter->axisno[16]=ui->output_slot->text().toInt();
+
+    m_pScheduler->WriteAxisParamInformation();
+
+    // ≈–∂œÕ¯¬Á «∑Ò¡¨Ω”
+    if(!m_pScheduler->NetIsConnect()){
+        QMessageBox::information(this,QString::fromLocal8Bit("¥ÌŒÛ"),QString::fromLocal8Bit("Õ¯¬Á“—∂œø™¡¨Ω”!"));
+        return;
+    }
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/setaxisno", "yes");
+}
+
+void cpidparamui::on_extDevRDBtn_clicked()
+{
+    // ≈–∂œÕ¯¬Á «∑Ò¡¨Ω”
+    if(!m_pScheduler->NetIsConnect()){
+        QMessageBox::information(this,QString::fromLocal8Bit("¥ÌŒÛ"),QString::fromLocal8Bit("Õ¯¬Á“—∂œø™¡¨Ω”!"));
+        return;
+    }
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "manual/getaxisno", "yes");
+}

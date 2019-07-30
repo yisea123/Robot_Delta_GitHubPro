@@ -18,6 +18,9 @@
     <item>
      <widget class="QWidget" name="widget_2" native="true">
       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,15,0,1">
+       <property name="spacing">
+        <number>5</number>
+       </property>
        <property name="leftMargin">
         <number>1</number>
        </property>
@@ -28,7 +31,7 @@
         <number>1</number>
        </property>
        <property name="bottomMargin">
-        <number>1</number>
+        <number>0</number>
        </property>
        <item>
         <widget class="QGroupBox" name="groupBox">

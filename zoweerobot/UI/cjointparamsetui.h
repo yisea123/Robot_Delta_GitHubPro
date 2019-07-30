@@ -26,9 +26,7 @@ private slots:
     void SetEditCtrlReadOnly();
     void on_axisParamRDBtn_clicked();
     void on_axisParamSVBtn_clicked();
-     
-    void on_extDevRDBtn_clicked();
-    void on_extDevSVBtn_clicked();
+
 
 //    void on_routeParamRDBtn_clicked();
 //    void on_routeParamSVBtn_clicked();
@@ -38,7 +36,6 @@ private:
     SystemSchedule*       m_pScheduler;
 
      void refresh_systemParam();
-     void refresh_extDevParam();
 };
 
 #endif // CJOINTPARAMSETUI_H

@@ -2831,6 +2831,10 @@ bool MotionControllerDevice::setParamer()
     {
         return false;
     }
+	if (!PutSetParamFrame(0, pJointMaxAcc7, pMotorPrec7,(unsigned char*)&m_pSystemParm->SystemParam[pJointMaxAcc7]) )
+    {
+        return false;
+    }
     /*if (!PutSetParamFrame(0, pAccTime, pLinkDimension+5,(unsigned char*)&m_pSystemParm->SystemParam[pAccTime]) )
     {
         return false;
@@ -2895,7 +2899,7 @@ bool MotionControllerDevice::PIDParam(int cmd,int axis,int len)
     elem.funcode = 5;
     if(cmd==1)
         elem.length = 8+4+len*4;
-    else if(cmd==2)
+    else if(cmd==2 || 3 == cmd)
 	elem.length = 8+4;
     else
 	return 0;
@@ -2903,7 +2907,7 @@ bool MotionControllerDevice::PIDParam(int cmd,int axis,int len)
     elem.trafficctrl = 0;
 
     elem.databuf[0] = 22;//Cmd_PID
-    elem.databuf[1] = cmd;  // 1:保存 2:获取
+    elem.databuf[1] = cmd;  // 1:set	2:get		3:save
     elem.databuf[2] = axis;//Cmd_PID
     elem.databuf[3] = 0;//offset from poskp
     if(cmd==1)

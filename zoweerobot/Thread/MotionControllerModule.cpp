@@ -736,6 +736,12 @@ void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
                       	}
                         
             }
+            else if (msg == "savePIDParamer")
+            {
+                m_nPidAxis=(arg.toInt()/10)-1;
+                m_nPidCmd=((m_nPidAxis>=0)&&(m_nPidAxis<MOF))?3:0;
+                m_nPidLen=3;//(arg.toInt()%10)
+            }
 	     else if (msg == "setCanDebug")
             {             
 
