@@ -947,7 +947,7 @@
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="btnAsSave1">
+            <widget class="QPushButton" name="pidGrpSave">
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -1036,7 +1036,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="edtGrpMemo">
+            <widget class="QLineEdit" name="pidGrpText">
              <property name="maxLength">
               <number>20</number>
              </property>

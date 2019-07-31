@@ -213,7 +213,7 @@ public slots:
     //控制帧--总操作
     bool setMotionMode(int mode);    /**< 设置运动模式，1--手动、2--程序运行（自动） */
     bool clearAlarm();    /**< 清除报警 */
-    bool setOrian();
+    bool setOrian(int axis);
     bool getParamer();
     bool setParamer();
     bool setLinkParamer();

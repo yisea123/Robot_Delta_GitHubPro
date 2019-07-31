@@ -57,7 +57,7 @@ private slots:
 	void on_setcandebug_clicked();
 
 
-    void on_btnAsSave1_clicked();
+    void on_pidGrpSave_clicked();
     void on_cmbParaGrp_currentIndexChanged(int index);
 
     void on_savePid_1_clicked();

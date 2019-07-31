@@ -2789,9 +2789,9 @@ bool MotionControllerDevice::clearAlarm()
 }
 
 
-bool MotionControllerDevice::setOrian()
+bool MotionControllerDevice::setOrian(int axis)
 {
-    if (PutControlFrame(10, 1) == 1)
+    if (PutControlFrame(10, axis) == 1)
     {     
         return true;
     }
@@ -2897,7 +2897,7 @@ bool MotionControllerDevice::PIDParam(int cmd,int axis,int len)
 
     elem.framehead = FrameHeadWord;
     elem.funcode = 5;
-    if(cmd==1)
+    if(cmd==1 || 4 == cmd)
         elem.length = 8+4+len*4;
     else if(cmd==2 || 3 == cmd)
 	elem.length = 8+4;
@@ -2907,13 +2907,15 @@ bool MotionControllerDevice::PIDParam(int cmd,int axis,int len)
     elem.trafficctrl = 0;
 
     elem.databuf[0] = 22;//Cmd_PID
-    elem.databuf[1] = cmd;  // 1:set	2:get		3:save
-    elem.databuf[2] = axis;//Cmd_PID
+    elem.databuf[1] = cmd;  // 1:set	2:get		3:save	4:setPidGrp
+    elem.databuf[2] = axis;//Cmd_PID		0~6 /  7 means save all when (cmd = save) /	0~4 grp when (cmd = setPidGrp)
     elem.databuf[3] = 0;//offset from poskp
     if(cmd==1)
     {
     		memcpy(&elem.databuf[4],(unsigned char*)&m_pSystemParm->SystemParam[pAIXS1PID+axis*6],len*4);
     }
+    else if(4 == cmd)
+		memcpy(&elem.databuf[4],(unsigned char*)&m_pSystemParm->PidParaGrp[axis],len*4);
 	return m_netctrl->EnFrameQueue(&m_netctrl->gb_framequeue, elem);
  
 }

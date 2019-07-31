@@ -122,7 +122,7 @@ void cpidparamui::SetCtrlEnabled()
             }
 
             ui->cmbParaGrp->setEnabled(false);
-            ui->btnAsSave1->setEnabled(false);
+            ui->pidGrpSave->setEnabled(false);
             ui->savePid_all->setEnabled(false);
             ui->setcandebug->setEnabled(false);
             ui->extDevSVBtn->setEnabled(false);
@@ -144,7 +144,7 @@ void cpidparamui::SetCtrlEnabled()
             }
 
             ui->cmbParaGrp->setEnabled(true);
-            ui->btnAsSave1->setEnabled(true);
+            ui->pidGrpSave->setEnabled(true);
             ui->savePid_all->setEnabled(true);
             ui->setcandebug->setEnabled(true);
             ui->extDevSVBtn->setEnabled(true);
@@ -166,7 +166,7 @@ void cpidparamui::SetCtrlEnabled()
             }
 
             ui->cmbParaGrp->setEnabled(true);
-            ui->btnAsSave1->setEnabled(true);
+            ui->pidGrpSave->setEnabled(true);
             ui->savePid_all->setEnabled(true);
             ui->setcandebug->setEnabled(true);
             ui->extDevSVBtn->setEnabled(true);
@@ -599,11 +599,11 @@ void cpidparamui::on_btnAsSaveGrp_clicked(int grp)
         return ;
     }
 
-    memcpy(m_pScheduler->m_pSystemParameter->PidParaGrpName[grp],ui->edtGrpMemo->text().toStdString().c_str(),
+    memcpy(m_pScheduler->m_pSystemParameter->PidParaGrpName[grp],ui->pidGrpText->text().toStdString().c_str(),
                sizeof(m_pScheduler->m_pSystemParameter->PidParaGrpName[0]));
 
 
-    for(i=0;i<24;i++){
+    for(i=0;i<42;i++){
         m_pScheduler->m_pSystemParameter->PidParaGrp[grp][i] = val[i];
     }
 
@@ -622,7 +622,7 @@ void cpidparamui::on_btnReadGrp_clicked(int grp)
     QString str;
     int i;
 
-    ui->edtGrpMemo->setText(m_pScheduler->m_pSystemParameter->PidParaGrpName[grp]);
+    ui->pidGrpText->setText(m_pScheduler->m_pSystemParameter->PidParaGrpName[grp]);
 
     for(i=0;i<42;i++){
         m_pScheduler->m_pSystemParameter->SystemParam[pAIXS1PID+i] = m_pScheduler->m_pSystemParameter->PidParaGrp[grp][i];
@@ -655,7 +655,7 @@ void cpidparamui::on_btnReadGrp_clicked(int grp)
 }
 
 
-void cpidparamui::on_btnAsSave1_clicked()
+void cpidparamui::on_pidGrpSave_clicked()
 {
     int index;
 
@@ -666,11 +666,12 @@ void cpidparamui::on_btnAsSave1_clicked()
     }
     on_btnAsSaveGrp_clicked(index);
     UpdateTbvParaGrp();
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "setPIDGrpParamer", QString::number(index));
 }
 
 void cpidparamui::on_cmbParaGrp_currentIndexChanged(int index)
 {
-    ui->edtGrpMemo->clear();
+    ui->pidGrpText->clear();
     if(index>0){
         on_btnReadGrp_clicked(index-1);
     }

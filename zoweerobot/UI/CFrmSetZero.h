@@ -23,32 +23,26 @@ public:
     virtual void TimerUpdateViewData(void);  // 定时更新的数据
 
 private slots:
-    void on_zerostep1_clicked();
 
-    void on_zerostep2_clicked();
+    void on_setzeroaxis1_clicked();
 
-    void on_zerostep3_clicked();
+    void on_setzeroaxis2_clicked();
 
-    void on_zerostep4_clicked();
+    void on_setzeroaxis3_clicked();
 
-    void on_edtHomeOrder1_editingFinished();
+    void on_setzeroaxis4_clicked();
 
-    void on_edtHomeOrder2_editingFinished();
+    void on_setzeroaxis5_clicked();
 
-    void on_edtHomeOrder3_editingFinished();
+    void on_setzeroaxis6_clicked();
 
-    void on_edtHomeOrder4_editingFinished();
-
-    void on_btnHomeOrder_clicked();
+    void on_setzeroaxis7_clicked();
 
 private:
-    void on_edtHomeOrder_editingFinished();
-    int IsHomeOrderValid(int &line);
 
 private:
     Ui::CFrmSetZero *ui;
     SystemSchedule*       m_pScheduler;
-    int m_PreHomeOrder[4];
 };
 
 #endif // CFRMSETZERO_H

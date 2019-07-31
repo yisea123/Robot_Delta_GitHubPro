@@ -742,6 +742,12 @@ void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
                 m_nPidCmd=((m_nPidAxis>=0)&&(m_nPidAxis<MOF))?3:0;
                 m_nPidLen=3;//(arg.toInt()%10)
             }
+            else if (msg == "setPIDGrpParamer")
+            {
+                m_nPidAxis=arg.toInt();
+                m_nPidCmd=((m_nPidAxis>=0)&&(m_nPidAxis<=5))?4:0;
+                m_nPidLen=42;//(arg.toInt()%10)
+            }
 	     else if (msg == "setCanDebug")
             {             
 
@@ -2368,7 +2374,7 @@ void MotionControllerModule::doMotion()
 
         case SETTING_ORIAN:
             qDebug()<<"set orian";
-            if (((MotionControllerDevice *)m_pDevice)->setOrian())
+            if (((MotionControllerDevice *)m_pDevice)->setOrian(m_nZeroaxis))
             {
                 m_ManualStatus = MANUAL_IDLE;
                 m_WorkStatus= MOTION_WORK_IDLE;
