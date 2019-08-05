@@ -62,7 +62,7 @@
          </size>
         </property>
         <property name="title">
-         <string/>
+         <string>PID</string>
         </property>
         <layout class="QGridLayout" name="gridLayout">
          <item row="0" column="0">
@@ -141,6 +141,9 @@
            </item>
            <item row="5" column="6">
             <widget class="QLineEdit" name="axis6curki">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -165,6 +168,9 @@
            </item>
            <item row="4" column="6">
             <widget class="QLineEdit" name="axis6curkp">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -177,6 +183,9 @@
            </item>
            <item row="4" column="4">
             <widget class="QLineEdit" name="axis4curkp">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -189,6 +198,9 @@
            </item>
            <item row="5" column="7">
             <widget class="QLineEdit" name="axis7curki">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -225,6 +237,9 @@
            </item>
            <item row="5" column="4">
             <widget class="QLineEdit" name="axis4curki">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -232,13 +247,6 @@
              </property>
              <property name="text">
               <string>10</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label_10">
-             <property name="text">
-              <string/>
              </property>
             </widget>
            </item>
@@ -400,6 +408,9 @@
            </item>
            <item row="4" column="5">
             <widget class="QLineEdit" name="axis5curkp">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -436,6 +447,9 @@
            </item>
            <item row="4" column="2">
             <widget class="QLineEdit" name="axis2curkp">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -460,6 +474,9 @@
            </item>
            <item row="5" column="2">
             <widget class="QLineEdit" name="axis2curki">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -535,6 +552,9 @@
            </item>
            <item row="4" column="3">
             <widget class="QLineEdit" name="axis3curkp">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -583,6 +603,9 @@
            </item>
            <item row="4" column="1">
             <widget class="QLineEdit" name="axis1curkp">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -595,6 +618,9 @@
            </item>
            <item row="4" column="7">
             <widget class="QLineEdit" name="axis7curkp">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -619,6 +645,9 @@
            </item>
            <item row="5" column="1">
             <widget class="QLineEdit" name="axis1curki">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -694,6 +723,9 @@
            </item>
            <item row="5" column="3">
             <widget class="QLineEdit" name="axis3curki">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -706,6 +738,9 @@
            </item>
            <item row="5" column="5">
             <widget class="QLineEdit" name="axis5curki">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="font">
               <font>
                <pointsize>12</pointsize>
@@ -917,6 +952,30 @@
              </property>
             </widget>
            </item>
+           <item row="7" column="0">
+            <widget class="QPushButton" name="setpid_all">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>全部设置</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QPushButton" name="readPid_all">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>全部读取</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
         </layout>
@@ -1055,293 +1114,7 @@
            <string>外设</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_5">
-           <item row="0" column="0" rowspan="2">
-            <layout class="QGridLayout" name="gridLayout_6">
-             <property name="rightMargin">
-              <number>2</number>
-             </property>
-             <item row="1" column="1">
-              <widget class="QLineEdit" name="axis1_slot">
-               <property name="text">
-                <string>1</string>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="0">
-              <widget class="QLabel" name="label_63">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>轴7</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLineEdit" name="axis2_slot">
-               <property name="text">
-                <string>2</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label_62">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>轴6</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0">
-              <widget class="QLabel" name="label_61">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>轴5</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_52">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>轴4</string>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="1">
-              <widget class="QLineEdit" name="axis7_slot">
-               <property name="text">
-                <string>7</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QLineEdit" name="axis3_slot">
-               <property name="text">
-                <string>3</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="QLineEdit" name="axis4_slot">
-               <property name="text">
-                <string>4</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_51">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>轴3</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_49">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>轴2</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_48">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>轴1</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="label_22">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>编码</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1">
-              <widget class="QLineEdit" name="axis5_slot">
-               <property name="text">
-                <string>5</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1">
-              <widget class="QLineEdit" name="axis6_slot">
-               <property name="text">
-                <string>6</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QLabel" name="label_32">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>CANID</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="QLineEdit" name="axis1_canid">
-               <property name="text">
-                <string>1</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="2">
-              <widget class="QLineEdit" name="axis2_canid">
-               <property name="text">
-                <string>2</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="2">
-              <widget class="QLineEdit" name="axis3_canid">
-               <property name="text">
-                <string>3</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="2">
-              <widget class="QLineEdit" name="axis4_canid">
-               <property name="text">
-                <string>4</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="2">
-              <widget class="QLineEdit" name="axis5_canid">
-               <property name="text">
-                <string>5</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="2">
-              <widget class="QLineEdit" name="axis6_canid">
-               <property name="text">
-                <string>6</string>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="2">
-              <widget class="QLineEdit" name="axis7_canid">
-               <property name="text">
-                <string>7</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item row="0" column="1">
-            <layout class="QGridLayout" name="gridLayout_7">
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_54">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>电池板</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QLineEdit" name="battery_slot">
-               <property name="text">
-                <string>8</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_56">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>输出板</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QLineEdit" name="input_slot">
-               <property name="text">
-                <string>10</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_57">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>输入板</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLineEdit" name="output_slot">
-               <property name="text">
-                <string>13</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item row="1" column="1">
+           <item row="2" column="1">
             <layout class="QGridLayout" name="gridLayout_9">
              <item row="0" column="1">
               <spacer name="verticalSpacer_3">
@@ -1395,11 +1168,248 @@
              </item>
             </layout>
            </item>
+           <item row="1" column="1">
+            <layout class="QGridLayout" name="gridLayout_7">
+             <item row="3" column="1">
+              <widget class="QLineEdit" name="output_slot">
+               <property name="text">
+                <string>13</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_57">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>输出板</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="input_slot">
+               <property name="text">
+                <string>10</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_56">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>输入板</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_54">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>电池板</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="battery_slot">
+               <property name="text">
+                <string>8</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_10">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0" rowspan="2">
+            <layout class="QGridLayout" name="gridLayout_6">
+             <property name="rightMargin">
+              <number>2</number>
+             </property>
+             <item row="0" column="1">
+              <widget class="QLabel" name="label_22">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>编码</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QLineEdit" name="axis6_slot">
+               <property name="text">
+                <string>6</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QLineEdit" name="axis5_slot">
+               <property name="text">
+                <string>5</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_48">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>轴1</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_52">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>轴4</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="1">
+              <widget class="QLineEdit" name="axis7_slot">
+               <property name="text">
+                <string>7</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_49">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>轴2</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="axis2_slot">
+               <property name="text">
+                <string>2</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="axis1_slot">
+               <property name="text">
+                <string>1</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QLineEdit" name="axis4_slot">
+               <property name="text">
+                <string>4</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="label_62">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>轴6</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_61">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>轴5</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_51">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>轴3</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="0">
+              <widget class="QLabel" name="label_63">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>轴7</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLineEdit" name="axis3_slot">
+               <property name="text">
+                <string>3</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
           </layout>
          </widget>
         </item>
         <item>
          <widget class="QGroupBox" name="gridGroupBox_3">
+          <property name="title">
+           <string/>
+          </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_2">

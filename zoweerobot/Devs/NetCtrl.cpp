@@ -747,7 +747,7 @@ int CNetCtrl::DealStateFrame(FrameBody frame,FrameTrafficCtrl* ctrl)
 	//memcpy(&ToolCalResult[frame.databuf[1]],&frame.databuf[2],sizeof(CartesianPose));
 	{
 	  
-	     memcpy(&cDlg->m_pSystemParm->axisno[0],&frame.databuf[2],68);	
+	     memcpy(&cDlg->m_pSystemParm->axisno[0],&frame.databuf[2],64);	
 	      cDlg->m_pSystemParm->getaxinofinished=1;
 	}
 	break;

@@ -80,6 +80,10 @@ private slots:
 
     void on_extDevRDBtn_clicked();
 
+    void on_readPid_all_clicked();
+
+    void on_setPid_all_clicked();
+
 private:
     Ui::cpidparamui *ui;
     SystemSchedule*       m_pScheduler;

@@ -44,6 +44,7 @@ void CAutoMachiningStateUi::init()
     m_nToolID = 0;
     m_sToolType = "NULL";
     m_bIsNetConnect = true;
+    ui->NGCodeText->setReadOnly(!ui->editfile->isChecked());
 }
 
 // 定时更新的数据
@@ -51,12 +52,14 @@ void CAutoMachiningStateUi::TimerUpdateViewData(void)
 {
     CCommmomUIWidget::TimerUpdateViewData();
     updataData();
+    int level = m_pScheduler->m_pSystemParameter->getUserInfo().m_permission;
+    ui->editfile->setEnabled(level);
 }
 
 void CAutoMachiningStateUi::updataData()
 {
-    QString str[4];
-    float crd[4]={0};
+//    QString str[4];
+//    float crd[4]={0};
     int i,line,cnt;
 	/*if((m_pScheduler->m_pSystemParameter->sys_ctrl.sendinput[0])&0x2)//stopbit set
 	{
@@ -412,11 +415,11 @@ void CAutoMachiningStateUi::on_editfile_clicked(bool checked)
 void CAutoMachiningStateUi::on_addtechpoint_clicked()
 {
     int i;
-    float crd[4]={0};
+    float crd[MOF]={0};
     QString text;
     int tool,hand;
 
-    for(i=0;i<4;i++){
+    for(i=0;i<MOF;i++){
         crd[i] = m_pScheduler->m_pSystemParameter->coor_car_pos[i];
     }
 
@@ -429,6 +432,6 @@ void CAutoMachiningStateUi::on_addtechpoint_clicked()
     }
     tool = m_pScheduler->m_pSystemParameter->m_currentTool;
 
-    text = QString::asprintf("G00 X%0.3f Y%0.3f Z%0.3f R%0.3f T%d H%d;",crd[0],crd[1],crd[2],crd[3],tool,hand);
+    text = QString::asprintf("G00 X%0.3f Y%0.3f Z%0.3f W%0.3f P%0.3f R%0.3f M%0.3f T%d H%d;",crd[0],crd[1],crd[2],crd[3],crd[4],crd[5],crd[6],tool,hand);
     ui->NGCodeText->textCursor().insertText(text);    
 }

@@ -906,7 +906,7 @@ public:
 	char teachpointtext[TEACHPIONTNUM][128];
 	int teachreadfinished;
 	int TeachSaveCnt; // 保存状态 0:不在保存中， 1-100:保存进度
-	int axisno[17];
+	int axisno[16];
 	char PidParaGrpName[5][100]; // Pid参数组 注释
 	float PidParaGrp[5][6*MOF]; // 5组 Pid参数.
 	int getaxinofinished;

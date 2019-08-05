@@ -952,6 +952,9 @@
       </item>
       <item row="1" column="1">
        <widget class="QGroupBox" name="gridGroupBox_2">
+        <property name="title">
+         <string>分段参数</string>
+        </property>
         <layout class="QGridLayout" name="gridLayout_7">
          <property name="horizontalSpacing">
           <number>20</number>

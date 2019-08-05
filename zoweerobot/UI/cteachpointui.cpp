@@ -303,7 +303,7 @@ void cteachpointui::on_getteachpoint_clicked()
 		model->setItem(curRow, 5, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[4]))); 
         model->setItem(curRow, 6, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[5])));
         model->setItem(curRow, 7, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->coor_car_pos[6])));
-		//model->setItem(curRow, 7, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->m_currentTool)));
+//		model->setItem(curRow, 8, new QStandardItem(QString("%1").arg(m_pScheduler->m_pSystemParameter->m_currentTool)));
                
                {
 		     //model->setItem(curRow,8, new QStandardItem(QString("%1").arg(0)));
@@ -356,11 +356,11 @@ void cteachpointui::on_movetopoint_pressed()
 		m_pScheduler->m_pSystemParameter->teachpoint[i].pos[5]=datatemp.toDouble();
         datatemp = modessl->data(modessl->index(i,7));
         m_pScheduler->m_pSystemParameter->teachpoint[i].pos[6]=datatemp.toDouble();
-		//datatemp = modessl->data(modessl->index(i,7));
+        //datatemp = modessl->data(modessl->index(i,8));
 		//m_pScheduler->m_pSystemParameter->teachpoint[i].toolindex=datatemp.toInt();
-		//datatemp = modessl->data(modessl->index(i,8));
+        //datatemp = modessl->data(modessl->index(i,9));
 		//m_pScheduler->m_pSystemParameter->teachpoint[i].hand=datatemp.toInt();
-//		datatemp = modessl->data(modessl->index(i,8));
+//		datatemp = modessl->data(modessl->index(i,10));
 //		m_pScheduler->m_pSystemParameter->teachpoint[i].zone=datatemp.toInt();
         datatemp = modessl->data(modessl->index(i,8));
 		//m_pScheduler->m_pSystemParameter->teachpointtext[i]=datatemp;

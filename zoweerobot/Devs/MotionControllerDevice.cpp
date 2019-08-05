@@ -3008,13 +3008,13 @@ bool MotionControllerDevice::setAxisNo()
 
     elem.framehead = FrameHeadWord;
     elem.funcode = 5;
-    elem.length = 8+2+68;
+    elem.length = 8+2+64;
     elem.frameno = 0;
     elem.trafficctrl = 0;
 
     elem.databuf[0] = 20;
     elem.databuf[1] = 1;
-     memcpy(&elem.databuf[2],&m_pSystemParm->axisno[0],68);
+     memcpy(&elem.databuf[2],&m_pSystemParm->axisno[0],64);
 
   
 
