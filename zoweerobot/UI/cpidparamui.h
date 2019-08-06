@@ -82,7 +82,7 @@ private slots:
 
     void on_readPid_all_clicked();
 
-    void on_setPid_all_clicked();
+    void on_setpid_all_clicked();
 
 private:
     Ui::cpidparamui *ui;

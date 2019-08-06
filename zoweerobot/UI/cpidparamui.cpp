@@ -736,19 +736,19 @@ void cpidparamui::on_savePid_6_clicked()
 
 void cpidparamui::on_savePid_7_clicked()
 {
-    if(!m_pScheduler->NetIsConnect()){ // ÅÐ¶ÏÍøÂçÊÇ·ñÁ¬½Ó
-        QMessageBox::information(this,QString::fromLocal8Bit("´íÎó"),QString::fromLocal8Bit("ÍøÂçÒÑ¶Ï¿ª!"));
-        return;
-    }
+//    if(!m_pScheduler->NetIsConnect()){ // ÅÐ¶ÏÍøÂçÊÇ·ñÁ¬½Ó
+//        QMessageBox::information(this,QString::fromLocal8Bit("´íÎó"),QString::fromLocal8Bit("ÍøÂçÒÑ¶Ï¿ª!"));
+//        return;
+//    }
     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "75");
 }
 
 void cpidparamui::on_savePid_all_clicked()
 {
-    if(!m_pScheduler->NetIsConnect()){ // ÅÐ¶ÏÍøÂçÊÇ·ñÁ¬½Ó
-        QMessageBox::information(this,QString::fromLocal8Bit("´íÎó"),QString::fromLocal8Bit("ÍøÂçÒÑ¶Ï¿ª!"));
-        return;
-    }
+//    if(!m_pScheduler->NetIsConnect()){ // ÅÐ¶ÏÍøÂçÊÇ·ñÁ¬½Ó
+//        QMessageBox::information(this,QString::fromLocal8Bit("´íÎó"),QString::fromLocal8Bit("ÍøÂçÒÑ¶Ï¿ª!"));
+//        return;
+//    }
     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "85");
 }
 
@@ -812,7 +812,7 @@ void cpidparamui::on_readPid_all_clicked()
     on_axis7readpid_clicked();
 }
 
-void cpidparamui::on_setPid_all_clicked()
+void cpidparamui::on_setpid_all_clicked()
 {
     on_axis1setpid_clicked();
     on_axis2setpid_clicked();
