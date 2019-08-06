@@ -2850,6 +2850,10 @@ bool MotionControllerDevice::setLinkParamer()
     {
         return false;
     }
+	if (!PutSetParamFrame(0, ep_CoorID, ub_5,(unsigned char*)&m_pSystemParm->SystemParam[ep_CoorID]) )
+    {
+        return false;
+    }
     /*if (!PutSetParamFrame(0, pAccTime, pLinkDimension+5,(unsigned char*)&m_pSystemParm->SystemParam[pAccTime]) )
     {
         return false;

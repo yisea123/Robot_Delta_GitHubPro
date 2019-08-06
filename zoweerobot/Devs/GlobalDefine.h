@@ -383,6 +383,7 @@
 //#define pAIXS7PID   136
 
 #define ep_CoorID   142
+#define ub_5        165
 #define pJointMaxAcc7 166 // 关节最大允许加速度, deg/s*s param1-2
 #define pJointMaxVel7 167// 关节最大速度
 #define pJointStopDec7 168// 关节停止减速度, deg/s*s
