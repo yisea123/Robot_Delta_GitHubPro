@@ -686,6 +686,10 @@ void cpidparamui::on_savePid_1_clicked()
         QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("网络已断开!"));
         return;
     }
+    if(m_pScheduler->GetServoState()){
+        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("请确认伺服断开使能"));
+        return;
+    }
     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "15");
 }
 
@@ -693,6 +697,10 @@ void cpidparamui::on_savePid_2_clicked()
 {
     if(!m_pScheduler->NetIsConnect()){ // 判断网络是否连接
         QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("网络已断开!"));
+        return;
+    }
+    if(m_pScheduler->GetServoState()){
+        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("请确认伺服断开使能"));
         return;
     }
     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "25");
@@ -704,6 +712,10 @@ void cpidparamui::on_savePid_3_clicked()
         QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("网络已断开!"));
         return;
     }
+    if(m_pScheduler->GetServoState()){
+        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("请确认伺服断开使能"));
+        return;
+    }
     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "35");
 }
 
@@ -711,6 +723,10 @@ void cpidparamui::on_savePid_4_clicked()
 {
     if(!m_pScheduler->NetIsConnect()){ // 判断网络是否连接
         QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("网络已断开!"));
+        return;
+    }
+    if(m_pScheduler->GetServoState()){
+        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("请确认伺服断开使能"));
         return;
     }
     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "45");
@@ -722,6 +738,10 @@ void cpidparamui::on_savePid_5_clicked()
         QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("网络已断开!"));
         return;
     }
+    if(m_pScheduler->GetServoState()){
+        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("请确认伺服断开使能"));
+        return;
+    }
     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "55");
 }
 
@@ -731,24 +751,36 @@ void cpidparamui::on_savePid_6_clicked()
         QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("网络已断开!"));
         return;
     }
+    if(m_pScheduler->GetServoState()){
+        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("请确认伺服断开使能"));
+        return;
+    }
     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "65");
 }
 
 void cpidparamui::on_savePid_7_clicked()
 {
-//    if(!m_pScheduler->NetIsConnect()){ // 判断网络是否连接
-//        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("网络已断开!"));
-//        return;
-//    }
+    if(!m_pScheduler->NetIsConnect()){ // 判断网络是否连接
+        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("网络已断开!"));
+        return;
+    }
+    if(m_pScheduler->GetServoState()){
+        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("请确认伺服断开使能"));
+        return;
+    }
     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "75");
 }
 
 void cpidparamui::on_savePid_all_clicked()
 {
-//    if(!m_pScheduler->NetIsConnect()){ // 判断网络是否连接
-//        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("网络已断开!"));
-//        return;
-//    }
+    if(!m_pScheduler->NetIsConnect()){ // 判断网络是否连接
+        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("网络已断开!"));
+        return;
+    }
+    if(m_pScheduler->GetServoState()){
+        QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("请确认伺服断开使能"));
+        return;
+    }
     m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "savePIDParamer", "85");
 }
 
