@@ -716,7 +716,7 @@ void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
                             {
                             	  
                                 m_nPidAxis=(arg.toInt()/10)-1;
-				  m_nPidCmd=((m_nPidAxis>=0)&&(m_nPidAxis<MOF))?2:0;
+				  m_nPidCmd=((m_nPidAxis>=0)&&(m_nPidAxis<=MOF))?2:0;
 				   m_nPidLen=3;//(arg.toInt()%10)
                             }
                       	}
@@ -730,8 +730,10 @@ void MotionControllerModule::absorbMotionModule(QString msg, QString arg)
                             {
                             	  
                                 m_nPidAxis=(arg.toInt()/10)-1;
-				  m_nPidCmd=((m_nPidAxis>=0)&&(m_nPidAxis<MOF))?1:0;
+                  m_nPidCmd=((m_nPidAxis>=0)&&(m_nPidAxis<=MOF))?1:0;
 				   m_nPidLen=3;//(arg.toInt()%10)
+                   if(7 == m_nPidAxis)
+                       m_nPidLen = 42;
                             }
                       	}
                         

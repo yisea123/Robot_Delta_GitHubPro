@@ -2916,6 +2916,9 @@ bool MotionControllerDevice::PIDParam(int cmd,int axis,int len)
     elem.databuf[3] = 0;//offset from poskp
     if(cmd==1)
     {
+    if(7 == axis)
+		memcpy(&elem.databuf[4],(unsigned char*)&m_pSystemParm->SystemParam[pAIXS1PID],len*4);
+	else
     		memcpy(&elem.databuf[4],(unsigned char*)&m_pSystemParm->SystemParam[pAIXS1PID+axis*6],len*4);
     }
     else if(4 == cmd)

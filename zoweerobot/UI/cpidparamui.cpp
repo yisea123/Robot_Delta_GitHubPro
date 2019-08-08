@@ -835,22 +835,62 @@ void cpidparamui::on_extDevRDBtn_clicked()
 
 void cpidparamui::on_readPid_all_clicked()
 {
-    on_axis1readpid_clicked();
-    on_axis2readpid_clicked();
-    on_axis3readpid_clicked();
-    on_axis4readpid_clicked();
-    on_axis5readpid_clicked();
-    on_axis6readpid_clicked();
-    on_axis7readpid_clicked();
+    if(!m_pScheduler->NetIsConnect()){ // ÅÐ¶ÏÍøÂçÊÇ·ñÁ¬½Ó
+        QMessageBox::information(this,QString::fromLocal8Bit("´íÎó"),QString::fromLocal8Bit("ÍøÂçÒÑ¶Ï¿ª!"));
+        return;
+    }
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "getPIDParamer", "85");
 }
 
 void cpidparamui::on_setpid_all_clicked()
 {
-    on_axis1setpid_clicked();
-    on_axis2setpid_clicked();
-    on_axis3setpid_clicked();
-    on_axis4setpid_clicked();
-    on_axis5setpid_clicked();
-    on_axis6setpid_clicked();
-    on_axis7setpid_clicked();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS1PID]=ui->axis1poskp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS1PID+1]=ui->axis1velkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS1PID+2]=ui->axis1velki->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS1PID+3]=ui->axis1curkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS1PID+4]=ui->axis1curki->text().toInt();
+
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS2PID]=ui->axis2poskp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS2PID+1]=ui->axis2velkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS2PID+2]=ui->axis2velki->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS2PID+3]=ui->axis2curkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS2PID+4]=ui->axis2curki->text().toInt();
+
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS3PID]=ui->axis3poskp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS3PID+1]=ui->axis3velkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS3PID+2]=ui->axis3velki->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS3PID+3]=ui->axis3curkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS3PID+4]=ui->axis3curki->text().toInt();
+
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS4PID]=ui->axis4poskp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS4PID+1]=ui->axis4velkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS4PID+2]=ui->axis4velki->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS4PID+3]=ui->axis4curkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS4PID+4]=ui->axis4curki->text().toInt();
+
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS5PID]=ui->axis5poskp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS5PID+1]=ui->axis5velkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS5PID+2]=ui->axis5velki->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS5PID+3]=ui->axis5curkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS5PID+4]=ui->axis5curki->text().toInt();
+
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS6PID]=ui->axis6poskp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS6PID+1]=ui->axis6velkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS6PID+2]=ui->axis6velki->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS6PID+3]=ui->axis6curkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS6PID+4]=ui->axis6curki->text().toInt();
+
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS7PID]=ui->axis7poskp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS7PID+1]=ui->axis7velkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS7PID+2]=ui->axis7velki->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS7PID+3]=ui->axis7curkp->text().toInt();
+    m_pScheduler->m_pSystemParameter->SystemParam[pAIXS7PID+4]=ui->axis7curki->text().toInt();
+
+    m_pScheduler->WriteSystemParamInformation();
+
+    if(!m_pScheduler->NetIsConnect()){ // ÅÐ¶ÏÍøÂçÊÇ·ñÁ¬½Ó
+        QMessageBox::information(this,QString::fromLocal8Bit("´íÎó"),QString::fromLocal8Bit("ÍøÂçÒÑ¶Ï¿ª!"));
+        return;
+    }
+    m_pScheduler->recvMsgFromWindows(MOTION_CONTROLLER_ID, "setPIDParamer", "85");
 }
