@@ -410,7 +410,7 @@ void MotionControllerModule::clearGCodeDataList()
   返 回 值：
   备    注：
 **************************************************/
-void MotionControllerModule::parseNGFileModel()
+void MotionControllerModule::parseNGFileModel()//no one calls
 {
     ParseGCodeModel* pp = pp->loadParseController(this, m_errInfo);
 

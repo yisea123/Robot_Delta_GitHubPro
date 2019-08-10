@@ -74,7 +74,7 @@ ProcEmulationModel* ProcEmulationModel::loadProcEmulationController(BaseModule *
             DONE_FAIL  Ê§°Ü
   ±¸    ×¢£º
 **************************************************/
-bool ProcEmulationModel::startupProcEmulationController(BaseModule *m, QVector<BaseGCode *>* list, ErrorInfo& e)
+bool ProcEmulationModel::startupProcEmulationController(BaseModule *m, QVector<BaseGCode *>* list, ErrorInfo& e)//no one calls
 {
     if(m_pParseModel->startupParseController(m->getSystemScheduleHandle()->getSystemParameterHandler(), m, list, e))
     {
