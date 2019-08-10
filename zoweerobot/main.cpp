@@ -12,6 +12,10 @@
 #include "GlobalVariableType.h"
 #include "CUserLevelManage.h"
 
+#ifdef TRS_LOC
+#include <QTranslator>
+#endif
+
 
 UserParameter checkRight(int *right)
 {
@@ -26,12 +30,19 @@ int main(int argc, char *argv[])
     int level;
 
     QSharedMemory shared("ZoBo Robot4");//
+    qDebug()<<QObject::tr("zobo robot");
     if (shared.attach()){  // 只运行一个实例。 临时方案,
             return 0;
     }
     shared.create(1);
 
     QApplication a(argc, argv);
+#ifdef TRS_LOC
+    QTranslator *translator = new QTranslator;
+    translator->load("../zoweerobot/translations/zoweerobot_zh_CN.qm");
+    a.installTranslator(translator);
+    qDebug()<<QObject::tr("translator is ok!");
+#endif
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("System"));
 
 
