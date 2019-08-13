@@ -25,7 +25,7 @@ private slots:
     void updataData();
     void SetEditCtrlReadOnly();
     void on_axisParamRDBtn_clicked();
-    void on_axisParamSVBtn_clicked();
+    void on_axisParamSV_clicked();
 
 
 //    void on_routeParamRDBtn_clicked();

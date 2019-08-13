@@ -260,7 +260,7 @@ void cjointparamsetui::refresh_systemParam()
     ui->ArcError->setText(QString("%1").arg(m_pScheduler->m_pSystemParameter->SystemParam[pArcError]) );
 }
 
-void cjointparamsetui::on_axisParamSVBtn_clicked()
+void cjointparamsetui::on_axisParamSV_clicked()
 {
     int i=0;
 
