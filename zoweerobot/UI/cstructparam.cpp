@@ -24,7 +24,7 @@ cstructparam::cstructparam(QWidget *parent, SystemSchedule* schedule) :
     ui(new Ui::cstructparam)
 {
     ui->setupUi(this);
-    m_pScheduler->m_pSystemParameter->getsysparamfinished=1;
+    m_pScheduler->m_pSystemParameter->getstructparamfinished = true;
     //QTimer* timer = new QTimer(this);
     //connect(timer, SIGNAL(timeout()),this, SLOT(updataData()));
     //timer->start(100);
@@ -121,10 +121,10 @@ void cstructparam::SetEditCtrlReadOnly()
 void cstructparam::updataData()
 {
 #ifdef USE_ARMPARAM
-    if(m_pScheduler->m_pSystemParameter->getsysparamfinished)
+    if(m_pScheduler->m_pSystemParameter->getstructparamfinished)
     {
         refresh_structParam();
-        m_pScheduler->m_pSystemParameter->getsysparamfinished=0;
+        m_pScheduler->m_pSystemParameter->getstructparamfinished = false;
     }
 #endif
 }
@@ -241,10 +241,14 @@ void cstructparam::on_restoreParam_clicked()
         QMessageBox::information(this,QString::fromLocal8Bit("错误"),QString::fromLocal8Bit("出厂文件丢失"));
         return;
     }
+    m_pScheduler->m_pSystemParameter->getsysparamfinished = true;
+    for(int i=0;i<MOF;i++)
+        m_pScheduler->m_pSystemParameter->getpidparamfinished[i] = true;
     if(!m_pScheduler->ReadAxisParamInformation("AxisParInit.dat")){
         QMessageBox::information(this,QString::fromLocal8Bit("失败"),QString::fromLocal8Bit("出厂文件丢失"));
         return;
     }
+    m_pScheduler->m_pSystemParameter->getaxinofinished = true;
 
     // 保存成 当前值
     if(!m_pScheduler->WriteSystemParamInformation()){

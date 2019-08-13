@@ -109,6 +109,7 @@ void cjointparamsetui::updataData()
 #ifdef USE_ARMPARAM
     if(m_pScheduler->m_pSystemParameter->getsysparamfinished)
     {
+        m_pScheduler->m_pSystemParameter->getstructparamfinished = true;
         refresh_systemParam();
         m_pScheduler->m_pSystemParameter->getsysparamfinished=0;
     }

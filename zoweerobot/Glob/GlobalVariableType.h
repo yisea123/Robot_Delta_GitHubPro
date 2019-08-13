@@ -843,6 +843,7 @@ public:
 	 TeachSaveCnt = 0;
 	 getaxinofinished=0;
 	 getsysparamfinished=0;
+	 getstructparamfinished = 0;
 	 memset(teachpoint,0,sizeof(teachpoint));
 	 memset(teachpointtext,0,sizeof(teachpointtext));
 	 memset(coor_car_pos,0,sizeof(coor_car_pos));
@@ -911,6 +912,7 @@ public:
 	float PidParaGrp[5][6*MOF]; // 5组 Pid参数.
 	int getaxinofinished;
 	int getsysparamfinished;
+	bool getstructparamfinished;
 	int getpidparamfinished[MOF];
 	QString               m_userfilePath;
 	bool m_bIsCollectMotionData; // 采集运动数据
